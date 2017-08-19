@@ -1,6 +1,5 @@
 package org.icannt.netherendingores.client.proxy;
 
-import org.icannt.netherendingores.client.model.ModelHandler;
 import org.icannt.netherendingores.common.proxy.CommonProxy;
 import org.icannt.netherendingores.common.registry.BlockRegistry;
 

@@ -4,8 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.icannt.netherendingores.common.NetherendingOres;
+import org.icannt.netherendingores.common.block.blocks.BlockOreEndModded1;
+import org.icannt.netherendingores.common.block.blocks.BlockOreEndVanilla;
+import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherVanilla;
-import org.icannt.netherendingores.common.block.itemblock.ItemBlockOreNetherVanilla;
+import org.icannt.netherendingores.common.block.blocks.BlockOreOther1;
+import org.icannt.netherendingores.common.block.itemblock.ItemBlockOreModded1;
+import org.icannt.netherendingores.common.block.itemblock.ItemBlockOreOther1;
+import org.icannt.netherendingores.common.block.itemblock.ItemBlockOreVanilla;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -27,6 +33,18 @@ public class BlockRegistry {
 
     @GameRegistry.ObjectHolder("ore_nether_vanilla")
     public static final BlockOreNetherVanilla ORE_NETHER_VANILLA = new BlockOreNetherVanilla();
+    
+    @GameRegistry.ObjectHolder("ore_nether_modded_1")
+    public static final BlockOreNetherModded1 ORE_NETHER_MODDED_1 = new BlockOreNetherModded1();
+    
+    @GameRegistry.ObjectHolder("ore_end_vanilla")
+    public static final BlockOreEndVanilla ORE_END_VANILLA = new BlockOreEndVanilla();
+    
+    @GameRegistry.ObjectHolder("ore_end_modded_1")
+    public static final BlockOreEndModded1 ORE_END_MODDED_1 = new BlockOreEndModded1();
+    
+    @GameRegistry.ObjectHolder("ore_other_1")
+    public static final BlockOreOther1 ORE_OTHER_1 = new BlockOreOther1();
 
     @Mod.EventBusSubscriber
     public static class RegistrationHandler {
@@ -37,7 +55,11 @@ public class BlockRegistry {
             final IForgeRegistry<Block> registry = event.getRegistry();
 
             final Block[] blocks = {
-                    ORE_NETHER_VANILLA
+                    ORE_NETHER_VANILLA,
+                    ORE_NETHER_MODDED_1,
+                    ORE_END_VANILLA,
+                    ORE_END_MODDED_1,
+                    ORE_OTHER_1
             };
 
             registry.registerAll(blocks);
@@ -48,7 +70,11 @@ public class BlockRegistry {
             final IForgeRegistry<Item> registry = event.getRegistry();
 
             final ItemBlock[] items = {
-                new ItemBlockOreNetherVanilla(ORE_NETHER_VANILLA),
+                new ItemBlockOreVanilla(ORE_NETHER_VANILLA),
+                new ItemBlockOreModded1(ORE_NETHER_MODDED_1),
+                new ItemBlockOreVanilla(ORE_END_VANILLA),
+                new ItemBlockOreModded1(ORE_END_MODDED_1),
+                new ItemBlockOreOther1(ORE_OTHER_1)
             };
 
             for (ItemBlock item : items) {
@@ -62,5 +88,9 @@ public class BlockRegistry {
     @SideOnly(Side.CLIENT)
     public static void initBlockModels() {
         ORE_NETHER_VANILLA.initClient();
+        ORE_NETHER_MODDED_1.initClient();
+        ORE_END_VANILLA.initClient();
+        ORE_END_MODDED_1.initClient();
+        ORE_OTHER_1.initClient();
     }
 }

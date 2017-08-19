@@ -29,12 +29,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Created by ICannt on 17/08/17.
  */
-public class BlockOreNetherVanilla extends BlockVariantBase {
+public class BlockOreEndVanilla extends BlockVariantBase {
 
     private static final PropertyEnum<EnumOreVanillaType> VARIANT = PropertyEnum.create("ore", EnumOreVanillaType.class);
 
-    public BlockOreNetherVanilla() {
-        super(Material.ROCK, MapColor.GRAY, "ore_nether_vanilla");
+    public BlockOreEndVanilla() {
+        super(Material.ROCK, MapColor.GRAY, "ore_end_vanilla");
     }
 
     @Override
@@ -92,8 +92,8 @@ public class BlockOreNetherVanilla extends BlockVariantBase {
 
             EnumOreVanillaType ore = EnumOreVanillaType.values()[meta];
             BlockRendererDispatcher dispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
-            Map<IBlockState, ModelResourceLocation> variants = dispatcher.getBlockModelShapes().getBlockStateMapper().getVariants(BlockOreNetherVanilla.this);
-            return variants.get(BlockOreNetherVanilla.this.getDefaultState().withProperty(VARIANT, ore));
+            Map<IBlockState, ModelResourceLocation> variants = dispatcher.getBlockModelShapes().getBlockStateMapper().getVariants(BlockOreEndVanilla.this);
+            return variants.get(BlockOreEndVanilla.this.getDefaultState().withProperty(VARIANT, ore));
         });
     }
 }

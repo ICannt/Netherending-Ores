@@ -1,0 +1,60 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "all": "netherendingores:blocks/nether_aluminum_ore"
+        },
+        "model": "cube_all"
+    },
+    "variants": {
+        "inventory": [{}],
+        "normal": [{}],
+        "ore": {
+            "aluminum_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_aluminum_ore"
+                }
+            },
+            "copper_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_coal_ore"
+                }
+            },
+            "iridium_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_iridium_ore"
+                }
+            },
+            "lead_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_lead_ore"
+                }
+            },
+            "mithril_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_mithril_ore"
+                }
+            },
+            "nickel_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_nickel_ore"
+                }
+            },
+            "platinum_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_platinum_ore"
+                }
+            },
+            "silver_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_silver_ore"
+                }
+            },
+            "tin_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_tin_ore"
+                }
+            }
+        }
+    }
+}

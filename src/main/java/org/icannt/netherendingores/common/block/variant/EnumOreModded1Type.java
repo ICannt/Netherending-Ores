@@ -6,15 +6,17 @@ import net.minecraft.util.IStringSerializable;
 /**
  * Created by ICannt on 17/08/17.
  */
-public enum EnumOreVanillaType implements IStringSerializable {
+public enum EnumOreModded1Type implements IStringSerializable {
 	
-    COAL_ORE ("coal_ore", 0, 3, 15, EnumRarity.COMMON, 0),
-    DIAMOND_ORE ("diamond_ore", 0, 3, 15, EnumRarity.COMMON, 2),
-    EMERALD_ORE ("emerald_ore", 0, 3, 15, EnumRarity.COMMON, 2),
-    GOLD_ORE ("gold_ore", 0, 3, 15, EnumRarity.COMMON, 2),
-    IRON_ORE ("iron_ore", 0, 3, 15, EnumRarity.COMMON, 1),
-    LAPIS_ORE ("lapis_ore", 0, 3, 15, EnumRarity.COMMON, 1),
-    REDSTONE_ORE ("redstone_ore", 0, 3, 15, EnumRarity.COMMON, 1);
+    ALUMINUM_ORE ("aluminum_ore", 0, 3, 15, EnumRarity.COMMON, 1),
+    COPPER_ORE ("copper_ore", 0, 3, 15, EnumRarity.COMMON, 1),
+    IRIDIUM_ORE ("iridium_ore", 0, 3, 15, EnumRarity.UNCOMMON, 3),
+    LEAD_ORE ("lead_ore", 0, 3, 15, EnumRarity.COMMON, 2),
+    MITHRIL_ORE ("mithril_ore", 0, 3, 15, EnumRarity.RARE, 3),
+    NICKEL_ORE ("nickel_ore", 0, 3, 15, EnumRarity.COMMON, 2),
+    PLATINUM_ORE ("platinum_ore", 0, 3, 15, EnumRarity.UNCOMMON, 3),
+    SILVER_ORE ("silver_ore", 0, 3, 15, EnumRarity.COMMON, 2),
+    TIN_ORE ("tin_ore", 0, 3, 15, EnumRarity.COMMON, 1);
 
     private String name;
     private int light;
@@ -23,7 +25,7 @@ public enum EnumOreVanillaType implements IStringSerializable {
     private EnumRarity rarity;
     private int harvestLevel;
 
-    EnumOreVanillaType(String name, int light, float hardness, float resistance, EnumRarity rarity, int harvestLevel) {
+    EnumOreModded1Type(String name, int light, float hardness, float resistance, EnumRarity rarity, int harvestLevel) {
         this.name = name;
         this.light = light;
         this.hardness = hardness;

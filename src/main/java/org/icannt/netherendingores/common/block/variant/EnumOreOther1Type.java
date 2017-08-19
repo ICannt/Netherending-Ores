@@ -6,15 +6,10 @@ import net.minecraft.util.IStringSerializable;
 /**
  * Created by ICannt on 17/08/17.
  */
-public enum EnumOreVanillaType implements IStringSerializable {
+public enum EnumOreOther1Type implements IStringSerializable {
 	
-    COAL_ORE ("coal_ore", 0, 3, 15, EnumRarity.COMMON, 0),
-    DIAMOND_ORE ("diamond_ore", 0, 3, 15, EnumRarity.COMMON, 2),
-    EMERALD_ORE ("emerald_ore", 0, 3, 15, EnumRarity.COMMON, 2),
-    GOLD_ORE ("gold_ore", 0, 3, 15, EnumRarity.COMMON, 2),
-    IRON_ORE ("iron_ore", 0, 3, 15, EnumRarity.COMMON, 1),
-    LAPIS_ORE ("lapis_ore", 0, 3, 15, EnumRarity.COMMON, 1),
-    REDSTONE_ORE ("redstone_ore", 0, 3, 15, EnumRarity.COMMON, 1);
+    OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", 0, 3, 15, EnumRarity.COMMON, 0),
+    END_QUARTZ_ORE ("end_quartz_ore", 0, 3, 15, EnumRarity.COMMON, 0);
 
     private String name;
     private int light;
@@ -23,7 +18,7 @@ public enum EnumOreVanillaType implements IStringSerializable {
     private EnumRarity rarity;
     private int harvestLevel;
 
-    EnumOreVanillaType(String name, int light, float hardness, float resistance, EnumRarity rarity, int harvestLevel) {
+    EnumOreOther1Type(String name, int light, float hardness, float resistance, EnumRarity rarity, int harvestLevel) {
         this.name = name;
         this.light = light;
         this.hardness = hardness;

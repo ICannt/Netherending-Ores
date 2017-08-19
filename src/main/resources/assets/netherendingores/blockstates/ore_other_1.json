@@ -1,0 +1,25 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "all": "netherendingores:blocks/overworld_quartz_ore"
+        },
+        "model": "cube_all"
+    },
+    "variants": {
+        "inventory": [{}],
+        "normal": [{}],
+        "ore": {
+            "overworld_quartz_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/overworld_quartz_ore"
+                }
+            },
+            "end_quartz_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/end_quartz_ore"
+                }
+            }
+        }
+    }
+}

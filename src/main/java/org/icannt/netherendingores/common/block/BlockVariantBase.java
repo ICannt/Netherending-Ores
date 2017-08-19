@@ -17,7 +17,8 @@ public class BlockVariantBase extends Block {
         super(material, mapColor);
         setRegistryName(NetherendingOres.MOD_ID, registry);
         setUnlocalizedName(getRegistryName().toString());
-        setCreativeTab(TabNetherendingOres.NETHERENDING_ORES_TAB);        
+        setCreativeTab(TabNetherendingOres.NETHERENDING_ORES_TAB);
+        setHarvestLevel("pickaxe", 0);
     }
     
 }

@@ -3,7 +3,7 @@ package org.icannt.netherendingores.common.block.blocks;
 import java.util.Map;
 
 import org.icannt.netherendingores.common.block.BlockVariantBase;
-import org.icannt.netherendingores.common.block.variant.EnumOreVanillaType;
+import org.icannt.netherendingores.common.block.variant.EnumOreOther1Type;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -29,12 +29,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Created by ICannt on 17/08/17.
  */
-public class BlockOreNetherVanilla extends BlockVariantBase {
+public class BlockOreOther1 extends BlockVariantBase {
 
-    private static final PropertyEnum<EnumOreVanillaType> VARIANT = PropertyEnum.create("ore", EnumOreVanillaType.class);
+    private static final PropertyEnum<EnumOreOther1Type> VARIANT = PropertyEnum.create("ore", EnumOreOther1Type.class);
 
-    public BlockOreNetherVanilla() {
-        super(Material.ROCK, MapColor.GRAY, "ore_nether_vanilla");
+    public BlockOreOther1() {
+        super(Material.ROCK, MapColor.GRAY, "ore_other_1");
     }
 
     @Override
@@ -45,14 +45,14 @@ public class BlockOreNetherVanilla extends BlockVariantBase {
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
 	{
-		for (EnumOreVanillaType type : EnumOreVanillaType.values()) {
+		for (EnumOreOther1Type type : EnumOreOther1Type.values()) {
 			list.add(new ItemStack(this, 1, type.ordinal()));
 		}
     }
     
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState().withProperty(VARIANT, EnumOreVanillaType.values()[meta]);
+        return getDefaultState().withProperty(VARIANT, EnumOreOther1Type.values()[meta]);
     }
 
     @Override
@@ -90,10 +90,10 @@ public class BlockOreNetherVanilla extends BlockVariantBase {
         ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(this), stack -> {
             int meta = stack.getMetadata();
 
-            EnumOreVanillaType ore = EnumOreVanillaType.values()[meta];
+            EnumOreOther1Type ore = EnumOreOther1Type.values()[meta];
             BlockRendererDispatcher dispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
-            Map<IBlockState, ModelResourceLocation> variants = dispatcher.getBlockModelShapes().getBlockStateMapper().getVariants(BlockOreNetherVanilla.this);
-            return variants.get(BlockOreNetherVanilla.this.getDefaultState().withProperty(VARIANT, ore));
+            Map<IBlockState, ModelResourceLocation> variants = dispatcher.getBlockModelShapes().getBlockStateMapper().getVariants(BlockOreOther1.this);
+            return variants.get(BlockOreOther1.this.getDefaultState().withProperty(VARIANT, ore));
         });
     }
 }
