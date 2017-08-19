@@ -1,0 +1,50 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "all": "netherendingores:blocks/nether_coal_ore"
+        },
+        "model": "cube_all"
+    },
+    "variants": {
+        "inventory": [{}],
+        "normal": [{}],
+        "ore": {
+            "coal_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_coal_ore"
+                }
+            },
+            "diamond_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_diamond_ore"
+                }
+            },
+            "emerald_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_emerald_ore"
+                }
+            },
+            "gold_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_gold_ore"
+                }
+            },
+            "iron_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_iron_ore"
+                }
+            },
+            "lapis_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_lapis_ore"
+                }
+            },
+			"redstone_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_redstone_ore"
+                }
+            }
+        }
+    }
+}
