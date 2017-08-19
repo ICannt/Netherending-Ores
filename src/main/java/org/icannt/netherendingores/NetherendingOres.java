@@ -1,4 +1,4 @@
-package org.icannt.netherendingores.common;
+package org.icannt.netherendingores;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +14,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 /**
  * Created by ICannt on 17/08/17.
  */
-@Mod(modid = NetherendingOres.MOD_ID, name = NetherendingOres.MOD_NAME, version = NetherendingOres.VERSION)
+
+@Mod(modid = NetherendingOres.MOD_ID,
+	name = NetherendingOres.MOD_NAME,
+	version = NetherendingOres.VERSION,
+	acceptedMinecraftVersions = "[1.12,1.13)",
+	dependencies = "required-after:forge@[14.21.0.2348,);")
+
 public class NetherendingOres {
 
     public static final String MOD_ID = "netherendingores";

@@ -17,7 +17,7 @@
             },
             "copper_ore": {
                 "textures": {
-                    "all": "netherendingores:blocks/end_coal_ore"
+                    "all": "netherendingores:blocks/end_copper_ore"
                 }
             },
             "iridium_ore": {

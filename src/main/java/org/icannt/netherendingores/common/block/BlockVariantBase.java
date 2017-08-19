@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.common.block;
 
-import org.icannt.netherendingores.common.NetherendingOres;
+import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.creativetab.TabNetherendingOres;
 
 import net.minecraft.block.Block;

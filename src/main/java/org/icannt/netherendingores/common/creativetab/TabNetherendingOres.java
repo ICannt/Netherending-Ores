@@ -1,7 +1,6 @@
 package org.icannt.netherendingores.common.creativetab;
 
-import org.icannt.netherendingores.common.NetherendingOres;
-//import org.icannt.netherendingores.common.init.ModItems;
+import org.icannt.netherendingores.NetherendingOres;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;

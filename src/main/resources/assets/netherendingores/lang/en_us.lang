@@ -1,0 +1,47 @@
+### Creative Tab ###
+itemGroup.netherendingores=Netherending Ores
+
+
+# Vanilla Nether Ores
+tile.netherendingores:ore_nether_vanilla.coal_ore.name=Nether Coal Ore
+tile.netherendingores:ore_nether_vanilla.diamond_ore.name=Nether Diamond Ore
+tile.netherendingores:ore_nether_vanilla.emerald_ore.name=Nether Emerald Ore
+tile.netherendingores:ore_nether_vanilla.gold_ore.name=Nether Gold Ore
+tile.netherendingores:ore_nether_vanilla.iron_ore.name=Nether Iron Ore
+tile.netherendingores:ore_nether_vanilla.lapis_ore.name=Nether Lapis Ore
+tile.netherendingores:ore_nether_vanilla.redstone_ore.name=Nether Redstone Ore
+
+# Modded Nether Ores 1
+tile.netherendingores:ore_nether_modded_1.aluminum_ore.name=Nether Aluminum Ore
+tile.netherendingores:ore_nether_modded_1.copper_ore.name=Nether Copper Ore
+tile.netherendingores:ore_nether_modded_1.iridium_ore.name=Nether Iridium Ore
+tile.netherendingores:ore_nether_modded_1.lead_ore.name=Nether Lead Ore
+tile.netherendingores:ore_nether_modded_1.mithril_ore.name=Nether Mithril Ore
+tile.netherendingores:ore_nether_modded_1.nickel_ore.name=Nether Nickel Ore
+tile.netherendingores:ore_nether_modded_1.platinum_ore.name=Nether Platinum Ore
+tile.netherendingores:ore_nether_modded_1.silver_ore.name=Nether Silver Ore
+tile.netherendingores:ore_nether_modded_1.tin_ore.name=Nether Tin Ore
+
+# Vanilla End Ores
+tile.netherendingores:ore_end_vanilla.coal_ore.name=End Coal Ore
+tile.netherendingores:ore_end_vanilla.diamond_ore.name=End Diamond Ore
+tile.netherendingores:ore_end_vanilla.emerald_ore.name=End Emerald Ore
+tile.netherendingores:ore_end_vanilla.gold_ore.name=End Gold Ore
+tile.netherendingores:ore_end_vanilla.iron_ore.name=End Iron Ore
+tile.netherendingores:ore_end_vanilla.lapis_ore.name=End Lapis Ore
+tile.netherendingores:ore_end_vanilla.redstone_ore.name=End Redstone Ore
+
+# Modded End Ores 1
+tile.netherendingores:ore_end_modded_1.aluminum_ore.name=End Aluminum Ore
+tile.netherendingores:ore_end_modded_1.copper_ore.name=End Copper Ore
+tile.netherendingores:ore_end_modded_1.iridium_ore.name=End Iridium Ore
+tile.netherendingores:ore_end_modded_1.lead_ore.name=End Lead Ore
+tile.netherendingores:ore_end_modded_1.mithril_ore.name=End Mithril Ore
+tile.netherendingores:ore_end_modded_1.nickel_ore.name=End Nickel Ore
+tile.netherendingores:ore_end_modded_1.platinum_ore.name=End Platinum Ore
+tile.netherendingores:ore_end_modded_1.silver_ore.name=End Silver Ore
+tile.netherendingores:ore_end_modded_1.tin_ore.name=End Tin Ore
+
+# Other Ores 1
+tile.netherendingores:ore_other_1.end_quartz_ore.name=End Quartz Ore
+tile.netherendingores:ore_other_1.overworld_quartz_ore.name=Quartz Ore

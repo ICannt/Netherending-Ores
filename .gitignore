@@ -53,6 +53,7 @@ Temporary Items
 /.settings
 /bin
 /build
+/data
 /eclipse
 #/gradle
 /lib

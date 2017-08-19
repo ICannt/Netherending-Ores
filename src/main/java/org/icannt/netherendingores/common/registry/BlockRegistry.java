@@ -3,7 +3,7 @@ package org.icannt.netherendingores.common.registry;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.icannt.netherendingores.common.NetherendingOres;
+import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.block.blocks.BlockOreEndModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreEndVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded1;
