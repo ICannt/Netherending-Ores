@@ -1,4 +1,4 @@
-package org.icannt.netherendingores.common.block;
+package org.icannt.netherendingores.client.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;

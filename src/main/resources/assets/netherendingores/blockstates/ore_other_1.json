@@ -9,7 +9,7 @@
     "variants": {
         "inventory": [{}],
         "normal": [{}],
-        "ore": {
+        "blocks": {
             "overworld_quartz_ore": {
                 "textures": {
                     "all": "netherendingores:blocks/overworld_quartz_ore"

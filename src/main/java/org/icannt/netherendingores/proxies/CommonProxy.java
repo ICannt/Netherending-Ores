@@ -1,4 +1,6 @@
-package org.icannt.netherendingores.common.proxy;
+package org.icannt.netherendingores.proxies;
+
+import org.icannt.netherendingores.common.registry.FurnaceRecipes;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -14,7 +16,7 @@ public abstract class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
-
+    	FurnaceRecipes.registerFurnaceRecipes();
     }
 
     public void postInit(FMLPostInitializationEvent event) {

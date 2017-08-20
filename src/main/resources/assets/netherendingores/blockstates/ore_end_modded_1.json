@@ -9,7 +9,7 @@
     "variants": {
         "inventory": [{}],
         "normal": [{}],
-        "ore": {
+        "blocks": {
             "aluminum_ore": {
                 "textures": {
                     "all": "netherendingores:blocks/end_aluminum_ore"

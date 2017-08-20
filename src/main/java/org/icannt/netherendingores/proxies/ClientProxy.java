@@ -1,6 +1,5 @@
-package org.icannt.netherendingores.client.proxy;
+package org.icannt.netherendingores.proxies;
 
-import org.icannt.netherendingores.common.proxy.CommonProxy;
 import org.icannt.netherendingores.common.registry.BlockRegistry;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;

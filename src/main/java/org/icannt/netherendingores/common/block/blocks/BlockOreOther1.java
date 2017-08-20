@@ -3,7 +3,7 @@ package org.icannt.netherendingores.common.block.blocks;
 import java.util.Map;
 
 import org.icannt.netherendingores.common.block.BlockVariantBase;
-import org.icannt.netherendingores.common.block.variant.EnumOreOther1Type;
+import org.icannt.netherendingores.common.block.metadata.EnumOreOther1Type;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -31,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class BlockOreOther1 extends BlockVariantBase {
 
-    private static final PropertyEnum<EnumOreOther1Type> VARIANT = PropertyEnum.create("ore", EnumOreOther1Type.class);
+    private static final PropertyEnum<EnumOreOther1Type> VARIANT = PropertyEnum.create("blocks", EnumOreOther1Type.class);
 
     public BlockOreOther1() {
         super(Material.ROCK, MapColor.GRAY, "ore_other_1");
@@ -50,6 +50,7 @@ public class BlockOreOther1 extends BlockVariantBase {
 		}
     }
     
+	@SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
         return getDefaultState().withProperty(VARIANT, EnumOreOther1Type.values()[meta]);
@@ -65,24 +66,33 @@ public class BlockOreOther1 extends BlockVariantBase {
         return getMetaFromState(state);
     }
 
+    public String getRecipeOreDict(IBlockState state) {
+    	return state.getValue(VARIANT).getRecipeOreDict();
+    }
+    
+    public String getFurnaceOreDict(IBlockState state) {
+    	return state.getValue(VARIANT).getFurnaceOreDict();
+    }
+    
     @Override
     public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
         return state.getValue(VARIANT).getLight();
     }
 
     @Override
+    public int getHarvestLevel(IBlockState state) {
+        return state.getValue(VARIANT).getHarvestLevel();
+    }
+    
+    @Override
     public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
         return state.getValue(VARIANT).getHardness();
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
         return world.getBlockState(pos).getValue(VARIANT).getResistance() / 5F;
-    }
-    
-    @Override
-    public int getHarvestLevel(IBlockState state) {
-        return state.getValue(VARIANT).getHarvestLevel();
     }
 
     @SideOnly(Side.CLIENT)
@@ -90,10 +100,10 @@ public class BlockOreOther1 extends BlockVariantBase {
         ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(this), stack -> {
             int meta = stack.getMetadata();
 
-            EnumOreOther1Type ore = EnumOreOther1Type.values()[meta];
+            EnumOreOther1Type values = EnumOreOther1Type.values()[meta];
             BlockRendererDispatcher dispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
             Map<IBlockState, ModelResourceLocation> variants = dispatcher.getBlockModelShapes().getBlockStateMapper().getVariants(BlockOreOther1.this);
-            return variants.get(BlockOreOther1.this.getDefaultState().withProperty(VARIANT, ore));
+            return variants.get(BlockOreOther1.this.getDefaultState().withProperty(VARIANT, values));
         });
     }
 }

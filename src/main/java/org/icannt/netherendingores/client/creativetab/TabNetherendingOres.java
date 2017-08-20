@@ -1,4 +1,4 @@
-package org.icannt.netherendingores.common.creativetab;
+package org.icannt.netherendingores.client.creativetab;
 
 import org.icannt.netherendingores.NetherendingOres;
 
@@ -19,9 +19,7 @@ public class TabNetherendingOres extends CreativeTabs {
     }
 
     @Override
-    // Requires ItemStack now
     public ItemStack getTabIconItem() {
-        //return ModItems.TOOL_FABRICATOR;
         return new ItemStack(Blocks.NETHERRACK);
     }
 }

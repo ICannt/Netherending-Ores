@@ -1,7 +1,7 @@
-package org.icannt.netherendingores.common.block.itemblock;
+package org.icannt.netherendingores.client.block.itemblock;
 
-import org.icannt.netherendingores.common.block.ItemBlockVariantBase;
-import org.icannt.netherendingores.common.block.variant.EnumOreVanillaType;
+import org.icannt.netherendingores.client.block.ItemBlockVariantBase;
+import org.icannt.netherendingores.common.block.metadata.EnumOreVanillaType;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumRarity;

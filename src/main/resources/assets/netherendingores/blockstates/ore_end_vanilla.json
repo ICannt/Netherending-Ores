@@ -9,7 +9,7 @@
     "variants": {
         "inventory": [{}],
         "normal": [{}],
-        "ore": {
+        "blocks": {
             "coal_ore": {
                 "textures": {
                     "all": "netherendingores:blocks/end_coal_ore"

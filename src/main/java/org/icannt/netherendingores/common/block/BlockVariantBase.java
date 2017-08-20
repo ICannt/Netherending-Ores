@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.common.block;
 
 import org.icannt.netherendingores.NetherendingOres;
-import org.icannt.netherendingores.common.creativetab.TabNetherendingOres;
+import org.icannt.netherendingores.client.creativetab.TabNetherendingOres;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;

@@ -2,7 +2,7 @@ package org.icannt.netherendingores;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.icannt.netherendingores.common.proxy.CommonProxy;
+import org.icannt.netherendingores.proxies.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -29,7 +29,7 @@ public class NetherendingOres {
 
     public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
 
-    @SidedProxy(serverSide = "org.icannt.netherendingores.common.proxy.ServerProxy", clientSide = "org.icannt.netherendingores.client.proxy.ClientProxy")
+    @SidedProxy(serverSide = "org.icannt.netherendingores.proxies.ServerProxy", clientSide = "org.icannt.netherendingores.proxies.ClientProxy")
     public static CommonProxy proxy;
 
     @Mod.Instance(MOD_ID)

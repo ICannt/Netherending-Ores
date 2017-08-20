@@ -4,14 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreModded1;
+import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreOther1;
+import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreEndModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreEndVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreOther1;
-import org.icannt.netherendingores.common.block.itemblock.ItemBlockOreModded1;
-import org.icannt.netherendingores.common.block.itemblock.ItemBlockOreOther1;
-import org.icannt.netherendingores.common.block.itemblock.ItemBlockOreVanilla;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
