@@ -96,14 +96,19 @@ public class BlockOreEndModded1 extends BlockVariantBase {
     }
     
     @SideOnly(Side.CLIENT)
-    public void initClient() {
-        ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(this), stack -> {
-            int meta = stack.getMetadata();
-
-            EnumOreModded1Type values = EnumOreModded1Type.values()[meta];
-            BlockRendererDispatcher dispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
-            Map<IBlockState, ModelResourceLocation> variants = dispatcher.getBlockModelShapes().getBlockStateMapper().getVariants(BlockOreEndModded1.this);
-            return variants.get(BlockOreEndModded1.this.getDefaultState().withProperty(VARIANT, values));
-        });
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
+    
+//    @SideOnly(Side.CLIENT)
+//    public void initClient() {
+//        ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(this), stack -> {
+//            int meta = stack.getMetadata();
+//
+//            EnumOreModded1Type values = EnumOreModded1Type.values()[meta];
+//            BlockRendererDispatcher dispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
+//            Map<IBlockState, ModelResourceLocation> variants = dispatcher.getBlockModelShapes().getBlockStateMapper().getVariants(BlockOreEndModded1.this);
+//            return variants.get(BlockOreEndModded1.this.getDefaultState().withProperty(VARIANT, values));
+//        });
+//    }
 }

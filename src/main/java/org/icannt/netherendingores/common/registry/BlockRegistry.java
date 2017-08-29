@@ -14,8 +14,11 @@ import org.icannt.netherendingores.common.block.blocks.BlockOreNetherVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreOther1;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -46,6 +49,22 @@ public class BlockRegistry {
     @GameRegistry.ObjectHolder("ore_other_1")
     public static final BlockOreOther1 ORE_OTHER_1 = new BlockOreOther1();
 
+    private static final Block[] blocks = {
+            ORE_NETHER_VANILLA,
+            ORE_NETHER_MODDED_1,
+            ORE_END_VANILLA,
+            ORE_END_MODDED_1,
+            ORE_OTHER_1
+    };    
+    
+    private static final ItemBlock[] items = {
+        new ItemBlockOreVanilla(ORE_NETHER_VANILLA),
+        new ItemBlockOreModded1(ORE_NETHER_MODDED_1),
+        new ItemBlockOreVanilla(ORE_END_VANILLA),
+        new ItemBlockOreModded1(ORE_END_MODDED_1),
+        new ItemBlockOreOther1(ORE_OTHER_1)
+    };
+    
     @Mod.EventBusSubscriber
     public static class RegistrationHandler {
         public static final Set<ItemBlock> ITEM_BLOCKS = new HashSet<>();
@@ -53,30 +72,12 @@ public class BlockRegistry {
         @SubscribeEvent
         public static void registerBlocks(RegistryEvent.Register<Block> event) {
             final IForgeRegistry<Block> registry = event.getRegistry();
-
-            final Block[] blocks = {
-                    ORE_NETHER_VANILLA,
-                    ORE_NETHER_MODDED_1,
-                    ORE_END_VANILLA,
-                    ORE_END_MODDED_1,
-                    ORE_OTHER_1
-            };
-
             registry.registerAll(blocks);
         }
 
         @SubscribeEvent
         public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
             final IForgeRegistry<Item> registry = event.getRegistry();
-
-            final ItemBlock[] items = {
-                new ItemBlockOreVanilla(ORE_NETHER_VANILLA),
-                new ItemBlockOreModded1(ORE_NETHER_MODDED_1),
-                new ItemBlockOreVanilla(ORE_END_VANILLA),
-                new ItemBlockOreModded1(ORE_END_MODDED_1),
-                new ItemBlockOreOther1(ORE_OTHER_1)
-            };
-
             for (ItemBlock item : items) {
                 registry.register(item.setRegistryName(item.getBlock().getRegistryName()));
                 ITEM_BLOCKS.add(item);
@@ -84,13 +85,48 @@ public class BlockRegistry {
         }
 
     }
+    
+    
+    @SideOnly(Side.CLIENT)
+    public static void initModels() {
+      ORE_NETHER_VANILLA.initModel();
+      ORE_NETHER_MODDED_1.initModel();
+      ORE_END_VANILLA.initModel();
+      ORE_END_MODDED_1.initModel();
+      ORE_OTHER_1.initModel();
+    }
 
     @SideOnly(Side.CLIENT)
     public static void initBlockModels() {
-        ORE_NETHER_VANILLA.initClient();
-        ORE_NETHER_MODDED_1.initClient();
-        ORE_END_VANILLA.initClient();
-        ORE_END_MODDED_1.initClient();
-        ORE_OTHER_1.initClient();
+    	
+    	System.out.println("~~~HERE~~~");
+    	//ItemBlock itemBlock = MOD_ITEM_BLOCKS[0];
+    	//System.out.println(itemBlock);
+//    	System.out.println(Item.getItemFromBlock(ORE_NETHER_VANILLA));
+//    	System.out.println(Item.getItemFromBlock(ORE_NETHER_VANILLA).getRegistryName());
+    	
+    	
+    	// RESOURCE LOCATION
+    	// item.getBlock().getRegistryName()
+    	// netherendingores:ore_nether_vanilla
+    	
+        for (ItemBlock item : items) {
+        	// Current Resource Location for itemBlocks
+            System.out.println(item.getBlock().getRegistryName());
+            // Class - net.minecraft.block.Block
+            System.out.println(item.getBlock().getRegistryType());
+        }
+        
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ORE_NETHER_VANILLA), 0, new ModelResourceLocation(ORE_NETHER_VANILLA.getRegistryName(), "inventory"));
+        
+        // setCustomModelResourceLocation(Item item, int metadata, ModelResourceLocation model)
+        // ModelResourceLocation(ResourceLocation location, String variantIn)
+    	
+    	//ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ORE_NETHER_VANILLA), 0, new ModelResourceLocation(Item.getItemFromBlock(ORE_NETHER_VANILLA).getRegistryName(), "inventory"));
+//        ORE_NETHER_VANILLA.initClient();
+//        ORE_NETHER_MODDED_1.initClient();
+//        ORE_END_VANILLA.initClient();
+//        ORE_END_MODDED_1.initClient();
+//        ORE_OTHER_1.initClient();
     }
 }
