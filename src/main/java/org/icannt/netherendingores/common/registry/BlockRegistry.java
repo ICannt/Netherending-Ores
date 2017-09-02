@@ -20,6 +20,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -76,26 +77,26 @@ public class BlockRegistry {
         }
 
         @SubscribeEvent
-        public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
+        public static void registerItems(RegistryEvent.Register<Item> event) {
             final IForgeRegistry<Item> registry = event.getRegistry();
+            //registry.register(new ItemBlock(ORE_NETHER_VANILLA).setRegistryName(ItemBlockOreVanilla().getBlock().getRegistryName()));
             for (ItemBlock item : items) {
                 registry.register(item.setRegistryName(item.getBlock().getRegistryName()));
                 ITEM_BLOCKS.add(item);
+                //NetherendingOres.LOGGER.warn(item.getBlock().getRegistryName());
+                //NetherendingOres.LOGGER.warn(item);
             }
         }
 
     }
     
-    
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-      ORE_NETHER_VANILLA.initModel();
-      ORE_NETHER_MODDED_1.initModel();
-      ORE_END_VANILLA.initModel();
-      ORE_END_MODDED_1.initModel();
-      ORE_OTHER_1.initModel();
+    	//ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    	System.out.println("~~~ Inside initModels ~~~");
     }
-
+    
+    /*
     @SideOnly(Side.CLIENT)
     public static void initBlockModels() {
     	
@@ -127,6 +128,7 @@ public class BlockRegistry {
 //        ORE_NETHER_MODDED_1.initClient();
 //        ORE_END_VANILLA.initClient();
 //        ORE_END_MODDED_1.initClient();
-//        ORE_OTHER_1.initClient();
+//        ORE_OTHER_1.initClient();   
     }
+    */
 }

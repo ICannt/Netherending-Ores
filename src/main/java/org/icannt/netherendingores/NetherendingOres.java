@@ -27,13 +27,13 @@ public class NetherendingOres {
     public static final String MOD_NAME = "Netherending Ores";
     public static final String VERSION = "1.12.1-1.0";
 
-    public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
-
-    @SidedProxy(serverSide = "org.icannt.netherendingores.proxies.ServerProxy", clientSide = "org.icannt.netherendingores.proxies.ClientProxy")
+    @SidedProxy(clientSide = "org.icannt.netherendingores.proxies.ClientProxy", serverSide = "org.icannt.netherendingores.proxies.ServerProxy")
     public static CommonProxy proxy;
-
+    
     @Mod.Instance(MOD_ID)
     public static NetherendingOres instance;
+    
+    public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {

@@ -14,6 +14,7 @@ public class ItemBlockOreOther1 extends ItemBlockVariantBase {
 
     public ItemBlockOreOther1(Block block) {
         super(block);
+        setHasSubtypes(true);
     }
 
     @Override

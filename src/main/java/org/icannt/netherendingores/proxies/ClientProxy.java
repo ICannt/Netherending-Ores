@@ -15,26 +15,26 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void preInit(FMLPreInitializationEvent event) {
+    	System.out.println("~~~ Client preInit");
         super.preInit(event);
     }
 
     @Override
     public void init(FMLInitializationEvent event) {
+    	System.out.println("~~~ Client init");
         super.init(event);
     }
 
     @Override
     public void postInit(FMLPostInitializationEvent event) {
+    	System.out.println("~~~ Client postInit");
         super.postInit(event);
     }
 
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
-        BlockRegistry.initBlockModels();    	
+    	System.out.println("~~~ Before initModels");
+        BlockRegistry.initModels();    	
     }
     
-    @Override
-    public boolean isDedicatedServer() {
-        return false;
-    }
 }

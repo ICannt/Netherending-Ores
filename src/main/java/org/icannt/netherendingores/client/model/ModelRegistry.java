@@ -11,14 +11,9 @@ import net.minecraftforge.fml.relauncher.Side;
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ModelRegistry {
 
-    public static final ModelRegistry INSTANCE = new ModelRegistry();
-
-    private ModelRegistry() {
-
-    }
-
     @SubscribeEvent
     public void registerAllModels(ModelRegistryEvent event) {
 
     }
+    
 }

@@ -95,20 +95,4 @@ public class BlockOreEndVanilla extends BlockVariantBase {
         return world.getBlockState(pos).getValue(VARIANT).getResistance() / 5F;
     }
     
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
-
-//    @SideOnly(Side.CLIENT)
-//    public void initClient() {
-//        ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(this), stack -> {
-//            int meta = stack.getMetadata();
-//
-//            EnumOreVanillaType values = EnumOreVanillaType.values()[meta];
-//            BlockRendererDispatcher dispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
-//            Map<IBlockState, ModelResourceLocation> variants = dispatcher.getBlockModelShapes().getBlockStateMapper().getVariants(BlockOreEndVanilla.this);
-//            return variants.get(BlockOreEndVanilla.this.getDefaultState().withProperty(VARIANT, values));
-//        });
-//    }
 }

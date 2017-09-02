@@ -23,5 +23,5 @@ public abstract class CommonProxy {
         
     }
 
-    public abstract boolean isDedicatedServer();
+
 }
