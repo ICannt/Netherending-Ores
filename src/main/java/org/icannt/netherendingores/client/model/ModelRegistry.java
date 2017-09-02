@@ -11,6 +11,7 @@ import net.minecraftforge.fml.relauncher.Side;
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ModelRegistry {
 
+	// Does this even have a point?
     @SubscribeEvent
     public void registerAllModels(ModelRegistryEvent event) {
 

@@ -6,6 +6,7 @@ import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.block.BlockVariantBase;
 import org.icannt.netherendingores.common.block.metadata.EnumOreVanillaType;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -17,8 +18,10 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
@@ -31,9 +34,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * Created by ICannt on 17/08/17.
  */
 public class BlockOreNetherVanilla extends BlockVariantBase {
-
+	
     private static final PropertyEnum<EnumOreVanillaType> VARIANT = PropertyEnum.create("blocks", EnumOreVanillaType.class);
-
+    
     public BlockOreNetherVanilla() {
         super(Material.ROCK, MapColor.GRAY, "ore_nether_vanilla");
     }
@@ -94,6 +97,14 @@ public class BlockOreNetherVanilla extends BlockVariantBase {
     @Override
     public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
         return world.getBlockState(pos).getValue(VARIANT).getResistance() / 5F;
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public void initItemBlockModel(Item item, Block bl) {
+    	for (EnumOreVanillaType variant : EnumOreVanillaType.values()) {
+    		System.out.println("Item Block: " + item + " | " + "Variant Ordinal: " + variant.ordinal() + " | " + "Block: " + bl.getRegistryName() + " | " + "Variant Name: " + variant.getName());
+    		ModelLoader.setCustomModelResourceLocation(item, variant.ordinal(), new ModelResourceLocation(bl.getRegistryName(), "blocks=" + variant.getName()));
+    	}
     }
     
 }

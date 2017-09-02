@@ -4,7 +4,9 @@ import java.util.Map;
 
 import org.icannt.netherendingores.common.block.BlockVariantBase;
 import org.icannt.netherendingores.common.block.metadata.EnumOreOther1Type;
+import org.icannt.netherendingores.common.block.metadata.EnumOreVanillaType;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -16,6 +18,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -93,6 +96,14 @@ public class BlockOreOther1 extends BlockVariantBase {
     @Override
     public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
         return world.getBlockState(pos).getValue(VARIANT).getResistance() / 5F;
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public void initItemBlockModel(ItemBlock iB, Block bl) {
+    	for (EnumOreOther1Type variant : EnumOreOther1Type.values()) {
+    		System.out.println("Item Block: " + iB + " | " + "Variant Ordinal: " + variant.ordinal() + " | " + "Block: " + bl.getRegistryName() + " | " + "Variant Name: " + variant.getName());
+    		ModelLoader.setCustomModelResourceLocation(iB, variant.ordinal(), new ModelResourceLocation(bl.getRegistryName(), "blocks=" + variant.getName()));
+    	}
     }
     
 }

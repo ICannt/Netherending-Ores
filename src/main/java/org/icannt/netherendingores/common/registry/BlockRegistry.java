@@ -58,7 +58,7 @@ public class BlockRegistry {
             ORE_OTHER_1
     };    
     
-    private static final ItemBlock[] items = {
+    private static final ItemBlock[] itemBlocks = {
         new ItemBlockOreVanilla(ORE_NETHER_VANILLA),
         new ItemBlockOreModded1(ORE_NETHER_MODDED_1),
         new ItemBlockOreVanilla(ORE_END_VANILLA),
@@ -79,12 +79,9 @@ public class BlockRegistry {
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
             final IForgeRegistry<Item> registry = event.getRegistry();
-            //registry.register(new ItemBlock(ORE_NETHER_VANILLA).setRegistryName(ItemBlockOreVanilla().getBlock().getRegistryName()));
-            for (ItemBlock item : items) {
-                registry.register(item.setRegistryName(item.getBlock().getRegistryName()));
-                ITEM_BLOCKS.add(item);
-                //NetherendingOres.LOGGER.warn(item.getBlock().getRegistryName());
-                //NetherendingOres.LOGGER.warn(item);
+            for (ItemBlock iB : itemBlocks) {
+                registry.register(iB.setRegistryName(iB.getBlock().getRegistryName()));
+                ITEM_BLOCKS.add(iB);
             }
         }
 
@@ -92,43 +89,12 @@ public class BlockRegistry {
     
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-    	//ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    	System.out.println("~~~ Inside initModels ~~~");
+    	// One block always overwrites the other Item Block, which is fine if you only want one set of variants....
+    	ORE_NETHER_VANILLA.initItemBlockModel(itemBlocks[0], ORE_NETHER_VANILLA);
+    	ORE_NETHER_MODDED_1.initItemBlockModel(itemBlocks[1], ORE_NETHER_MODDED_1);
+    	ORE_END_VANILLA.initItemBlockModel(itemBlocks[2], ORE_END_VANILLA);
+    	ORE_END_MODDED_1.initItemBlockModel(itemBlocks[3], ORE_END_MODDED_1);
+    	ORE_OTHER_1.initItemBlockModel(itemBlocks[4], ORE_OTHER_1);
     }
-    
-    /*
-    @SideOnly(Side.CLIENT)
-    public static void initBlockModels() {
-    	
-    	System.out.println("~~~HERE~~~");
-    	//ItemBlock itemBlock = MOD_ITEM_BLOCKS[0];
-    	//System.out.println(itemBlock);
-//    	System.out.println(Item.getItemFromBlock(ORE_NETHER_VANILLA));
-//    	System.out.println(Item.getItemFromBlock(ORE_NETHER_VANILLA).getRegistryName());
-    	
-    	
-    	// RESOURCE LOCATION
-    	// item.getBlock().getRegistryName()
-    	// netherendingores:ore_nether_vanilla
-    	
-        for (ItemBlock item : items) {
-        	// Current Resource Location for itemBlocks
-            System.out.println(item.getBlock().getRegistryName());
-            // Class - net.minecraft.block.Block
-            System.out.println(item.getBlock().getRegistryType());
-        }
-        
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ORE_NETHER_VANILLA), 0, new ModelResourceLocation(ORE_NETHER_VANILLA.getRegistryName(), "inventory"));
-        
-        // setCustomModelResourceLocation(Item item, int metadata, ModelResourceLocation model)
-        // ModelResourceLocation(ResourceLocation location, String variantIn)
-    	
-    	//ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ORE_NETHER_VANILLA), 0, new ModelResourceLocation(Item.getItemFromBlock(ORE_NETHER_VANILLA).getRegistryName(), "inventory"));
-//        ORE_NETHER_VANILLA.initClient();
-//        ORE_NETHER_MODDED_1.initClient();
-//        ORE_END_VANILLA.initClient();
-//        ORE_END_MODDED_1.initClient();
-//        ORE_OTHER_1.initClient();   
-    }
-    */
+
 }
