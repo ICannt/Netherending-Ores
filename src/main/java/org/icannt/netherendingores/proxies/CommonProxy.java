@@ -2,6 +2,7 @@ package org.icannt.netherendingores.proxies;
 
 import net.minecraftforge.fml.common.Mod;
 import org.icannt.netherendingores.common.registry.FurnaceRecipes;
+import org.icannt.netherendingores.common.registry.OreDictionaryRegistry;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -22,7 +23,7 @@ public abstract class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent event) {
-        
+        OreDictionaryRegistry.registerDictionaryOres();
     }
 
 

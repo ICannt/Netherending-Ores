@@ -1,29 +1,19 @@
 package org.icannt.netherendingores.common.block.blocks;
 
-import java.util.Map;
-
-import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.block.BlockVariantBase;
 import org.icannt.netherendingores.common.block.metadata.EnumOreVanillaType;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;

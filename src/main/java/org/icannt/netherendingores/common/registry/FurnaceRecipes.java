@@ -1,7 +1,6 @@
 package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.common.block.metadata.EnumOreModded1Type;
-import org.icannt.netherendingores.common.block.metadata.EnumOreOther1Type;
 import org.icannt.netherendingores.common.block.metadata.EnumOreVanillaType;
 
 import net.minecraft.item.ItemStack;
@@ -48,15 +47,6 @@ public class FurnaceRecipes {
 	        {
 	        	stack.setCount(2);
 	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, variant.ordinal()), stack, 0);
-	        }
-		}
-		
-		// Other Ores 1 - Furnace
-		// This solution will likely change to just a crafting recipe, with ore dictionary aliases for oreQuartz
-		for (EnumOreOther1Type variant : EnumOreOther1Type.values()) {			
-	        for (ItemStack stack : OreDictionary.getOres(variant.getRecipeOreDict()))
-	        {
-	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_OTHER_1, 1, variant.ordinal()), stack, 0);
 	        }
 		}
         
