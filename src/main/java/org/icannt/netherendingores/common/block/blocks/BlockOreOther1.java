@@ -99,10 +99,9 @@ public class BlockOreOther1 extends BlockVariantBase {
     }
     
     @SideOnly(Side.CLIENT)
-    public void initItemBlockModel(ItemBlock iB, Block bl) {
+    public void initItemBlockModels() {
     	for (EnumOreOther1Type variant : EnumOreOther1Type.values()) {
-    		System.out.println("Item Block: " + iB + " | " + "Variant Ordinal: " + variant.ordinal() + " | " + "Block: " + bl.getRegistryName() + " | " + "Variant Name: " + variant.getName());
-    		ModelLoader.setCustomModelResourceLocation(iB, variant.ordinal(), new ModelResourceLocation(bl.getRegistryName(), "blocks=" + variant.getName()));
+    		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), variant.ordinal(), new ModelResourceLocation(Item.getItemFromBlock(this).getRegistryName(), "blocks=" + variant.getName()));
     	}
     }
     

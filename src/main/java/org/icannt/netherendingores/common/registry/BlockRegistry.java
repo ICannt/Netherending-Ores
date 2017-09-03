@@ -89,12 +89,11 @@ public class BlockRegistry {
     
     @SideOnly(Side.CLIENT)
     public static void initModels() {
-    	// One block always overwrites the other Item Block, which is fine if you only want one set of variants....
-    	ORE_NETHER_VANILLA.initItemBlockModel(itemBlocks[0], ORE_NETHER_VANILLA);
-    	ORE_NETHER_MODDED_1.initItemBlockModel(itemBlocks[1], ORE_NETHER_MODDED_1);
-    	ORE_END_VANILLA.initItemBlockModel(itemBlocks[2], ORE_END_VANILLA);
-    	ORE_END_MODDED_1.initItemBlockModel(itemBlocks[3], ORE_END_MODDED_1);
-    	ORE_OTHER_1.initItemBlockModel(itemBlocks[4], ORE_OTHER_1);
+    	ORE_NETHER_VANILLA.initItemBlockModels();
+    	ORE_NETHER_MODDED_1.initItemBlockModels();
+    	ORE_END_VANILLA.initItemBlockModels();
+    	ORE_END_MODDED_1.initItemBlockModels();
+    	ORE_OTHER_1.initItemBlockModels();
     }
 
 }

@@ -1,5 +1,8 @@
 package org.icannt.netherendingores.proxies;
 
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.icannt.netherendingores.common.registry.BlockRegistry;
 
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -11,12 +14,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 /**
  * Created by ICannt on 17/08/17.
  */
+@Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
-        BlockRegistry.initModels();
     }
 
     @Override
@@ -29,12 +32,9 @@ public class ClientProxy extends CommonProxy {
         super.postInit(event);
     }
 
-    // When does this even trigger anyway?
-    /*
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
-	
+        BlockRegistry.initModels();
     }
-    */
     
 }

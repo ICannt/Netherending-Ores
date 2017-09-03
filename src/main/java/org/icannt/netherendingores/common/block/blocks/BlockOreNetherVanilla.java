@@ -2,6 +2,8 @@ package org.icannt.netherendingores.common.block.blocks;
 
 import java.util.Map;
 
+import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.block.BlockVariantBase;
 import org.icannt.netherendingores.common.block.metadata.EnumOreVanillaType;
@@ -100,10 +102,9 @@ public class BlockOreNetherVanilla extends BlockVariantBase {
     }
     
     @SideOnly(Side.CLIENT)
-    public void initItemBlockModel(Item item, Block bl) {
+    public void initItemBlockModels() {
     	for (EnumOreVanillaType variant : EnumOreVanillaType.values()) {
-    		System.out.println("Item Block: " + item + " | " + "Variant Ordinal: " + variant.ordinal() + " | " + "Block: " + bl.getRegistryName() + " | " + "Variant Name: " + variant.getName());
-    		ModelLoader.setCustomModelResourceLocation(item, variant.ordinal(), new ModelResourceLocation(bl.getRegistryName(), "blocks=" + variant.getName()));
+    		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), variant.ordinal(), new ModelResourceLocation(Item.getItemFromBlock(this).getRegistryName(), "blocks=" + variant.getName()));
     	}
     }
     
