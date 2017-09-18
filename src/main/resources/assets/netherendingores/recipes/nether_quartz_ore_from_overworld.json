@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherendingores:ore_other_1",
+      "data": 1
+    }
+  ],
+  "result": {
+    "item": "minecraft:quartz_ore",
+    "count": 1
+  }
+}
