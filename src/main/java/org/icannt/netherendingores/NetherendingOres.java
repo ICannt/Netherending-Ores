@@ -18,14 +18,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = NetherendingOres.MOD_ID,
 	name = NetherendingOres.MOD_NAME,
 	version = NetherendingOres.VERSION,
-	acceptedMinecraftVersions = "[1.12,1.13)",
-	dependencies = "required-after:forge@[14.21.0.2348,);")
+	acceptedMinecraftVersions = "[1.12.2,1.13)",
+	dependencies = "required-after:forge@[14.23.0.2500,);")
 
 public class NetherendingOres {
 
     public static final String MOD_ID = "netherendingores";
     public static final String MOD_NAME = "Netherending Ores";
-    public static final String VERSION = "1.12.1-1.0.1";
+    public static final String VERSION = "1.12.2-1.1";
 
     @SidedProxy(clientSide = "org.icannt.netherendingores.proxies.ClientProxy", serverSide = "org.icannt.netherendingores.proxies.ServerProxy")
     public static CommonProxy proxy;

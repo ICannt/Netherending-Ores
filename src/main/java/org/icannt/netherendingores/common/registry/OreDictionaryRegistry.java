@@ -11,11 +11,11 @@ import net.minecraftforge.oredict.OreDictionary;
 public class OreDictionaryRegistry {
 
 	public static void registerDictionaryOres() {
+		
 	    for (EnumOreOther1Type variant : EnumOreOther1Type.values()) {
-	    	if (variant.getRecipeOreDict() == "oreQuartz") {
-	    		OreDictionary.registerOre(variant.getRecipeOreDict(), new ItemStack(BlockRegistry.ORE_OTHER_1, 1, variant.ordinal()));
-	    	}
+    		OreDictionary.registerOre(variant.getRecipeOreDict(), new ItemStack(BlockRegistry.ORE_OTHER_1, 1, variant.ordinal()));
 	    }
+	    
 	}
 
 }

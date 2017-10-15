@@ -22,69 +22,19 @@
                     "all": "netherendingores:blocks/overworld_ardite_ore"
                 }
             },
-            "overworld_cobalt_ore": {
-                "textures": {
-                    "all": "netherendingores:blocks/overworld_cobalt_ore"
-                }
-            },
-            "nether_certus_quartz_ore": {
-                "textures": {
-                    "all": "netherendingores:blocks/nether_certus_quartz_ore"
-                }
-            },
-            "nether_charged_certus_quartz_ore": {
-                "textures": {
-                    "all": "netherendingores:blocks/nether_charged_certus_quartz_ore"
-                }
-            },
-            "nether_osmium_ore": {
-                "textures": {
-                    "all": "netherendingores:blocks/nether_osmium_ore"
-                }
-            },
-            "nether_uranium_ore": {
-                "textures": {
-                    "all": "netherendingores:blocks/nether_uranium_ore"
-                }
-            },
-            "nether_yellorite_ore": {
-                "textures": {
-                    "all": "netherendingores:blocks/nether_yellorite_ore"
-                }
-            },
             "end_ardite_ore": {
                 "textures": {
                     "all": "netherendingores:blocks/end_ardite_ore"
                 }
             },
-            "end_certus_quartz_ore": {
+            "overworld_cobalt_ore": {
                 "textures": {
-                    "all": "netherendingores:blocks/end_certus_quartz_ore"
-                }
-            },
-            "end_charged_certus_quartz_ore": {
-                "textures": {
-                    "all": "netherendingores:blocks/end_charged_certus_quartz_ore"
+                    "all": "netherendingores:blocks/overworld_cobalt_ore"
                 }
             },
             "end_cobalt_ore": {
                 "textures": {
                     "all": "netherendingores:blocks/end_cobalt_ore"
-                }
-            },
-            "end_osmium_ore": {
-                "textures": {
-                    "all": "netherendingores:blocks/end_osmium_ore"
-                }
-            },
-            "end_uranium_ore": {
-                "textures": {
-                    "all": "netherendingores:blocks/end_uranium_ore"
-                }
-            },
-            "end_yellorite_ore": {
-                "textures": {
-                    "all": "netherendingores:blocks/end_yellorite_ore"
                 }
             }
         }

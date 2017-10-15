@@ -1,9 +1,9 @@
 package org.icannt.netherendingores.client.creativetab;
 
 import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.common.registry.BlockRegistry;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 
@@ -20,6 +20,6 @@ public class TabNetherendingOres extends CreativeTabs {
 
     @Override
     public ItemStack getTabIconItem() {
-        return new ItemStack(Blocks.NETHERRACK);
+        return new ItemStack(BlockRegistry.CREATIVE_TAB);
     }
 }

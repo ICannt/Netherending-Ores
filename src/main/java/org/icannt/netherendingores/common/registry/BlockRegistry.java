@@ -4,9 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.client.block.ItemBlockBasic;
 import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreModded1;
 import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreOther1;
 import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreVanilla;
+import org.icannt.netherendingores.common.block.BlockCreativeTab;
 import org.icannt.netherendingores.common.block.blocks.BlockOreEndModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreEndVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded1;
@@ -31,6 +33,9 @@ import net.minecraftforge.registries.IForgeRegistry;
 @GameRegistry.ObjectHolder(NetherendingOres.MOD_ID)
 public class BlockRegistry {
 
+	@GameRegistry.ObjectHolder("creative_tab")
+    public static final BlockCreativeTab CREATIVE_TAB = new BlockCreativeTab();	
+	
     @GameRegistry.ObjectHolder("ore_nether_vanilla")
     public static final BlockOreNetherVanilla ORE_NETHER_VANILLA = new BlockOreNetherVanilla();
     
@@ -47,6 +52,7 @@ public class BlockRegistry {
     public static final BlockOreOther1 ORE_OTHER_1 = new BlockOreOther1();
 
     private static final Block[] blocks = {
+    		CREATIVE_TAB,
             ORE_NETHER_VANILLA,
             ORE_NETHER_MODDED_1,
             ORE_END_VANILLA,
@@ -55,6 +61,7 @@ public class BlockRegistry {
     };    
     
     private static final ItemBlock[] itemBlocks = {
+    	new ItemBlockBasic(CREATIVE_TAB),
         new ItemBlockOreVanilla(ORE_NETHER_VANILLA),
         new ItemBlockOreModded1(ORE_NETHER_MODDED_1),
         new ItemBlockOreVanilla(ORE_END_VANILLA),
@@ -85,6 +92,7 @@ public class BlockRegistry {
     
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+    	CREATIVE_TAB.initItemBlockModels();
     	ORE_NETHER_VANILLA.initItemBlockModels();
     	ORE_NETHER_MODDED_1.initItemBlockModels();
     	ORE_END_VANILLA.initItemBlockModels();

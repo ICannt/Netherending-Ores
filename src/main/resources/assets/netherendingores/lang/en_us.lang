@@ -21,6 +21,11 @@ tile.netherendingores:ore_nether_modded_1.nickel_ore.name=Nether Nickel Ore
 tile.netherendingores:ore_nether_modded_1.platinum_ore.name=Nether Platinum Ore
 tile.netherendingores:ore_nether_modded_1.silver_ore.name=Nether Silver Ore
 tile.netherendingores:ore_nether_modded_1.tin_ore.name=Nether Tin Ore
+tile.netherendingores:ore_nether_modded_1.certus_quartz_ore.name=Nether Certus Quartz Ore
+tile.netherendingores:ore_nether_modded_1.charged_certus_quartz_ore.name=Nether Charged Certus Quartz Ore
+tile.netherendingores:ore_nether_modded_1.osmium_ore.name=Nether Osmium Ore
+tile.netherendingores:ore_nether_modded_1.uranium_ore.name=Nether Uranium Ore
+tile.netherendingores:ore_nether_modded_1.yellorite_ore.name=Nether Yellorite Ore
 
 # Vanilla End Ores
 tile.netherendingores:ore_end_vanilla.coal_ore.name=End Coal Ore
@@ -41,7 +46,16 @@ tile.netherendingores:ore_end_modded_1.nickel_ore.name=End Nickel Ore
 tile.netherendingores:ore_end_modded_1.platinum_ore.name=End Platinum Ore
 tile.netherendingores:ore_end_modded_1.silver_ore.name=End Silver Ore
 tile.netherendingores:ore_end_modded_1.tin_ore.name=End Tin Ore
+tile.netherendingores:ore_end_modded_1.certus_quartz_ore.name=End Certus Quartz Ore
+tile.netherendingores:ore_end_modded_1.charged_certus_quartz_ore.name=End Charged Certus Quartz Ore
+tile.netherendingores:ore_end_modded_1.osmium_ore.name=End Osmium Ore
+tile.netherendingores:ore_end_modded_1.uranium_ore.name=End Uranium Ore
+tile.netherendingores:ore_end_modded_1.yellorite_ore.name=End Yellorite Ore
 
 # Other Ores 1
+tile.netherendingores:ore_other_1.overworld_quartz_ore.name=Overworld Quartz Ore
 tile.netherendingores:ore_other_1.end_quartz_ore.name=End Quartz Ore
-tile.netherendingores:ore_other_1.overworld_quartz_ore.name=Quartz Ore
+tile.netherendingores:ore_other_1.overworld_ardite_ore.name=Overworld Ardite Ore
+tile.netherendingores:ore_other_1.end_ardite_ore.name=End Ardite Ore
+tile.netherendingores:ore_other_1.overworld_cobalt_ore.name=Overworld Cobalt Ore
+tile.netherendingores:ore_other_1.end_cobalt_ore.name=End Cobalt Ore

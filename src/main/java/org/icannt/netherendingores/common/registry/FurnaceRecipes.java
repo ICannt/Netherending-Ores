@@ -50,5 +50,13 @@ public class FurnaceRecipes {
 	        }
 		}
         
+		// Modded End Ores 1 - Furnace
+		for (EnumOreModded1Type variant : EnumOreModded1Type.values()) {			
+	        for (ItemStack stack : OreDictionary.getOres(variant.getFurnaceOreDict()))
+	        {
+	        	stack.setCount(2);
+	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, variant.ordinal()), stack, 0);
+	        }
+		}
 	}
 }

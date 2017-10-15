@@ -1,9 +1,6 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "textures": {
-            "all": "netherendingores:blocks/nether_coal_ore"
-        },
         "model": "cube_all"
     },
     "variants": {
@@ -40,7 +37,7 @@
                     "all": "netherendingores:blocks/nether_lapis_ore"
                 }
             },
-			"redstone_ore": {
+            "redstone_ore": {
                 "textures": {
                     "all": "netherendingores:blocks/nether_redstone_ore"
                 }

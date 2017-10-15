@@ -1,9 +1,6 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "textures": {
-            "all": "netherendingores:blocks/nether_aluminum_ore"
-        },
         "model": "cube_all"
     },
     "variants": {
@@ -53,6 +50,31 @@
             "tin_ore": {
                 "textures": {
                     "all": "netherendingores:blocks/nether_tin_ore"
+                }
+            },
+            "certus_quartz_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_certus_quartz_ore"
+                }
+            },
+            "charged_certus_quartz_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_charged_certus_quartz_ore"
+                }
+            },
+            "osmium_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_osmium_ore"
+                }
+            },
+            "uranium_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_uranium_ore"
+                }
+            },
+            "yellorite_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_yellorite_ore"
                 }
             }
         }
