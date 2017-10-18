@@ -52,12 +52,12 @@ public class BlockRegistry {
     public static final BlockOreOther1 ORE_OTHER_1 = new BlockOreOther1();
 
     private static final Block[] blocks = {
-    		CREATIVE_TAB,
-            ORE_NETHER_VANILLA,
-            ORE_NETHER_MODDED_1,
-            ORE_END_VANILLA,
-            ORE_END_MODDED_1,
-            ORE_OTHER_1
+		CREATIVE_TAB,
+        ORE_NETHER_VANILLA,
+        ORE_NETHER_MODDED_1,
+        ORE_END_VANILLA,
+        ORE_END_MODDED_1,
+        ORE_OTHER_1
     };    
     
     private static final ItemBlock[] itemBlocks = {

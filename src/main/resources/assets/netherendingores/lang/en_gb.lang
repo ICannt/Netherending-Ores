@@ -1,5 +1,6 @@
 ### Creative Tab ###
 itemGroup.netherendingores=Netherending Ores
+tile.netherendingores:creative_tab.name=Creative Tab Block
 
 
 # Vanilla Nether Ores
