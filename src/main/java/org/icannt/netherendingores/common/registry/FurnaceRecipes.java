@@ -18,8 +18,7 @@ public class FurnaceRecipes {
 		for (EnumOreVanillaType variant : EnumOreVanillaType.values()) {			
 	        for (ItemStack stack : OreDictionary.getOres(variant.getFurnaceOreDict()))
 	        {
-	        	stack.setCount(2);
-	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, variant.ordinal()), stack, 0);
+	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, variant.ordinal()), new ItemStack(stack.getItem(), 2, stack.getMetadata()), 0);
 	        }
 		}
 
@@ -27,8 +26,7 @@ public class FurnaceRecipes {
 		for (EnumOreModded1Type variant : EnumOreModded1Type.values()) {			
 	        for (ItemStack stack : OreDictionary.getOres(variant.getFurnaceOreDict()))
 	        {
-	        	stack.setCount(2);
-	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, variant.ordinal()), stack, 0);
+	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_NETHER_MODDED_1, 1, variant.ordinal()), new ItemStack(stack.getItem(), 2, stack.getMetadata()), 0);
 	        }
 		}
 		
@@ -36,8 +34,7 @@ public class FurnaceRecipes {
 		for (EnumOreVanillaType variant : EnumOreVanillaType.values()) {			
 	        for (ItemStack stack : OreDictionary.getOres(variant.getFurnaceOreDict()))
 	        {
-	        	stack.setCount(2);
-	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_VANILLA, 1, variant.ordinal()), stack, 0);
+	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_VANILLA, 1, variant.ordinal()), new ItemStack(stack.getItem(), 2, stack.getMetadata()), 0);
 	        }
 		}
 
@@ -45,18 +42,9 @@ public class FurnaceRecipes {
 		for (EnumOreModded1Type variant : EnumOreModded1Type.values()) {			
 	        for (ItemStack stack : OreDictionary.getOres(variant.getFurnaceOreDict()))
 	        {
-	        	stack.setCount(2);
-	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, variant.ordinal()), stack, 0);
+	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, variant.ordinal()), new ItemStack(stack.getItem(), 2, stack.getMetadata()), 0);
 	        }
 		}
-        
-		// Modded End Ores 1 - Furnace
-		for (EnumOreModded1Type variant : EnumOreModded1Type.values()) {			
-	        for (ItemStack stack : OreDictionary.getOres(variant.getFurnaceOreDict()))
-	        {
-	        	stack.setCount(2);
-	        	GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, variant.ordinal()), stack, 0);
-	        }
-		}
+
 	}
 }
