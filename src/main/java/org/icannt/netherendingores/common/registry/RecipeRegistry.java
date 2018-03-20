@@ -1,5 +1,6 @@
 package org.icannt.netherendingores.common.registry;
 
+import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.block.metadata.EnumOreModded1Type;
 import org.icannt.netherendingores.common.block.metadata.EnumOreVanillaType;
 
@@ -10,7 +11,9 @@ import net.minecraftforge.oredict.OreDictionary;
 /**
  * Created by ICannt on 20/08/17.
  */
-public class FurnaceRecipes {
+
+@GameRegistry.ObjectHolder(NetherendingOres.MOD_ID)
+public class RecipeRegistry {
 	
 	public static void registerFurnaceRecipes() {
 		

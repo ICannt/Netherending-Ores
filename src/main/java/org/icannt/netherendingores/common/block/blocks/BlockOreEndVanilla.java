@@ -31,13 +31,16 @@ public class BlockOreEndVanilla extends BlockVariantBase {
 
     public BlockOreEndVanilla() {
         super(Material.ROCK, MapColor.GRAY, "ore_end_vanilla");
+        for (EnumOreVanillaType variant : EnumOreVanillaType.values()) {
+        	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), getStateFromMeta(variant.ordinal()));
+        }
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, VARIANT);
     }   
-    
+
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
 	{
@@ -45,7 +48,7 @@ public class BlockOreEndVanilla extends BlockVariantBase {
 			list.add(new ItemStack(this, 1, type.ordinal()));
 		}
     }
-    
+
 	@SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
@@ -56,16 +59,16 @@ public class BlockOreEndVanilla extends BlockVariantBase {
     public int getMetaFromState(IBlockState state) {
         return state.getValue(VARIANT).ordinal();
     }
-    
+
     @Override
     public int damageDropped(IBlockState state) {
         return getMetaFromState(state);
     }
-    
+
     public String getRecipeOreDict(IBlockState state) {
     	return state.getValue(VARIANT).getRecipeOreDict();
     }
-    
+
     public String getFurnaceOreDict(IBlockState state) {
     	return state.getValue(VARIANT).getFurnaceOreDict();
     }
@@ -76,11 +79,6 @@ public class BlockOreEndVanilla extends BlockVariantBase {
     }
 
     @Override
-    public int getHarvestLevel(IBlockState state) {
-        return state.getValue(VARIANT).getHarvestLevel();
-    }
-    
-    @Override
     public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
         return state.getValue(VARIANT).getHardness();
     }
@@ -90,7 +88,7 @@ public class BlockOreEndVanilla extends BlockVariantBase {
     public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
         return world.getBlockState(pos).getValue(VARIANT).getResistance() / 5F;
     }
-    
+
     @SideOnly(Side.CLIENT)
     public void initItemBlockModels() {
     	for (EnumOreVanillaType variant : EnumOreVanillaType.values()) {
