@@ -21,6 +21,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -75,18 +76,31 @@ public class BlockRegistry {
 
         @SubscribeEvent
         public static void registerBlocks(RegistryEvent.Register<Block> event) {
+        	NetherendingOres.LOGGER.info("Registering Blocks");
             final IForgeRegistry<Block> registry = event.getRegistry();
             registry.registerAll(blocks);
+            NetherendingOres.LOGGER.info("Registered Blocks");
         }
 
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
+        	NetherendingOres.LOGGER.info("Registering ItemBlocks");
             final IForgeRegistry<Item> registry = event.getRegistry();
             for (ItemBlock iB : itemBlocks) {
                 registry.register(iB.setRegistryName(iB.getBlock().getRegistryName()));
                 ITEM_BLOCKS.add(iB);
             }
+            NetherendingOres.LOGGER.info("Registered ItemBlocks");
         }
+        
+        @SubscribeEvent
+        public static void onEvent(final RegistryEvent.Register<EntityEntry> event) {
+        	// This is rather dodgy but at least the oredict is being registered in the preinit phase
+        	// Does not fix Crafttweaker though
+        	NetherendingOres.LOGGER.info("Registering Ore Dictionary Entries");
+        	OreDictionaryRegistry.registerDictionaryOres();
+        	NetherendingOres.LOGGER.info("Registered Ore Dictionary Entries");
+    	}
 
     }
     

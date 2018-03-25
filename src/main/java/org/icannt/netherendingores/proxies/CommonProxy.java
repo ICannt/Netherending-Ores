@@ -1,9 +1,8 @@
 package org.icannt.netherendingores.proxies;
 
-import net.minecraftforge.fml.common.Mod;
 import org.icannt.netherendingores.common.registry.RecipeRegistry;
-import org.icannt.netherendingores.common.registry.OreDictionaryRegistry;
 
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -15,15 +14,15 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public abstract class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
-
+        
     }
 
     public void init(FMLInitializationEvent event) {
-    	//RecipeRegistry.registerFurnaceRecipes();
+    	RecipeRegistry.registerFurnaceRecipes();
     }
 
     public void postInit(FMLPostInitializationEvent event) {
-        //OreDictionaryRegistry.registerDictionaryOres();
+        
     }
 
 
