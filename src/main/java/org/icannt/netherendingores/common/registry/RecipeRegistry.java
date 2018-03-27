@@ -48,7 +48,7 @@ public class RecipeRegistry {
 		// Modded End Ores 1 - Furnace
 		for (EnumOreEndModded1Type variant : EnumOreEndModded1Type.values()) {
 			NetherendingOres.LOGGER.info("*** HERE ***");
-	        for (ItemStack stack : OreDictionary.getOres(variant.getFurnaceOreDict()))
+	        for (ItemStack stack : OreDictionary.getOres(variant.getBlockOreDict()))
 	        {
 	        	NetherendingOres.LOGGER.info(variant.getName() + ": " + variant.getRecipeMultiplier());
 				if (variant.getRecipeMultiplier() > 1) {

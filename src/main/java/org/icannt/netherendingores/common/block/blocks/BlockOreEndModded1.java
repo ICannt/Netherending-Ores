@@ -66,11 +66,11 @@ public class BlockOreEndModded1 extends BlockVariantBase {
     }
 
     public String getRecipeOreDict(IBlockState state) {
-    	return state.getValue(VARIANT).getRecipeOreDict();
+    	return state.getValue(VARIANT).getExactOreDict();
     }
 
     public String getFurnaceOreDict(IBlockState state) {
-    	return state.getValue(VARIANT).getFurnaceOreDict();
+    	return state.getValue(VARIANT).getBlockOreDict();
     }
 
     @Override

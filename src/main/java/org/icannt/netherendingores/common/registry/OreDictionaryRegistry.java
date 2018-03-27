@@ -21,7 +21,7 @@ public class OreDictionaryRegistry {
 		for (EnumOreEndModded1Type variant : EnumOreEndModded1Type.values()) {
 			NetherendingOres.LOGGER.info(variant.getName() + ": " + variant.getRecipeMultiplier());
 			if (variant.getRecipeMultiplier() == 1) {
-				OreDictionary.registerOre(variant.getRecipeOreDict(), new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, variant.ordinal()));
+				OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, variant.ordinal()));
 			}
 		}
 		

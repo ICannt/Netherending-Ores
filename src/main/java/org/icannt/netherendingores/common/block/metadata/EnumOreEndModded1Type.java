@@ -8,62 +8,58 @@ import net.minecraft.util.IStringSerializable;
  */
 public enum EnumOreEndModded1Type implements IStringSerializable {
 	
-    ALUMINUM_ORE ("aluminum_ore", EnumRarity.UNCOMMON, "oreEndAluminum", "oreAluminum", 0, 1, 3, 15, 2, 0),
-    COPPER_ORE ("copper_ore", EnumRarity.UNCOMMON, "oreEndCopper", "oreCopper", 0, 1, 3, 15, 2, 0),
-    IRIDIUM_ORE ("iridium_ore", EnumRarity.RARE, "oreEndIridium", "oreIridium", 0, 3, 3, 15, 2, 0),
-    LEAD_ORE ("lead_ore", EnumRarity.COMMON, "oreEndLead", "oreLead", 0, 2, 3, 15, 2, 0),
-    MITHRIL_ORE ("mithril_ore", EnumRarity.COMMON, "oreEndMithril", "oreMithril", 0, 3, 3, 15, 2, 0),
-    NICKEL_ORE ("nickel_ore", EnumRarity.COMMON, "oreEndNickel", "oreNickel", 0, 2, 3, 15, 2, 0),
-    PLATINUM_ORE ("platinum_ore", EnumRarity.COMMON, "oreEndPlatinum", "orePlatinum", 0, 3, 3, 15, 2, 0),
-    SILVER_ORE ("silver_ore", EnumRarity.COMMON, "oreEndSilver", "oreSilver", 0, 2, 3, 15, 2, 0),
-    TIN_ORE ("tin_ore", EnumRarity.COMMON, "oreEndTin", "oreTin", 0, 1, 3, 15, 2, 0),
-    CERTUS_QUARTZ_ORE ("certus_quartz_ore", EnumRarity.COMMON, "oreEndCertusQuartz", "oreCertusQuartz", 0, 0, 3, 15, 2, 0),
-    CHARGED_CERTUS_QUARTZ_ORE ("charged_certus_quartz_ore", EnumRarity.COMMON, "oreEndChargedCertusQuartz", "oreChargedCertusQuartz", 0, 0, 3, 15, 2, 0),
-    OSMIUM_ORE ("osmium_ore", EnumRarity.COMMON, "oreEndOsmium", "oreOsmium", 0, 0, 3, 15, 2, 0),
-    URANIUM_ORE ("uranium_ore", EnumRarity.COMMON, "oreEndUranium", "oreUranium", 0, 2, 4, 30, 2, 0),
-    YELLORITE_ORE ("yellorite_ore", EnumRarity.COMMON, "oreEndYellorite", "oreYellorite", 0, 0, 2, 10, 2, 0);
-
+    ALUMINUM_ORE ("aluminum_ore", 0, 1, 3, 15, EnumRarity.UNCOMMON, "oreEndAluminum", "", "oreAluminum", 2, 0),
+    COPPER_ORE ("copper_ore", 0, 1, 3, 15, EnumRarity.UNCOMMON, "oreEndCopper", "", "oreCopper", 2, 0),
+    IRIDIUM_ORE ("iridium_ore", 0, 3, 3, 15, EnumRarity.RARE, "oreEndIridium", "", "oreIridium", 2, 0),
+    LEAD_ORE ("lead_ore", 0, 2, 3, 15, EnumRarity.COMMON, "oreEndLead", "", "oreLead", 2, 0),
+    MITHRIL_ORE ("mithril_ore", 0, 3, 3, 15, EnumRarity.COMMON, "oreEndMithril", "", "oreMithril", 2, 0),
+    NICKEL_ORE ("nickel_ore", 0, 2, 3, 15, EnumRarity.COMMON, "oreEndNickel", "", "oreNickel", 2, 0),
+    PLATINUM_ORE ("platinum_ore", 0, 3, 3, 15, EnumRarity.COMMON, "oreEndPlatinum", "", "orePlatinum", 2, 0),
+    SILVER_ORE ("silver_ore", 0, 2, 3, 15, EnumRarity.COMMON, "oreEndSilver", "", "oreSilver", 2, 0),
+    TIN_ORE ("tin_ore", 0, 1, 3, 15, EnumRarity.COMMON, "oreEndTin", "", "oreTin", 2, 0),
+    CERTUS_QUARTZ_ORE ("certus_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreEndCertusQuartz", "", "oreCertusQuartz", 2, 0),
+    CHARGED_CERTUS_QUARTZ_ORE ("charged_certus_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreEndChargedCertusQuartz", "", "oreChargedCertusQuartz", 2, 0),
+    OSMIUM_ORE ("osmium_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreEndOsmium", "", "oreOsmium", 2, 0),
+    URANIUM_ORE ("uranium_ore", 0, 2, 4, 30, EnumRarity.COMMON, "oreEndUranium", "", "oreUranium", 2, 0),
+    YELLORITE_ORE ("yellorite_ore", 0, 0, 2, 10, EnumRarity.COMMON, "oreEndYellorite", "", "oreYellorite", 2, 0);
+	
     private String name;
-    private EnumRarity rarity;
-    private String recipeOreDict;
-    private String furnaceOreDict;
     private int light;
     private int harvestLevel;
     private float hardness;
     private float resistance;
+    private EnumRarity rarity;
+
+    private String exactOreDict;
+    private String itemOreDict;
+    private String blockOreDict;
     private int defaultRecipeMultiplier;
     private int recipeMultiplier;
 
-    EnumOreEndModded1Type(String name, EnumRarity rarity, String recipeOreDict, String furnaceOreDict, int light, int harvestLevel, float hardness, float resistance, int defaultRecipeMultiplier, int recipeMultiplier) {
+    EnumOreEndModded1Type(String name, int light, int harvestLevel, float hardness, float resistance, EnumRarity rarity, 
+    		String exactOreDict, String itemOreDict, String blockOreDict, int defaultRecipeMultiplier, int recipeMultiplier) {
+
         this.name = name;
-        this.rarity = rarity;
-        this.recipeOreDict = recipeOreDict;
-        this.furnaceOreDict = furnaceOreDict;
         this.light = light;
         this.harvestLevel = harvestLevel;
         this.hardness = hardness;
         this.resistance = resistance;
+        this.rarity = rarity;
+
+        this.exactOreDict = exactOreDict;
+        this.itemOreDict = itemOreDict;
+        this.blockOreDict = blockOreDict;
         this.defaultRecipeMultiplier = defaultRecipeMultiplier;
         this.recipeMultiplier = recipeMultiplier;
+        
     }
 
+    
     @Override
     public String getName() {
         return name;
     }
     
-    public EnumRarity getRarity() {
-        return rarity;
-    }
-    
-    public String getRecipeOreDict() {
-        return recipeOreDict;
-    }
-    
-    public String getFurnaceOreDict() {
-        return furnaceOreDict;
-    }
-
     public int getLight() {
         return light;
     }
@@ -80,6 +76,23 @@ public enum EnumOreEndModded1Type implements IStringSerializable {
         return resistance;
     }
     
+    public EnumRarity getRarity() {
+        return rarity;
+    }
+
+
+    public String getExactOreDict() {
+        return exactOreDict;
+    }
+
+    public String getItemOreDict() {
+        return itemOreDict;
+    }
+
+    public String getBlockOreDict() {
+        return blockOreDict;
+    }
+
     public int getDefaultRecipeMultiplier() {
         return defaultRecipeMultiplier;
     }
