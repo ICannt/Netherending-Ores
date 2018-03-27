@@ -6,14 +6,15 @@ import net.minecraft.util.IStringSerializable;
 /**
  * Created by ICannt on 17/08/17.
  */
-public enum EnumOreOther1Type implements IStringSerializable {
+public enum EnumOreNetherVanillaType implements IStringSerializable {
 	
-    OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", EnumRarity.COMMON, "oreOverworldQuartz", "oreQuartz", 0, 0, 3, 15, 1),
-    END_QUARTZ_ORE ("end_quartz_ore", EnumRarity.COMMON, "oreEndQuartz", "oreQuartz", 0, 0, 3, 15, 1),
-    OVERWORLD_ARDITE_ORE ("overworld_ardite_ore", EnumRarity.COMMON, "oreOverworldArdite", "oreArdite", 0, 4, 10, 50, 1),
-    END_ARDITE_ORE ("end_ardite_ore", EnumRarity.COMMON, "oreEndArdite", "oreArdite", 0, 0, 10, 50, 1),
-    OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", EnumRarity.COMMON, "oreOverworldCobalt", "oreCobalt", 0, 4, 10, 50, 1),
-    END_COBALT_ORE ("end_cobalt_ore", EnumRarity.COMMON, "oreEndCobalt", "oreCobalt", 0, 4, 10, 50, 1);
+    COAL_ORE ("coal_ore", EnumRarity.COMMON, "oreNetherCoal", "oreCoal", 0, 0, 3, 15, 2),
+    DIAMOND_ORE ("diamond_ore", EnumRarity.COMMON, "oreNetherDiamond", "oreDiamond", 0, 2, 3, 15, 2),
+    EMERALD_ORE ("emerald_ore", EnumRarity.COMMON, "oreNetherEmerald", "oreEmerald", 0, 2, 3, 15, 2),
+    GOLD_ORE ("gold_ore", EnumRarity.COMMON, "oreNetherGold", "oreGold", 0, 2, 3, 15, 2),
+    IRON_ORE ("iron_ore", EnumRarity.COMMON, "oreNetherIron", "oreIron", 0, 1, 3, 15, 2),
+    LAPIS_ORE ("lapis_ore", EnumRarity.COMMON, "oreNetherLapis", "oreLapis", 0, 1, 3, 15, 2),
+    REDSTONE_ORE ("redstone_ore", EnumRarity.COMMON, "oreNetherRedstone", "oreRedstone", 0, 1, 3, 15, 2);
 
     private String name;
     private EnumRarity rarity;
@@ -25,7 +26,7 @@ public enum EnumOreOther1Type implements IStringSerializable {
     private float resistance;
     private int recipeMultiplier;
 
-    EnumOreOther1Type(String name, EnumRarity rarity, String recipeOreDict, String furnaceOreDict, int light, int harvestLevel, float hardness, float resistance, int recipeMultiplier) {
+    EnumOreNetherVanillaType(String name, EnumRarity rarity, String recipeOreDict, String furnaceOreDict, int light, int harvestLevel, float hardness, float resistance, int recipeMultiplier) {
         this.name = name;
         this.rarity = rarity;
         this.recipeOreDict = recipeOreDict;
@@ -73,5 +74,5 @@ public enum EnumOreOther1Type implements IStringSerializable {
     public int getRecipeMultiplier() {
         return recipeMultiplier;
     }
-    
+
 }

@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.common.block.blocks;
 
 import org.icannt.netherendingores.common.block.BlockVariantBase;
-import org.icannt.netherendingores.common.block.metadata.EnumOreModded1Type;
+import org.icannt.netherendingores.common.block.metadata.EnumOreNetherModded1Type;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -27,11 +27,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class BlockOreNetherModded1 extends BlockVariantBase {
 
-    private static final PropertyEnum<EnumOreModded1Type> VARIANT = PropertyEnum.create("blocks", EnumOreModded1Type.class);
+    private static final PropertyEnum<EnumOreNetherModded1Type> VARIANT = PropertyEnum.create("blocks", EnumOreNetherModded1Type.class);
 
     public BlockOreNetherModded1() {
         super(Material.ROCK, MapColor.GRAY, "ore_nether_modded_1");
-        for (EnumOreModded1Type variant : EnumOreModded1Type.values()) {
+        for (EnumOreNetherModded1Type variant : EnumOreNetherModded1Type.values()) {
         	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), getStateFromMeta(variant.ordinal()));
         }
     }
@@ -44,7 +44,7 @@ public class BlockOreNetherModded1 extends BlockVariantBase {
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
 	{
-		for (EnumOreModded1Type type : EnumOreModded1Type.values()) {
+		for (EnumOreNetherModded1Type type : EnumOreNetherModded1Type.values()) {
 			list.add(new ItemStack(this, 1, type.ordinal()));
 		}
     }
@@ -52,7 +52,7 @@ public class BlockOreNetherModded1 extends BlockVariantBase {
 	@SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState().withProperty(VARIANT, EnumOreModded1Type.values()[meta]);
+        return getDefaultState().withProperty(VARIANT, EnumOreNetherModded1Type.values()[meta]);
     }
 
     @Override
@@ -91,7 +91,7 @@ public class BlockOreNetherModded1 extends BlockVariantBase {
 
     @SideOnly(Side.CLIENT)
     public void initItemBlockModels() {
-    	for (EnumOreModded1Type variant : EnumOreModded1Type.values()) {
+    	for (EnumOreNetherModded1Type variant : EnumOreNetherModded1Type.values()) {
     		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), variant.ordinal(), new ModelResourceLocation(Item.getItemFromBlock(this).getRegistryName(), "blocks=" + variant.getName()));
     	}
     }

@@ -1,11 +1,15 @@
 package org.icannt.netherendingores.proxies;
 
+import java.io.File;
+
+import org.icannt.netherendingores.Config;
 import org.icannt.netherendingores.common.registry.RecipeRegistry;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.common.config.Configuration;
 
 /**
  * Created by ICannt on 17/08/17.
@@ -13,16 +17,22 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod.EventBusSubscriber
 public abstract class CommonProxy {
 
-    public void preInit(FMLPreInitializationEvent event) {
-        
+	public static Configuration config;
+	
+    public void preInit(FMLPreInitializationEvent event) {    	
+        File directory = event.getModConfigurationDirectory();
+        config = new Configuration(new File(directory.getPath(), "Netherending Ores.cfg"));
+        Config.readConfig();
     }
 
     public void init(FMLInitializationEvent event) {
-    	RecipeRegistry.registerFurnaceRecipes();
+    	RecipeRegistry.registerRecipes();
     }
 
     public void postInit(FMLPostInitializationEvent event) {
-        
+        if (config.hasChanged()) {
+            config.save();
+        }
     }
 
 

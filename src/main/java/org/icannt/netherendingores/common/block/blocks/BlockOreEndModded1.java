@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.common.block.blocks;
 
 import org.icannt.netherendingores.common.block.BlockVariantBase;
-import org.icannt.netherendingores.common.block.metadata.EnumOreModded1Type;
+import org.icannt.netherendingores.common.block.metadata.EnumOreEndModded1Type;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -27,11 +27,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class BlockOreEndModded1 extends BlockVariantBase {
 
-    private static final PropertyEnum<EnumOreModded1Type> VARIANT = PropertyEnum.create("blocks", EnumOreModded1Type.class);
+    private static final PropertyEnum<EnumOreEndModded1Type> VARIANT = PropertyEnum.create("blocks", EnumOreEndModded1Type.class);
 
     public BlockOreEndModded1() {
         super(Material.ROCK, MapColor.GRAY, "ore_end_modded_1");
-        for (EnumOreModded1Type variant : EnumOreModded1Type.values()) {
+        for (EnumOreEndModded1Type variant : EnumOreEndModded1Type.values()) {
         	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), getStateFromMeta(variant.ordinal()));
         }
     }
@@ -44,7 +44,7 @@ public class BlockOreEndModded1 extends BlockVariantBase {
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
 	{
-		for (EnumOreModded1Type type : EnumOreModded1Type.values()) {
+		for (EnumOreEndModded1Type type : EnumOreEndModded1Type.values()) {
 			list.add(new ItemStack(this, 1, type.ordinal()));
 		}
     }
@@ -52,7 +52,7 @@ public class BlockOreEndModded1 extends BlockVariantBase {
 	@SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState().withProperty(VARIANT, EnumOreModded1Type.values()[meta]);
+        return getDefaultState().withProperty(VARIANT, EnumOreEndModded1Type.values()[meta]);
     }
 
     @Override
@@ -89,9 +89,13 @@ public class BlockOreEndModded1 extends BlockVariantBase {
         return world.getBlockState(pos).getValue(VARIANT).getResistance() / 5F;
     }
 
+    public int getRecipeMultiplier(IBlockState state) {
+    	return state.getValue(VARIANT).getRecipeMultiplier();
+    }
+    
     @SideOnly(Side.CLIENT)
     public void initItemBlockModels() {
-    	for (EnumOreModded1Type variant : EnumOreModded1Type.values()) {
+    	for (EnumOreEndModded1Type variant : EnumOreEndModded1Type.values()) {
     		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), variant.ordinal(), new ModelResourceLocation(Item.getItemFromBlock(this).getRegistryName(), "blocks=" + variant.getName()));
     	}
     }

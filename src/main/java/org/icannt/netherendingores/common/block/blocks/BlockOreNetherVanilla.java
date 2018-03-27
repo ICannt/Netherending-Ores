@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.common.block.blocks;
 
 import org.icannt.netherendingores.common.block.BlockVariantBase;
-import org.icannt.netherendingores.common.block.metadata.EnumOreVanillaType;
+import org.icannt.netherendingores.common.block.metadata.EnumOreNetherVanillaType;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -27,11 +27,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class BlockOreNetherVanilla extends BlockVariantBase {
 	
-    private static final PropertyEnum<EnumOreVanillaType> VARIANT = PropertyEnum.create("blocks", EnumOreVanillaType.class);
+    private static final PropertyEnum<EnumOreNetherVanillaType> VARIANT = PropertyEnum.create("blocks", EnumOreNetherVanillaType.class);
     
     public BlockOreNetherVanilla() {
         super(Material.ROCK, MapColor.GRAY, "ore_nether_vanilla");
-        for (EnumOreVanillaType variant : EnumOreVanillaType.values()) {
+        for (EnumOreNetherVanillaType variant : EnumOreNetherVanillaType.values()) {
         	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), getStateFromMeta(variant.ordinal()));
         }
     }
@@ -44,7 +44,7 @@ public class BlockOreNetherVanilla extends BlockVariantBase {
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
 	{
-		for (EnumOreVanillaType type : EnumOreVanillaType.values()) {
+		for (EnumOreNetherVanillaType type : EnumOreNetherVanillaType.values()) {
 			list.add(new ItemStack(this, 1, type.ordinal()));
 		}
     }
@@ -52,7 +52,7 @@ public class BlockOreNetherVanilla extends BlockVariantBase {
 	@SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState().withProperty(VARIANT, EnumOreVanillaType.values()[meta]);
+        return getDefaultState().withProperty(VARIANT, EnumOreNetherVanillaType.values()[meta]);
     }
 
     @Override
@@ -91,7 +91,7 @@ public class BlockOreNetherVanilla extends BlockVariantBase {
 
     @SideOnly(Side.CLIENT)
     public void initItemBlockModels() {
-    	for (EnumOreVanillaType variant : EnumOreVanillaType.values()) {
+    	for (EnumOreNetherVanillaType variant : EnumOreNetherVanillaType.values()) {
     		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), variant.ordinal(), new ModelResourceLocation(Item.getItemFromBlock(this).getRegistryName(), "blocks=" + variant.getName()));
     	}
     }
