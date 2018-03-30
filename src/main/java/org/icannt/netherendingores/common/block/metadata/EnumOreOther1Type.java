@@ -8,8 +8,8 @@ import net.minecraft.util.IStringSerializable;
  */
 public enum EnumOreOther1Type implements IStringSerializable {
 	
-    OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreOverworldQuartz", "gemQuartz", "oreQuartz", 1, 0),
-    END_QUARTZ_ORE ("end_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreEndQuartz", "gemQuartz", "oreQuartz", 1, 0),
+    OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreOverworldQuartz", "quartz_ore", "oreQuartz", 1, 0),
+    END_QUARTZ_ORE ("end_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreEndQuartz", "quartz_ore", "oreQuartz", 1, 0),
     OVERWORLD_ARDITE_ORE ("overworld_ardite_ore", 0, 4, 10, 50, EnumRarity.COMMON, "oreOverworldArdite", "", "oreArdite", 1, 0),
     END_ARDITE_ORE ("end_ardite_ore", 0, 0, 10, 50, EnumRarity.COMMON, "oreEndArdite", "", "oreArdite", 1, 0),
     OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", 0, 4, 10, 50, EnumRarity.COMMON, "oreOverworldCobalt", "", "oreCobalt", 1, 0),
@@ -46,6 +46,9 @@ public enum EnumOreOther1Type implements IStringSerializable {
         
     }
 
+    public String getEnumName() {
+    	return "ore_other_1"; 
+    }
     
     @Override
     public String getName() {
