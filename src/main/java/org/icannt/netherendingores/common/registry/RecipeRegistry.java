@@ -47,10 +47,12 @@ public class RecipeRegistry {
 
 		// Modded End Ores 1 - Furnace
 		for (EnumOreEndModded1Type variant : EnumOreEndModded1Type.values()) {
-			NetherendingOres.LOGGER.info("*** HERE ***");
 	        for (ItemStack stack : OreDictionary.getOres(variant.getBlockOreDict()))
 	        {
 	        	NetherendingOres.LOGGER.info(variant.getName() + ": " + variant.getRecipeMultiplier());
+				if (variant.getRecipeMultiplier() == 1) {
+					//GameRegistry.addShapelessRecipe(name, group, output, params);;
+				}	        	
 				if (variant.getRecipeMultiplier() > 1) {
 					GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
 				}
@@ -59,5 +61,5 @@ public class RecipeRegistry {
 		
 		NetherendingOres.LOGGER.info("Registered Recipes");
 		
-	}	
+	}
 }
