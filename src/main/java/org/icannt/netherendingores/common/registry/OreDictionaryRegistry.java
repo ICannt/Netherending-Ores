@@ -26,7 +26,7 @@ public class OreDictionaryRegistry {
 		}
 		
 	    for (EnumOreOther1Type variant : EnumOreOther1Type.values()) {
-    		OreDictionary.registerOre(variant.getRecipeOreDict(), new ItemStack(BlockRegistry.ORE_OTHER_1, 1, variant.ordinal()));
+    		OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(BlockRegistry.ORE_OTHER_1, 1, variant.ordinal()));
 	    }
 	    
 	}

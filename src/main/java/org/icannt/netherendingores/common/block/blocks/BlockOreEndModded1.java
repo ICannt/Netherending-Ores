@@ -65,14 +65,6 @@ public class BlockOreEndModded1 extends BlockVariantBase {
         return getMetaFromState(state);
     }
 
-    public String getRecipeOreDict(IBlockState state) {
-    	return state.getValue(VARIANT).getExactOreDict();
-    }
-
-    public String getFurnaceOreDict(IBlockState state) {
-    	return state.getValue(VARIANT).getBlockOreDict();
-    }
-
     @Override
     public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
         return state.getValue(VARIANT).getLight();

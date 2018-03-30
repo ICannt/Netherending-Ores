@@ -61,14 +61,6 @@ public class BlockOreOther1 extends BlockVariantBase {
     public int damageDropped(IBlockState state) {
         return getMetaFromState(state);
     }
-
-    public String getRecipeOreDict(IBlockState state) {
-    	return state.getValue(VARIANT).getRecipeOreDict();
-    }
-    
-    public String getFurnaceOreDict(IBlockState state) {
-    	return state.getValue(VARIANT).getFurnaceOreDict();
-    }
     
     @Override
     public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
