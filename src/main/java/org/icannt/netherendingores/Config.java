@@ -22,7 +22,7 @@ public class Config {
             initRecipeMultiplierConfig(cfg);
             initVersionConfig(cfg);
         } catch (Exception e1) {
-            NetherendingOres.LOGGER.log(Level.ERROR, "Problem loading config file!", e1);
+            NetherendingOres.LOGGER.error("Problem loading config file!", e1);
         } finally {
             if (cfg.hasChanged()) {
                 cfg.save();

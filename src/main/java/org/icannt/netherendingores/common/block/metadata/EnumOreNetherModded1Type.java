@@ -8,17 +8,17 @@ import net.minecraft.util.IStringSerializable;
  */
 public enum EnumOreNetherModded1Type implements IStringSerializable {
 	
-    ALUMINUM_ORE ("aluminum_ore", 0, 1, 3, 15, EnumRarity.UNCOMMON, "oreNetherAluminum", "", "oreAluminum", 2, 0),
-    COPPER_ORE ("copper_ore", 0, 1, 3, 15, EnumRarity.UNCOMMON, "oreNetherCopper", "", "oreCopper", 2, 0),
-    IRIDIUM_ORE ("iridium_ore", 0, 3, 3, 15, EnumRarity.RARE, "oreNetherIridium", "", "oreIridium", 2, 0),
+    ALUMINUM_ORE ("aluminum_ore", 0, 1, 3, 15, EnumRarity.COMMON, "oreNetherAluminum", "", "oreAluminum", 2, 0),
+    COPPER_ORE ("copper_ore", 0, 1, 3, 15, EnumRarity.COMMON, "oreNetherCopper", "", "oreCopper", 2, 0),
+    IRIDIUM_ORE ("iridium_ore", 0, 3, 3, 15, EnumRarity.UNCOMMON, "oreNetherIridium", "", "oreIridium", 2, 0),
     LEAD_ORE ("lead_ore", 0, 2, 3, 15, EnumRarity.COMMON, "oreNetherLead", "", "oreLead", 2, 0),
-    MITHRIL_ORE ("mithril_ore", 0, 3, 3, 15, EnumRarity.COMMON, "oreNetherMithril", "", "oreMithril", 2, 0),
+    MITHRIL_ORE ("mithril_ore", 0, 3, 3, 15, EnumRarity.RARE, "oreNetherMithril", "", "oreMithril", 2, 0),
     NICKEL_ORE ("nickel_ore", 0, 2, 3, 15, EnumRarity.COMMON, "oreNetherNickel", "", "oreNickel", 2, 0),
-    PLATINUM_ORE ("platinum_ore", 0, 3, 3, 15, EnumRarity.COMMON, "oreNetherPlatinum", "", "orePlatinum", 2, 0),
+    PLATINUM_ORE ("platinum_ore", 0, 3, 3, 15, EnumRarity.UNCOMMON, "oreNetherPlatinum", "", "orePlatinum", 2, 0),
     SILVER_ORE ("silver_ore", 0, 2, 3, 15, EnumRarity.COMMON, "oreNetherSilver", "", "oreSilver", 2, 0),
     TIN_ORE ("tin_ore", 0, 1, 3, 15, EnumRarity.COMMON, "oreNetherTin", "", "oreTin", 2, 0),
-    CERTUS_QUARTZ_ORE ("certus_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreNetherCertusQuartz", "", "oreCertusQuartz", 2, 0),
-    CHARGED_CERTUS_QUARTZ_ORE ("charged_certus_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreNetherChargedCertusQuartz", "", "oreChargedCertusQuartz", 2, 0),
+    CERTUS_QUARTZ_ORE ("certus_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreNetherCertusQuartz", "appliedenergistics2:quartz_ore", "oreCertusQuartz", 2, 0),
+    CHARGED_CERTUS_QUARTZ_ORE ("charged_certus_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreNetherChargedCertusQuartz", "appliedenergistics2:charged_quartz_ore", "oreChargedCertusQuartz", 2, 0),
     OSMIUM_ORE ("osmium_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreNetherOsmium", "", "oreOsmium", 2, 0),
     URANIUM_ORE ("uranium_ore", 0, 2, 4, 30, EnumRarity.COMMON, "oreNetherUranium", "", "oreUranium", 2, 0),
     YELLORITE_ORE ("yellorite_ore", 0, 0, 2, 10, EnumRarity.COMMON, "oreNetherYellorite", "", "oreYellorite", 2, 0);
@@ -54,6 +54,9 @@ public enum EnumOreNetherModded1Type implements IStringSerializable {
         
     }
 
+    public String getBlockRegistryName() {
+    	return "ore_nether_modded_1"; 
+    }
     
     @Override
     public String getName() {

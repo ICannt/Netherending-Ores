@@ -9,7 +9,6 @@ import org.icannt.netherendingores.common.block.metadata.EnumOreNetherVanillaTyp
 import org.icannt.netherendingores.common.block.metadata.EnumOreOther1Type;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
@@ -27,13 +26,19 @@ public class RecipeRegistry {
 
 		NetherendingOres.LOGGER.info("Registering Recipes");
 		
+		ResourceLocation locationName = new ResourceLocation(NetherendingOres.MOD_ID + ":unused"); // This is actually used, just can't create it blank
+		ResourceLocation groupName = new ResourceLocation(NetherendingOres.MOD_ID + ":ore_conversions");
+		Ingredient[] ingredient = new Ingredient[]{};
+		
 		// Vanilla Nether Ores
-		for (EnumOreNetherVanillaType variant : EnumOreNetherVanillaType.values()) {			
+		for (EnumOreNetherVanillaType variant : EnumOreNetherVanillaType.values()) {
+        	if (variant.getRecipeMultiplier() == 1 && variant.getItemOreDict() != "") {        		
+        		locationName = new ResourceLocation(NetherendingOres.MOD_ID + ":" + Util.LowerUnder(variant.getExactOreDict()) + "_to_" + Util.ColonUnder(variant.getItemOreDict()));
+        		ingredient = new Ingredient[]{Ingredient.fromStacks(new ItemStack(Block.getBlockFromName(NetherendingOres.MOD_ID + ":" + variant.getBlockRegistryName()), 1, variant.ordinal()))};
+				GameRegistry.addShapelessRecipe(locationName, groupName, new ItemStack(Block.getBlockFromName(variant.getItemOreDict()), 1), ingredient);
+			}	
 	        for (ItemStack stack : OreDictionary.getOres(variant.getBlockOreDict()))
 	        {
-				if (variant.getRecipeMultiplier() == 1) {
-					
-				}	        	
 				if (variant.getRecipeMultiplier() > 1) {
 					GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
 				}
@@ -52,11 +57,13 @@ public class RecipeRegistry {
 		
 		// Vanilla End Ores
 		for (EnumOreEndVanillaType variant : EnumOreEndVanillaType.values()) {
+        	if (variant.getRecipeMultiplier() == 1 && variant.getItemOreDict() != "") {        		
+        		locationName = new ResourceLocation(NetherendingOres.MOD_ID + ":" + Util.LowerUnder(variant.getExactOreDict()) + "_to_" + Util.ColonUnder(variant.getItemOreDict()));
+        		ingredient = new Ingredient[]{Ingredient.fromStacks(new ItemStack(Block.getBlockFromName(NetherendingOres.MOD_ID + ":" + variant.getBlockRegistryName()), 1, variant.ordinal()))};
+				GameRegistry.addShapelessRecipe(locationName, groupName, new ItemStack(Block.getBlockFromName(variant.getItemOreDict()), 1), ingredient);
+			}
 	        for (ItemStack stack : OreDictionary.getOres(variant.getBlockOreDict()))
 	        {
-				if (variant.getRecipeMultiplier() == 1 && variant.getItemOreDict() != "") {
-
-				}
 				if (variant.getRecipeMultiplier() > 1) {
 					GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_VANILLA, 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
 				}
@@ -74,14 +81,14 @@ public class RecipeRegistry {
 		}
 		
 		// Other Ores
-		for (EnumOreOther1Type variant : EnumOreOther1Type.values()) {			
+		for (EnumOreOther1Type variant : EnumOreOther1Type.values()) {
+        	if (variant.getRecipeMultiplier() == 1 && variant.getItemOreDict() != "") {        		
+        		locationName = new ResourceLocation(NetherendingOres.MOD_ID + ":" + Util.LowerUnder(variant.getExactOreDict()) + "_to_" + Util.ColonUnder(variant.getItemOreDict()));
+        		ingredient = new Ingredient[]{Ingredient.fromStacks(new ItemStack(Block.getBlockFromName(NetherendingOres.MOD_ID + ":" + variant.getBlockRegistryName()), 1, variant.ordinal()))};
+				GameRegistry.addShapelessRecipe(locationName, groupName, new ItemStack(Block.getBlockFromName(variant.getItemOreDict()), 1), ingredient);
+			}
 	        for (ItemStack stack : OreDictionary.getOres(variant.getBlockOreDict()))
 	        {
-				if (variant.getRecipeMultiplier() == 1 && variant.getItemOreDict() != "") {
-					NetherendingOres.LOGGER.info(variant.getName() + ": " + NetherendingOres.MOD_ID + Util.LowerUnder(variant.getExactOreDict()) + "_to_" + variant.getItemOreDict() + ", " + variant.getItemOreDict() + ", " + variant.getRecipeMultiplier());
-					GameRegistry.addShapelessRecipe(new ResourceLocation(NetherendingOres.MOD_ID + ":" + Util.LowerUnder(variant.getExactOreDict()) + "_to_" + variant.getItemOreDict()), new ResourceLocation(NetherendingOres.MOD_ID + ":" + "ore_conversions"), 
-							new ItemStack(Block.getBlockFromName(variant.getItemOreDict()), 1), new Ingredient[]{Ingredient.fromStacks(new ItemStack(Block.getBlockFromName(variant.getEnumName()), 1, variant.ordinal()))});
-				}
 				if (variant.getRecipeMultiplier() > 1) {
 					GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_OTHER_1, 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
 				}

@@ -47,6 +47,9 @@ public enum EnumOreNetherVanillaType implements IStringSerializable {
         
     }
 
+    public String getBlockRegistryName() {
+    	return "ore_nether_vanilla"; 
+    }
     
     @Override
     public String getName() {

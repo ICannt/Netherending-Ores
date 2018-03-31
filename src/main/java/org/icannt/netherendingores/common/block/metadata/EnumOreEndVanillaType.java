@@ -47,6 +47,9 @@ public enum EnumOreEndVanillaType implements IStringSerializable {
         
     }
 
+    public String getBlockRegistryName() {
+    	return "ore_end_vanilla"; 
+    }
     
     @Override
     public String getName() {

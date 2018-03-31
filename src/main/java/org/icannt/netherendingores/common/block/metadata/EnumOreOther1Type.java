@@ -46,7 +46,7 @@ public enum EnumOreOther1Type implements IStringSerializable {
         
     }
 
-    public String getEnumName() {
+    public String getBlockRegistryName() {
     	return "ore_other_1"; 
     }
     
