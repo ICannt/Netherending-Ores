@@ -1,5 +1,8 @@
 package org.icannt.netherendingores.common.block.metadata;
 
+import org.icannt.netherendingores.NetherendingOres;
+
+import net.minecraft.block.Block;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.IStringSerializable;
 
@@ -47,8 +50,8 @@ public enum EnumOreEndVanillaType implements IStringSerializable {
         
     }
 
-    public String getBlockRegistryName() {
-    	return "ore_end_vanilla"; 
+    public Block getBlockRegistryName() {
+    	return Block.getBlockFromName(NetherendingOres.MOD_ID + ":ore_end_vanilla"); 
     }
     
     @Override

@@ -16,3 +16,7 @@ License for 3rd party textures are as per their originating licenses:
 Uses the "ore" portions only of Thermal Foundation, Extreme Reactors, Tinkers' Construct, Applied Energistics 2 & Mekanism textures.
 Uranium texture is from scratch based off vanilla iron as Industrial Craft 2 is not open source.
 Other art is per "LICENCE - ART.txt"
+
+### Translation Credits
+Russian - Mr_Krab
+Simplified Chinese - G2159687 (K W)

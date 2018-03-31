@@ -1,5 +1,8 @@
 package org.icannt.netherendingores.common.block.metadata;
 
+import org.icannt.netherendingores.NetherendingOres;
+
+import net.minecraft.block.Block;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.IStringSerializable;
 
@@ -54,8 +57,8 @@ public enum EnumOreNetherModded1Type implements IStringSerializable {
         
     }
 
-    public String getBlockRegistryName() {
-    	return "ore_nether_modded_1"; 
+    public Block getBlockRegistryName() {
+    	return Block.getBlockFromName(NetherendingOres.MOD_ID + ":ore_nether_modded_1"); 
     }
     
     @Override
