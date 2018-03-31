@@ -10,7 +10,7 @@ The End uses similar settings to the Nether but reduced size/count as the height
 
 ### Recipes
 The furnace recipes to smelt the nether/end ores to 2x the closest ore dictionary matching ore.\
-Ores which do not originate in the Overworld, act like silk touched versions of their overworld ores recipe wise, this is done for balance.\
+Ores which do not originate in the Overworld, act like silk touched versions of their overworld ores recipe wise, this is done for balance.
 
 ### Art Licensing
 License for 3rd party textures are as per their originating licenses:\
@@ -20,4 +20,4 @@ Other art is per "LICENCE - ART.txt"
 
 ### Translation Credits
 Russian - Mr_Krab\
-Simplified Chinese - G2159687 (K W)\
+Simplified Chinese - G2159687 (K W)
