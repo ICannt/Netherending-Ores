@@ -13,6 +13,18 @@ version = mcversion + "-" + modversion
 group = "org.icannt.netherendingores"
 archivesBaseName = "Netherending-Ores"
 
+repositories {
+    maven {
+        name = "Progwm16 Maven"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "modmaven.k-4u.nl"
+    }
+}
+
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
@@ -26,6 +38,12 @@ minecraft {
 
 dependencies {
 
+    deobfCompile "slimeknights.mantle:Mantle:1.12-" + mantleversion
+    deobfCompile "slimeknights:TConstruct:1.12.2-" + ticversion
+
+    deobfProvided "mezz.jei:jei_1.12.2:" + jeiversion + ":api"
+    runtime "mezz.jei:jei_1.12.2:" + jeiversion
+    
 }
 
 processResources {

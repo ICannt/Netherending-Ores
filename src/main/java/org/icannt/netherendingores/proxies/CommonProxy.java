@@ -5,6 +5,7 @@ import java.io.File;
 import org.icannt.netherendingores.Config;
 import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.registry.RecipeRegistry;
+import org.icannt.netherendingores.interoperability.common.TiCRecipeRegistry;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -28,6 +29,7 @@ public abstract class CommonProxy {
 
     public void init(FMLInitializationEvent event) {
     	RecipeRegistry.registerRecipes();
+    	TiCRecipeRegistry.registerRecipes();
     }
 
     public void postInit(FMLPostInitializationEvent event) {

@@ -40,7 +40,7 @@ public class RecipeRegistry {
 	        for (ItemStack stack : OreDictionary.getOres(variant.getBlockOreDict()))
 	        {
 				if (variant.getRecipeMultiplier() > 1) {
-					GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
+					GameRegistry.addSmelting(new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
 				}
 	        }
 		}
@@ -50,7 +50,7 @@ public class RecipeRegistry {
 	        for (ItemStack stack : OreDictionary.getOres(variant.getBlockOreDict()))
 	        {
 				if (variant.getRecipeMultiplier() > 1) {
-					GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
+					GameRegistry.addSmelting(new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
 				}
 	        }
 		}
@@ -65,7 +65,7 @@ public class RecipeRegistry {
 	        for (ItemStack stack : OreDictionary.getOres(variant.getBlockOreDict()))
 	        {
 				if (variant.getRecipeMultiplier() > 1) {
-					GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_VANILLA, 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
+					GameRegistry.addSmelting(new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
 				}
 	        }
 		}		
@@ -75,7 +75,7 @@ public class RecipeRegistry {
 	        for (ItemStack stack : OreDictionary.getOres(variant.getBlockOreDict()))
 	        {
 				if (variant.getRecipeMultiplier() > 1) {
-					GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_END_MODDED_1, 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
+					GameRegistry.addSmelting(new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
 				}
 	        }
 		}
@@ -90,7 +90,7 @@ public class RecipeRegistry {
 	        for (ItemStack stack : OreDictionary.getOres(variant.getBlockOreDict()))
 	        {
 				if (variant.getRecipeMultiplier() > 1) {
-					GameRegistry.addSmelting(new ItemStack(BlockRegistry.ORE_OTHER_1, 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
+					GameRegistry.addSmelting(new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()), new ItemStack(stack.getItem(), variant.getRecipeMultiplier(), stack.getMetadata()), 0);
 				}
 	        }
 		}

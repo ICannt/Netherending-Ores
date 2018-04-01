@@ -25,9 +25,9 @@ public class OreDictionaryRegistry {
 			if (variant.getRecipeMultiplier() == 1) {
 				OreDictionary.registerOre(variant.getBlockOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
 			}
-			if (variant.getRecipeMultiplier() > 1 || variant.getRecipeMultiplier() == 0) {
-				OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
-			}
+//			if (variant.getRecipeMultiplier() > 1 || variant.getRecipeMultiplier() == 0) {
+//				OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
+//			}
 		}
 
 		// Modded Nether Ores 1
@@ -35,9 +35,9 @@ public class OreDictionaryRegistry {
 			if (variant.getRecipeMultiplier() == 1) {
 				OreDictionary.registerOre(variant.getBlockOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
 			}
-			if (variant.getRecipeMultiplier() > 1 || variant.getRecipeMultiplier() == 0) {
-				OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
-			}
+//			if (variant.getRecipeMultiplier() > 1 || variant.getRecipeMultiplier() == 0) {
+//				OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
+//			}
 		}
 		
 		// Vanilla End Ores
@@ -45,18 +45,18 @@ public class OreDictionaryRegistry {
 			if (variant.getRecipeMultiplier() == 1) {
 				OreDictionary.registerOre(variant.getBlockOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
 			}
-			if (variant.getRecipeMultiplier() > 1 || variant.getRecipeMultiplier() == 0) {
-				OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
-			}
+//			if (variant.getRecipeMultiplier() > 1 || variant.getRecipeMultiplier() == 0) {
+//				OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
+//			}
 		}		
 		
 		for (EnumOreEndModded1Type variant : EnumOreEndModded1Type.values()) {
 			if (variant.getRecipeMultiplier() == 1) {
 				OreDictionary.registerOre(variant.getBlockOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
 			}
-			if (variant.getRecipeMultiplier() > 1 || variant.getRecipeMultiplier() == 0) {
-				OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
-			}
+//			if (variant.getRecipeMultiplier() > 1 || variant.getRecipeMultiplier() == 0) {
+//				OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
+//			}
 		}
 		
 		// Other Ores
@@ -64,9 +64,9 @@ public class OreDictionaryRegistry {
 			if (variant.getRecipeMultiplier() == 1) {
 				OreDictionary.registerOre(variant.getBlockOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
 			}
-			if (variant.getRecipeMultiplier() > 1 || variant.getRecipeMultiplier() == 0) {
-				OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
-			}
+//			if (variant.getRecipeMultiplier() > 1 || variant.getRecipeMultiplier() == 0) {
+//				OreDictionary.registerOre(variant.getExactOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
+//			}
 		}
 	    
 	}

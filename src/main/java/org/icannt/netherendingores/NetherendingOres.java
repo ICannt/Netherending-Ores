@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 	name = NetherendingOres.MOD_NAME,
 	version = NetherendingOres.VERSION,
 	acceptedMinecraftVersions = "[1.12.2,1.13)",
-	dependencies = "required-after:forge@[14.23.2.2611,);")
+	dependencies = "required-after:forge@[14.23.2.2611,);after:mantle@[1.12-1.3.1,);after:tconstruct@[1.12.2-2.9.1,)")
 
 public class NetherendingOres {
 
