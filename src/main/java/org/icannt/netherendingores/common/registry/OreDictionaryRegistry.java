@@ -50,7 +50,6 @@ public class OreDictionaryRegistry {
 			}
 		}		
 		
-		// Modded End Ores 1
 		for (EnumOreEndModded1Type variant : EnumOreEndModded1Type.values()) {
 			if (variant.getRecipeMultiplier() == 1) {
 				OreDictionary.registerOre(variant.getBlockOreDict(), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));

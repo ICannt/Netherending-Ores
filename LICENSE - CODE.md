@@ -1,7 +1,7 @@
 The MIT License (MIT)
 =====================
 
-Copyright © `2014-2016` `ICannt.org (Team ICannt)`
+Copyright © `2017-2018` `ICannt.org (Team ICannt)`
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

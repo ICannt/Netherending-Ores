@@ -1,6 +1,5 @@
 package org.icannt.netherendingores;
 
-import org.apache.logging.log4j.Level;
 import org.icannt.netherendingores.common.block.metadata.EnumOreEndModded1Type;
 import org.icannt.netherendingores.common.block.metadata.EnumOreEndVanillaType;
 import org.icannt.netherendingores.common.block.metadata.EnumOreNetherModded1Type;
@@ -12,15 +11,13 @@ import net.minecraftforge.common.config.Configuration;
 
 public class Config {
 
-	private static final String CATEGORY_RECIPE_MULTIPLIER = "recipe multipliers";
-	private static final String CATEGORY_VERSION = "config version";
+	private static final String CATEGORY_RECIPE_MULTIPLIER = "Recipe Multipliers";
     
     public static void readConfig() {
         Configuration cfg = CommonProxy.config;
         try {
             cfg.load();
             initRecipeMultiplierConfig(cfg);
-            initVersionConfig(cfg);
         } catch (Exception e1) {
             NetherendingOres.LOGGER.error("Problem loading config file!", e1);
         } finally {
@@ -69,9 +66,5 @@ public class Config {
     	}
     	
     }
-    
-    private static void initVersionConfig(Configuration cfg) {
-    	//cfg.addCustomCategoryComment(CATEGORY_VERSION, "Netherending Ores mod version");
-    	// Find some way to control version?
-    }
+
 }
