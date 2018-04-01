@@ -9,9 +9,12 @@ import org.icannt.netherendingores.proxies.CommonProxy;
 
 import net.minecraftforge.common.config.Configuration;
 
+/**
+ * Created by ICannt on 25/08/18.
+ */
 public class Config {
 
-	private static final String CATEGORY_RECIPE_MULTIPLIER = "Recipe Multipliers";
+	private static final String CATEGORY_RECIPE_MULTIPLIER = "recipe multipliers";
     
     public static void readConfig() {
         Configuration cfg = CommonProxy.config;
