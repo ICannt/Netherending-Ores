@@ -34,7 +34,7 @@ public class TiCRecipeRegistry {
 //		Ingredient[] ingredient = new Ingredient[]{};
 
 		
-		TinkerRegistry.registerMelting(new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, 4), TinkerFluids.iron, 576);
+		//TinkerRegistry.registerMelting(new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, 4), TinkerFluids.iron, 576);
 		
 		
 		

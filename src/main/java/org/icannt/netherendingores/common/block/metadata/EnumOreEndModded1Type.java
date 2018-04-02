@@ -61,6 +61,10 @@ public enum EnumOreEndModded1Type implements IStringSerializable {
     	return Block.getBlockFromName(NetherendingOres.MOD_ID + ":ore_end_modded_1"); 
     }
     
+    public String getRecipeRegistryName() {
+    	return "end_" + name;
+    }
+    
     @Override
     public String getName() {
         return name;

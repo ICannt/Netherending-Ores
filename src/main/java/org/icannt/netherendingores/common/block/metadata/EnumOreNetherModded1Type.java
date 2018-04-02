@@ -61,6 +61,10 @@ public enum EnumOreNetherModded1Type implements IStringSerializable {
     	return Block.getBlockFromName(NetherendingOres.MOD_ID + ":ore_nether_modded_1"); 
     }
     
+    public String getRecipeRegistryName() {
+    	return "nether_" + name;
+    }
+    
     @Override
     public String getName() {
         return name;

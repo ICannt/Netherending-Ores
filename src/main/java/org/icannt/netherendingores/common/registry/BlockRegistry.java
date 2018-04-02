@@ -96,9 +96,7 @@ public class BlockRegistry {
         @SubscribeEvent
         public static void onEvent(final RegistryEvent.Register<EntityEntry> event) {
         	// This is rather dodgy but at least the oredict is being registered in the preinit phase
-        	NetherendingOres.LOGGER.info("Registering Ore Dictionary Entries");
         	OreDictionaryRegistry.registerDictionaryOres();
-        	NetherendingOres.LOGGER.info("Registered Ore Dictionary Entries");
     	}
 
     }

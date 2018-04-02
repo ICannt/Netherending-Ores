@@ -1,6 +1,7 @@
 package org.icannt.netherendingores.common.block.metadata;
 
 import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.Util;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumRarity;
@@ -51,6 +52,10 @@ public enum EnumOreOther1Type implements IStringSerializable {
 
     public Block getBlockRegistryName() {
     	return Block.getBlockFromName(NetherendingOres.MOD_ID + ":ore_other_1"); 
+    }
+    
+    public String getRecipeRegistryName() {
+    	return name;
     }
     
     @Override

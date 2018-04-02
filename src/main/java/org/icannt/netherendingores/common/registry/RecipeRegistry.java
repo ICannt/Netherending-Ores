@@ -32,8 +32,8 @@ public class RecipeRegistry {
 		
 		// Vanilla Nether Ores
 		for (EnumOreNetherVanillaType variant : EnumOreNetherVanillaType.values()) {
-        	if (variant.getRecipeMultiplier() == 1 && variant.getItemOreDict() != "") {        		
-        		locationName = new ResourceLocation(NetherendingOres.MOD_ID + ":" + Util.LowerUnder(variant.getExactOreDict()) + "_to_" + Util.ColonUnder(variant.getItemOreDict()));
+        	if (variant.getRecipeMultiplier() == 1 && variant.getItemOreDict() != "") {
+        		locationName = new ResourceLocation(NetherendingOres.MOD_ID + ":" + variant.getRecipeRegistryName() + "_to_" + Util.ColonUnder(variant.getItemOreDict()));
         		ingredient = new Ingredient[]{Ingredient.fromStacks(new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()))};
 				GameRegistry.addShapelessRecipe(locationName, groupName, new ItemStack(Block.getBlockFromName(variant.getItemOreDict()), 1), ingredient);
 			}	
@@ -58,7 +58,7 @@ public class RecipeRegistry {
 		// Vanilla End Ores
 		for (EnumOreEndVanillaType variant : EnumOreEndVanillaType.values()) {
         	if (variant.getRecipeMultiplier() == 1 && variant.getItemOreDict() != "") {        		
-        		locationName = new ResourceLocation(NetherendingOres.MOD_ID + ":" + Util.LowerUnder(variant.getExactOreDict()) + "_to_" + Util.ColonUnder(variant.getItemOreDict()));
+        		locationName = new ResourceLocation(NetherendingOres.MOD_ID + ":" + variant.getRecipeRegistryName() + "_to_" + Util.ColonUnder(variant.getItemOreDict()));
         		ingredient = new Ingredient[]{Ingredient.fromStacks(new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()))};
 				GameRegistry.addShapelessRecipe(locationName, groupName, new ItemStack(Block.getBlockFromName(variant.getItemOreDict()), 1), ingredient);
 			}
@@ -83,7 +83,7 @@ public class RecipeRegistry {
 		// Other Ores
 		for (EnumOreOther1Type variant : EnumOreOther1Type.values()) {
         	if (variant.getRecipeMultiplier() == 1 && variant.getItemOreDict() != "") {        		
-        		locationName = new ResourceLocation(NetherendingOres.MOD_ID + ":" + Util.LowerUnder(variant.getExactOreDict()) + "_to_" + Util.ColonUnder(variant.getItemOreDict()));
+        		locationName = new ResourceLocation(NetherendingOres.MOD_ID + ":" + variant.getRecipeRegistryName() + "_to_" + Util.ColonUnder(variant.getItemOreDict()));
         		ingredient = new Ingredient[]{Ingredient.fromStacks(new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()))};
 				GameRegistry.addShapelessRecipe(locationName, groupName, new ItemStack(Block.getBlockFromName(variant.getItemOreDict()), 1), ingredient);
 			}
