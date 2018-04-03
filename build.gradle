@@ -23,6 +23,10 @@ repositories {
         name = "ModMaven"
         url = "modmaven.k-4u.nl"
     }
+    maven {
+    name = "CoFH Maven"
+    url = "http://maven.covers1624.net/"
+    }
 }
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
@@ -38,11 +42,15 @@ minecraft {
 
 dependencies {
 
-    deobfCompile "slimeknights.mantle:Mantle:1.12-" + mantleversion
-    deobfCompile "slimeknights:TConstruct:1.12.2-" + ticversion
+    deobfCompile "cofhcore:CoFHCore-1.12.2:${cofhcoreversion}:universal"
+    deobfCompile "thermal-foundation:ThermalFoundation-1.12.2:${tfversion}:universal"
+    deobfCompile "thermalexpansion:ThermalExpansion-1.12.2:${teversion}:universal"
 
-    deobfProvided "mezz.jei:jei_1.12.2:" + jeiversion + ":api"
-    runtime "mezz.jei:jei_1.12.2:" + jeiversion
+    deobfCompile "slimeknights.mantle:Mantle:1.12-${mantleversion}"
+    deobfCompile "slimeknights:TConstruct:1.12.2-${ticversion}"
+    
+    deobfProvided "mezz.jei:jei_1.12.2:${jeiversion}:api"
+    runtime "mezz.jei:jei_1.12.2:${jeiversion}"
     
 }
 
