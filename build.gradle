@@ -15,13 +15,12 @@ archivesBaseName = "Netherending-Ores"
 
 repositories {
     maven {
-        name = "Progwm16 Maven"
-        url = "http://dvs1.progwml6.com/files/maven"
+        name = "ChickenBones Maven"
+        url = "http://chickenbones.net/maven/"
     }
     maven {
-        // location of a maven mirror for JEI files, as a fallback
-        name = "ModMaven"
-        url = "modmaven.k-4u.nl"
+        name = "Progwm16 Maven"
+        url = "http://dvs1.progwml6.com/files/maven"
     }
     maven {
     name = "CoFH Maven"
@@ -42,9 +41,13 @@ minecraft {
 
 dependencies {
 
-    deobfCompile "cofhcore:CoFHCore-1.12.2:${cofhcoreversion}:universal"
-    deobfCompile "thermal-foundation:ThermalFoundation-1.12.2:${tfversion}:universal"
-    deobfCompile "thermalexpansion:ThermalExpansion-1.12.2:${teversion}:universal"
+    deobfCompile "codechicken:CodeChickenLib:1.12.2-${cclversion}:deobf"
+
+    deobfCompile "cofh:CoFHCore:1.12.2-${ccversion}:universal"
+    deobfCompile "cofh:CoFHWorld:1.12.2-${cwversion}:universal"
+    deobfCompile "cofh:RedstoneFlux:1.12-${rfversion}:universal"
+    deobfCompile "cofh:ThermalFoundation:1.12.2-${tfversion}:universal"
+    deobfCompile "cofh:ThermalExpansion:1.12.2-${teversion}:universal"
 
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantleversion}"
     deobfCompile "slimeknights:TConstruct:1.12.2-${ticversion}"
