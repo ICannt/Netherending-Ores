@@ -41,6 +41,9 @@ minecraft {
 
 dependencies {
 
+    deobfProvided "mezz.jei:jei_1.12.2:${jeiversion}:api"
+    runtime "mezz.jei:jei_1.12.2:${jeiversion}"
+
     deobfCompile "codechicken:CodeChickenLib:1.12.2-${cclversion}:deobf"
 
     deobfCompile "cofh:CoFHCore:1.12.2-${ccversion}:universal"
@@ -52,8 +55,6 @@ dependencies {
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantleversion}"
     deobfCompile "slimeknights:TConstruct:1.12.2-${ticversion}"
     
-    deobfProvided "mezz.jei:jei_1.12.2:${jeiversion}:api"
-    runtime "mezz.jei:jei_1.12.2:${jeiversion}"
     
 }
 

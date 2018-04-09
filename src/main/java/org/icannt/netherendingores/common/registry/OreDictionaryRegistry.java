@@ -2,12 +2,8 @@ package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.Util;
-import org.icannt.netherendingores.common.block.metadata.EnumOreEndModded1Type;
-import org.icannt.netherendingores.common.block.metadata.EnumOreEndVanillaType;
-import org.icannt.netherendingores.common.block.metadata.EnumOreNetherModded1Type;
-import org.icannt.netherendingores.common.block.metadata.EnumOreNetherVanillaType;
-import org.icannt.netherendingores.common.block.metadata.EnumOreOther1Type;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -22,40 +18,17 @@ public class OreDictionaryRegistry {
 	public static void registerDictionaryOres() {
 		
     	NetherendingOres.LOGGER.info("Registering Ore Dictionary Entries");
-
-		// Vanilla Nether Ores
-		for (EnumOreNetherVanillaType variant : EnumOreNetherVanillaType.values()) {
-        	if (variant.getRecipeMultiplier() > 0) {
-        		OreDictionary.registerOre(Util.getOreDictName(variant.getName(), variant.getRecipeMultiplier()), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
-        	}
+    	
+		// Registration of Vanilla items that are not registered :(, purely a guess at what other mods might use
+    	if (OreDictionary.doesOreNameExist("coal") == false) {
+    		OreDictionary.registerOre("coal", new ItemStack(Items.COAL));
     	}
-
-		// Modded Nether Ores 1
-		for (EnumOreNetherModded1Type variant : EnumOreNetherModded1Type.values()) {			
-        	if (variant.getRecipeMultiplier() > 0) {
-        		OreDictionary.registerOre(Util.getOreDictName(variant.getName(), variant.getRecipeMultiplier()), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
-        	}
-		}
-		
-		// Vanilla End Ores
-		for (EnumOreEndVanillaType variant : EnumOreEndVanillaType.values()) {
-        	if (variant.getRecipeMultiplier() > 0) {
-        		OreDictionary.registerOre(Util.getOreDictName(variant.getName(), variant.getRecipeMultiplier()), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
-        	}
-		}		
-		
-		for (EnumOreEndModded1Type variant : EnumOreEndModded1Type.values()) {
-        	if (variant.getRecipeMultiplier() > 0) {
-        		OreDictionary.registerOre(Util.getOreDictName(variant.getName(), variant.getRecipeMultiplier()), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
-        	}
-		}
-		
-		// Other Ores
-		for (EnumOreOther1Type variant : EnumOreOther1Type.values()) {
-        	if (variant.getRecipeMultiplier() > 0) {
-        		OreDictionary.registerOre(Util.getOreDictName(variant.getName(), variant.getRecipeMultiplier()), new ItemStack(variant.getBlockRegistryName(), 1, variant.ordinal()));
-        	}
-		}
+    	
+    	for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
+        	if (blockData.getRecipeMultiplier() > 0) {
+        		OreDictionary.registerOre(Util.getOreDictName(blockData.getName(), blockData.getRecipeMultiplier()), new ItemStack(blockData.getBlock(), 1, blockData.getBlockMeta()));
+        	}    		
+    	}
 		
     	NetherendingOres.LOGGER.info("Registered Ore Dictionary Entries");
 		

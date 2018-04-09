@@ -14,8 +14,6 @@ public class Util {
 		return CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, input);
 	}
 	
-	
-	
 	public static String ColonUnder(String input)
 	{
 		return input.replace(":", "_");
@@ -31,14 +29,27 @@ public class Util {
     	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(name));
     	
     	switch (multiplier) {
-		case 1:	prefix = "ore"; break;
-		case 2:	prefix = "oreNether"; break;
-		case 3: prefix = "denseore";
+			case 1:	prefix = "ore"; break;
+			case 2:	prefix = "oreNether"; break;
+			case 3: prefix = "denseore";
     	}
-
-    	NetherendingOres.LOGGER.info(prefix + ore);
     	
     	return prefix + ore;
+    }
+    
+    public static String getOreDictItemName(String prefix, String name) {
+    	   	
+    	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(name));
+    	
+    	switch (prefix) {
+			case "": prefix = "dust"; break;
+			case "gem": break;
+			default:
+				prefix = "";
+				ore = getRawOreName(name);
+    	}
+    	
+    	return prefix + ore;    	
     }
 	
     public static String getRawOreName(String name) {
@@ -50,6 +61,6 @@ public class Util {
     	}    	
     	
     	return name;
-    }
-
+    }    
+    
 }

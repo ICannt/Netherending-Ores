@@ -80,10 +80,6 @@ public class BlockOreEndModded1 extends BlockVariantBase {
     public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
         return world.getBlockState(pos).getValue(VARIANT).getResistance() / 5F;
     }
-
-    public int getRecipeMultiplier(IBlockState state) {
-    	return state.getValue(VARIANT).getRecipeMultiplier();
-    }
     
     @SideOnly(Side.CLIENT)
     public void initItemBlockModels() {

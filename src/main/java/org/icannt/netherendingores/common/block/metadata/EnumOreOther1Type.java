@@ -1,9 +1,5 @@
 package org.icannt.netherendingores.common.block.metadata;
 
-import org.icannt.netherendingores.NetherendingOres;
-import org.icannt.netherendingores.Util;
-
-import net.minecraft.block.Block;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.IStringSerializable;
 
@@ -12,12 +8,12 @@ import net.minecraft.util.IStringSerializable;
  */
 public enum EnumOreOther1Type implements IStringSerializable {
 	
-    OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreOverworldQuartz", "quartz_ore", "oreQuartz", 1, 0),
-    END_QUARTZ_ORE ("end_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON, "oreEndQuartz", "quartz_ore", "oreQuartz", 1, 0),
-    OVERWORLD_ARDITE_ORE ("overworld_ardite_ore", 0, 4, 10, 50, EnumRarity.COMMON, "oreOverworldArdite", "", "oreArdite", 1, 0),
-    END_ARDITE_ORE ("end_ardite_ore", 0, 0, 10, 50, EnumRarity.COMMON, "oreEndArdite", "", "oreArdite", 1, 0),
-    OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", 0, 4, 10, 50, EnumRarity.COMMON, "oreOverworldCobalt", "", "oreCobalt", 1, 0),
-    END_COBALT_ORE ("end_cobalt_ore", 0, 4, 10, 50, EnumRarity.COMMON, "oreEndCobalt", "", "oreCobalt", 1, 0);
+    OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON),
+    END_QUARTZ_ORE ("end_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON),
+    OVERWORLD_ARDITE_ORE ("overworld_ardite_ore", 0, 4, 10, 50, EnumRarity.COMMON),
+    END_ARDITE_ORE ("end_ardite_ore", 0, 0, 10, 50, EnumRarity.COMMON),
+    OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", 0, 4, 10, 50, EnumRarity.COMMON),
+    END_COBALT_ORE ("end_cobalt_ore", 0, 4, 10, 50, EnumRarity.COMMON);
 
     private String name;
     private int light;
@@ -25,15 +21,8 @@ public enum EnumOreOther1Type implements IStringSerializable {
     private float hardness;
     private float resistance;
     private EnumRarity rarity;
-
-    private String exactOreDict;
-    private String itemOreDict;
-    private String blockOreDict;
-    private int defaultRecipeMultiplier;
-    private int recipeMultiplier;
-
-    EnumOreOther1Type(String name, int light, int harvestLevel, float hardness, float resistance, EnumRarity rarity, 
-    		String exactOreDict, String itemOreDict, String blockOreDict, int defaultRecipeMultiplier, int recipeMultiplier) {
+    
+    EnumOreOther1Type(String name, int light, int harvestLevel, float hardness, float resistance, EnumRarity rarity) {
 
         this.name = name;
         this.light = light;
@@ -41,21 +30,7 @@ public enum EnumOreOther1Type implements IStringSerializable {
         this.hardness = hardness;
         this.resistance = resistance;
         this.rarity = rarity;
-
-        this.exactOreDict = exactOreDict;
-        this.itemOreDict = itemOreDict;
-        this.blockOreDict = blockOreDict;
-        this.defaultRecipeMultiplier = defaultRecipeMultiplier;
-        this.recipeMultiplier = recipeMultiplier;
         
-    }
-
-    public Block getBlockRegistryName() {
-    	return Block.getBlockFromName(NetherendingOres.MOD_ID + ":ore_other_1"); 
-    }
-    
-    public String getRecipeRegistryName() {
-    	return name;
     }
     
     @Override
@@ -81,31 +56,6 @@ public enum EnumOreOther1Type implements IStringSerializable {
     
     public EnumRarity getRarity() {
         return rarity;
-    }
-
-
-    public String getExactOreDict() {
-        return exactOreDict;
-    }
-
-    public String getItemOreDict() {
-        return itemOreDict;
-    }
-
-    public String getBlockOreDict() {
-        return blockOreDict;
-    }
-
-    public int getDefaultRecipeMultiplier() {
-        return defaultRecipeMultiplier;
-    }
-    
-    public int getRecipeMultiplier() {
-        return recipeMultiplier;
-    }
-    
-    public void setRecipeMultiplier(int multiplier) {
-    	this.recipeMultiplier = multiplier;
     }
     
 }

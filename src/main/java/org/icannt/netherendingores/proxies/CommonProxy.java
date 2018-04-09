@@ -5,13 +5,14 @@ import java.io.File;
 import org.icannt.netherendingores.Config;
 import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.registry.RecipeRegistry;
-import org.icannt.netherendingores.interoperability.common.TiCRecipeRegistry;
+import org.icannt.netherendingores.integration.common.CoFHRecipeRegistry;
+import org.icannt.netherendingores.integration.common.TiCRecipeRegistry;
 
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.common.config.Configuration;
 
 /**
  * Created by ICannt on 17/08/17.
@@ -30,6 +31,7 @@ public abstract class CommonProxy {
     public void init(FMLInitializationEvent event) {
     	RecipeRegistry.registerRecipes();
     	TiCRecipeRegistry.registerRecipes();
+    	CoFHRecipeRegistry.registerRecipes();
     }
 
     public void postInit(FMLPostInitializationEvent event) {

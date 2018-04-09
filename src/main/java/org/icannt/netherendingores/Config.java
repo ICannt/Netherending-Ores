@@ -1,10 +1,6 @@
 package org.icannt.netherendingores;
 
-import org.icannt.netherendingores.common.block.metadata.EnumOreEndModded1Type;
-import org.icannt.netherendingores.common.block.metadata.EnumOreEndVanillaType;
-import org.icannt.netherendingores.common.block.metadata.EnumOreNetherModded1Type;
-import org.icannt.netherendingores.common.block.metadata.EnumOreNetherVanillaType;
-import org.icannt.netherendingores.common.block.metadata.EnumOreOther1Type;
+import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
 import org.icannt.netherendingores.proxies.CommonProxy;
 
 import net.minecraftforge.common.config.Configuration;
@@ -37,36 +33,12 @@ public class Config {
     	int multiplier = 0;
     	int minMult = 0;
     	int maxMult = 3;
-    	
-		for (EnumOreNetherVanillaType variant : EnumOreNetherVanillaType.values()) {
-    		multiplier = cfg.getInt(Util.SpaceCapital(variant.getRecipeRegistryName()), CATEGORY_RECIPE_MULTIPLIER, variant.getDefaultRecipeMultiplier(), minMult, maxMult, Util.SpaceCapital(variant.getRecipeRegistryName()));
+
+    	for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
+    		multiplier = cfg.getInt(Util.SpaceCapital(blockData.getName()), CATEGORY_RECIPE_MULTIPLIER, blockData.getDefaultRecipeMultiplier(), minMult, maxMult, Util.SpaceCapital(blockData.getName()));
     		multiplier = Math.min(maxMult, Math.max(minMult, multiplier));
-    		variant.setRecipeMultiplier(multiplier);
+    		blockData.setRecipeMultiplier(multiplier);
 		}
-		
-    	for (EnumOreNetherModded1Type variant : EnumOreNetherModded1Type.values()) {
-    		multiplier = cfg.getInt(Util.SpaceCapital(variant.getRecipeRegistryName()), CATEGORY_RECIPE_MULTIPLIER, variant.getDefaultRecipeMultiplier(), minMult, maxMult, Util.SpaceCapital(variant.getRecipeRegistryName()));
-    		multiplier = Math.min(maxMult, Math.max(minMult, multiplier));
-    		variant.setRecipeMultiplier(multiplier);
-    	}
-    	
-    	for (EnumOreEndVanillaType variant : EnumOreEndVanillaType.values()) {
-    		multiplier = cfg.getInt(Util.SpaceCapital(variant.getRecipeRegistryName()), CATEGORY_RECIPE_MULTIPLIER, variant.getDefaultRecipeMultiplier(), minMult, maxMult, Util.SpaceCapital(variant.getRecipeRegistryName()));
-    		multiplier = Math.min(maxMult, Math.max(minMult, multiplier));
-    		variant.setRecipeMultiplier(multiplier);
-    	}
-    	
-    	for (EnumOreEndModded1Type variant : EnumOreEndModded1Type.values()) {
-    		multiplier = cfg.getInt(Util.SpaceCapital(variant.getRecipeRegistryName()), CATEGORY_RECIPE_MULTIPLIER, variant.getDefaultRecipeMultiplier(), minMult, maxMult, Util.SpaceCapital(variant.getRecipeRegistryName()));
-    		multiplier = Math.min(maxMult, Math.max(minMult, multiplier));
-    		variant.setRecipeMultiplier(multiplier);
-    	}
-    	
-    	for (EnumOreOther1Type variant : EnumOreOther1Type.values()) {
-    		multiplier = cfg.getInt(Util.SpaceCapital(variant.getRecipeRegistryName()), CATEGORY_RECIPE_MULTIPLIER, variant.getDefaultRecipeMultiplier(), minMult, maxMult, Util.SpaceCapital(variant.getRecipeRegistryName()));
-    		multiplier = Math.min(maxMult, Math.max(minMult, multiplier));
-    		variant.setRecipeMultiplier(multiplier);
-    	}
     	
     }
 
