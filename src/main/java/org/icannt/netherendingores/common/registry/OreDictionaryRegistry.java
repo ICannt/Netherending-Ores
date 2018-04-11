@@ -1,10 +1,11 @@
 package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.NetherendingOres;
-import org.icannt.netherendingores.Util;
 
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -14,7 +15,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 @GameRegistry.ObjectHolder(NetherendingOres.MOD_ID)
 public class OreDictionaryRegistry {
-
+ 
 	public static void registerDictionaryOres() {
 		
     	NetherendingOres.LOGGER.info("Registering Ore Dictionary Entries");
@@ -24,9 +25,16 @@ public class OreDictionaryRegistry {
     		OreDictionary.registerOre("coal", new ItemStack(Items.COAL));
     	}
     	
+    	// Registration of Mod items that are not registered, follows usual conventions
+    	if (Loader.isModLoaded("appliedenergistics2")) {
+	    	if (OreDictionary.doesOreNameExist("crystalChargedCertusQuartz") == false) {
+	    		OreDictionary.registerOre("crystalChargedCertusQuartz", new ItemStack(Item.getByNameOrId("appliedenergistics2:material:1")));
+	    	}
+    	}
+    	
     	for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
         	if (blockData.getRecipeMultiplier() > 0) {
-        		OreDictionary.registerOre(Util.getOreDictName(blockData.getName(), blockData.getRecipeMultiplier()), new ItemStack(blockData.getBlock(), 1, blockData.getBlockMeta()));
+        		OreDictionary.registerOre(blockData.getOreDictName(), new ItemStack(blockData.getBlock(), 1, blockData.getBlockMeta()));
         	}    		
     	}
 		

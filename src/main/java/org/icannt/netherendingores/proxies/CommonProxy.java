@@ -5,8 +5,8 @@ import java.io.File;
 import org.icannt.netherendingores.Config;
 import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.registry.RecipeRegistry;
-import org.icannt.netherendingores.integration.common.CoFHRecipeRegistry;
-import org.icannt.netherendingores.integration.common.TiCRecipeRegistry;
+import org.icannt.netherendingores.integration.common.registry.CoFHRecipeRegistry;
+import org.icannt.netherendingores.integration.common.registry.TiCRecipeRegistry;
 
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;

@@ -1,14 +1,10 @@
-package org.icannt.netherendingores.integration.common;
+package org.icannt.netherendingores.integration.common.registry;
 
 import org.icannt.netherendingores.NetherendingOres;
 
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
 /**
- * Created by ICannt on 20/08/17.
+ * Created by ICannt on 02/04/18.
  */
-
-@GameRegistry.ObjectHolder(NetherendingOres.MOD_ID)
 public class TiCRecipeRegistry {
 		
 	public static void registerRecipes() {

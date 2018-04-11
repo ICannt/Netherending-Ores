@@ -23,44 +23,11 @@ public class Util {
 		return WordUtils.capitalize(input.replace("_", " "));
 	}
 	
-    public static String getOreDictName(String name, int multiplier) {
-    	
-    	String prefix = "";
-    	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(name));
-    	
-    	switch (multiplier) {
-			case 1:	prefix = "ore"; break;
-			case 2:	prefix = "oreNether"; break;
-			case 3: prefix = "denseore";
-    	}
-    	
-    	return prefix + ore;
-    }
-    
-    public static String getOreDictItemName(String prefix, String name) {
-    	   	
-    	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(name));
-    	
-    	switch (prefix) {
-			case "": prefix = "dust"; break;
-			case "gem": break;
-			default:
-				prefix = "";
-				ore = getRawOreName(name);
-    	}
-    	
-    	return prefix + ore;    	
-    }
+	public static String UpperCamel(String input)
+	{
+		return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, input);
+	}
 	
-    public static String getRawOreName(String name) {
-    	
-    	String[] words = {"_ore","overworld_","nether_","end_"};
-    	
-    	for(String word : words) {
-    		name = name.replace(word, "");
-    	}    	
-    	
-    	return name;
-    }    
+ 
     
 }
