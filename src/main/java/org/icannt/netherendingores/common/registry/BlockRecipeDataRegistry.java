@@ -81,6 +81,11 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
 		this.recipeMultiplier = recipeMultiplier;
 	}
 	
+    @Override
+    public String getName() {
+        return name;
+    }
+
     public Block getBlock() {
     	return Block.getBlockFromName(NetherendingOres.MOD_ID + ":" + blockName);
     }
@@ -89,13 +94,12 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     	return blockMeta;
     }
     
-    @Override
-    public String getName() {
-        return name;
-    }
-
     public String getItemOreDict() {
         return getOreDictItemName(itemOreDict, name);
+    }
+    
+    public static String getItemOreDict(int index) {
+        return BlockRecipeDataRegistry.values()[index].getItemOreDict();
     }
 
     public int getDefaultRecipeMultiplier() {
@@ -122,6 +126,12 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     	return new ItemStack(getBlock(), 1, blockMeta);
     }
     
+    public static ItemStack getItemStack(int index) {
+    	Block block = BlockRecipeDataRegistry.values()[index].getBlock(); 
+    	int meta = BlockRecipeDataRegistry.values()[index].getBlockMeta();
+    	return new ItemStack(block, 1, meta);
+    }
+    
     /**
      * Returns an Ore Dictionary name based on the defined recipe 
      * multiplier from the config file. Some mods such as
@@ -145,6 +155,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     	return getOreDictPrefixedName(multiplier);
     }
     
+    
     public String getOreDictPrefixedName(int multiplier) {
     	String prefix = "";
 		switch (multiplier) {
@@ -155,7 +166,6 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
 		return prefix + Util.UpperCamel(getRawOreName(name));
     }
     
-
     /**
      * Determines which item prefix to use for grinding machines
      * then adds the ore name to it, blank input equates to "dust".
@@ -163,32 +173,27 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
      * string as the ore name.
      *
      * @param prefix The prefix or full name from the block data table
-     * @param name The ore material that is being dealt with
+     * @param material The ore material that is being dealt with
      * @return The reassembled other mod item name (often a dust)
      */
-    public static String getOreDictItemName(String prefix, String name) {
-    	   	
-    	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(name));
-    	
+    public static String getOreDictItemName(String prefix, String material) {    	   	
+    	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));    	
     	switch (prefix) {
 			case "": prefix = "dust"; break;
 			case "gem": case "crystal": break;
 			default:
 				prefix = "";
-				ore = getRawOreName(name);
-    	}
-    	
+				ore = getRawOreName(material);
+    	}    	
     	return prefix + ore;    	
     }
+    
 	
-    public static String getRawOreName(String ore) {
-    	
-    	String[] words = {"_ore","overworld_","nether_","end_"};
-    	
+    public static String getRawOreName(String ore) {    	
+    	String[] words = {"_ore","overworld_","nether_","end_"};    	
     	for(String word : words) {
     		ore = ore.replace(word, "");
     	}    	
-    	
     	return ore;
     }   
     

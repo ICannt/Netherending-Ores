@@ -1,9 +1,16 @@
 package org.icannt.netherendingores.integration.common.recipedata;
 
+import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
+
+import cofh.thermalexpansion.util.managers.machine.PulverizerManager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.IStringSerializable;
+import net.minecraftforge.oredict.OreDictionary;
+
 /**
  * Created by ICannt on 11/04/18.
  */
-public enum PulverizerRecipe {
+public enum PulvRecipe implements IStringSerializable {
 
     NETHER_COAL_ORE ("nether_coal_ore", 3200, 5, "netherrack", 15, 8000, 4),
     NETHER_DIAMOND_ORE ("nether_diamond_ore", 3200, 5, "netherrack", 15, 8000, 4),
@@ -57,18 +64,78 @@ public enum PulverizerRecipe {
 	private String name;
 	private int pulv2xEnergy;
 	private int pulv2xCount;
-	private String pulv2xSecondaryOut;
+	private String pulv2xSecondaryOutputItem;
 	private int pulv2xSecondaryChance;	
 	private int pulv3xEnergy;
 	private int pulv3xCount;
 	
-	PulverizerRecipe(String name, int pulv2xEnergy, int pulv2xCount, String pulv2xSecondaryOut, int pulv2xSecondaryChance, int pulv3xEnergy, int pulv3xCount) {		
+	PulvRecipe(String name, int pulv2xEnergy, int pulv2xCount, String pulv2xSecondaryOutputItem, int pulv2xSecondaryChance, int pulv3xEnergy, int pulv3xCount) {		
 		this.name = name;
 		this.pulv2xEnergy = pulv2xEnergy;
 		this.pulv2xCount = pulv2xCount;
-		this.pulv2xSecondaryOut = pulv2xSecondaryOut;
+		this.pulv2xSecondaryOutputItem = pulv2xSecondaryOutputItem;
 		this.pulv3xEnergy = pulv3xEnergy;
 		this.pulv3xCount = pulv3xCount;		
+	}
+
+	
+	@Override
+	public String getName() {
+		return name;
+	}
+	
+	
+	public int getPulvEnergyValues(int multiplier) {
+		int energy = 0;
+		switch (multiplier) {
+			case 2:	energy = pulv2xEnergy; break;
+			case 3:	energy = pulv3xEnergy;
+		}
+		return energy;
+	}
+
+	
+    public static int getPulvEnergy(int index, int multiplier) {
+        return PulvRecipe.values()[index].getPulvEnergyValues(multiplier);
+    }
+
+    
+	public int getPulvCountValues(int multiplier) {
+		int count = 0;
+		switch (multiplier) {
+			case 2:	count = pulv2xCount; break;
+			case 3:	count = pulv3xCount;
+		}
+		return count;
 	}	
 	
+	
+    public static int getPulvCount(int index, int multiplier) {
+        return PulvRecipe.values()[index].getPulvEnergyValues(multiplier);
+    }
+	
+    
+	public String getPulvSecondaryOutputItem() {
+		return pulv2xSecondaryOutputItem;
+	}
+	
+	
+	public static ItemStack getPrimaryOutput(int index, int multiplier) {
+		return new ItemStack(OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0).getItem(), multiplier);
+	}
+	
+	
+	public static ItemStack getSecondaryOutput(int index) {
+		return new ItemStack(OreDictionary.getOres(PulvRecipe.values()[index].getPulvSecondaryOutputItem(), false).get(0).getItem(), 1);
+	}
+	
+	
+	public static void getPulvRecipe(int index) {
+		int multiplier = BlockRecipeDataRegistry.values()[index].getRecipeMultiplier();
+		switch (multiplier) {
+			case 2: PulverizerManager.addRecipe(getPulvEnergy(index, multiplier), BlockRecipeDataRegistry.getItemStack(index), getPrimaryOutput(index, multiplier), getSecondaryOutput(index), pulv2xSecondaryChance); break;
+			//case 3: PulverizerManager.addRecipe(getEnergy(multiplier), BlockRecipeDataRegistry.getItemStack(index), getPrimaryOutput(index, multiplier));
+		}
+	}
+
 }
