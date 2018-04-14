@@ -1,5 +1,6 @@
 package org.icannt.netherendingores.integration.common.recipedata;
 
+import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
 
 import cofh.thermalexpansion.util.managers.machine.PulverizerManager;
@@ -65,15 +66,18 @@ public enum PulvRecipe implements IStringSerializable {
 	private int pulv2xEnergy;
 	private int pulv2xCount;
 	private String pulv2xSecondaryOutputItem;
-	private int pulv2xSecondaryChance;	
+	private int pulv2xSecondaryOutputChance;	
 	private int pulv3xEnergy;
 	private int pulv3xCount;
 	
-	PulvRecipe(String name, int pulv2xEnergy, int pulv2xCount, String pulv2xSecondaryOutputItem, int pulv2xSecondaryChance, int pulv3xEnergy, int pulv3xCount) {		
+	private static int debugCounter = 0;
+	
+	PulvRecipe(String name, int pulv2xEnergy, int pulv2xCount, String pulv2xSecondaryOutputItem, int pulv2xSecondaryOutputChance, int pulv3xEnergy, int pulv3xCount) {		
 		this.name = name;
 		this.pulv2xEnergy = pulv2xEnergy;
 		this.pulv2xCount = pulv2xCount;
 		this.pulv2xSecondaryOutputItem = pulv2xSecondaryOutputItem;
+		this.pulv2xSecondaryOutputChance = pulv2xSecondaryOutputChance;
 		this.pulv3xEnergy = pulv3xEnergy;
 		this.pulv3xCount = pulv3xCount;		
 	}
@@ -83,9 +87,14 @@ public enum PulvRecipe implements IStringSerializable {
 	public String getName() {
 		return name;
 	}
+
 	
-	
-	public int getPulvEnergyValues(int multiplier) {
+    public static int getEnergy(int index, int multiplier) {
+        return PulvRecipe.values()[index].getEnergyValue(multiplier);
+    }
+
+    
+	public int getEnergyValue(int multiplier) {
 		int energy = 0;
 		switch (multiplier) {
 			case 2:	energy = pulv2xEnergy; break;
@@ -94,48 +103,70 @@ public enum PulvRecipe implements IStringSerializable {
 		return energy;
 	}
 
-	
-    public static int getPulvEnergy(int index, int multiplier) {
-        return PulvRecipe.values()[index].getPulvEnergyValues(multiplier);
-    }
-
     
-	public int getPulvCountValues(int multiplier) {
+    public static int getCount(int index, int multiplier) {
+        return PulvRecipe.values()[index].getCountValue(multiplier);
+    }
+	
+    
+	public int getCountValue(int multiplier) {
 		int count = 0;
 		switch (multiplier) {
 			case 2:	count = pulv2xCount; break;
 			case 3:	count = pulv3xCount;
 		}
 		return count;
-	}	
+	}
+	
+	// TODO: Does not get metadata assigned to the item to get the correct variant, e.g. all metal dusts are iron, lapis is squid ink etc.	
+	public static ItemStack getPrimaryOutput(int index, int multiplier) {
+		return new ItemStack(OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0).getItem(), getCount(index, multiplier));
+	}
+	
+	// TODO: Does not get metadata assigned to the item to get the correct variant, e.g. all metal dusts are iron, lapis is squid ink etc.
+	public static ItemStack getSecondaryOutput(int index, int multiplier) {
+		return new ItemStack(OreDictionary.getOres(PulvRecipe.values()[index].getSecondaryOutputItem(multiplier), false).get(0).getItem(), 1);
+	}
 	
 	
-    public static int getPulvCount(int index, int multiplier) {
-        return PulvRecipe.values()[index].getPulvEnergyValues(multiplier);
-    }
-	
-    
-	public String getPulvSecondaryOutputItem() {
+	public String getSecondaryOutputItem(int multiplier) {
 		return pulv2xSecondaryOutputItem;
 	}
 	
 	
-	public static ItemStack getPrimaryOutput(int index, int multiplier) {
-		return new ItemStack(OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0).getItem(), multiplier);
+    public static int getSecondaryOutputChance(int index, int multiplier) {
+        return PulvRecipe.values()[index].getSecondaryOutputChanceValue(multiplier);
+    }
+    
+    
+	public int getSecondaryOutputChanceValue(int multiplier) {
+		return pulv2xSecondaryOutputChance;
 	}
 	
-	
-	public static ItemStack getSecondaryOutput(int index) {
-		return new ItemStack(OreDictionary.getOres(PulvRecipe.values()[index].getPulvSecondaryOutputItem(), false).get(0).getItem(), 1);
-	}
-	
-	
+	// TODO: is there a way to avoid ThermaL Expansion automatically doing a reverse lookup on the input? Or is it just a JEI display issue?
 	public static void getPulvRecipe(int index) {
 		int multiplier = BlockRecipeDataRegistry.values()[index].getRecipeMultiplier();
+		recipeDebugger(index, multiplier);
 		switch (multiplier) {
-			case 2: PulverizerManager.addRecipe(getPulvEnergy(index, multiplier), BlockRecipeDataRegistry.getItemStack(index), getPrimaryOutput(index, multiplier), getSecondaryOutput(index), pulv2xSecondaryChance); break;
-			//case 3: PulverizerManager.addRecipe(getEnergy(multiplier), BlockRecipeDataRegistry.getItemStack(index), getPrimaryOutput(index, multiplier));
+			case 2: PulverizerManager.addRecipe(getEnergy(index, multiplier), BlockRecipeDataRegistry.getItemStack(index),
+					getPrimaryOutput(index, multiplier), getSecondaryOutput(index, multiplier), getSecondaryOutputChance(index, multiplier)); break;
+			case 3: PulverizerManager.addRecipe(getEnergy(index, multiplier), BlockRecipeDataRegistry.getItemStack(index), getPrimaryOutput(index, multiplier));
 		}
 	}
 
+	private static void recipeDebugger(int index, int multiplier) {
+		debugCounter ++;
+		String blockName = BlockRecipeDataRegistry.values()[index].getName();
+		NetherendingOres.LOGGER.info("-- Pulv Recipe Debug " + debugCounter + "-- Block Name: " + blockName + " | Index: " + index + " | Recipe Multiplier: " + multiplier);
+		String dlog = "";
+		switch (multiplier) {
+			case 2: dlog = "Energy: " + getEnergy(index, multiplier) + " | Input: " + BlockRecipeDataRegistry.getItemStack(index) +
+					" | Primary Output: " + getPrimaryOutput(index, multiplier) + " | Secondary Output: " + getSecondaryOutput(index, multiplier) +
+					" | Secondary Output Chance: " + getSecondaryOutputChance(index, multiplier) + "%"; break;
+			case 3: dlog = "Energy: " + getEnergy(index, multiplier) + " | Input: " + BlockRecipeDataRegistry.getItemStack(index) +
+					" | Primary Output: " + getPrimaryOutput(index, multiplier);
+		}
+		NetherendingOres.LOGGER.info(dlog);
+	}
+	
 }

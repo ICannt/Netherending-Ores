@@ -14,21 +14,14 @@ import net.minecraftforge.oredict.OreDictionary;
  */
 public class CoFHRecipeRegistry {
 
-	public void registerRecipes() {
+	public static void registerRecipes() {
 
 		NetherendingOres.LOGGER.info("Registering CoFH Recipes");
 		
 		for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
-			for (ItemStack stack : OreDictionary.getOres(blockData.getOreDictName(1)))
-	        {
-				//NetherendingOres.LOGGER.info(blockData.getItemOreDict());
-				if (OreDictionary.doesOreNameExist(blockData.getItemOreDict()) == true) {
-					if (blockData.getRecipeMultiplier() == 2) {
-						//PulvRecipe.getPulvRecipe(blockData.ordinal(), blockData.getRecipeMultiplier());
-						PulvRecipe.getPulvRecipe(1);
-					}
-				}
-	        }
+			if (OreDictionary.doesOreNameExist(blockData.getItemOreDict()) == true && blockData.getRecipeMultiplier() > 1) {
+				PulvRecipe.getPulvRecipe(blockData.ordinal());
+			}
 		}
 
 		NetherendingOres.LOGGER.info("Registered CoFH Recipes");

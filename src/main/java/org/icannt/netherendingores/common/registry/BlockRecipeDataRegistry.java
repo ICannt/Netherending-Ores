@@ -154,7 +154,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     public String getOreDictName(int multiplier) {
     	return getOreDictPrefixedName(multiplier);
     }
-    
+
     
     public String getOreDictPrefixedName(int multiplier) {
     	String prefix = "";
