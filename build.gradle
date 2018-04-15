@@ -44,7 +44,7 @@ dependencies {
     deobfProvided "mezz.jei:jei_1.12.2:${jeiversion}:api"
     runtime "mezz.jei:jei_1.12.2:${jeiversion}"
 
-    deobfCompile "codechicken:CodeChickenLib:1.12.2-${cclversion}:deobf"
+    compile "codechicken:CodeChickenLib:1.12.2-${cclversion}:universal"
 
     deobfCompile "cofh:CoFHCore:1.12.2-${ccversion}:universal"
     deobfCompile "cofh:CoFHWorld:1.12.2-${cwversion}:universal"
