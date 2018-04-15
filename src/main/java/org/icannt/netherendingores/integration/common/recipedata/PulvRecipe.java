@@ -4,6 +4,7 @@ import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
 
 import cofh.thermalexpansion.util.managers.machine.PulverizerManager;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.oredict.OreDictionary;
@@ -118,14 +119,18 @@ public enum PulvRecipe implements IStringSerializable {
 		return count;
 	}
 	
-	// TODO: Does not get metadata assigned to the item to get the correct variant, e.g. all metal dusts are iron, lapis is squid ink etc.	
+	
 	public static ItemStack getPrimaryOutput(int index, int multiplier) {
-		return new ItemStack(OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0).getItem(), getCount(index, multiplier));
+		Item output = OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0).getItem();
+		int meta = OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0).getMetadata();
+		return new ItemStack(output, getCount(index, multiplier), meta);
 	}
 	
-	// TODO: Does not get metadata assigned to the item to get the correct variant, e.g. all metal dusts are iron, lapis is squid ink etc.
+
 	public static ItemStack getSecondaryOutput(int index, int multiplier) {
-		return new ItemStack(OreDictionary.getOres(PulvRecipe.values()[index].getSecondaryOutputItem(multiplier), false).get(0).getItem(), 1);
+		Item output = OreDictionary.getOres(PulvRecipe.values()[index].getSecondaryOutputItem(multiplier), false).get(0).getItem();
+		int meta = OreDictionary.getOres(PulvRecipe.values()[index].getSecondaryOutputItem(multiplier), false).get(0).getMetadata();
+		return new ItemStack(output, 1, meta);
 	}
 	
 	
@@ -143,10 +148,10 @@ public enum PulvRecipe implements IStringSerializable {
 		return pulv2xSecondaryOutputChance;
 	}
 	
-	// TODO: is there a way to avoid ThermaL Expansion automatically doing a reverse lookup on the input? Or is it just a JEI display issue?
+	// TODO: is there a way to avoid ThermaL Expansion automatically doing a reverse oredict lookup on the input?
 	public static void getPulvRecipe(int index) {
 		int multiplier = BlockRecipeDataRegistry.values()[index].getRecipeMultiplier();
-		recipeDebugger(index, multiplier);
+		// recipeDebugger(index, multiplier);
 		switch (multiplier) {
 			case 2: PulverizerManager.addRecipe(getEnergy(index, multiplier), BlockRecipeDataRegistry.getItemStack(index),
 					getPrimaryOutput(index, multiplier), getSecondaryOutput(index, multiplier), getSecondaryOutputChance(index, multiplier)); break;
@@ -154,19 +159,27 @@ public enum PulvRecipe implements IStringSerializable {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void recipeDebugger(int index, int multiplier) {
 		debugCounter ++;
 		String blockName = BlockRecipeDataRegistry.values()[index].getName();
-		NetherendingOres.LOGGER.info("-- Pulv Recipe Debug " + debugCounter + "-- Block Name: " + blockName + " | Index: " + index + " | Recipe Multiplier: " + multiplier);
-		String dlog = "";
+		String log1 = "-- Pulv Recipe Debug " + debugCounter + "-- Block Name: " + blockName + " | Index: " + index + " | Recipe Multiplier: " + multiplier;
+		String log2 = "";
+		String log3 = "OreDict List: " + OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false) + " | OreDict First Entry: " +
+					OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0) +
+					" | OreDict Item: " + OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0).getItem();
 		switch (multiplier) {
-			case 2: dlog = "Energy: " + getEnergy(index, multiplier) + " | Input: " + BlockRecipeDataRegistry.getItemStack(index) +
+			case 2: log2 = "Energy: " + getEnergy(index, multiplier) + " | Input: " + BlockRecipeDataRegistry.getItemStack(index) +
 					" | Primary Output: " + getPrimaryOutput(index, multiplier) + " | Secondary Output: " + getSecondaryOutput(index, multiplier) +
 					" | Secondary Output Chance: " + getSecondaryOutputChance(index, multiplier) + "%"; break;
-			case 3: dlog = "Energy: " + getEnergy(index, multiplier) + " | Input: " + BlockRecipeDataRegistry.getItemStack(index) +
+			case 3: log2 = "Energy: " + getEnergy(index, multiplier) + " | Input: " + BlockRecipeDataRegistry.getItemStack(index) +
 					" | Primary Output: " + getPrimaryOutput(index, multiplier);
 		}
-		NetherendingOres.LOGGER.info(dlog);
+		
+		NetherendingOres.LOGGER.info(log1);
+		NetherendingOres.LOGGER.info(log2);
+		NetherendingOres.LOGGER.info(log3);
+		NetherendingOres.LOGGER.info("");
 	}
 	
 }

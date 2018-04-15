@@ -4,9 +4,6 @@ import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
 import org.icannt.netherendingores.integration.common.recipedata.PulvRecipe;
 
-import cofh.thermalexpansion.util.managers.machine.PulverizerManager;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 /**
