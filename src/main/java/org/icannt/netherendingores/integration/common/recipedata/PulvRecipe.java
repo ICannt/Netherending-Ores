@@ -70,7 +70,6 @@ public enum PulvRecipe implements IStringSerializable {
 	private int pulv3xEnergy;
 	private int pulv3xCount;
 	
-	private static int debugCounter = 0;
 	
 	PulvRecipe(String name, int pulv2xEnergy, int pulv2xCount, String pulv2xSecondaryOutputItem, int pulv2xSecondaryOutputChance, int pulv3xEnergy, int pulv3xCount) {		
 		this.name = name;
@@ -147,7 +146,6 @@ public enum PulvRecipe implements IStringSerializable {
 		return pulv2xSecondaryOutputChance;
 	}
 	
-	// TODO: is there a way to avoid ThermaL Expansion automatically doing a reverse oredict lookup on the input?
 	public static void getPulvRecipe(int index) {
 		int multiplier = BlockRecipeDataRegistry.values()[index].getRecipeMultiplier();
 		switch (multiplier) {

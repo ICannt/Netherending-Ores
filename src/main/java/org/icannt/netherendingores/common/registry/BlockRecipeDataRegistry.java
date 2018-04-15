@@ -2,14 +2,17 @@ package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.Util;
+import org.icannt.netherendingores.integration.common.recipedata.PulvRecipe;
 
 import com.google.common.base.CaseFormat;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * Created by ICannt on 08/04/18.
@@ -89,7 +92,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     public Block getBlock() {
     	return Block.getBlockFromName(NetherendingOres.MOD_ID + ":" + blockName);
     }
-    
+        
     public int getBlockMeta() {
     	return blockMeta;
     }
@@ -114,16 +117,22 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     	this.recipeMultiplier = multiplier;
     }
 	
-    public Ingredient[] getIngredient() {
-		return new Ingredient[]{Ingredient.fromStacks(new ItemStack(getBlock(), 1, blockMeta))};
+    public Ingredient[] getConversionIngredient() {
+		return new Ingredient[]{Ingredient.fromStacks(getItemStack())};
     }
     
     public ResourceLocation getConversionResourceLocation() {
-		return new ResourceLocation(NetherendingOres.MOD_ID + ":" + name + "_to_" + Util.ColonUnder(getItemOreDict()));
+		return new ResourceLocation(NetherendingOres.MOD_ID + ":" + name + "_to_" + Util.LowerUnder(getOreDictName(1)));
     }
     
     public ItemStack getItemStack() {
     	return new ItemStack(getBlock(), 1, blockMeta);
+    }
+    
+    public ItemStack getConversionItemStack() {
+		Item output = OreDictionary.getOres(getOreDictName(1), false).get(0).getItem();
+		int meta = OreDictionary.getOres(getOreDictName(1), false).get(0).getMetadata();
+    	return new ItemStack(output, 1, meta);
     }
     
     public static ItemStack getItemStack(int index) {
@@ -164,7 +173,6 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
 			case 2:	prefix = "ore"; break;
 			case 3: prefix = "denseore";
 		}
-		NetherendingOres.LOGGER.info(ore.replace("_ore", ""));
 		return prefix + Util.UpperCamel(ore.replace("_ore", ""));
     }
         

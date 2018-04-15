@@ -22,8 +22,8 @@ public class RecipeRegistry {
 		ResourceLocation groupName = new ResourceLocation(NetherendingOres.MOD_ID + ":ore_conversions");
 		
 		for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
-        	if (blockData.getRecipeMultiplier() == 1 && blockData.getItemOreDict() != "") {
-				GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(), groupName, new ItemStack(Block.getBlockFromName(blockData.getItemOreDict()), 1), blockData.getIngredient());
+        	if (blockData.getRecipeMultiplier() == 1) {        		
+				GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(), groupName, blockData.getConversionItemStack(), blockData.getConversionIngredient());
 			}	
 	        for (ItemStack stack : OreDictionary.getOres(blockData.getOreDictName(1)))
 	        {
