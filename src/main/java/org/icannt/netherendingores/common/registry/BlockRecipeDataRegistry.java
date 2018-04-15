@@ -154,18 +154,20 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     public String getOreDictName(int multiplier) {
     	return getOreDictPrefixedName(multiplier);
     }
-
+    
     
     public String getOreDictPrefixedName(int multiplier) {
     	String prefix = "";
+		String ore = name;
 		switch (multiplier) {
-			case 1:	prefix = "ore"; break;
-			case 2:	prefix = "oreNether"; break;
+			case 1:	prefix = "ore"; ore = getRawOreName(ore); break;
+			case 2:	prefix = "ore"; break;
 			case 3: prefix = "denseore";
 		}
-		return prefix + Util.UpperCamel(getRawOreName(name));
+		NetherendingOres.LOGGER.info(ore.replace("_ore", ""));
+		return prefix + Util.UpperCamel(ore.replace("_ore", ""));
     }
-    
+        
     /**
      * Determines which item prefix to use for grinding machines
      * then adds the ore name to it, blank input equates to "dust".
@@ -187,7 +189,6 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     	}    	
     	return prefix + ore;    	
     }
-    
 	
     public static String getRawOreName(String ore) {    	
     	String[] words = {"_ore","overworld_","nether_","end_"};    	
@@ -195,6 +196,6 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     		ore = ore.replace(word, "");
     	}    	
     	return ore;
-    }   
+    }
     
 }

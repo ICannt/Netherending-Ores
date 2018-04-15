@@ -1,9 +1,8 @@
 package org.icannt.netherendingores.integration.common.recipedata;
 
-import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
 
-import cofh.thermalexpansion.util.managers.machine.PulverizerManager;
+import cofh.api.util.ThermalExpansionHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
@@ -151,35 +150,11 @@ public enum PulvRecipe implements IStringSerializable {
 	// TODO: is there a way to avoid ThermaL Expansion automatically doing a reverse oredict lookup on the input?
 	public static void getPulvRecipe(int index) {
 		int multiplier = BlockRecipeDataRegistry.values()[index].getRecipeMultiplier();
-		// recipeDebugger(index, multiplier);
 		switch (multiplier) {
-			case 2: PulverizerManager.addRecipe(getEnergy(index, multiplier), BlockRecipeDataRegistry.getItemStack(index),
+			case 2: ThermalExpansionHelper.addPulverizerRecipe(getEnergy(index, multiplier), BlockRecipeDataRegistry.getItemStack(index),
 					getPrimaryOutput(index, multiplier), getSecondaryOutput(index, multiplier), getSecondaryOutputChance(index, multiplier)); break;
-			case 3: PulverizerManager.addRecipe(getEnergy(index, multiplier), BlockRecipeDataRegistry.getItemStack(index), getPrimaryOutput(index, multiplier));
+			case 3: ThermalExpansionHelper.addPulverizerRecipe(getEnergy(index, multiplier), BlockRecipeDataRegistry.getItemStack(index), getPrimaryOutput(index, multiplier));
 		}
-	}
-
-	@SuppressWarnings("unused")
-	private static void recipeDebugger(int index, int multiplier) {
-		debugCounter ++;
-		String blockName = BlockRecipeDataRegistry.values()[index].getName();
-		String log1 = "-- Pulv Recipe Debug " + debugCounter + "-- Block Name: " + blockName + " | Index: " + index + " | Recipe Multiplier: " + multiplier;
-		String log2 = "";
-		String log3 = "OreDict List: " + OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false) + " | OreDict First Entry: " +
-					OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0) +
-					" | OreDict Item: " + OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0).getItem();
-		switch (multiplier) {
-			case 2: log2 = "Energy: " + getEnergy(index, multiplier) + " | Input: " + BlockRecipeDataRegistry.getItemStack(index) +
-					" | Primary Output: " + getPrimaryOutput(index, multiplier) + " | Secondary Output: " + getSecondaryOutput(index, multiplier) +
-					" | Secondary Output Chance: " + getSecondaryOutputChance(index, multiplier) + "%"; break;
-			case 3: log2 = "Energy: " + getEnergy(index, multiplier) + " | Input: " + BlockRecipeDataRegistry.getItemStack(index) +
-					" | Primary Output: " + getPrimaryOutput(index, multiplier);
-		}
-		
-		NetherendingOres.LOGGER.info(log1);
-		NetherendingOres.LOGGER.info(log2);
-		NetherendingOres.LOGGER.info(log3);
-		NetherendingOres.LOGGER.info("");
 	}
 	
 }
