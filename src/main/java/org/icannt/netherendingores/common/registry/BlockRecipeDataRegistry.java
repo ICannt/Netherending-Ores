@@ -129,7 +129,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     	return new ItemStack(getBlock(), 1, blockMeta);
     }
     
-    public ItemStack getConversionItemStack() {
+    public ItemStack getConversionItemStack(ItemStack stack) {
 		Item output = OreDictionary.getOres(getOreDictName(1), false).get(0).getItem();
 		int meta = OreDictionary.getOres(getOreDictName(1), false).get(0).getMetadata();
     	return new ItemStack(output, 1, meta);
