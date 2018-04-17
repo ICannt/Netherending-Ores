@@ -1,8 +1,8 @@
 package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.lib.Util;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -19,7 +19,7 @@ public class RecipeRegistry {
 		
 	public static void registerRecipes() {
 
-		NetherendingOres.LOGGER.info("Registering Recipes");
+		Util.LOG.info("Registering Recipes");
 
 		ResourceLocation groupName = new ResourceLocation(NetherendingOres.MOD_ID + ":ore_conversions");
 
@@ -44,7 +44,7 @@ public class RecipeRegistry {
 	        }
 		}
 		
-		NetherendingOres.LOGGER.info("Registered Recipes");
+		Util.LOG.info("Registered Recipes");
 		
 	}
 }

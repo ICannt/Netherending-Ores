@@ -1,6 +1,9 @@
-package org.icannt.netherendingores;
+package org.icannt.netherendingores.lib;
 
 import org.apache.commons.lang3.text.WordUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.icannt.netherendingores.NetherendingOres;
 
 import com.google.common.base.CaseFormat;
 
@@ -8,6 +11,8 @@ import com.google.common.base.CaseFormat;
  * Created by ICannt on 30/08/18.
  */
 public class Util {
+	
+    public static final Logger LOG = LogManager.getLogger(NetherendingOres.MOD_NAME);
 	
 	public static String LowerUnder(String input)
 	{

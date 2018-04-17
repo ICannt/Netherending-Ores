@@ -1,6 +1,7 @@
 package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.lib.Util;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -18,7 +19,7 @@ public class OreDictionaryRegistry {
  
 	public static void registerDictionaryOres() {
 		
-    	NetherendingOres.LOGGER.info("Registering Ore Dictionary Entries");
+    	Util.LOG.info("Registering Ore Dictionary Entries");
     	
 		// Registration of Vanilla items that are not registered :(, purely a guess at what other mods might use
     	if (OreDictionary.doesOreNameExist("coal") == false) {
@@ -38,7 +39,7 @@ public class OreDictionaryRegistry {
         	}    		
     	}
 		
-    	NetherendingOres.LOGGER.info("Registered Ore Dictionary Entries");
+    	Util.LOG.info("Registered Ore Dictionary Entries");
 		
 	}
 

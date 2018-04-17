@@ -1,8 +1,7 @@
 package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.NetherendingOres;
-import org.icannt.netherendingores.Util;
-import org.icannt.netherendingores.integration.common.recipedata.PulvRecipe;
+import org.icannt.netherendingores.lib.Util;
 
 import com.google.common.base.CaseFormat;
 
@@ -135,6 +134,12 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     	return new ItemStack(output, 1, meta);
     }
     
+    /**
+     * 
+     * 
+     * @param index
+     * @return
+     */
     public static ItemStack getItemStack(int index) {
     	Block block = BlockRecipeDataRegistry.values()[index].getBlock(); 
     	int meta = BlockRecipeDataRegistry.values()[index].getBlockMeta();
@@ -164,7 +169,12 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     	return getOreDictPrefixedName(multiplier);
     }
     
-    
+    /**
+     * The method that returns the correct OreDict prefix
+     * 
+     * @param multiplier
+     * @return
+     */
     public String getOreDictPrefixedName(int multiplier) {
     	String prefix = "";
 		String ore = name;
@@ -198,6 +208,12 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     	return prefix + ore;    	
     }
 	
+    /**
+     * Strips extensions and prefixes from ore enum names
+     * 
+     * @param ore The string name to be stripped
+     * @return The base ore name
+     */
     public static String getRawOreName(String ore) {    	
     	String[] words = {"_ore","overworld_","nether_","end_"};    	
     	for(String word : words) {

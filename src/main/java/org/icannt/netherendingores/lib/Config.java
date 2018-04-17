@@ -1,4 +1,4 @@
-package org.icannt.netherendingores;
+package org.icannt.netherendingores.lib;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
 import org.icannt.netherendingores.proxies.CommonProxy;
@@ -18,7 +18,7 @@ public class Config {
             cfg.load();
             initRecipeMultiplierConfig(cfg);
         } catch (Exception e1) {
-            NetherendingOres.LOGGER.error("Problem loading config file!", e1);
+            Util.LOG.error("Problem loading config file!", e1);
         } finally {
             if (cfg.hasChanged()) {
                 cfg.save();

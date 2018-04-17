@@ -1,7 +1,5 @@
 package org.icannt.netherendingores;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.icannt.netherendingores.proxies.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
@@ -33,8 +31,6 @@ public class NetherendingOres {
     
     @Mod.Instance(MOD_ID)
     public static NetherendingOres instance;
-    
-    public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {

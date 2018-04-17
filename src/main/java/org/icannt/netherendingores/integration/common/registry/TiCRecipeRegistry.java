@@ -1,6 +1,11 @@
 package org.icannt.netherendingores.integration.common.registry;
 
-import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.common.registry.BlockRegistry;
+import org.icannt.netherendingores.lib.Util;
+
+import net.minecraft.item.ItemStack;
+import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.shared.TinkerFluids;
 
 /**
  * Created by ICannt on 02/04/18.
@@ -9,11 +14,11 @@ public class TiCRecipeRegistry {
 		
 	public static void registerRecipes() {
 
-		NetherendingOres.LOGGER.info("Registering Tinkers' Construct Recipes");
+		Util.LOG.info("Registering Tinkers' Construct Recipes");
 		
-		//TinkerRegistry.registerMelting(new ItemStack(BlockRegistry.ORE_NETHER_VANILLA, 1, 4), TinkerFluids.iron, 576);
+		TinkerRegistry.registerMelting(new ItemStack(BlockRegistry.ORE_END_VANILLA, 1, 4), TinkerFluids.iron, 576);
 		
-		NetherendingOres.LOGGER.info("Registered Tinkers' Construct Recipes");
+		Util.LOG.info("Registered Tinkers' Construct Recipes");	
 		
 	}
 }

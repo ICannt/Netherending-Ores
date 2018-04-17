@@ -1,8 +1,8 @@
 package org.icannt.netherendingores.integration.common.registry;
 
-import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
 import org.icannt.netherendingores.integration.common.recipedata.PulvRecipe;
+import org.icannt.netherendingores.lib.Util;
 
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -13,7 +13,7 @@ public class CoFHRecipeRegistry {
 
 	public static void registerRecipes() {
 
-		NetherendingOres.LOGGER.info("Registering CoFH Recipes");
+		Util.LOG.info("Registering CoFH Recipes");
 		
 		for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
 			if (OreDictionary.doesOreNameExist(blockData.getItemOreDict()) == true && blockData.getRecipeMultiplier() > 1) {
@@ -21,7 +21,7 @@ public class CoFHRecipeRegistry {
 			}
 		}
 
-		NetherendingOres.LOGGER.info("Registered CoFH Recipes");
+		Util.LOG.info("Registered CoFH Recipes");
 
 	}	
 }
