@@ -207,7 +207,11 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     	}    	
     	return prefix + ore;    	
     }
-	
+
+    public String getRawOreName() {    	
+    	return getRawOreName(name);
+    }
+    
     /**
      * Strips extensions and prefixes from ore enum names
      * 
@@ -220,6 +224,16 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     		ore = ore.replace(word, "");
     	}    	
     	return ore;
+    }
+    
+    /**
+     * Strips extensions and prefixes from ore enum names
+     * 
+     * @param ore The string name to be stripped
+     * @return The base ore name
+     */
+    public static String getRawOreName(int index) {
+    	return getRawOreName(BlockRecipeDataRegistry.values()[index].getName());
     }
     
 }
