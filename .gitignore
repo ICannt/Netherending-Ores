@@ -57,6 +57,7 @@ Temporary Items
 /eclipse
 #/gradle
 /lib
+/libs
 /libsrc
 /run
 /serverrun

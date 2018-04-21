@@ -16,7 +16,7 @@ public class CoFHRecipeRegistry {
 		Util.LOG.info("Registering CoFH Recipes");
 		
 		for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
-			if (OreDictionary.doesOreNameExist(blockData.getItemOreDict()) == true && blockData.getRecipeMultiplier() > 1) {
+			if (OreDictionary.doesOreNameExist(blockData.getOreDictPulvItem()) == true && blockData.getRecipeMultiplier() > 1) {
 				PulvRecipe.getPulvRecipe(blockData.ordinal());
 			}
 		}

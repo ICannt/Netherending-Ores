@@ -27,11 +27,14 @@ public class OreDictionaryRegistry {
     	}
     	
     	// Registration of Mod items that are not registered, follows usual conventions
+    	// TODO: This fails miserably, needs fixing
+    	/*
     	if (Loader.isModLoaded("appliedenergistics2")) {
 	    	if (OreDictionary.doesOreNameExist("crystalChargedCertusQuartz") == false) {
 	    		OreDictionary.registerOre("crystalChargedCertusQuartz", new ItemStack(Item.getByNameOrId("appliedenergistics2:material:1")));
 	    	}
     	}
+    	*/
     	
     	for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
         	if (blockData.getRecipeMultiplier() > 0) {

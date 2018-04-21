@@ -24,14 +24,14 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     NETHER_GOLD_ORE ("nether_gold_ore", "ore_nether_vanilla", 3, "", 2, 0),
     NETHER_IRON_ORE ("nether_iron_ore", "ore_nether_vanilla", 4, "", 2, 0),
     NETHER_LAPIS_ORE ("nether_lapis_ore", "ore_nether_vanilla", 5, "gem", 2, 0),
-    NETHER_REDSTONE_ORE ("nether_redstone_ore", "ore_nether_vanilla", 6, "", 2, 0),
+    NETHER_REDSTONE_ORE ("nether_redstone_ore", "ore_nether_vanilla", 6, "dust", 2, 0),
     END_COAL_ORE ("end_coal_ore", "ore_end_vanilla", 0, "coal", 2, 0),
     END_DIAMOND_ORE ("end_diamond_ore", "ore_end_vanilla", 1, "gem", 2, 0),
     END_EMERALD_ORE ("end_emerald_ore", "ore_end_vanilla", 2, "gem", 2, 0),
     END_GOLD_ORE ("end_gold_ore", "ore_end_vanilla", 3, "", 2, 0),
     END_IRON_ORE ("end_iron_ore", "ore_end_vanilla", 4, "", 2, 0),
     END_LAPIS_ORE ("end_lapis_ore", "ore_end_vanilla", 5, "gem", 2, 0),
-    END_REDSTONE_ORE ("end_redstone_ore", "ore_end_vanilla", 6, "", 2, 0),
+    END_REDSTONE_ORE ("end_redstone_ore", "ore_end_vanilla", 6, "dust", 2, 0),
     NETHER_ALUMINUM_ORE ("nether_aluminum_ore", "ore_nether_modded_1", 0, "", 2, 0),
     NETHER_COPPER_ORE ("nether_copper_ore", "ore_nether_modded_1", 1, "", 2, 0),
     NETHER_IRIDIUM_ORE ("nether_iridium_ore", "ore_nether_modded_1", 2, "", 2, 0),
@@ -42,7 +42,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     NETHER_SILVER_ORE ("nether_silver_ore", "ore_nether_modded_1", 7, "", 2, 0),
     NETHER_TIN_ORE ("nether_tin_ore", "ore_nether_modded_1", 8, "", 2, 0),
     NETHER_CERTUS_QUARTZ_ORE ("nether_certus_quartz_ore", "ore_nether_modded_1", 9, "", 2, 0),
-    NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", "ore_nether_modded_1", 10, "crystal", 2, 0),
+    NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", "ore_nether_modded_1", 10, "dustCertusQuartz", 2, 0),
     NETHER_OSMIUM_ORE ("nether_osmium_ore", "ore_nether_modded_1", 11, "", 2, 0),
     NETHER_URANIUM_ORE ("nether_uranium_ore", "ore_nether_modded_1", 12, "", 2, 0),
     NETHER_YELLORITE_ORE ("nether_yellorite_ore", "ore_nether_modded_1", 13, "", 2, 0),
@@ -56,7 +56,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     END_SILVER_ORE ("end_silver_ore", "ore_end_modded_1", 7, "", 2, 0),
     END_TIN_ORE ("end_tin_ore", "ore_end_modded_1", 8, "", 2, 0),
     END_CERTUS_QUARTZ_ORE ("end_certus_quartz_ore", "ore_end_modded_1", 9, "", 2, 0),
-    END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", "ore_end_modded_1", 10, "crystal", 2, 0),
+    END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", "ore_end_modded_1", 10, "dustCertusQuartz", 2, 0),
     END_OSMIUM_ORE ("end_osmium_ore", "ore_end_modded_1", 11, "", 2, 0),
     END_URANIUM_ORE ("end_uranium_ore", "ore_end_modded_1", 12, "", 2, 0),
     END_YELLORITE_ORE ("end_yellorite_ore", "ore_end_modded_1", 13, "", 2, 0),
@@ -66,6 +66,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     END_ARDITE_ORE ("end_ardite_ore", "ore_other_1", 3, "", 1, 0),
     OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", "ore_other_1", 4, "", 1, 0),
     END_COBALT_ORE ("end_cobalt_ore", "ore_other_1", 5, "", 1, 0);
+
 
     private String name;
     private String blockName;
@@ -95,13 +96,17 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     public int getBlockMeta() {
     	return blockMeta;
     }
+
+    public String getOreDictFurnaceItem() {
+        return getOreDictFurnaceItemName(itemOreDict, name);
+    }  
     
-    public String getItemOreDict() {
-        return getOreDictItemName(itemOreDict, name);
+    public String getOreDictPulvItem() {
+        return getOreDictPulvItemName(itemOreDict, name);
     }
     
-    public static String getItemOreDict(int index) {
-        return BlockRecipeDataRegistry.values()[index].getItemOreDict();
+    public static String getOreDictPulvItem(int index) {
+        return BlockRecipeDataRegistry.values()[index].getOreDictPulvItem();
     }
 
     public int getDefaultRecipeMultiplier() {
@@ -126,12 +131,6 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     
     public ItemStack getItemStack() {
     	return new ItemStack(getBlock(), 1, blockMeta);
-    }
-    
-    public ItemStack getConversionItemStack(ItemStack stack) {
-		Item output = OreDictionary.getOres(getOreDictName(1), false).get(0).getItem();
-		int meta = OreDictionary.getOres(getOreDictName(1), false).get(0).getMetadata();
-    	return new ItemStack(output, 1, meta);
     }
     
     /**
@@ -175,7 +174,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
      * @param multiplier
      * @return
      */
-    public String getOreDictPrefixedName(int multiplier) {
+    private String getOreDictPrefixedName(int multiplier) {
     	String prefix = "";
 		String ore = name;
 		switch (multiplier) {
@@ -196,7 +195,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
      * @param material The ore material that is being dealt with
      * @return The reassembled other mod item name (often a dust)
      */
-    public static String getOreDictItemName(String prefix, String material) {    	   	
+    private static String getOreDictPulvItemName(String prefix, String material) {    	   	
     	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));    	
     	switch (prefix) {
 			case "": prefix = "dust"; break;
@@ -208,6 +207,28 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     	return prefix + ore;    	
     }
 
+    /**
+     * Determines which item prefix to use for smelting
+     * then adds the ore name to it, blank input equates to "ingot".
+     * Anything else other than "dust", "gem" or "crystal" means use the whole
+     * string as the ore name.
+     *
+     * @param prefix The prefix or full name from the block data table
+     * @param material The ore material that is being dealt with
+     * @return The reassembled other mod item name (often a dust)
+     */
+    private static String getOreDictFurnaceItemName(String prefix, String material) {    	   	
+    	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));    	
+    	switch (prefix) {
+			case "": prefix = "ingot"; break;
+			case "dust": case "gem": case "crystal": break;
+			default:
+				prefix = "";
+				ore = getRawOreName(material);
+    	}    	
+    	return prefix + ore;    	
+    }
+    
     public String getRawOreName() {    	
     	return getRawOreName(name);
     }
@@ -218,11 +239,11 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
      * @param ore The string name to be stripped
      * @return The base ore name
      */
-    public static String getRawOreName(String ore) {    	
+    private static String getRawOreName(String ore) {    	
     	String[] words = {"_ore","overworld_","nether_","end_"};    	
     	for(String word : words) {
     		ore = ore.replace(word, "");
-    	}    	
+    	}
     	return ore;
     }
     
@@ -235,5 +256,12 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     public static String getRawOreName(int index) {
     	return getRawOreName(BlockRecipeDataRegistry.values()[index].getName());
     }
+    
+
+	public ItemStack getFurnaceOutput() {
+		Item output = OreDictionary.getOres(getOreDictFurnaceItem(), false).get(0).getItem();
+		int meta = OreDictionary.getOres(getOreDictFurnaceItem(), false).get(0).getMetadata();
+		return new ItemStack(output, 1, meta);
+	}
     
 }

@@ -119,8 +119,8 @@ public enum PulvRecipe implements IStringSerializable {
 	
 	
 	public static ItemStack getPrimaryOutput(int index, int multiplier) {
-		Item output = OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0).getItem();
-		int meta = OreDictionary.getOres(BlockRecipeDataRegistry.getItemOreDict(index), false).get(0).getMetadata();
+		Item output = OreDictionary.getOres(BlockRecipeDataRegistry.getOreDictPulvItem(index), false).get(0).getItem();
+		int meta = OreDictionary.getOres(BlockRecipeDataRegistry.getOreDictPulvItem(index), false).get(0).getMetadata();
 		return new ItemStack(output, getCount(index, multiplier), meta);
 	}
 	
