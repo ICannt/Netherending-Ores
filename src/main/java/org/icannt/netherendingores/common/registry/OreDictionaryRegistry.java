@@ -4,9 +4,7 @@ import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.lib.Util;
 
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -36,7 +34,7 @@ public class OreDictionaryRegistry {
     	}
     	*/
     	
-    	for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
+    	for (BlockRecipeData blockData : BlockRecipeData.values()) {
         	if (blockData.getRecipeMultiplier() > 0) {
         		OreDictionary.registerOre(blockData.getOreDictName(), new ItemStack(blockData.getBlock(), 1, blockData.getBlockMeta()));
         	}    		

@@ -1,6 +1,6 @@
-package org.icannt.netherendingores.integration.common.recipedata;
+package org.icannt.netherendingores.integration.common.registry.data;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
+import org.icannt.netherendingores.common.registry.BlockRecipeData;
 
 import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 /**
  * Created by ICannt on 19/04/18.
  */
-public enum SmeltRecipe implements IStringSerializable {
+public enum TiCRecipeData implements IStringSerializable {
     NETHER_COAL_ORE ("nether_coal_ore", false, false, 144, 4, 8),
     NETHER_DIAMOND_ORE ("nether_diamond_ore", false, false, 144, 4, 8),
     NETHER_EMERALD_ORE ("nether_emerald_ore", true, true, 666, 4, 8),
@@ -68,7 +68,7 @@ public enum SmeltRecipe implements IStringSerializable {
 	private int smelt3xMultiplier;
 	
 	
-	SmeltRecipe(String name, boolean smeltEnabled, boolean smelt3xRecipeAdd, int smeltmilliBuckets, int smelt2xMultiplier, int smelt3xMultiplier) {		
+	TiCRecipeData(String name, boolean smeltEnabled, boolean smelt3xRecipeAdd, int smeltmilliBuckets, int smelt2xMultiplier, int smelt3xMultiplier) {		
 		this.name = name;
 		this.smelt2xRecipeAdd = smeltEnabled;
 		this.smelt3xRecipeAdd = smelt3xRecipeAdd;
@@ -84,7 +84,7 @@ public enum SmeltRecipe implements IStringSerializable {
 	}
 
 	public static String getName(int index) {
-		return SmeltRecipe.values()[index].getName(); 
+		return TiCRecipeData.values()[index].getName(); 
 	}
 	
 	public boolean getSmeltRecipeAdd(int multiplier) {
@@ -97,7 +97,7 @@ public enum SmeltRecipe implements IStringSerializable {
 	}
 
 	public static boolean getSmeltRecipeAdd(int index, int multiplier) {
-		return SmeltRecipe.values()[index].getSmeltRecipeAdd(multiplier);
+		return TiCRecipeData.values()[index].getSmeltRecipeAdd(multiplier);
 	}
 	
 	public int getMilliBuckets(int multiplier) {
@@ -111,13 +111,13 @@ public enum SmeltRecipe implements IStringSerializable {
 	
 	
 	public static int getMilliBuckets(int index, int multiplier) {
-		return SmeltRecipe.values()[index].getMilliBuckets(multiplier);
+		return TiCRecipeData.values()[index].getMilliBuckets(multiplier);
 	}
 	
 	
 	public static void getSmeltRecipe(int index) {
-		int multiplier = BlockRecipeDataRegistry.values()[index].getRecipeMultiplier();
-		TinkerRegistry.registerMelting(BlockRecipeDataRegistry.getItemStack(index), FluidRegistry.getFluid(BlockRecipeDataRegistry.getRawOreName(index)), getMilliBuckets(index, multiplier));
+		int multiplier = BlockRecipeData.values()[index].getRecipeMultiplier();
+		TinkerRegistry.registerMelting(BlockRecipeData.getItemStack(index), FluidRegistry.getFluid(BlockRecipeData.getRawOreName(index)), getMilliBuckets(index, multiplier));
 	}
 	
 	

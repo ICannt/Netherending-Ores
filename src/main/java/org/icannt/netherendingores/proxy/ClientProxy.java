@@ -1,4 +1,4 @@
-package org.icannt.netherendingores.proxies;
+package org.icannt.netherendingores.proxy;
 
 import org.icannt.netherendingores.common.registry.BlockRegistry;
 

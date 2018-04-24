@@ -1,4 +1,4 @@
-package org.icannt.netherendingores.proxies;
+package org.icannt.netherendingores.proxy;
 
 /**
  * Created by ICannt on 03/09/17.

@@ -4,7 +4,6 @@ import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.lib.Util;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -25,7 +24,7 @@ public class RecipeRegistry {
 		ResourceLocation groupName = new ResourceLocation(NetherendingOres.MOD_ID + ":ore_conversions");
 		
 		// Loop through all blocks in the mod
-		for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
+		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			// Loop through all entries for the specified OreDict name 
 			for (ItemStack stack : OreDictionary.getOres(blockData.getOreDictName(1)))
 			{
@@ -39,7 +38,7 @@ public class RecipeRegistry {
 	        			try {
 	        				OreDictionary.getOres(blockData.getOreDictFurnaceItem(), false).get(0).getItem();
 	        				GameRegistry.addSmelting(blockData.getItemStack(), blockData.getFurnaceOutput(), -1);
-	        			} catch (Exception e1){
+	        			} catch (Exception e1) {
 	        				Util.LOG.warn("Unable to register furnace item output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictFurnaceItem() + "\" not found.");
 	        			}
 		        	}

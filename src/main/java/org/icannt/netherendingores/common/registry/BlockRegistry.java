@@ -92,12 +92,13 @@ public class BlockRegistry {
                 ITEM_BLOCKS.add(iB);
             }
             Util.LOG.info("Registered ItemBlocks");
+            OreDictionaryRegistry.registerDictionaryOres();
         }
         
         @SubscribeEvent
         public static void onEvent(final RegistryEvent.Register<EntityEntry> event) {
         	// This is rather dodgy but at least the oredict is being registered in the preinit phase
-        	OreDictionaryRegistry.registerDictionaryOres();
+        	//OreDictionaryRegistry.registerDictionaryOres();
     	}
 
     }

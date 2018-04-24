@@ -1,6 +1,6 @@
-package org.icannt.netherendingores.integration.common.recipedata;
+package org.icannt.netherendingores.integration.common.registry.data;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
+import org.icannt.netherendingores.common.registry.BlockRecipeData;
 
 import cofh.api.util.ThermalExpansionHelper;
 import net.minecraft.item.Item;
@@ -11,7 +11,7 @@ import net.minecraftforge.oredict.OreDictionary;
 /**
  * Created by ICannt on 11/04/18.
  */
-public enum PulvRecipe implements IStringSerializable {
+public enum TERecipeData implements IStringSerializable {
 
     NETHER_COAL_ORE ("nether_coal_ore", 3200, 5, "netherrack", 15, 8000, 4),
     NETHER_DIAMOND_ORE ("nether_diamond_ore", 3200, 5, "netherrack", 15, 8000, 4),
@@ -71,7 +71,7 @@ public enum PulvRecipe implements IStringSerializable {
 	private int pulv3xCount;
 	
 	
-	PulvRecipe(String name, int pulv2xEnergy, int pulv2xCount, String pulv2xSecondaryOutputItem, int pulv2xSecondaryOutputChance, int pulv3xEnergy, int pulv3xCount) {		
+	TERecipeData(String name, int pulv2xEnergy, int pulv2xCount, String pulv2xSecondaryOutputItem, int pulv2xSecondaryOutputChance, int pulv3xEnergy, int pulv3xCount) {		
 		this.name = name;
 		this.pulv2xEnergy = pulv2xEnergy;
 		this.pulv2xCount = pulv2xCount;
@@ -89,7 +89,7 @@ public enum PulvRecipe implements IStringSerializable {
 
 	
     public static int getEnergy(int index, int multiplier) {
-        return PulvRecipe.values()[index].getEnergyValue(multiplier);
+        return TERecipeData.values()[index].getEnergyValue(multiplier);
     }
 
     
@@ -104,7 +104,7 @@ public enum PulvRecipe implements IStringSerializable {
 
     
     public static int getCount(int index, int multiplier) {
-        return PulvRecipe.values()[index].getCountValue(multiplier);
+        return TERecipeData.values()[index].getCountValue(multiplier);
     }
 	
     
@@ -119,15 +119,15 @@ public enum PulvRecipe implements IStringSerializable {
 	
 	
 	public static ItemStack getPrimaryOutput(int index, int multiplier) {
-		Item output = OreDictionary.getOres(BlockRecipeDataRegistry.getOreDictPulvItem(index), false).get(0).getItem();
-		int meta = OreDictionary.getOres(BlockRecipeDataRegistry.getOreDictPulvItem(index), false).get(0).getMetadata();
+		Item output = OreDictionary.getOres(BlockRecipeData.getOreDictPulvItem(index), false).get(0).getItem();
+		int meta = OreDictionary.getOres(BlockRecipeData.getOreDictPulvItem(index), false).get(0).getMetadata();
 		return new ItemStack(output, getCount(index, multiplier), meta);
 	}
 	
 
 	public static ItemStack getSecondaryOutput(int index, int multiplier) {
-		Item output = OreDictionary.getOres(PulvRecipe.values()[index].getSecondaryOutputItem(multiplier), false).get(0).getItem();
-		int meta = OreDictionary.getOres(PulvRecipe.values()[index].getSecondaryOutputItem(multiplier), false).get(0).getMetadata();
+		Item output = OreDictionary.getOres(TERecipeData.values()[index].getSecondaryOutputItem(multiplier), false).get(0).getItem();
+		int meta = OreDictionary.getOres(TERecipeData.values()[index].getSecondaryOutputItem(multiplier), false).get(0).getMetadata();
 		return new ItemStack(output, 1, meta);
 	}
 	
@@ -138,7 +138,7 @@ public enum PulvRecipe implements IStringSerializable {
 	
 	
     public static int getSecondaryOutputChance(int index, int multiplier) {
-        return PulvRecipe.values()[index].getSecondaryOutputChanceValue(multiplier);
+        return TERecipeData.values()[index].getSecondaryOutputChanceValue(multiplier);
     }
     
     
@@ -147,11 +147,11 @@ public enum PulvRecipe implements IStringSerializable {
 	}
 	
 	public static void getPulvRecipe(int index) {
-		int multiplier = BlockRecipeDataRegistry.values()[index].getRecipeMultiplier();
+		int multiplier = BlockRecipeData.values()[index].getRecipeMultiplier();
 		switch (multiplier) {
-			case 2: ThermalExpansionHelper.addPulverizerRecipe(getEnergy(index, multiplier), BlockRecipeDataRegistry.getItemStack(index),
+			case 2: ThermalExpansionHelper.addPulverizerRecipe(getEnergy(index, multiplier), BlockRecipeData.getItemStack(index),
 					getPrimaryOutput(index, multiplier), getSecondaryOutput(index, multiplier), getSecondaryOutputChance(index, multiplier)); break;
-			case 3: ThermalExpansionHelper.addPulverizerRecipe(getEnergy(index, multiplier), BlockRecipeDataRegistry.getItemStack(index), getPrimaryOutput(index, multiplier));
+			case 3: ThermalExpansionHelper.addPulverizerRecipe(getEnergy(index, multiplier), BlockRecipeData.getItemStack(index), getPrimaryOutput(index, multiplier));
 		}
 	}
 	

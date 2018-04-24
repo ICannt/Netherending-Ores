@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.lib;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
-import org.icannt.netherendingores.proxies.CommonProxy;
+import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.proxy.CommonProxy;
 
 import net.minecraftforge.common.config.Configuration;
 
@@ -31,7 +31,7 @@ public class Config {
     	int multiplier = 0;
     	int minMult = 0;
     	int maxMult = 3;
-    	for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
+    	for (BlockRecipeData blockData : BlockRecipeData.values()) {
     		multiplier = cfg.getInt(Util.SpaceCapital(blockData.getName()), CATEGORY_RECIPE_MULTIPLIER, blockData.getDefaultRecipeMultiplier(), minMult, maxMult, Util.SpaceCapital(blockData.getName()));
     		multiplier = Math.min(maxMult, Math.max(minMult, multiplier));
     		blockData.setRecipeMultiplier(multiplier);

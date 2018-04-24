@@ -16,7 +16,7 @@ import net.minecraftforge.oredict.OreDictionary;
 /**
  * Created by ICannt on 08/04/18.
  */
-public enum BlockRecipeDataRegistry implements IStringSerializable {
+public enum BlockRecipeData implements IStringSerializable {
 
     NETHER_COAL_ORE ("nether_coal_ore", "ore_nether_vanilla", 0, "coal", 2, 0),
     NETHER_DIAMOND_ORE ("nether_diamond_ore", "ore_nether_vanilla", 1, "gem", 2, 0),
@@ -75,7 +75,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     private int defaultRecipeMultiplier;
     private int recipeMultiplier;
 	
-	BlockRecipeDataRegistry(String name, String blockName, int blockMeta, String itemOreDict, int defaultRecipeMultiplier, int recipeMultiplier) {
+	BlockRecipeData(String name, String blockName, int blockMeta, String itemOreDict, int defaultRecipeMultiplier, int recipeMultiplier) {
 		this.name = name;
 		this.blockName = blockName;
 		this.blockMeta = blockMeta;
@@ -106,7 +106,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
     }
     
     public static String getOreDictPulvItem(int index) {
-        return BlockRecipeDataRegistry.values()[index].getOreDictPulvItem();
+        return BlockRecipeData.values()[index].getOreDictPulvItem();
     }
 
     public int getDefaultRecipeMultiplier() {
@@ -140,8 +140,8 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
      * @return
      */
     public static ItemStack getItemStack(int index) {
-    	Block block = BlockRecipeDataRegistry.values()[index].getBlock(); 
-    	int meta = BlockRecipeDataRegistry.values()[index].getBlockMeta();
+    	Block block = BlockRecipeData.values()[index].getBlock(); 
+    	int meta = BlockRecipeData.values()[index].getBlockMeta();
     	return new ItemStack(block, 1, meta);
     }
     
@@ -254,7 +254,7 @@ public enum BlockRecipeDataRegistry implements IStringSerializable {
      * @return The base ore name
      */
     public static String getRawOreName(int index) {
-    	return getRawOreName(BlockRecipeDataRegistry.values()[index].getName());
+    	return getRawOreName(BlockRecipeData.values()[index].getName());
     }
     
 

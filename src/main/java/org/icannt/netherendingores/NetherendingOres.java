@@ -1,6 +1,6 @@
 package org.icannt.netherendingores;
 
-import org.icannt.netherendingores.proxies.CommonProxy;
+import org.icannt.netherendingores.proxy.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 	name = NetherendingOres.MOD_NAME,
 	version = NetherendingOres.VERSION,
 	acceptedMinecraftVersions = "[1.12.2,1.13)",
-	dependencies = "required-after:forge@[14.23.2.2611,);after:mantle@[1.12-1.3.1,);after:tconstruct@[1.12.2-2.9.1,);after:plustic;after:appliedenergistics2;after:mekanism;")
+	dependencies = "required-after:forge@[14.23.2.2611,);after:mantle@[1.12-1.3.1,);after:tconstruct@[1.12.2-2.9.1,);after:plustic;after:appliedenergistics2;before:mekanism;")
 
 public class NetherendingOres {
 
@@ -26,7 +26,7 @@ public class NetherendingOres {
     public static final String VERSION = "1.12.2-1.2";
     public static final String CFG_VERSION = "1.0";
 
-    @SidedProxy(clientSide = "org.icannt.netherendingores.proxies.ClientProxy", serverSide = "org.icannt.netherendingores.proxies.ServerProxy")
+    @SidedProxy(clientSide = "org.icannt.netherendingores.proxy.ClientProxy", serverSide = "org.icannt.netherendingores.proxy.ServerProxy")
     public static CommonProxy proxy;
     
     @Mod.Instance(MOD_ID)

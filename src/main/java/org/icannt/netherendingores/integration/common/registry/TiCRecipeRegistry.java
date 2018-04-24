@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.integration.common.registry;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeDataRegistry;
-import org.icannt.netherendingores.integration.common.recipedata.SmeltRecipe;
+import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.integration.common.registry.data.TiCRecipeData;
 import org.icannt.netherendingores.lib.Util;
 
 import net.minecraftforge.fluids.FluidRegistry;
@@ -15,11 +15,15 @@ public class TiCRecipeRegistry {
 
 		Util.LOG.info("Registering Tinkers' Construct Recipes");
 		
-		for (BlockRecipeDataRegistry blockData : BlockRecipeDataRegistry.values()) {
+		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			// Add smelt recipe if: The recipe is enabled, if the recipe multiplier is greater than 1 and if the target fluid exists.
-			if (SmeltRecipe.getSmeltRecipeAdd(blockData.ordinal(), blockData.getRecipeMultiplier()) == true && blockData.getRecipeMultiplier() > 1 &&
+			if (TiCRecipeData.getSmeltRecipeAdd(blockData.ordinal(), blockData.getRecipeMultiplier()) == true && blockData.getRecipeMultiplier() > 1 &&
 					FluidRegistry.isFluidRegistered(blockData.getRawOreName())) {
-				SmeltRecipe.getSmeltRecipe(blockData.ordinal());
+				try {
+					TiCRecipeData.getSmeltRecipe(blockData.ordinal());
+				} catch (Exception e1) {
+					Util.LOG.warn("Unable to register smeltery output for \"" + blockData.getName() + "\".");
+				}
 			}
 		}
 		

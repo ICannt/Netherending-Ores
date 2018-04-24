@@ -1,16 +1,13 @@
-package org.icannt.netherendingores.proxies;
+package org.icannt.netherendingores.proxy;
 
 import java.io.File;
 
 import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.common.registry.RecipeRegistry;
 import org.icannt.netherendingores.integration.ModRecipeIntegration;
-import org.icannt.netherendingores.integration.common.registry.CoFHRecipeRegistry;
-import org.icannt.netherendingores.integration.common.registry.TiCRecipeRegistry;
 import org.icannt.netherendingores.lib.Config;
 
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
