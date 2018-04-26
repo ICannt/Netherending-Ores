@@ -1,18 +1,18 @@
-### Creative Tab ###
+### Творческая вкладка ###
 itemGroup.netherendingores=Netherending Ores
-tile.netherendingores:creative_tab.name=Creative Tab Block
+tile.netherendingores:creative_tab.name=Творческая вкладка блока
 
 
-# Vanilla Nether Ores
+# Ванильные руды нижнего мира
 tile.netherendingores:ore_nether_vanilla.coal_ore.name=Угольная руда нижнего мира
 tile.netherendingores:ore_nether_vanilla.diamond_ore.name=Алмазная руда нижнего мира
 tile.netherendingores:ore_nether_vanilla.emerald_ore.name=Изумрудная руда нижнего мира
 tile.netherendingores:ore_nether_vanilla.gold_ore.name=Золотая руда нижнего мира
 tile.netherendingores:ore_nether_vanilla.iron_ore.name=Железная руда нижнего мира
 tile.netherendingores:ore_nether_vanilla.lapis_ore.name=Лазуритовая руда нижнего мира
-tile.netherendingores:ore_nether_vanilla.redstone_ore.name=Редстоуновая руда нижнего мира
+tile.netherendingores:ore_nether_vanilla.redstone_ore.name=Красная руда нижнего мира
 
-# Modded Nether Ores 1
+# Модифицированные руды нижнего мира 1
 tile.netherendingores:ore_nether_modded_1.aluminum_ore.name=Алюминиевая руда нижнего мира
 tile.netherendingores:ore_nether_modded_1.copper_ore.name=Медная руда нижнего мира
 tile.netherendingores:ore_nether_modded_1.iridium_ore.name=Иридиевая руда нижнего мира
@@ -22,22 +22,22 @@ tile.netherendingores:ore_nether_modded_1.nickel_ore.name=Никелевая р�
 tile.netherendingores:ore_nether_modded_1.platinum_ore.name=Платиновая руда нижнего мира
 tile.netherendingores:ore_nether_modded_1.silver_ore.name=Серебряная руда нижнего мира
 tile.netherendingores:ore_nether_modded_1.tin_ore.name=Оловянная руда нижнего мира
-tile.netherendingores:ore_nether_modded_1.certus_quartz_ore.name=Истинная кварцевая руда нижнего мира
-tile.netherendingores:ore_nether_modded_1.charged_certus_quartz_ore.name=Заряженная истинная кварцевая руда нижнего мира
+tile.netherendingores:ore_nether_modded_1.certus_quartz_ore.name=Руда истинного кварца нижнего мира
+tile.netherendingores:ore_nether_modded_1.charged_certus_quartz_ore.name=Руда заряженного истинного кварца нижнего мира
 tile.netherendingores:ore_nether_modded_1.osmium_ore.name=Осмиевая руда нижнего мира
 tile.netherendingores:ore_nether_modded_1.uranium_ore.name=Урановая руда нижнего мира
-tile.netherendingores:ore_nether_modded_1.yellorite_ore.name=Елоритовая руда нижнего мира
+tile.netherendingores:ore_nether_modded_1.yellorite_ore.name=Йелоритовая руда нижнего мира
 
-# Vanilla End Ores
+# Ванильные руды края
 tile.netherendingores:ore_end_vanilla.coal_ore.name=Угольная руда края
 tile.netherendingores:ore_end_vanilla.diamond_ore.name=Алмазная руда края
 tile.netherendingores:ore_end_vanilla.emerald_ore.name=Изумрудная руда края
 tile.netherendingores:ore_end_vanilla.gold_ore.name=Золотая руда края
 tile.netherendingores:ore_end_vanilla.iron_ore.name=Железная руда края
 tile.netherendingores:ore_end_vanilla.lapis_ore.name=Лазуритовая руда края
-tile.netherendingores:ore_end_vanilla.redstone_ore.name=Редстоуновая руда края
+tile.netherendingores:ore_end_vanilla.redstone_ore.name=Красная руда края
 
-# Modded End Ores 1
+# Модифицированные руды края 1
 tile.netherendingores:ore_end_modded_1.aluminum_ore.name=Алюминиевая руда края
 tile.netherendingores:ore_end_modded_1.copper_ore.name=Медная руда края
 tile.netherendingores:ore_end_modded_1.iridium_ore.name=Иридиевая руда края
@@ -47,16 +47,16 @@ tile.netherendingores:ore_end_modded_1.nickel_ore.name=Никелевая руд
 tile.netherendingores:ore_end_modded_1.platinum_ore.name=Платиновая руда края
 tile.netherendingores:ore_end_modded_1.silver_ore.name=Серебряная руда края
 tile.netherendingores:ore_end_modded_1.tin_ore.name=Оловянная руда края
-tile.netherendingores:ore_end_modded_1.certus_quartz_ore.name=Истинная кварцевая руда края
-tile.netherendingores:ore_end_modded_1.charged_certus_quartz_ore.name=Заряженная истинная кварцевая руда края
+tile.netherendingores:ore_end_modded_1.certus_quartz_ore.name=Руда истинного кварца края
+tile.netherendingores:ore_end_modded_1.charged_certus_quartz_ore.name=Руда заряженного истинного кварца края
 tile.netherendingores:ore_end_modded_1.osmium_ore.name=Осмиевая руда края
 tile.netherendingores:ore_end_modded_1.uranium_ore.name=Урановая руда края
-tile.netherendingores:ore_end_modded_1.yellorite_ore.name=Елоритовая руда края
+tile.netherendingores:ore_end_modded_1.yellorite_ore.name=Йелоритовая руда края
 
-# Other Ores 1
-tile.netherendingores:ore_other_1.overworld_quartz_ore.name=Кварцевая руда
+# Другие руды 1
+tile.netherendingores:ore_other_1.overworld_quartz_ore.name=Кварцевая руда верхнего мира
 tile.netherendingores:ore_other_1.end_quartz_ore.name=Кварцевая руда края
-tile.netherendingores:ore_other_1.overworld_ardite_ore.name=Ардитовая руда
+tile.netherendingores:ore_other_1.overworld_ardite_ore.name=Ардитовая руда верхнего мира
 tile.netherendingores:ore_other_1.end_ardite_ore.name=Ардитовая руда края
-tile.netherendingores:ore_other_1.overworld_cobalt_ore.name=Кобальтовая руда
+tile.netherendingores:ore_other_1.overworld_cobalt_ore.name=Кобальтовая руда верхнего мира
 tile.netherendingores:ore_other_1.end_cobalt_ore.name=Кобальтовая руда края
