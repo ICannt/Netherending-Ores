@@ -25,28 +25,39 @@ public class RecipeRegistry {
 		
 		// Loop through all blocks in the mod
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
+			
 			// Loop through all entries for the specified OreDict name 
 			for (ItemStack stack : OreDictionary.getOres(blockData.getOreDictName(1)))
 			{
+				
 				// If the mod of the OreDict comparison item is not Netherending Ores then proceed
 				if (!stack.getItem().getRegistryName().getResourceDomain().equals("netherendingores")) {
-					// 1x Multiplier is just a crafting table conversion recipe and smelt to item.
+					
+					// 1x Multiplier is crafting table conversion recipe and smelt to item.
 					// 2x/3x Multipliers are smelted only.
-					// TODO: Check Redstone is now outputting properly
-		        	if (blockData.getRecipeMultiplier() == 1) {		        		
+		        	if (blockData.getRecipeMultiplier() == 1) {
+		        		
+		        		// Conversion Recipe
 	        			GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(), groupName, stack, blockData.getConversionIngredient());
-	        			try {
-	        				OreDictionary.getOres(blockData.getOreDictFurnaceItem(), false).get(0).getItem();
-	        				GameRegistry.addSmelting(blockData.getItemStack(), blockData.getFurnaceOutput(), -1);
-	        			} catch (Exception e1) {
-	        				Util.LOG.warn("Unable to register furnace item output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictFurnaceItem() + "\" not found.");
-	        			}
+	        			
+	        			// Furnace Recipe, only add if the recipe is actually enabled, avoids some oredict issues
+//	        			if (blockData.isSmeltItemEnabled() == true) {
+//		        			try {
+//		        				GameRegistry.addSmelting(blockData.getItemStack(), blockData.getFurnaceOutput(), -1);
+//		        			} catch (Exception e1) {
+//		        				Util.LOG.warn("Unable to register furnace item output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictFurnaceItem() + "\" not found.");
+//		        			}
+//	        			}
+	        			
 		        	}
+		        	
 					if (blockData.getRecipeMultiplier() > 1) {
 						GameRegistry.addSmelting(blockData.getItemStack(), new ItemStack(stack.getItem(), blockData.getRecipeMultiplier(), stack.getMetadata()), 0);
 					}
+					
 					// We only need a single match, no point in adding multiple recipes for different OreDict item results, they often can't be selected. 
 					break;
+					
 				}
 	        }
 		}

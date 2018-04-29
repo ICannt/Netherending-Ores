@@ -4,7 +4,9 @@ import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.lib.Util;
 
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -25,14 +27,17 @@ public class OreDictionaryRegistry {
     	}
     	
     	// Registration of Mod items that are not registered, follows usual conventions
-    	// TODO: This fails miserably, needs fixing
-    	/*
     	if (Loader.isModLoaded("appliedenergistics2")) {
 	    	if (OreDictionary.doesOreNameExist("crystalChargedCertusQuartz") == false) {
-	    		OreDictionary.registerOre("crystalChargedCertusQuartz", new ItemStack(Item.getByNameOrId("appliedenergistics2:material:1")));
+	    		ItemStack newStack = new ItemStack(Item.getByNameOrId("appliedenergistics2:material"), 1, 1);
+	    		if (!newStack.isEmpty()) {
+	    			OreDictionary.registerOre("crystalChargedCertusQuartz", newStack);
+	    			Util.LOG.trace("Ore Dictionary entry for \"crystalChargedCertusQuartz\" added for appliedenergistics2:material:1");
+	    		} else {
+	    			Util.LOG.warn("ItemStack for Charged Certus Quartz is not valid, is Applied Energistics 2 loaded properly?");
+	    		}
 	    	}
     	}
-    	*/
     	
     	for (BlockRecipeData blockData : BlockRecipeData.values()) {
         	if (blockData.getRecipeMultiplier() > 0) {
