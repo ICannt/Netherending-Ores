@@ -2,7 +2,7 @@ package org.icannt.netherendingores.integration.common.registry.data;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 
-import mekanism.common.recipe.RecipeHandler;
+import mekanism.api.MekanismAPI;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
@@ -82,6 +82,7 @@ public enum MekRecipeData implements IStringSerializable {
 	
     
 	public int getCountValue(int multiplier) {
+		// TODO: Mekanism recipes are not oredicted :( . Will need to either get the data from the mod or redo the data
 		int count = 0;
 		switch (multiplier) {
 			case 2:	count = pulv2xCount; break;
@@ -98,8 +99,8 @@ public enum MekRecipeData implements IStringSerializable {
 	
 	public static void getEnrichRecipe(int index) {
 		int multiplier = BlockRecipeData.values()[index].getRecipeMultiplier();
-		// Use the direct class for now, the API is bugged. The API function is MekanismAPI.recipeHelper()
-		RecipeHandler.addEnrichmentChamberRecipe(BlockRecipeData.getItemStack(index), getOutput(index, multiplier));
+		// Using the API class, although it is being registered at the wrong event :(
+		MekanismAPI.recipeHelper().addEnrichmentChamberRecipe(BlockRecipeData.getItemStack(index), getOutput(index, multiplier));
 	}
 
 }

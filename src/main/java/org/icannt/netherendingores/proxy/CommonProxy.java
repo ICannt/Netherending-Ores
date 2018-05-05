@@ -3,8 +3,6 @@ package org.icannt.netherendingores.proxy;
 import java.io.File;
 
 import org.icannt.netherendingores.NetherendingOres;
-import org.icannt.netherendingores.common.registry.RecipeRegistry;
-import org.icannt.netherendingores.integration.ModRecipeIntegration;
 import org.icannt.netherendingores.lib.Config;
 
 import net.minecraftforge.common.config.Configuration;
@@ -28,8 +26,7 @@ public abstract class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
-    	RecipeRegistry.registerRecipes();
-    	ModRecipeIntegration.loadRecipes();
+
     }
 
     public void postInit(FMLPostInitializationEvent event) {
@@ -37,6 +34,5 @@ public abstract class CommonProxy {
             config.save();
         }
     }
-
 
 }

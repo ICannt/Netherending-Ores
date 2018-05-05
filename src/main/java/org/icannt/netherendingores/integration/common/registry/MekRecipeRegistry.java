@@ -16,7 +16,7 @@ public class MekRecipeRegistry {
 		Util.LOG.info("Registering Mekanism Recipes");
 
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-			if (OreDictionary.doesOreNameExist(blockData.getOreDictPulvItem()) == true && blockData.getRecipeMultiplier() > 1) {
+			if (OreDictionary.doesOreNameExist(blockData.getOreDictPulvItem()) == true) {
     			try {
     				MekRecipeData.getEnrichRecipe(blockData.ordinal());
     			} catch (Exception e1) {

@@ -25,7 +25,7 @@ public class TERecipeRegistry {
     			try {
     				TERecipeData.getRedFurnRecipe(blockData.ordinal());
     			} catch (Exception e1) {
-    				Util.LOG.warn("Unable to register redstone furnace item output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictPulvItem() + "\" not found.");
+    				Util.LOG.warn("Unable to register redstone furnace item output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictFurnaceItem() + "\" not found.");
     			}
 			}
 		}

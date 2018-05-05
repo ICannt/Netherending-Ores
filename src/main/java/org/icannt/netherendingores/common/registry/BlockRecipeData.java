@@ -117,7 +117,13 @@ public enum BlockRecipeData implements IStringSerializable {
         return BlockRecipeData.values()[index].getOreDictPulvItem();
     }
 
-    public boolean isSmeltItemEnabled() {
+    public String getItemAltOreDict() {
+    	// TODO: Implement alternate oredict prefixes for mods that often use them i.e. diamond dust for mekanism machines
+    	// Just a stub for now
+		return itemAltOreDict;
+	}
+
+	public boolean isSmeltItemEnabled() {
     	return smeltItemEnabled;
     }
     

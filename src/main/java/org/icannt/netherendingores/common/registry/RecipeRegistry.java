@@ -4,6 +4,7 @@ import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.lib.Util;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -41,18 +42,20 @@ public class RecipeRegistry {
 	        			GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(), groupName, stack, blockData.getConversionIngredient());
 	        			
 	        			// Furnace Recipe, only add if the recipe is actually enabled, avoids some oredict issues
-//	        			if (blockData.isSmeltItemEnabled() == true) {
-//		        			try {
-//		        				GameRegistry.addSmelting(blockData.getItemStack(), blockData.getFurnaceOutput(), -1);
-//		        			} catch (Exception e1) {
-//		        				Util.LOG.warn("Unable to register furnace item output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictFurnaceItem() + "\" not found.");
-//		        			}
-//	        			}
+	        			if (blockData.isSmeltItemEnabled() == true) {
+		        			try {
+		        				// Trying get around issues with the OreDict smelt recipes by skipping over the code that makes it wildcard
+		        				FurnaceRecipes.instance().addSmeltingRecipe(blockData.getItemStack(), blockData.getFurnaceOutput(), -1);
+		        			} catch (Exception e1) {
+		        				Util.LOG.warn("Unable to register furnace item output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictFurnaceItem() + "\" not found.");
+		        			}
+	        			}
 	        			
 		        	}
 		        	
 					if (blockData.getRecipeMultiplier() > 1) {
-						GameRegistry.addSmelting(blockData.getItemStack(), new ItemStack(stack.getItem(), blockData.getRecipeMultiplier(), stack.getMetadata()), 0);
+						// Do the same thing here, skip over the OreDict'd code
+						FurnaceRecipes.instance().addSmeltingRecipe(blockData.getItemStack(), new ItemStack(stack.getItem(), blockData.getRecipeMultiplier(), stack.getMetadata()), 0);
 					}
 					
 					// We only need a single match, no point in adding multiple recipes for different OreDict item results, they often can't be selected. 
