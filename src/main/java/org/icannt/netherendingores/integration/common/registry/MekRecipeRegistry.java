@@ -13,14 +13,15 @@ public class MekRecipeRegistry {
 
 	public static void registerRecipes() {
 	
-		Util.LOG.info("Registering Mekanism Recipes");
+		Util.LOG.debug("Registering Mekanism Recipes");
 
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			if (OreDictionary.doesOreNameExist(blockData.getOreDictPulvItem()) == true) {
     			try {
     				MekRecipeData.getEnrichRecipe(blockData.ordinal());
+    				Util.LOG.trace("Registered enrichment chamber input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictPulvItem() + "\".");
     			} catch (Exception e1) {
-    				Util.LOG.warn("Unable to register enrichment chamber item output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictPulvItem() + "\" not found.");
+    				Util.LOG.warn("Unable to register enrichment chamber output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictPulvItem() + "\" not found.");
     			}
 			}
 		}

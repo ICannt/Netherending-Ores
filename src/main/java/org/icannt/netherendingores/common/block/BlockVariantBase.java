@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.common.block;
 
-import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.client.creativetab.TabNetherendingOres;
+import org.icannt.netherendingores.lib.Info;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
@@ -15,7 +15,7 @@ public class BlockVariantBase extends Block {
 	
     public BlockVariantBase(Material material, MapColor mapColor, String registry) {
         super(material, mapColor);
-        setRegistryName(NetherendingOres.MOD_ID, registry);
+        setRegistryName(Info.MOD_ID, registry);
         setUnlocalizedName(getRegistryName().toString());
         setCreativeTab(TabNetherendingOres.NETHERENDING_ORES_TAB);
     }

@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.common.registry;
 
-import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.lib.Info;
 import org.icannt.netherendingores.lib.Util;
 
 import net.minecraft.item.ItemStack;
@@ -15,14 +15,14 @@ import net.minecraftforge.oredict.OreDictionary;
  * Vanilla recipes go there, mod device recipes have their own classes.
  */
 
-@GameRegistry.ObjectHolder(NetherendingOres.MOD_ID)
+@GameRegistry.ObjectHolder(Info.MOD_ID)
 public class RecipeRegistry {
 		
 	public static void registerRecipes() {
 
-		Util.LOG.info("Registering Recipes");
+		Util.LOG.debug("Registering Recipes");
 
-		ResourceLocation groupName = new ResourceLocation(NetherendingOres.MOD_ID + ":ore_conversions");
+		ResourceLocation groupName = new ResourceLocation(Info.MOD_ID + ":ore_conversions");
 		
 		// Loop through all blocks in the mod
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
@@ -45,9 +45,10 @@ public class RecipeRegistry {
 	        			if (blockData.isSmeltItemEnabled() == true) {
 		        			try {
 		        				// Trying get around issues with the OreDict smelt recipes by skipping over the code that makes it wildcard
-		        				FurnaceRecipes.instance().addSmeltingRecipe(blockData.getItemStack(), blockData.getFurnaceOutput(), -1);
+		        				FurnaceRecipes.instance().addSmeltingRecipe(blockData.getItemStack(), blockData.getOreDictBlockOutput(), -1);
+		        				Util.LOG.trace("Registered furnace input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictFurnaceItem() + "\".");
 		        			} catch (Exception e1) {
-		        				Util.LOG.warn("Unable to register furnace item output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictFurnaceItem() + "\" not found.");
+		        				Util.LOG.warn("Unable to register furnace output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictFurnaceItem() + "\" not found.");
 		        			}
 	        			}
 	        			

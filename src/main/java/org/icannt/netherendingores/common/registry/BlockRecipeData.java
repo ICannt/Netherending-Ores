@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.common.registry;
 
-import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.lib.Info;
 import org.icannt.netherendingores.lib.Util;
 
 import com.google.common.base.CaseFormat;
@@ -18,6 +18,7 @@ import net.minecraftforge.oredict.OreDictionary;
  */
 public enum BlockRecipeData implements IStringSerializable {
 
+	
     NETHER_COAL_ORE ("nether_coal_ore", "ore_nether_vanilla", 0, "coal", "dust", true, 2, 0),
     NETHER_DIAMOND_ORE ("nether_diamond_ore", "ore_nether_vanilla", 1, "gem", "dust", true, 2, 0),
     NETHER_EMERALD_ORE ("nether_emerald_ore", "ore_nether_vanilla", 2, "gem", "", true, 2, 0),
@@ -77,6 +78,7 @@ public enum BlockRecipeData implements IStringSerializable {
     private int defaultRecipeMultiplier;
     private int recipeMultiplier;
 	
+    
 	BlockRecipeData(String name, String blockName, int blockMeta, String itemOreDict, String itemAltOreDict, boolean smeltItemEnabled, int defaultRecipeMultiplier, int recipeMultiplier) {
 		this.name = name;
 		this.blockName = blockName;
@@ -88,68 +90,83 @@ public enum BlockRecipeData implements IStringSerializable {
 		this.recipeMultiplier = recipeMultiplier;
 	}
 	
+	
     @Override
     public String getName() {
         return name;
     }
 
+    
     public Block getBlock() {
-    	return Block.getBlockFromName(NetherendingOres.MOD_ID + ":" + blockName);
+    	return Block.getBlockFromName(Info.MOD_ID + ":" + blockName);
     }
         
+    
     public int getBlockMeta() {
     	return blockMeta;
     }
 
+    
     public String getOreDictFurnaceItem() {
         return getOreDictFurnaceItemName(itemOreDict, name);
     }
     
+    
     public static String getOreDictFurnaceItem(int index) {
-        return BlockRecipeData.values()[index].getOreDictFurnaceItem();
+        return values()[index].getOreDictFurnaceItem();
     }
+    
     
     public String getOreDictPulvItem() {
         return getOreDictPulvItemName(itemOreDict, name);
     }
     
+    
     public static String getOreDictPulvItem(int index) {
-        return BlockRecipeData.values()[index].getOreDictPulvItem();
+        return values()[index].getOreDictPulvItem();
     }
 
+    
     public String getItemAltOreDict() {
     	// TODO: Implement alternate oredict prefixes for mods that often use them i.e. diamond dust for mekanism machines
     	// Just a stub for now
 		return itemAltOreDict;
 	}
 
+    
 	public boolean isSmeltItemEnabled() {
     	return smeltItemEnabled;
     }
     
+	
     public int getDefaultRecipeMultiplier() {
         return defaultRecipeMultiplier;
     }
+    
     
     public int getRecipeMultiplier() {
     	return recipeMultiplier;
     }
 
+    
     public void setRecipeMultiplier(int multiplier) {
     	this.recipeMultiplier = multiplier;
     }
 	
+    
     public Ingredient[] getConversionIngredient() {
 		return new Ingredient[]{Ingredient.fromStacks(getItemStack())};
     }
     
+    
     public ResourceLocation getConversionResourceLocation() {
-		return new ResourceLocation(NetherendingOres.MOD_ID + ":" + name + "_to_" + Util.LowerUnder(getOreDictName(1)));
+		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + Util.LowerUnder(getOreDictName(1)));
     }
+    
     
     public ItemStack getItemStack() {
     	return new ItemStack(getBlock(), 1, blockMeta);
-    }
+    }  
     
     /**
      * 
@@ -158,8 +175,8 @@ public enum BlockRecipeData implements IStringSerializable {
      * @return
      */
     public static ItemStack getItemStack(int index) {
-    	Block block = BlockRecipeData.values()[index].getBlock(); 
-    	int meta = BlockRecipeData.values()[index].getBlockMeta();
+    	Block block = values()[index].getBlock(); 
+    	int meta = values()[index].getBlockMeta();
     	return new ItemStack(block, 1, meta);
     }
     
@@ -216,7 +233,7 @@ public enum BlockRecipeData implements IStringSerializable {
     private static String getOreDictPulvItemName(String prefix, String material) {    	   	
     	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));    	
     	switch (prefix) {
-			case "": prefix = "dust"; break;
+			case "": case "dust": prefix = "dust"; break;
 			case "gem": case "crystal": break;
 			default:
 				prefix = "";
@@ -246,6 +263,7 @@ public enum BlockRecipeData implements IStringSerializable {
     	return prefix + ore;    	
     }
     
+    
     public String getRawOreName() {    	
     	return getRawOreName(name);
     }
@@ -271,14 +289,42 @@ public enum BlockRecipeData implements IStringSerializable {
      * @return The base ore name
      */
     public static String getRawOreName(int index) {
-    	return getRawOreName(BlockRecipeData.values()[index].getName());
+    	return getRawOreName(values()[index].getName());
     }
-    
 
-	public ItemStack getFurnaceOutput() {
-		Item output = OreDictionary.getOres(getOreDictFurnaceItem(), false).get(0).getItem();
-		int meta = OreDictionary.getOres(getOreDictFurnaceItem(), false).get(0).getMetadata();
-		return new ItemStack(output, 1, meta);
+    
+	public ItemStack getOreDictBlockOutput() {
+		return getOreDictBlockOutput(1);
 	}
+    
+	
+	public static ItemStack getOreDictBlockOutput(int index, int amount) {
+		return values()[index].getOreDictBlockOutput(amount);
+	}
+
+	
+	private ItemStack getOreDictBlockOutput(int amount) {
+		Item input = OreDictionary.getOres(getOreDictFurnaceItem(), false).get(0).getItem();
+		int meta = OreDictionary.getOres(getOreDictFurnaceItem(), false).get(0).getMetadata();
+		return new ItemStack(input, amount, meta);
+	}
+	
+	
+	public ItemStack getOreDictItemOutput() {
+		return getOreDictItemOutput(1);
+	}
+	
+	
+	public static ItemStack getOreDictItemOutput(int index, int amount) {
+		return values()[index].getOreDictItemOutput(amount);
+	}
+	
+	
+	private ItemStack getOreDictItemOutput(int amount) {
+		Item input = OreDictionary.getOres(getOreDictPulvItem(), false).get(0).getItem();
+		int meta = OreDictionary.getOres(getOreDictPulvItem(), false).get(0).getMetadata();
+		return new ItemStack(input, amount, meta);
+	}
+
     
 }

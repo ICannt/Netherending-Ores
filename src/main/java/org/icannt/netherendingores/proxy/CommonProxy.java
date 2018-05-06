@@ -2,8 +2,8 @@ package org.icannt.netherendingores.proxy;
 
 import java.io.File;
 
-import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.lib.Config;
+import org.icannt.netherendingores.lib.Info;
 
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -21,7 +21,7 @@ public abstract class CommonProxy {
 	
     public void preInit(FMLPreInitializationEvent event) {    	
         File directory = event.getModConfigurationDirectory();
-        config = new Configuration(new File(directory.getPath(), "Netherending Ores.cfg"), NetherendingOres.CFG_VERSION);
+        config = new Configuration(new File(directory.getPath(), "Netherending Ores.cfg"), Info.CFG_VERSION);
         Config.readConfig();
     }
 

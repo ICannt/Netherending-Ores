@@ -28,12 +28,16 @@ public class Config {
     
     private static void initRecipeMultiplierConfig(Configuration cfg) {    	
     	cfg.addCustomCategoryComment(CATEGORY_RECIPE_MULTIPLIER, "0 = no recipes/oredict; 1 = craft ores that have item drops; 2&3 = smelt to 2x/3x oredict ore");
+    	int override = 2;
     	int multiplier = 0;
     	int minMult = 0;
     	int maxMult = 3;
     	for (BlockRecipeData blockData : BlockRecipeData.values()) {
     		multiplier = cfg.getInt(Util.SpaceCapital(blockData.getName()), CATEGORY_RECIPE_MULTIPLIER, blockData.getDefaultRecipeMultiplier(), minMult, maxMult, Util.SpaceCapital(blockData.getName()));
     		multiplier = Math.min(maxMult, Math.max(minMult, multiplier));
+    		if (override > -1) {
+    			multiplier = Math.min(maxMult, Math.max(minMult, override));
+    		}
     		blockData.setRecipeMultiplier(multiplier);
 		}    	
     }

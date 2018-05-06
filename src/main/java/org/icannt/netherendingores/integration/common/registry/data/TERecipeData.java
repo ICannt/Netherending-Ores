@@ -62,37 +62,38 @@ public enum TERecipeData implements IStringSerializable {
     OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", 9600, 4, "stone", 15, 24000, 4, 4800, 2, 7200, 3),
     END_COBALT_ORE ("end_cobalt_ore", 9600, 4, "endstone", 15, 24000, 4, 4800, 2, 7200, 3);
 
+	
 	private String name;
 	
 	private int pulv2xEnergy;
-	private int pulv2xCount;
+	private int pulv2xAmount;
 	private String pulv2xSecondaryOutputItem;
 	private int pulv2xSecondaryOutputChance;	
 	private int pulv3xEnergy;
-	private int pulv3xCount;
+	private int pulv3xAmount;
 	
 	private int redFurn2xEnergy;
-	private int redFurn2xCount;
+	private int redFurn2xAmount;
 	private int redFurn3xEnergy;
-	private int redFurn3xCount;
+	private int redFurn3xAmount;
 	
 	
-	TERecipeData(String name, int pulv2xEnergy, int pulv2xCount, String pulv2xSecondaryOutputItem, int pulv2xSecondaryOutputChance,
-			int pulv3xEnergy, int pulv3xCount, int redFurn2xEnergy, int redFurn2xCount, int redFurn3xEnergy, int redFurn3xCount) {
+	TERecipeData(String name, int pulv2xEnergy, int pulv2xAmount, String pulv2xSecondaryOutputItem, int pulv2xSecondaryOutputChance,
+			int pulv3xEnergy, int pulv3xAmount, int redFurn2xEnergy, int redFurn2xAmount, int redFurn3xEnergy, int redFurn3xAmount) {
 		
 		this.name = name;
 		
 		this.pulv2xEnergy = pulv2xEnergy;
-		this.pulv2xCount = pulv2xCount;
+		this.pulv2xAmount = pulv2xAmount;
 		this.pulv2xSecondaryOutputItem = pulv2xSecondaryOutputItem;
 		this.pulv2xSecondaryOutputChance = pulv2xSecondaryOutputChance;
 		this.pulv3xEnergy = pulv3xEnergy;
-		this.pulv3xCount = pulv3xCount;
+		this.pulv3xAmount = pulv3xAmount;
 		
 		this.redFurn2xEnergy = redFurn2xEnergy;
-		this.redFurn2xCount = redFurn2xCount;
+		this.redFurn2xAmount = redFurn2xAmount;
 		this.redFurn3xEnergy = redFurn3xEnergy;
-		this.redFurn3xCount = redFurn3xCount;
+		this.redFurn3xAmount = redFurn3xAmount;
 		
 	}
 
@@ -113,21 +114,21 @@ public enum TERecipeData implements IStringSerializable {
 
 	
     public static int getPulvEnergy(int index, int multiplier) {
-        return TERecipeData.values()[index].getPulvEnergy(multiplier);
+        return values()[index].getPulvEnergy(multiplier);
     }
     
     
-	public int getPulvCount(int multiplier) {
+	public int getPulvAmount(int multiplier) {
 		switch (multiplier) {
-			case 2:	return pulv2xCount;
-			case 3:	return pulv3xCount;
+			case 2:	return pulv2xAmount;
+			case 3:	return pulv3xAmount;
 		}
 		return 0;
 	}
 	
 	
-    public static int getPulvCount(int index, int multiplier) {
-        return TERecipeData.values()[index].getPulvCount(multiplier);
+    public static int getPulvAmount(int index, int multiplier) {
+        return values()[index].getPulvAmount(multiplier);
     }
     
 	
@@ -142,20 +143,20 @@ public enum TERecipeData implements IStringSerializable {
 	
 	
     public static int getPulvSecondaryOutputChance(int index, int multiplier) {
-        return TERecipeData.values()[index].getSecondaryOutputChance(multiplier);
+        return values()[index].getSecondaryOutputChance(multiplier);
     }
     
 	
 	public static ItemStack getPulvPrimaryOutput(int index, int multiplier) {
 		Item output = OreDictionary.getOres(BlockRecipeData.getOreDictPulvItem(index), false).get(0).getItem();
 		int meta = OreDictionary.getOres(BlockRecipeData.getOreDictPulvItem(index), false).get(0).getMetadata();
-		return new ItemStack(output, getPulvCount(index, multiplier), meta);
+		return new ItemStack(output, getPulvAmount(index, multiplier), meta);
 	}
 		
 	
 	public static ItemStack getPulvSecondaryOutput(int index, int multiplier) {
-		Item output = OreDictionary.getOres(TERecipeData.values()[index].getSecondaryOutputItem(multiplier), false).get(0).getItem();
-		int meta = OreDictionary.getOres(TERecipeData.values()[index].getSecondaryOutputItem(multiplier), false).get(0).getMetadata();
+		Item output = OreDictionary.getOres(values()[index].getSecondaryOutputItem(multiplier), false).get(0).getItem();
+		int meta = OreDictionary.getOres(values()[index].getSecondaryOutputItem(multiplier), false).get(0).getMetadata();
 		return new ItemStack(output, 1, meta);
 	}
 	
@@ -170,28 +171,28 @@ public enum TERecipeData implements IStringSerializable {
 
 	
     public static int getRedFurnEnergy(int index, int multiplier) {
-        return TERecipeData.values()[index].getRedFurnEnergy(multiplier);
+        return values()[index].getRedFurnEnergy(multiplier);
     }
     
     
-	public int getRedFurnCount(int multiplier) {
+	public int getRedFurnAmount(int multiplier) {
 		switch (multiplier) {
-			case 2:	return redFurn2xCount;
-			case 3:	return redFurn3xCount;
+			case 2:	return redFurn2xAmount;
+			case 3:	return redFurn3xAmount;
 		}
 		return 0;
 	}
 	
 	
-    public static int getRedFurnCount(int index, int multiplier) {
-        return TERecipeData.values()[index].getRedFurnCount(multiplier);
+    public static int getRedFurnAmount(int index, int multiplier) {
+        return values()[index].getRedFurnAmount(multiplier);
     }
 	
 	
 	public static ItemStack getRedFurnOutput(int index, int multiplier) {
 		Item output = OreDictionary.getOres(BlockRecipeData.getOreDictFurnaceItem(index), false).get(0).getItem();
 		int meta = OreDictionary.getOres(BlockRecipeData.getOreDictFurnaceItem(index), false).get(0).getMetadata();
-		return new ItemStack(output, getPulvCount(index, multiplier), meta);
+		return new ItemStack(output, getPulvAmount(index, multiplier), meta);
 	}
 	
 	
@@ -204,8 +205,7 @@ public enum TERecipeData implements IStringSerializable {
 		int multiplier = getMultiplier(index);
 		switch (multiplier) {
 			case 2: ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(index, multiplier), BlockRecipeData.getItemStack(index),
-					getPulvPrimaryOutput(index, multiplier), getPulvSecondaryOutput(index, multiplier), getPulvSecondaryOutputChance(index, multiplier));
-					break;
+					getPulvPrimaryOutput(index, multiplier), getPulvSecondaryOutput(index, multiplier), getPulvSecondaryOutputChance(index, multiplier)); break;
 			case 3: ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(index, multiplier), BlockRecipeData.getItemStack(index), getPulvPrimaryOutput(index, multiplier));
 		}
 	}

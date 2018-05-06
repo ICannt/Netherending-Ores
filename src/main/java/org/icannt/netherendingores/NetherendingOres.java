@@ -1,6 +1,7 @@
 package org.icannt.netherendingores;
 
 import org.icannt.netherendingores.proxy.CommonProxy;
+import org.icannt.netherendingores.lib.Info;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -14,23 +15,18 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  */
 
 // TODO: A version check will need to be implemented for Mekanism to prevent crashing when using the recipe API
-@Mod(modid = NetherendingOres.MOD_ID,
-	name = NetherendingOres.MOD_NAME,
-	version = NetherendingOres.VERSION,
-	acceptedMinecraftVersions = "[1.12.2,1.13)",
-	dependencies = "required-after:forge@[14.23.2.2611,);after:mantle@[1.12-1.3.1,);after:tconstruct@[1.12.2-2.9.1,);after:plustic;after:appliedenergistics2;after:mekanism;")
+@Mod(modid = Info.MOD_ID,
+	name = Info.MOD_NAME,
+	version = Info.VERSION,
+	acceptedMinecraftVersions = Info.MC_VERSIONS,
+	dependencies = Info.DEPENDENCIES)
 
 public class NetherendingOres {
 
-    public static final String MOD_ID = "netherendingores";
-    public static final String MOD_NAME = "Netherending Ores";
-    public static final String VERSION = "1.12.2-1.2";
-    public static final String CFG_VERSION = "1.0";
-
-    @SidedProxy(clientSide = "org.icannt.netherendingores.proxy.ClientProxy", serverSide = "org.icannt.netherendingores.proxy.ServerProxy")
+    @SidedProxy(clientSide = Info.CLIENT_PROXY, serverSide = Info.SERVER_PROXY)
     public static CommonProxy proxy;
     
-    @Mod.Instance(MOD_ID)
+    @Mod.Instance(Info.MOD_ID)
     public static NetherendingOres instance;
 
     @EventHandler

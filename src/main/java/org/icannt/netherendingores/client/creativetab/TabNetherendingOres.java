@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.client.creativetab;
 
-import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.lib.Info;
 import org.icannt.netherendingores.common.registry.BlockRegistry;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,7 +15,7 @@ public class TabNetherendingOres extends CreativeTabs {
     public static final TabNetherendingOres NETHERENDING_ORES_TAB = new TabNetherendingOres();
 
     public TabNetherendingOres() {
-        super(NetherendingOres.MOD_ID);
+        super(Info.MOD_ID);
     }
 
     @Override

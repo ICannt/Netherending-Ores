@@ -3,7 +3,6 @@ package org.icannt.netherendingores.common.registry;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.icannt.netherendingores.NetherendingOres;
 import org.icannt.netherendingores.client.block.ItemBlockBasic;
 import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreModded1;
 import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreOther1;
@@ -15,6 +14,7 @@ import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreOther1;
 import org.icannt.netherendingores.lib.Util;
+import org.icannt.netherendingores.lib.Info;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -31,7 +31,7 @@ import net.minecraftforge.registries.IForgeRegistry;
  * Created by ICannt on 17/08/17.
  */
 
-@GameRegistry.ObjectHolder(NetherendingOres.MOD_ID)
+@GameRegistry.ObjectHolder(Info.MOD_ID)
 public class BlockRegistry {
 
 	@GameRegistry.ObjectHolder("creative_tab")
@@ -77,7 +77,7 @@ public class BlockRegistry {
         @SubscribeEvent
         public static void registerBlocks(RegistryEvent.Register<Block> event) {
         	
-        	Util.LOG.info("Registering Blocks");
+        	Util.LOG.debug("Registering Blocks");
         	
             final IForgeRegistry<Block> registry = event.getRegistry();
             registry.registerAll(blocks);
@@ -89,7 +89,7 @@ public class BlockRegistry {
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
         	
-        	Util.LOG.info("Registering ItemBlocks");
+        	Util.LOG.debug("Registering ItemBlocks");
         	
             final IForgeRegistry<Item> registry = event.getRegistry();
             for (ItemBlock iB : itemBlocks) {

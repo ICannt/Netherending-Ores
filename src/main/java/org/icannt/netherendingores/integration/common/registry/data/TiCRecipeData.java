@@ -102,12 +102,12 @@ public enum TiCRecipeData implements IStringSerializable {
 	}
 	
 	public int getMilliBuckets(int multiplier) {
-		int count = 0;
+		int amount = 0;
 		switch (multiplier) {
-			case 2:	count = smelt2xMultiplier; break;
-			case 3:	count = smelt3xMultiplier;
+			case 2:	amount = smelt2xMultiplier; break;
+			case 3:	amount = smelt3xMultiplier;
 		}
-		return count * smeltmilliBuckets;
+		return amount * smeltmilliBuckets;
 	}
 	
 	

@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.common.block;
 
-import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.lib.Info;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -17,7 +17,7 @@ public class BlockCreativeTab extends Block {
 
     public BlockCreativeTab() {
         super(Material.ROCK);
-        setRegistryName(NetherendingOres.MOD_ID, "creative_tab");
+        setRegistryName(Info.MOD_ID, "creative_tab");
         setUnlocalizedName(getRegistryName().toString());
     }
     
