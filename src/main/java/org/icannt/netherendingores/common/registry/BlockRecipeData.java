@@ -107,23 +107,23 @@ public enum BlockRecipeData implements IStringSerializable {
     }
 
     
-    public String getOreDictFurnaceItem() {
-        return getOreDictFurnaceItemName(itemOreDict, name);
+    public String getOreDictSmeltItemName() {
+        return getOreDictSmeltItemName(itemOreDict, name);
     }
     
     
-    public static String getOreDictFurnaceItem(int index) {
-        return values()[index].getOreDictFurnaceItem();
+    public static String getOreDictSmeltItemName(int index) {
+        return values()[index].getOreDictSmeltItemName();
     }
     
     
-    public String getOreDictPulvItem() {
-        return getOreDictPulvItemName(itemOreDict, name);
+    public String getOreDictCrushItemName() {
+        return getOreDictCrushItemName(itemOreDict, name);
     }
     
     
-    public static String getOreDictPulvItem(int index) {
-        return values()[index].getOreDictPulvItem();
+    public static String getOreDictCrushItemName(int index) {
+        return values()[index].getOreDictCrushItemName();
     }
 
     
@@ -163,16 +163,21 @@ public enum BlockRecipeData implements IStringSerializable {
 		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + Util.LowerUnder(getOreDictName(1)));
     }
     
-    
+    /**
+     * Returns an ItemStack of the requested mod block.
+     * 
+     * @return      Mod Block ItemStack
+     */
     public ItemStack getItemStack() {
     	return new ItemStack(getBlock(), 1, blockMeta);
     }  
     
     /**
+     * Returns an ItemStack of the requested mod block.
+     * Has a callable parameter.
      * 
-     * 
-     * @param index
-     * @return
+     * @param       index Enum value number
+     * @return      Mod Block ItemStack
      */
     public static ItemStack getItemStack(int index) {
     	Block block = values()[index].getBlock(); 
@@ -186,7 +191,7 @@ public enum BlockRecipeData implements IStringSerializable {
      * Tinkers' Construct use the "oreNether" and "denseore"
      * prefixes to add additional recipes for 2x/3x output.
      *
-     * @return      The reassembled mod ore block name
+     * @return The reassembled mod ore block name
      */
     public String getOreDictName() {
     	return getOreDictPrefixedName(recipeMultiplier);
@@ -201,13 +206,13 @@ public enum BlockRecipeData implements IStringSerializable {
      */
     public String getOreDictName(int multiplier) {
     	return getOreDictPrefixedName(multiplier);
-    }
+    } 
     
     /**
      * The method that returns the correct OreDict prefix
      * 
-     * @param multiplier
-     * @return
+     * @param       multiplier The Recipe Multiplier
+     * @return      The prefixed OreDict name
      */
     private String getOreDictPrefixedName(int multiplier) {
     	String prefix = "";
@@ -226,11 +231,11 @@ public enum BlockRecipeData implements IStringSerializable {
      * Anything else other than "gem" or "crystal" means use the whole
      * string as the ore name.
      *
-     * @param prefix The prefix or full name from the block data table
-     * @param material The ore material that is being dealt with
-     * @return The reassembled other mod item name (often a dust)
+     * @param       prefix The prefix or full name from the block data table
+     * @param       material The ore material that is being dealt with
+     * @return      The reassembled other mod item name (often a dust)
      */
-    private static String getOreDictPulvItemName(String prefix, String material) {    	   	
+    private static String getOreDictCrushItemName(String prefix, String material) {    	   	
     	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));    	
     	switch (prefix) {
 			case "": case "dust": prefix = "dust"; break;
@@ -248,11 +253,11 @@ public enum BlockRecipeData implements IStringSerializable {
      * Anything else other than "dust", "gem" or "crystal" means use the whole
      * string as the ore name.
      *
-     * @param prefix The prefix or full name from the block data table
-     * @param material The ore material that is being dealt with
-     * @return The reassembled other mod item name (often a dust)
+     * @param       prefix The prefix or full name from the block data table
+     * @param       material The ore material that is being dealt with
+     * @return      The reassembled other mod item name (often a dust)
      */
-    private static String getOreDictFurnaceItemName(String prefix, String material) {    	   	
+    private static String getOreDictSmeltItemName(String prefix, String material) {    	   	
     	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));
     	switch (prefix) {
 			case "": prefix = "ingot"; break;
@@ -263,16 +268,32 @@ public enum BlockRecipeData implements IStringSerializable {
     	return prefix + ore;    	
     }
     
-    
+    /**
+     * If called within context, it just passes the ore name
+     * to the static version to strip the name.
+     * 
+     * @return      The stripped raw ore name
+     */
     public String getRawOreName() {    	
     	return getRawOreName(name);
     }
     
     /**
+     * Just passes the ore name to the string parameter version,
+     * that actually does the work.
+     * 
+     * @param       index Enum value number
+     * @return      The stripped raw ore name
+     */
+    public static String getRawOreName(int index) {
+    	return getRawOreName(values()[index].getName());
+    }
+    
+    /**
      * Strips extensions and prefixes from ore enum names
      * 
-     * @param ore The string name to be stripped
-     * @return The base ore name
+     * @param       ore The string name to be stripped
+     * @return      The base ore name
      */
     private static String getRawOreName(String ore) {    	
     	String[] words = {"_ore","overworld_","nether_","end_"};    	
@@ -281,48 +302,55 @@ public enum BlockRecipeData implements IStringSerializable {
     	}
     	return ore;
     }
-    
-    /**
-     * Strips extensions and prefixes from ore enum names
-     * 
-     * @param ore The string name to be stripped
-     * @return The base ore name
-     */
-    public static String getRawOreName(int index) {
-    	return getRawOreName(values()[index].getName());
-    }
 
     
-	public ItemStack getOreDictBlockOutput() {
-		return getOreDictBlockOutput(1);
+	public ItemStack getOreDictBlockItemStack() {
+		return getOreDictSmeltItemStack(1);
 	}
     
 	
-	public static ItemStack getOreDictBlockOutput(int index, int amount) {
-		return values()[index].getOreDictBlockOutput(amount);
+	public static ItemStack getOreDictBlockItemStack(int index, int amount) {
+		return values()[index].getOreDictSmeltItemStack(amount);
 	}
 
 	
-	private ItemStack getOreDictBlockOutput(int amount) {
-		Item input = OreDictionary.getOres(getOreDictFurnaceItem(), false).get(0).getItem();
-		int meta = OreDictionary.getOres(getOreDictFurnaceItem(), false).get(0).getMetadata();
+	private ItemStack getOreDictBlockItemStack(int amount) {
+		Item input = OreDictionary.getOres(getOreDictName(1), false).get(0).getItem();
+		int meta = OreDictionary.getOres(getOreDictName(1), false).get(0).getMetadata();
+		return new ItemStack(input, amount, meta);
+	}
+	
+    
+	public ItemStack getOreDictSmeltItemStack() {
+		return getOreDictSmeltItemStack(1);
+	}
+    
+	
+	public static ItemStack getOreDictSmeltItemStack(int index, int amount) {
+		return values()[index].getOreDictSmeltItemStack(amount);
+	}
+
+	
+	private ItemStack getOreDictSmeltItemStack(int amount) {
+		Item input = OreDictionary.getOres(getOreDictSmeltItemName(), false).get(0).getItem();
+		int meta = OreDictionary.getOres(getOreDictSmeltItemName(), false).get(0).getMetadata();
 		return new ItemStack(input, amount, meta);
 	}
 	
 	
-	public ItemStack getOreDictItemOutput() {
-		return getOreDictItemOutput(1);
+	public ItemStack getOreDictCrushItemStack() {
+		return getOreDictCrushItemStack(1);
 	}
 	
 	
-	public static ItemStack getOreDictItemOutput(int index, int amount) {
-		return values()[index].getOreDictItemOutput(amount);
+	public static ItemStack getOreDictCrushItemStack(int index, int amount) {
+		return values()[index].getOreDictCrushItemStack(amount);
 	}
 	
 	
-	private ItemStack getOreDictItemOutput(int amount) {
-		Item input = OreDictionary.getOres(getOreDictPulvItem(), false).get(0).getItem();
-		int meta = OreDictionary.getOres(getOreDictPulvItem(), false).get(0).getMetadata();
+	private ItemStack getOreDictCrushItemStack(int amount) {
+		Item input = OreDictionary.getOres(getOreDictCrushItemName(), false).get(0).getItem();
+		int meta = OreDictionary.getOres(getOreDictCrushItemName(), false).get(0).getMetadata();
 		return new ItemStack(input, amount, meta);
 	}
 

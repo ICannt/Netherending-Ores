@@ -132,32 +132,32 @@ public enum TERecipeData implements IStringSerializable {
     }
     
 	
-	public String getSecondaryOutputItem(int multiplier) {
+	public String getPulvSecondaryOutputItem(int multiplier) {
 		return pulv2xSecondaryOutputItem;
 	}
 	
 	
-	public int getSecondaryOutputChance(int multiplier) {
+	public int getPulvSecondaryOutputChance(int multiplier) {
 		return pulv2xSecondaryOutputChance;
 	}
 	
 	
     public static int getPulvSecondaryOutputChance(int index, int multiplier) {
-        return values()[index].getSecondaryOutputChance(multiplier);
+        return values()[index].getPulvSecondaryOutputChance(multiplier);
     }
-    
+    	
 	
-	public static ItemStack getPulvPrimaryOutput(int index, int multiplier) {
-		Item output = OreDictionary.getOres(BlockRecipeData.getOreDictPulvItem(index), false).get(0).getItem();
-		int meta = OreDictionary.getOres(BlockRecipeData.getOreDictPulvItem(index), false).get(0).getMetadata();
-		return new ItemStack(output, getPulvAmount(index, multiplier), meta);
-	}
-		
-	
-	public static ItemStack getPulvSecondaryOutput(int index, int multiplier) {
-		Item output = OreDictionary.getOres(values()[index].getSecondaryOutputItem(multiplier), false).get(0).getItem();
-		int meta = OreDictionary.getOres(values()[index].getSecondaryOutputItem(multiplier), false).get(0).getMetadata();
+	public static ItemStack getPulvSecondaryItemStack(int index, int multiplier) {
+		Item output = OreDictionary.getOres(values()[index].getPulvSecondaryOutputItem(multiplier), false).get(0).getItem();
+		int meta = OreDictionary.getOres(values()[index].getPulvSecondaryOutputItem(multiplier), false).get(0).getMetadata();
 		return new ItemStack(output, 1, meta);
+	}
+	
+	
+	public static ItemStack getPulvPrimaryItemStack(int index, int multiplier) {
+		Item output = OreDictionary.getOres(BlockRecipeData.getOreDictCrushItemName(index), false).get(0).getItem();
+		int meta = OreDictionary.getOres(BlockRecipeData.getOreDictCrushItemName(index), false).get(0).getMetadata();
+		return new ItemStack(output, getPulvAmount(index, multiplier), meta);
 	}
 	
 	
@@ -190,9 +190,9 @@ public enum TERecipeData implements IStringSerializable {
 	
 	
 	public static ItemStack getRedFurnOutput(int index, int multiplier) {
-		Item output = OreDictionary.getOres(BlockRecipeData.getOreDictFurnaceItem(index), false).get(0).getItem();
-		int meta = OreDictionary.getOres(BlockRecipeData.getOreDictFurnaceItem(index), false).get(0).getMetadata();
-		return new ItemStack(output, getPulvAmount(index, multiplier), meta);
+		Item output = OreDictionary.getOres(BlockRecipeData.getOreDictSmeltItemName(index), false).get(0).getItem();
+		int meta = OreDictionary.getOres(BlockRecipeData.getOreDictSmeltItemName(index), false).get(0).getMetadata();
+		return new ItemStack(output, getRedFurnAmount(index, multiplier), meta);
 	}
 	
 	
@@ -205,15 +205,15 @@ public enum TERecipeData implements IStringSerializable {
 		int multiplier = getMultiplier(index);
 		switch (multiplier) {
 			case 2: ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(index, multiplier), BlockRecipeData.getItemStack(index),
-					getPulvPrimaryOutput(index, multiplier), getPulvSecondaryOutput(index, multiplier), getPulvSecondaryOutputChance(index, multiplier)); break;
-			case 3: ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(index, multiplier), BlockRecipeData.getItemStack(index), getPulvPrimaryOutput(index, multiplier));
+					getPulvPrimaryItemStack(index, multiplier), getPulvSecondaryItemStack(index, multiplier), getPulvSecondaryOutputChance(index, multiplier)); break;
+			case 3: ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(index, multiplier), BlockRecipeData.getItemStack(index), getPulvPrimaryItemStack(index, multiplier));
 		}
 	}
 	
 	
 	public static void getRedFurnRecipe(int index) {
 		int multiplier = getMultiplier(index);
-		ThermalExpansionHelper.addFurnaceRecipe(getRedFurnEnergy(index, multiplier), BlockRecipeData.getItemStack(index), getRedFurnOutput(index, multiplier));
+		ThermalExpansionHelper.addFurnaceRecipe(getRedFurnEnergy(index, multiplier), BlockRecipeData.getItemStack(index), BlockRecipeData.getOreDictSmeltItemStack(index, getRedFurnAmount(index, multiplier)));
 	}
 	
 	

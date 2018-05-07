@@ -84,9 +84,11 @@ public enum TiCRecipeData implements IStringSerializable {
 		return name;
 	}
 
+	
 	public static String getName(int index) {
 		return TiCRecipeData.values()[index].getName(); 
 	}
+	
 	
 	public boolean getSmeltRecipeAdd(int multiplier) {
 		boolean smeltRecipeAdd = false;
@@ -97,9 +99,11 @@ public enum TiCRecipeData implements IStringSerializable {
 		return smeltRecipeAdd;
 	}
 
+	
 	public static boolean getSmeltRecipeAdd(int index, int multiplier) {
 		return TiCRecipeData.values()[index].getSmeltRecipeAdd(multiplier);
 	}
+	
 	
 	public int getMilliBuckets(int multiplier) {
 		int amount = 0;

@@ -1,6 +1,8 @@
 package org.icannt.netherendingores.integration.common.registry.data;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.lib.Util;
+
 import mekanism.api.MekanismAPI;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
@@ -89,12 +91,7 @@ public enum MekRecipeData implements IStringSerializable {
 		return values()[index].getEnrichItem();
 	}
 	
-	
-    public static int getEnrichAmount(int index, int multiplier) {
-        return values()[index].getEnrichAmount(multiplier);
-    }
-	
-    
+
 	public int getEnrichAmount(int multiplier) {
 		int amount = 0;
 		switch (multiplier) {
@@ -106,17 +103,27 @@ public enum MekRecipeData implements IStringSerializable {
 	}
 	
 	
+    public static int getEnrichAmount(int index, int multiplier) {
+        return values()[index].getEnrichAmount(multiplier);
+    }
+	
+    
+	private static int getMultiplier(int index) {
+		return BlockRecipeData.values()[index].getRecipeMultiplier();
+	}    
+    
+	
 	public static ItemStack getOutput(int index, int multiplier) {
-		ItemStack outStack = BlockRecipeData.getOreDictBlockOutput(index, getEnrichAmount(index, multiplier));
+		ItemStack outStack = BlockRecipeData.getOreDictBlockItemStack(index, getEnrichAmount(index, multiplier));
 		if (getEnrichItem(index) == true && (multiplier == 1 || multiplier == 2)) {
-			outStack = BlockRecipeData.getOreDictItemOutput(index, getEnrichAmount(index, multiplier));	
-		}			
+			outStack = BlockRecipeData.getOreDictCrushItemStack(index, getEnrichAmount(index, multiplier));	
+		}
 		return outStack;
 	}
 	
 	
 	public static void getEnrichRecipe(int index) {
-		int multiplier = BlockRecipeData.values()[index].getRecipeMultiplier();
+		int multiplier = getMultiplier(index);
 		if (getEnrichAmount(index, multiplier) > 0) {
 			MekanismAPI.recipeHelper().addEnrichmentChamberRecipe(BlockRecipeData.getItemStack(index), getOutput(index, multiplier));
 		}

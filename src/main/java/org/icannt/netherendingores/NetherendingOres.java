@@ -14,7 +14,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  * Created by ICannt on 17/08/17.
  */
 
-// TODO: A version check will need to be implemented for Mekanism to prevent crashing when using the recipe API
 @Mod(modid = Info.MOD_ID,
 	name = Info.MOD_NAME,
 	version = Info.VERSION,

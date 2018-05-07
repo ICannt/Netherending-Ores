@@ -16,18 +16,18 @@ public class TERecipeRegistry {
 		Util.LOG.debug("Registering Thermal Expansion Recipes");
 		
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-			if (OreDictionary.doesOreNameExist(blockData.getOreDictPulvItem()) == true && blockData.getRecipeMultiplier() > 1) {
+			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushItemName()) == true && blockData.getRecipeMultiplier() > 1) {
     			try {
     				TERecipeData.getPulvRecipe(blockData.ordinal());
-    				Util.LOG.trace("Registered pulverizer input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictPulvItem() + "\".");
+    				Util.LOG.trace("Registered pulverizer input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictCrushItemName() + "\".");
     			} catch (Exception e1) {
-    				Util.LOG.warn("Unable to register pulverizer output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictPulvItem() + "\" not found.");
+    				Util.LOG.warn("Unable to register pulverizer output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictCrushItemName() + "\" not found.");
     			}
     			try {
     				TERecipeData.getRedFurnRecipe(blockData.ordinal());
-    				Util.LOG.trace("Registered redstone furnace input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictFurnaceItem() + "\".");
+    				Util.LOG.trace("Registered redstone furnace input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictSmeltItemName() + "\".");
     			} catch (Exception e1) {
-    				Util.LOG.warn("Unable to register redstone furnace output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictFurnaceItem() + "\" not found.");
+    				Util.LOG.warn("Unable to register redstone furnace output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictSmeltItemName() + "\" not found.");
     			}
 			}
 		}
