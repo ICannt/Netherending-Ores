@@ -54,6 +54,7 @@ Temporary Items
 /bin
 /build
 /data
+/doc
 /eclipse
 #/gradle
 /lib

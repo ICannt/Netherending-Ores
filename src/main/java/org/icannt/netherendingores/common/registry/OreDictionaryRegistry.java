@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.common.registry;
 
-import org.icannt.netherendingores.lib.Util;
 import org.icannt.netherendingores.lib.Info;
+import org.icannt.netherendingores.lib.Util;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;

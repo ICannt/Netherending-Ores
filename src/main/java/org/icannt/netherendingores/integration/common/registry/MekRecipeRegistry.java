@@ -21,7 +21,7 @@ public class MekRecipeRegistry {
     				MekRecipeData.getEnrichRecipe(blockData.ordinal());
     				Util.LOG.trace("Registered enrichment chamber input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictCrushItemName() + "\".");
     			} catch (Exception e1) {
-    				Util.LOG.warn("Unable to register enrichment chamber output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictCrushItemName() + "\" not found.");
+    				Util.LOG.info("Unable to register enrichment chamber output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictCrushItemName() + "\" not found.");
     			}
 			}
 		}

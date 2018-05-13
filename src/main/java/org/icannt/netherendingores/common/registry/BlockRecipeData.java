@@ -257,7 +257,7 @@ public enum BlockRecipeData implements IStringSerializable {
      * @param       material The ore material that is being dealt with
      * @return      The reassembled other mod item name (often a dust)
      */
-    private static String getOreDictSmeltItemName(String prefix, String material) {    	   	
+    private static String getOreDictSmeltItemName(String prefix, String material) {
     	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));
     	switch (prefix) {
 			case "": prefix = "ingot"; break;
@@ -310,7 +310,7 @@ public enum BlockRecipeData implements IStringSerializable {
     
 	
 	public static ItemStack getOreDictBlockItemStack(int index, int amount) {
-		return values()[index].getOreDictSmeltItemStack(amount);
+		return values()[index].getOreDictBlockItemStack(amount);
 	}
 
 	

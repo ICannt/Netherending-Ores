@@ -17,13 +17,12 @@ public class TiCRecipeRegistry {
 		
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			// Add smelt recipe if: The recipe is enabled, if the recipe multiplier is greater than 1 and if the target fluid exists.
-			if (TiCRecipeData.getSmeltRecipeAdd(blockData.ordinal(), blockData.getRecipeMultiplier()) == true && blockData.getRecipeMultiplier() > 1 &&
-					FluidRegistry.isFluidRegistered(blockData.getRawOreName())) {
+			if (TiCRecipeData.getMilliBuckets(blockData.ordinal(), blockData.getRecipeMultiplier()) > 0 && FluidRegistry.isFluidRegistered(blockData.getRawOreName())) {
 				try {
 					TiCRecipeData.getSmeltRecipe(blockData.ordinal());
 					Util.LOG.trace("Registered smeltery output for \"" + blockData.getName() + "\".");
 				} catch (Exception e1) {
-					Util.LOG.warn("Unable to register smeltery output for \"" + blockData.getName() + "\".");
+					Util.LOG.info("Unable to register smeltery output for \"" + blockData.getName() + "\".");
 				}
 			}
 		}

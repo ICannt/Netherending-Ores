@@ -1,10 +1,9 @@
 package org.icannt.netherendingores.common.registry;
 
-import org.icannt.netherendingores.lib.Info;
-
 import org.icannt.netherendingores.integration.common.registry.MekRecipeRegistry;
 import org.icannt.netherendingores.integration.common.registry.TERecipeRegistry;
 import org.icannt.netherendingores.integration.common.registry.TiCRecipeRegistry;
+import org.icannt.netherendingores.lib.Info;
 
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
@@ -18,25 +17,42 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 
 @GameRegistry.ObjectHolder(Info.MOD_ID)
-public class Events {
+public class RegistryEvents {
     		
 	@Mod.EventBusSubscriber
-	public static class RegistryEvents {
+	public static class Events {
 				
 		@SubscribeEvent
-	    public static void RegisterIRecipe(final RegistryEvent.Register<IRecipe> event)
+	    public static void registerIRecipe(final RegistryEvent.Register<IRecipe> event)
 	    {
-			RecipeRegistry.registerRecipes();
-			if (Loader.isModLoaded("tconstruct")) {
-				TiCRecipeRegistry.registerRecipes();
-			}
 			if (Loader.isModLoaded("thermalexpansion")) {
-				TERecipeRegistry.registerRecipes();
-			}
-			if (Loader.isModLoaded("mekanism")) {
-				MekRecipeRegistry.registerRecipes();
+				TERecipeRegistry.removeRecipes();
 			}
 	    }
 	
 	}
+
+	// This bit is actually loaded by init in CommonProxy
+	public static void registerRecipes() {
+
+		// Register Netherending Ores own recipes
+		RecipeRegistry.registerRecipes();
+		
+		// Register Tinkers' Construct recipes
+		if (Loader.isModLoaded("tconstruct")) {
+			TiCRecipeRegistry.registerRecipes();
+		}
+
+		// Register Thermal Expansion recipes
+		if (Loader.isModLoaded("thermalexpansion")) {
+			TERecipeRegistry.registerRecipes();
+		}
+		
+		// Register Mekanism recipes
+		if (Loader.isModLoaded("mekanism")) {
+			MekRecipeRegistry.registerRecipes();
+		}
+
+	}
+	
 }

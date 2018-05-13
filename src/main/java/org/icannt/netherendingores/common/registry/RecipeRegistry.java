@@ -48,7 +48,7 @@ public class RecipeRegistry {
 		        				FurnaceRecipes.instance().addSmeltingRecipe(blockData.getItemStack(), blockData.getOreDictSmeltItemStack(), -1);
 		        				Util.LOG.trace("Registered furnace input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictSmeltItemName() + "\".");
 		        			} catch (Exception e1) {
-		        				Util.LOG.warn("Unable to register furnace output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictSmeltItemName() + "\" not found.");
+		        				Util.LOG.info("Unable to register furnace output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictSmeltItemName() + "\" not found.");
 		        			}
 	        			}
 	        			

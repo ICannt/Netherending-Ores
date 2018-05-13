@@ -1,7 +1,7 @@
 package org.icannt.netherendingores;
 
-import org.icannt.netherendingores.proxy.CommonProxy;
 import org.icannt.netherendingores.lib.Info;
+import org.icannt.netherendingores.proxy.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;

@@ -13,8 +13,8 @@ import org.icannt.netherendingores.common.block.blocks.BlockOreEndVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreOther1;
-import org.icannt.netherendingores.lib.Util;
 import org.icannt.netherendingores.lib.Info;
+import org.icannt.netherendingores.lib.Util;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
