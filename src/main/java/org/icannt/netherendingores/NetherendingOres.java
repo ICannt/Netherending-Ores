@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class NetherendingOres {
 
-    @SidedProxy(clientSide = Info.CLIENT_PROXY, serverSide = Info.SERVER_PROXY)
+    @SidedProxy(clientSide = Info.CLIENT_PROXY_CLASS, serverSide = Info.SERVER_PROXY_CLASS)
     public static CommonProxy proxy;
     
     @Mod.Instance(Info.MOD_ID)

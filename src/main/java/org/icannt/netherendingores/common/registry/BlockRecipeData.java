@@ -160,7 +160,7 @@ public enum BlockRecipeData implements IStringSerializable {
     
     
     public ResourceLocation getConversionResourceLocation() {
-		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + Util.LowerUnder(getOreDictName(1)));
+		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + Util.LowerUnder(getOtherModOreDictName()));
     }
     
     /**
@@ -209,10 +209,10 @@ public enum BlockRecipeData implements IStringSerializable {
     } 
     
     /**
-     * The method that returns the correct OreDict prefix
+     * The method that returns the correct OreDict prefix for Netherending Ores.
      * 
      * @param       multiplier The Recipe Multiplier
-     * @return      The prefixed OreDict name
+     * @return      The prefixed OreDict name for Netherending Ores
      */
     private String getOreDictPrefixedName(int multiplier) {
     	String prefix = "";
@@ -220,11 +220,23 @@ public enum BlockRecipeData implements IStringSerializable {
 		switch (multiplier) {
 			case 1:	prefix = "ore"; ore = getRawOreName(ore); break;
 			case 2:	prefix = "ore"; break;
-			case 3: prefix = "denseore";
+			case 3: prefix = "oredense";
+			//case 2:	prefix = "neo2x"; break;
+			//case 3: prefix = "neo3x";
 		}
 		return prefix + Util.UpperCamel(ore.replace("_ore", ""));
     }
-        
+    
+    /**
+     * The method that returns the correct OreDict prefix for other mods.
+     * 
+     * @param       multiplier The Recipe Multiplier
+     * @return      The prefixed OreDict name for other mods
+     */
+    public String getOtherModOreDictName() {
+        return "ore" + Util.UpperCamel(getRawOreName().replace("_ore", ""));
+    }
+    
     /**
      * Determines which item prefix to use for grinding machines
      * then adds the ore name to it, blank input equates to "dust".

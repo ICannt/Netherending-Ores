@@ -28,7 +28,7 @@ public class RecipeRegistry {
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			
 			// Loop through all entries for the specified OreDict name 
-			for (ItemStack stack : OreDictionary.getOres(blockData.getOreDictName(1)))
+			for (ItemStack stack : OreDictionary.getOres(blockData.getOtherModOreDictName()))
 			{
 				
 				// If the mod of the OreDict comparison item is not Netherending Ores then proceed

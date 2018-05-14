@@ -16,7 +16,7 @@ public class TERecipeRegistry {
 		
 		Util.LOG.debug("Removing Automatic Thermal Expansion Recipes");
 		
-		// Remove the existing recipe first that is auto added when adding a vanilla furnace recipe, so it can override energy values.
+		// Remove the existing recipes first that are added automatically.
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			ThermalExpansionHelper.removeFurnaceRecipe(BlockRecipeData.getItemStack(blockData.ordinal()));
 			ThermalExpansionHelper.removePulverizerRecipe(BlockRecipeData.getItemStack(blockData.ordinal()));
