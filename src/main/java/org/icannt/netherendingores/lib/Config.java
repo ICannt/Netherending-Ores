@@ -28,7 +28,8 @@ public class Config {
     
     private static void initRecipeMultiplierConfig(Configuration cfg) {    	
     	cfg.addCustomCategoryComment(CATEGORY_RECIPE_MULTIPLIER, "0 = no recipes/oredict; 1 = craft ores that have item drops; 2&3 = smelt to 2x/3x oredict ore");
-    	int override = 3;
+    	// TODO: Integrate a proper override in the config file, some users might make use of it.
+    	int override = 2;
     	int multiplier = 0;
     	int minMult = 0;
     	int maxMult = 3;

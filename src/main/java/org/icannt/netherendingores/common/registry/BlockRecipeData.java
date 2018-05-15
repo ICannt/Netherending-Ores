@@ -160,7 +160,7 @@ public enum BlockRecipeData implements IStringSerializable {
     
     
     public ResourceLocation getConversionResourceLocation() {
-		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + Util.LowerUnder(getOtherModOreDictName()));
+		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + Util.LowerUnder(getOreDictOtherModBlockName()));
     }
     
     /**
@@ -233,7 +233,7 @@ public enum BlockRecipeData implements IStringSerializable {
      * @param       multiplier The Recipe Multiplier
      * @return      The prefixed OreDict name for other mods
      */
-    public String getOtherModOreDictName() {
+    public String getOreDictOtherModBlockName() {
         return "ore" + Util.UpperCamel(getRawOreName().replace("_ore", ""));
     }
     
@@ -366,5 +366,32 @@ public enum BlockRecipeData implements IStringSerializable {
 		return new ItemStack(input, amount, meta);
 	}
 
+	
+	public String getOreDictSmeltOutputName() {
+		return getOreDictOutputName(getRecipeMultiplier(), "smelt");
+	}
+	
+	
+	public String getOreDictCrushOutputName() {
+		return getOreDictOutputName(getRecipeMultiplier(), "crush");
+	}
+	
+	// TODO: This is only a start, different custom behaviour may change at some point
+	private String getOreDictOutputName(int multiplier, String type) {
+		String outputName = getOreDictOtherModBlockName();
+
+		switch (type) {
+			case "smelt":
+				if (multiplier == 1) {
+					outputName = getOreDictSmeltItemName();
+				}
+			case "crush":
+				if (multiplier == 1 || multiplier == 2) {
+					outputName = getOreDictCrushItemName();
+				}
+		}
+
+		return outputName;
+	}
     
 }

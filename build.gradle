@@ -59,6 +59,8 @@ dependencies {
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantleversion}"
     deobfCompile "slimeknights:TConstruct:1.12.2-${ticversion}"
     
+    // compile "net.industrial-craft:industrialcraft-2:${ic2version}:dev"
+    
     deobfProvided "net.industrial-craft:industrialcraft-2:${ic2version}:api"
     runtime "net.industrial-craft:industrialcraft-2:${ic2version}"
     

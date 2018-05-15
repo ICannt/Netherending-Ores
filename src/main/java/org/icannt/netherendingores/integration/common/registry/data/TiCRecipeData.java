@@ -1,9 +1,6 @@
 package org.icannt.netherendingores.integration.common.registry.data;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
-import org.icannt.netherendingores.integration.common.registry.TiCRecipeRegistry;
-import org.icannt.netherendingores.integration.common.registry.helper.TinkerRecipeHelper;
-import org.icannt.netherendingores.integration.common.registry.helper.TinkerRecipeMethods;
 
 import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -106,7 +103,7 @@ public enum TiCRecipeData implements IStringSerializable {
 	
 	public static void getSmeltRecipe(int index) {
 		int multiplier = BlockRecipeData.values()[index].getRecipeMultiplier();
-		TinkerRecipeHelper.registerMelting(BlockRecipeData.getItemStack(index), FluidRegistry.getFluid(BlockRecipeData.getRawOreName(index)), getMilliBuckets(index, multiplier));
+		TinkerRegistry.registerMelting(BlockRecipeData.getItemStack(index), FluidRegistry.getFluid(BlockRecipeData.getRawOreName(index)), getMilliBuckets(index, multiplier));
 	}
 	
 	

@@ -1,13 +1,9 @@
 package org.icannt.netherendingores.integration.common.registry;
 
-import org.apache.logging.log4j.LogManager;
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.integration.common.registry.data.TiCRecipeData;
-import org.icannt.netherendingores.integration.common.registry.helper.TinkerRecipeMethods;
 import org.icannt.netherendingores.lib.Util;
-import org.icannt.netherendingores.lib.Info;
 
-import mekanism.api.MekanismRecipeHelper;
 import net.minecraftforge.fluids.FluidRegistry;
 
 /**
@@ -18,7 +14,7 @@ public class TiCRecipeRegistry {
 	public static void registerRecipes() {
 
 		Util.LOG.debug("Registering Tinkers' Construct Recipes");
-		
+
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			// Add smelt recipe if: The recipe is enabled, if the recipe multiplier is greater than 1 and if the target fluid exists.
 			if (TiCRecipeData.getMilliBuckets(blockData.ordinal(), blockData.getRecipeMultiplier()) > 0 && FluidRegistry.isFluidRegistered(blockData.getRawOreName())) {

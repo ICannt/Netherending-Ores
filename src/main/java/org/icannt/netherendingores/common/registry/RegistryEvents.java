@@ -1,5 +1,6 @@
 package org.icannt.netherendingores.common.registry;
 
+import org.icannt.netherendingores.integration.common.registry.IC2RecipeRegistry;
 import org.icannt.netherendingores.integration.common.registry.MekRecipeRegistry;
 import org.icannt.netherendingores.integration.common.registry.TERecipeRegistry;
 import org.icannt.netherendingores.integration.common.registry.TiCRecipeRegistry;
@@ -34,6 +35,8 @@ public class RegistryEvents {
 
 	// This bit is actually loaded by init in CommonProxy
 	public static void registerRecipes() {
+		
+		// TODO: Use the new name thingo for all recipe log messages
 
 		// Register Netherending Ores own recipes
 		RecipeRegistry.registerRecipes();
@@ -51,6 +54,11 @@ public class RegistryEvents {
 		// Register Mekanism recipes
 		if (Loader.isModLoaded("mekanism")) {
 			MekRecipeRegistry.registerRecipes();
+		}
+		
+		// Register Industrial Craft 2 recipes
+		if (Loader.isModLoaded("ic2")) {
+			IC2RecipeRegistry.registerRecipes();
 		}
 
 	}
