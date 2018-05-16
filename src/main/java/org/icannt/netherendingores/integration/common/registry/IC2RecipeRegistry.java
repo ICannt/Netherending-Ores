@@ -25,15 +25,15 @@ public class IC2RecipeRegistry {
 			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushItemName()) == true && blockData.getRecipeMultiplier() > 1) {
     			try {
     				IC2RecipeData.getMaceRecipe(blockData.ordinal());
-    				Util.LOG.trace("Registered macerator input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictCrushOutputName() + "\".");
+    				Util.LogRecipeSuccess("macerator", blockData.getName(), blockData.getOreDictCrushOutputName());
     			} catch (Exception e1) {
-    				Util.LOG.info("Unable to macerator pulverizer output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictCrushOutputName() + "\" not found.");
+    				Util.LogRecipeFail("macerator", blockData.getName(), blockData.getOreDictCrushOutputName());
     			}
     			try {
     				IC2RecipeData.getElecFurnRecipe(blockData.ordinal());
-    				Util.LOG.trace("Registered electric furnace input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictSmeltOutputName() + "\".");
+    				Util.LogRecipeSuccess("electric furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
     			} catch (Exception e1) {
-    				Util.LOG.info("Unable to electric furnace output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictSmeltOutputName() + "\" not found.");
+    				Util.LogRecipeFail("electric furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
     			}
 			}
 		}

@@ -11,7 +11,15 @@ import com.google.common.base.CaseFormat;
 public class Util {
 	
     public static final Logger LOG = LogManager.getLogger(Info.MOD_NAME);
-	
+    
+    public static void LogRecipeSuccess(String device, String input, String output) {
+    	LOG.trace("Registered " + device + " input for \"" + input + "\", output \"" + output + "\".");
+    }
+
+    public static void LogRecipeFail(String device, String input, String output) {
+    	Util.LOG.info("Unable to register " + device + " input for \"" + input + "\", output \"" + output + "\" not found.");
+    }
+    
 	public static String LowerUnder(String input)
 	{
 		return CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, input);

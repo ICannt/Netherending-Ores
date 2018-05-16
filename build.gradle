@@ -27,8 +27,12 @@ repositories {
         url = "http://maven.covers1624.net/"
     }
     maven {
-        name = "ic2"
+        name = "IC2 Maven"
         url = "http://maven.ic2.player.to/"
+    }
+    maven {
+        name = "K4U Maven"
+        url = "http://maven.k-4u.nl/"
     }
 }
 
@@ -59,10 +63,10 @@ dependencies {
     deobfCompile "slimeknights.mantle:Mantle:1.12-${mantleversion}"
     deobfCompile "slimeknights:TConstruct:1.12.2-${ticversion}"
     
-    // compile "net.industrial-craft:industrialcraft-2:${ic2version}:dev"
-    
     deobfProvided "net.industrial-craft:industrialcraft-2:${ic2version}:api"
     runtime "net.industrial-craft:industrialcraft-2:${ic2version}"
+    
+    deobfCompile "matteroverdrive:MatterOverdrive:${moversion}:universal"
     
 }
 

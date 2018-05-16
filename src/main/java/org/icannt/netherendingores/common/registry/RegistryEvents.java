@@ -36,8 +36,6 @@ public class RegistryEvents {
 	// This bit is actually loaded by init in CommonProxy
 	public static void registerRecipes() {
 		
-		// TODO: Use the new name thingo for all recipe log messages
-
 		// Register Netherending Ores own recipes
 		RecipeRegistry.registerRecipes();
 		

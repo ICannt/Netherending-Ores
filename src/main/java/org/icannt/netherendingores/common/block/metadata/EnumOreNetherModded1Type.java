@@ -8,6 +8,7 @@ import net.minecraft.util.IStringSerializable;
  */
 public enum EnumOreNetherModded1Type implements IStringSerializable {
 	
+	
     ALUMINUM_ORE ("aluminum_ore", 0, 1, 3, 15, EnumRarity.COMMON),
     COPPER_ORE ("copper_ore", 0, 1, 3, 15, EnumRarity.COMMON),
     IRIDIUM_ORE ("iridium_ore", 0, 3, 3, 15, EnumRarity.UNCOMMON),
@@ -21,7 +22,10 @@ public enum EnumOreNetherModded1Type implements IStringSerializable {
     CHARGED_CERTUS_QUARTZ_ORE ("charged_certus_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON),
     OSMIUM_ORE ("osmium_ore", 0, 0, 3, 15, EnumRarity.COMMON),
     URANIUM_ORE ("uranium_ore", 0, 2, 4, 30, EnumRarity.COMMON),
-    YELLORITE_ORE ("yellorite_ore", 0, 0, 2, 10, EnumRarity.COMMON);
+    YELLORITE_ORE ("yellorite_ore", 0, 0, 2, 10, EnumRarity.COMMON),
+    DILITHIUM_ORE ("dilithium_ore", 0, 2, 4, 15, EnumRarity.COMMON),
+    TRITANIUM_ORE ("tritanium_ore", 0, 2, 8, 15, EnumRarity.COMMON);
+
 
     private String name;
     private int light;

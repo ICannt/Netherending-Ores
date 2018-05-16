@@ -17,6 +17,7 @@ public class TERecipeRegistry {
 		Util.LOG.debug("Removing Automatic Thermal Expansion Recipes");
 		
 		// Remove the existing recipes first that are added automatically.
+		// TODO: Check to make sure this does not remove in oredict mode?
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			ThermalExpansionHelper.removeFurnaceRecipe(BlockRecipeData.getItemStack(blockData.ordinal()));
 			ThermalExpansionHelper.removePulverizerRecipe(BlockRecipeData.getItemStack(blockData.ordinal()));
@@ -34,15 +35,15 @@ public class TERecipeRegistry {
 			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushItemName()) == true && blockData.getRecipeMultiplier() > 1) {
     			try {
     				TERecipeData.getPulvRecipe(blockData.ordinal());
-    				Util.LOG.trace("Registered pulverizer input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictCrushItemName() + "\".");
+    				Util.LogRecipeSuccess("pulverizer", blockData.getName(), blockData.getOreDictCrushOutputName());
     			} catch (Exception e1) {
-    				Util.LOG.info("Unable to register pulverizer output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictCrushItemName() + "\" not found.");
+    				Util.LogRecipeFail("pulverizer", blockData.getName(), blockData.getOreDictCrushOutputName());
     			}
     			try {
     				TERecipeData.getRedFurnRecipe(blockData.ordinal());
-    				Util.LOG.trace("Registered redstone furnace input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictSmeltItemName() + "\".");
+    				Util.LogRecipeSuccess("redstone furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
     			} catch (Exception e1) {
-    				Util.LOG.info("Unable to register redstone furnace output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictSmeltItemName() + "\" not found.");
+    				Util.LogRecipeFail("redstone furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
     			}
 			}
 		}

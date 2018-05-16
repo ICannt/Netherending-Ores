@@ -19,9 +19,9 @@ public class MekRecipeRegistry {
 			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushItemName()) == true) {
     			try {
     				MekRecipeData.getEnrichRecipe(blockData.ordinal());
-    				Util.LOG.trace("Registered enrichment chamber input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictCrushItemName() + "\".");
+    				Util.LogRecipeSuccess("enrichment chamber", blockData.getName(), blockData.getOreDictCrushOutputName());
     			} catch (Exception e1) {
-    				Util.LOG.info("Unable to register enrichment chamber output for \"" + blockData.getName() + "\", item \"" + blockData.getOreDictCrushItemName() + "\" not found.");
+    				Util.LogRecipeFail("enrichment chamber", blockData.getName(), blockData.getOreDictCrushOutputName());
     			}
 			}
 		}

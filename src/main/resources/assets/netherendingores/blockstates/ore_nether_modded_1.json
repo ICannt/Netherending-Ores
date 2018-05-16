@@ -76,6 +76,16 @@
                 "textures": {
                     "all": "netherendingores:blocks/nether_yellorite_ore"
                 }
+            },
+            "dilithium_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_dilithium_ore"
+                }
+            },
+            "tritanium_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/nether_tritanium_ore"
+                }
             }
         }
     }
