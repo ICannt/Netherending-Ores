@@ -9,6 +9,7 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 /**
  * Created by ICannt on 19/04/18.
  */
+
 public enum TiCRecipeData implements IStringSerializable {
 	
 	

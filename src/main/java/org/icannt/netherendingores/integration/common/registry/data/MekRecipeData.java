@@ -6,6 +6,10 @@ import mekanism.api.MekanismAPI;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 
+/**
+ * Created by ICannt on 20/04/18.
+ */
+
 public enum MekRecipeData implements IStringSerializable {
 	
 	

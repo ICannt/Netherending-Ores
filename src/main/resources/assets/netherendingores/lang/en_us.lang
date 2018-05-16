@@ -27,6 +27,8 @@ tile.netherendingores:ore_nether_modded_1.charged_certus_quartz_ore.name=Nether 
 tile.netherendingores:ore_nether_modded_1.osmium_ore.name=Nether Osmium Ore
 tile.netherendingores:ore_nether_modded_1.uranium_ore.name=Nether Uranium Ore
 tile.netherendingores:ore_nether_modded_1.yellorite_ore.name=Nether Yellorite Ore
+tile.netherendingores:ore_nether_modded_1.dilithium_ore.name=Nether Dilithium Ore
+tile.netherendingores:ore_nether_modded_1.tritanium_ore.name=Nether Tritanium Ore
 
 # Vanilla End Ores
 tile.netherendingores:ore_end_vanilla.coal_ore.name=End Coal Ore
@@ -52,6 +54,8 @@ tile.netherendingores:ore_end_modded_1.charged_certus_quartz_ore.name=End Charge
 tile.netherendingores:ore_end_modded_1.osmium_ore.name=End Osmium Ore
 tile.netherendingores:ore_end_modded_1.uranium_ore.name=End Uranium Ore
 tile.netherendingores:ore_end_modded_1.yellorite_ore.name=End Yellorite Ore
+tile.netherendingores:ore_end_modded_1.dilithium_ore.name=End Dilithium Ore
+tile.netherendingores:ore_end_modded_1.tritanium_ore.name=End Tritanium Ore
 
 # Other Ores 1
 tile.netherendingores:ore_other_1.overworld_quartz_ore.name=Overworld Quartz Ore
