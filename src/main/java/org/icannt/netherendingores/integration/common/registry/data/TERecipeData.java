@@ -2,7 +2,6 @@ package org.icannt.netherendingores.integration.common.registry.data;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.lib.Config;
-import org.icannt.netherendingores.lib.Util;
 
 import cofh.api.util.ThermalExpansionHelper;
 import net.minecraft.item.Item;
@@ -115,11 +114,7 @@ public enum TERecipeData implements IStringSerializable {
 	public int getPulvEnergy(int multiplier) {
 		switch (multiplier) {
 			case 2:	return pulv2xEnergy;
-			// TODO: Add a modulus so it is rounded to the nearest 10 energy units or divide by 10, times by 10 should also work
-			case 3:
-				float factor = Config.p1FullPulverizerOutput ? Config.p3FullPulverizerEnergyFactor : Config.p5ReducedPulverizerEnergyFactor; 
-				Util.LOG.info((int) (Config.p1FullPulverizerOutput ? Config.p3FullPulverizerEnergyFactor : Config.p5ReducedPulverizerEnergyFactor * pulv3xEnergy) / 10 * 10);
-				return (int) (factor * pulv3xEnergy);
+			case 3: return (int) (Config.pulverizerFullOutput ? Config.pulverizerFullOutputEnergyFactor : Config.pulverizerReducedOutputEnergyFactor * pulv3xEnergy);
 		}
 		return 0;
 	}
@@ -133,7 +128,7 @@ public enum TERecipeData implements IStringSerializable {
 	public int getPulvAmount(int multiplier) {
 		switch (multiplier) {
 			case 2:	return pulv2xAmount;
-			case 3:	return Math.round(Config.p1FullPulverizerOutput ? Config.p2FullPulverizerAmountFactor : Config.p4ReducedPulverizerAmountFactor * pulv3xAmount);
+			case 3:	return Math.round(Config.pulverizerFullOutput ? Config.pulverizerFullOutputAmountFactor : Config.pulverizerReducedOutputAmountFactor * pulv3xAmount);
 		}
 		return 0;
 	}
@@ -177,8 +172,8 @@ public enum TERecipeData implements IStringSerializable {
 	
 	public int getRedFurnEnergy(int multiplier) {
 		switch (multiplier) {
-			case 2:	return redFurn2xEnergy;
-			case 3:	return redFurn3xEnergy;
+			case 2:	return (int) (Config.redstoneFurnaceFullOutput ? Config.redstoneFurnaceFullOutputEnergyFactor : Config.redstoneFurnaceReducedOutputEnergyFactor * redFurn2xEnergy);
+			case 3:	return (int) (Config.redstoneFurnaceFullOutput ? Config.redstoneFurnaceFullOutputEnergyFactor : Config.redstoneFurnaceReducedOutputEnergyFactor * redFurn3xEnergy);
 		}
 		return 0;
 	}
@@ -191,8 +186,8 @@ public enum TERecipeData implements IStringSerializable {
     
 	public int getRedFurnAmount(int multiplier) {
 		switch (multiplier) {
-			case 2:	return redFurn2xAmount;
-			case 3:	return redFurn3xAmount;
+			case 2:	return Math.round(Config.redstoneFurnaceFullOutput ? Config.redstoneFurnaceFullOutputAmountFactor : Config.redstoneFurnaceReducedOutputAmountFactor * redFurn2xAmount);
+			case 3:	return Math.round(Config.redstoneFurnaceFullOutput ? Config.redstoneFurnaceFullOutputAmountFactor : Config.redstoneFurnaceReducedOutputAmountFactor * redFurn3xAmount);
 		}
 		return 0;
 	}

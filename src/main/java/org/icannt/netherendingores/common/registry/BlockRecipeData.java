@@ -152,6 +152,11 @@ public enum BlockRecipeData implements IStringSerializable {
     	return recipeMultiplier;
     }
 
+    public int getFurnaceAmount() {
+    	// TODO: Just an alias for now, ideally the vanilla crafting and furnacing methods should be broken off from this enum into a new one?
+    	// This would leave this class to concentrate on oredict, multipliers and helpers.
+    	return recipeMultiplier;
+    }
     
     public void setRecipeMultiplier(int multiplier) {
     	this.recipeMultiplier = multiplier;
@@ -222,11 +227,10 @@ public enum BlockRecipeData implements IStringSerializable {
     	String prefix = "";
 		String ore = name;
 		switch (multiplier) {
+			case 0: prefix = "neo"; break;
 			case 1:	prefix = "ore"; ore = getRawOreName(ore); break;
 			case 2:	prefix = "ore"; break;
-			case 3: prefix = "oredense";
-			//case 2:	prefix = "neo2x"; break;
-			//case 3: prefix = "neo3x";
+			case 3: prefix = "oreDense";
 		}
 		return prefix + Util.UpperCamel(ore.replace("_ore", ""));
     }
@@ -347,7 +351,7 @@ public enum BlockRecipeData implements IStringSerializable {
 	}
 
 	
-	private ItemStack getOreDictSmeltItemStack(int amount) {
+	public ItemStack getOreDictSmeltItemStack(int amount) {
 		Item input = OreDictionary.getOres(getOreDictSmeltItemName(), false).get(0).getItem();
 		int meta = OreDictionary.getOres(getOreDictSmeltItemName(), false).get(0).getMetadata();
 		return new ItemStack(input, amount, meta);

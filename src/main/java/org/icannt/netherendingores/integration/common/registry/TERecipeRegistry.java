@@ -17,10 +17,11 @@ public class TERecipeRegistry {
 		Util.LOG.debug("Removing Automatic Thermal Expansion Recipes");
 		
 		// Remove the existing recipes first that are added automatically.
-		// TODO: Check to make sure this does not remove in oredict mode?
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-			ThermalExpansionHelper.removeFurnaceRecipe(BlockRecipeData.getItemStack(blockData.ordinal()));
-			ThermalExpansionHelper.removePulverizerRecipe(BlockRecipeData.getItemStack(blockData.ordinal()));
+			if (blockData.getRecipeMultiplier() > 1) {
+				ThermalExpansionHelper.removeFurnaceRecipe(BlockRecipeData.getItemStack(blockData.ordinal()));
+				ThermalExpansionHelper.removePulverizerRecipe(BlockRecipeData.getItemStack(blockData.ordinal()));
+			}
 		}
 		
 		Util.LOG.info("Removed Automatic Thermal Expansion Recipes");
@@ -32,13 +33,15 @@ public class TERecipeRegistry {
 		Util.LOG.debug("Registering Thermal Expansion Recipes");
 		
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushItemName()) == true && blockData.getRecipeMultiplier() > 1) {
+			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushOutputName()) && blockData.getRecipeMultiplier() > 1) {
     			try {
     				TERecipeData.getPulvRecipe(blockData.ordinal());
     				Util.LogRecipeSuccess("pulverizer", blockData.getName(), blockData.getOreDictCrushOutputName());
     			} catch (Exception e1) {
     				Util.LogRecipeFail("pulverizer", blockData.getName(), blockData.getOreDictCrushOutputName());
     			}
+			}
+			if (OreDictionary.doesOreNameExist(blockData.getOreDictSmeltOutputName()) && blockData.getRecipeMultiplier() > 1) {
     			try {
     				TERecipeData.getRedFurnRecipe(blockData.ordinal());
     				Util.LogRecipeSuccess("redstone furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());

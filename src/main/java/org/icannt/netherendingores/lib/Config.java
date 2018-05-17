@@ -10,20 +10,20 @@ import net.minecraftforge.common.config.Configuration;
  */
 public class Config {
 
-	public static Boolean rf1FullRedstoneFurnaceOutput = false;
-	public static float rf3FullRedstoneFurnaceEnergyFactor = 1f;
-	public static float rf2FullRedstoneFurnaceAmountFactor = 1f;
-	public static float rf5ReducedRedstoneFurnaceEnergyFactor = 2/3f;
-	public static float rf4ReducedRedstoneFurnaceAmountFactor = 2/3f;
+	public static Boolean redstoneFurnaceFullOutput = false;
+	public static float redstoneFurnaceFullOutputAmountFactor = 1f;
+	public static float redstoneFurnaceFullOutputEnergyFactor = 2f;
+	public static float redstoneFurnaceReducedOutputAmountFactor = 2/3f;
+	public static float redstoneFurnaceReducedOutputEnergyFactor = 0.6f;
 	
-	public static Boolean p1FullPulverizerOutput = false;
-	public static float p3FullPulverizerEnergyFactor = 1f;
-	public static float p2FullPulverizerAmountFactor = 1f;
-	public static float p5ReducedPulverizerEnergyFactor = 2/3f;
-	public static float p4ReducedPulverizerAmountFactor = 2/3f;
+	public static Boolean pulverizerFullOutput = false;
+	public static float pulverizerFullOutputAmountFactor = 1f;
+	public static float pulverizerFullOutputEnergyFactor = 2f;
+	public static float pulverizerReducedOutputAmountFactor = 2/3f;
+	public static float pulverizerReducedOutputEnergyFactor = 0.6f;
 	
 	private static final String CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING = "machine recipe settings";
-	private static final String CATEGORY_RECIPE_MULTIPLIER_OVERRIDE = "recipe override";
+	private static final String CATEGORY_RECIPE_MULTIPLIER_OVERRIDE = "recipe multipliers override";
 	private static final String CATEGORY_RECIPE_MULTIPLIER = "recipe multipliers";
 	
 	private static int override = -1;
@@ -51,26 +51,35 @@ public class Config {
     
     private static void initMachineRecipeSettingsConfig(Configuration cfg) {
     	
-    	cfg.addCustomCategoryComment(CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, "Settings for Thermal Expansion Machine Processing");
-
-    	p1FullPulverizerOutput = cfg.getBoolean("Full Pulverizer output", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, p1FullPulverizerOutput, "Enable full Pulverizer output. Do not reduce output for augment compensation, uses much more energy", "");
-    	p2FullPulverizerAmountFactor = cfg.getFloat("Full Pulverizer amount factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, p2FullPulverizerAmountFactor, 0.5f, 3, "Full Pulverizer amount factor");
-    	p3FullPulverizerEnergyFactor = cfg.getFloat("Full Pulverizer anergy factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, p3FullPulverizerEnergyFactor, 0.5f, 3, "Full Pulverizer anergy factor");    	
-    	p4ReducedPulverizerAmountFactor = cfg.getFloat("Reduced Pulverizer amount factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, p4ReducedPulverizerAmountFactor, 0.5f, 1, "Reduced Pulverizer amount factor");
-    	p5ReducedPulverizerEnergyFactor = cfg.getFloat("Reduced Pulverizer energy factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, p5ReducedPulverizerEnergyFactor, 0.5f, 1, "Reduced Pulverizer energy factor");
+    	cfg.addCustomCategoryComment(CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, "" 
+    			+ "Settings for Thermal Expansion machine processing\r\n"
+    			+ "PLEASE ASK THE MOD AUTHOR TRAB FOR HELP IF YOU DON'T KNOW WHAT YOU ARE DOING");   	
     	
-    	rf1FullRedstoneFurnaceOutput = cfg.getBoolean("Full Redstone Furnace output", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, rf1FullRedstoneFurnaceOutput, "Enable full Redstone Furnace output. Do not reduce output for augment compensation, uses much more energy");
-    	rf2FullRedstoneFurnaceAmountFactor = cfg.getFloat("Full Redstone Furnace amount factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, rf2FullRedstoneFurnaceAmountFactor, 0.5f, 3, "Full Redstone Furnace amount factor");
-    	rf3FullRedstoneFurnaceEnergyFactor = cfg.getFloat("Full Redstone Furnace energy factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, rf3FullRedstoneFurnaceEnergyFactor, 0.5f, 3, "Full Redstone Furnace energy factor");    	
-    	rf4ReducedRedstoneFurnaceAmountFactor = cfg.getFloat("Reduced Redstone Furnace amount factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, rf4ReducedRedstoneFurnaceAmountFactor, 0.5f, 1, "Reduced Redstone Furnace amount factor");
-    	rf5ReducedRedstoneFurnaceEnergyFactor = cfg.getFloat("Reduced Redstone Furnace energy factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, rf5ReducedRedstoneFurnaceEnergyFactor, 0.5f, 1, "Reduced Redstone Furnace energy factor");
+    	pulverizerFullOutput = cfg.getBoolean("Pulverizer full output", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, pulverizerFullOutput, "Enable full Pulverizer output. Do not reduce output for augment compensation, uses much more energy", "");
+    	pulverizerFullOutputAmountFactor = cfg.getFloat("Pulverizer full output amount factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, pulverizerFullOutputAmountFactor, 0.5f, 3, "Pulverizer full output amount factor");
+    	pulverizerFullOutputEnergyFactor = cfg.getFloat("Pulverizer full output energy factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, pulverizerFullOutputEnergyFactor, 0.5f, 3, "Pulverizer full output energy factor");    	
+    	pulverizerReducedOutputAmountFactor = cfg.getFloat("Pulverizer reduced output amount factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, pulverizerReducedOutputAmountFactor, 0.5f, 1, "Pulverizer reduced output amount factor");
+    	pulverizerReducedOutputEnergyFactor = cfg.getFloat("Pulverizer reduced output energy factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, pulverizerReducedOutputEnergyFactor, 0.5f, 1, "Pulverizer reduced output energy factor");
+    	
+    	redstoneFurnaceFullOutput = cfg.getBoolean("Redstone Furnace full output", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, redstoneFurnaceFullOutput, "Enable full Redstone Furnace output. Do not reduce output for augment compensation, uses much more energy");
+    	redstoneFurnaceFullOutputAmountFactor = cfg.getFloat("Redstone Furnace full output amount factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, redstoneFurnaceFullOutputAmountFactor, 0.5f, 3, "Redstone Furnace full output amount factor");
+    	redstoneFurnaceFullOutputEnergyFactor = cfg.getFloat("Redstone Furnace full output energy factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, redstoneFurnaceFullOutputEnergyFactor, 0.5f, 3, "Redstone Furnace full output energy factor");    	
+    	redstoneFurnaceReducedOutputAmountFactor = cfg.getFloat("Redstone Furnace reduced output amount factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, redstoneFurnaceReducedOutputAmountFactor, 0.5f, 1, "Redstone Furnace reduced output amount factor");
+    	redstoneFurnaceReducedOutputEnergyFactor = cfg.getFloat("Redstone Furnace reduced output energy factor", CATEGORY_THERMAL_EXPANSION_MACHINE_PROCESSING, redstoneFurnaceReducedOutputEnergyFactor, 0.5f, 1, "Redstone Furnace reduced output energy factor");
     	
     }
     
     
     private static void initRecipeMultiplierConfig(Configuration cfg) {
     	
-    	cfg.addCustomCategoryComment(CATEGORY_RECIPE_MULTIPLIER, "0 = no recipes/oredict; 1 = craft ores that have item drops; 2&3 = smelt to 2x/3x oredict ore");    	
+    	cfg.addCustomCategoryComment(CATEGORY_RECIPE_MULTIPLIER, ""
+    			+ "0 = No recipes/standard oredict, ideal for craftweaker.\r\n"
+    			+ "    Oredict entries prefixed with \"neo\" for easy craftteaker use.\r\n"
+    			+ "1 = Oredict mode uses the same oredict name as the target ore, also adds recipe to craft target ore if needed.\r\n"
+    			+ "2 = Crush to dust at 2x rate with mod specific bonuses | Smelt to 2x oredict ore.\r\n"
+    			+ "    Oredict entries prefixed with \"oreEnd\", \"oreNether\" or \"oreOverworld\" respectively.\r\n"
+    			+ "3 = Crush to 4x oredict ore | Smelt to 3x oredict ore.\r\n"
+    			+ "    Oredict entries prefixed with \"oreDenseEnd\", \"oreDenseNether\" or \"oreDenseOverworld\" respectively.\r\n");
     	int multiplier = 0;
     	
     	for (BlockRecipeData blockData : BlockRecipeData.values()) {

@@ -16,7 +16,7 @@ public class MekRecipeRegistry {
 		Util.LOG.debug("Registering Mekanism Recipes");
 
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushItemName()) == true) {
+			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushOutputName())) {
     			try {
     				MekRecipeData.getEnrichRecipe(blockData.ordinal());
     				Util.LogRecipeSuccess("enrichment chamber", blockData.getName(), blockData.getOreDictCrushOutputName());

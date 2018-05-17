@@ -22,13 +22,15 @@ public class IC2RecipeRegistry {
 		Recipes.macerator.addRecipe(new IC2RecipeInput(new ItemStack(Blocks.SOUL_SAND)), null, false, new ItemStack(Blocks.SEA_LANTERN));
 		
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushItemName()) == true && blockData.getRecipeMultiplier() > 1) {
+			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushOutputName()) && blockData.getRecipeMultiplier() > 1) {
     			try {
     				IC2RecipeData.getMaceRecipe(blockData.ordinal());
     				Util.LogRecipeSuccess("macerator", blockData.getName(), blockData.getOreDictCrushOutputName());
     			} catch (Exception e1) {
     				Util.LogRecipeFail("macerator", blockData.getName(), blockData.getOreDictCrushOutputName());
     			}
+			}
+    		if (OreDictionary.doesOreNameExist(blockData.getOreDictSmeltOutputName()) && blockData.getRecipeMultiplier() > 1) {
     			try {
     				IC2RecipeData.getElecFurnRecipe(blockData.ordinal());
     				Util.LogRecipeSuccess("electric furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());

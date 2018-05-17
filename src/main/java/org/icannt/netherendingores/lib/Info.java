@@ -25,6 +25,7 @@ public class Info {
 			+"after:plustic;"
 			+"after:appliedenergistics2;"
 			+"after:mekanism@["+MEK_VERSION+",);"
+			+"after:matteroverdrive;"
 			;
     
     public static final String CLIENT_PROXY_CLASS = "org.icannt.netherendingores.proxy.ClientProxy";

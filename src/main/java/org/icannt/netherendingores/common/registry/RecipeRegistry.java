@@ -42,21 +42,26 @@ public class RecipeRegistry {
 	        			GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(), groupName, stack, blockData.getConversionIngredient());
 	        			
 	        			// Furnace Recipe, only add if the recipe is actually enabled, avoids some oredict issues
-	        			if (blockData.isSmeltItemEnabled() == true) {
+	        			if (blockData.isSmeltItemEnabled()) {
 		        			try {
 		        				// Trying get around issues with the OreDict smelt recipes by skipping over the code that makes it wildcard
 		        				FurnaceRecipes.instance().addSmeltingRecipe(blockData.getItemStack(), blockData.getOreDictSmeltItemStack(), -1);
-		        				Util.LOG.trace("Registered furnace input for \"" + blockData.getName() + "\", output \"" + blockData.getOreDictSmeltItemName() + "\".");
+		        				Util.LogRecipeSuccess("furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
 		        			} catch (Exception e1) {
-		        				Util.LOG.info("Unable to register furnace output for \"" + blockData.getName() + "\" item \"" + blockData.getOreDictSmeltItemName() + "\" not found.");
+		        				Util.LogRecipeFail("furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
 		        			}
 	        			}
 	        			
 		        	}
 		        	
 					if (blockData.getRecipeMultiplier() > 1) {
-						// Do the same thing here, skip over the OreDict'd code
-						FurnaceRecipes.instance().addSmeltingRecipe(blockData.getItemStack(), new ItemStack(stack.getItem(), blockData.getRecipeMultiplier(), stack.getMetadata()), 0);
+	        			try {
+	        				// Do the same thing here, skip over the OreDict'd code
+	        				FurnaceRecipes.instance().addSmeltingRecipe(blockData.getItemStack(), blockData.getOreDictSmeltItemStack(blockData.getFurnaceAmount()), 0);
+	        				Util.LogRecipeSuccess("furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
+	        			} catch (Exception e1) {
+	        				Util.LogRecipeFail("furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
+	        			}
 					}
 					
 					// We only need a single match, no point in adding multiple recipes for different OreDict item results, they often can't be selected. 
