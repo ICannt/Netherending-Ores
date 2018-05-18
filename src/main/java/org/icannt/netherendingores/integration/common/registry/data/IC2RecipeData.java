@@ -6,6 +6,7 @@ import org.icannt.netherendingores.integration.common.registry.IC2RecipeInput;
 import ic2.api.recipe.Recipes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * Created by ICannt on 15/05/18.
@@ -111,6 +112,9 @@ public enum IC2RecipeData implements IStringSerializable {
 	
 	
 	public static ItemStack getMaceItemStack(int index, int multiplier) {
+		if (multiplier > 0 && multiplier < 3 && OreDictionary.doesOreNameExist(BlockRecipeData.getOreDictCustomItemName(index, "crushed"))) {
+			return BlockRecipeData.getOreDictCustomItemStack(index, "crushed", getMaceAmount(index, multiplier));
+		}		
 		return BlockRecipeData.getOreDictCrushItemStack(index, getMaceAmount(index, multiplier));
 	}
     

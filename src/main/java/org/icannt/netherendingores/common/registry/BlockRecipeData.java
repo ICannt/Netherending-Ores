@@ -276,6 +276,17 @@ public enum BlockRecipeData implements IStringSerializable {
     	}    	
     	return prefix + ore;    	
     }
+
+    //
+    public static String getOreDictCustomItemName(int index, String prefix) {
+    	return values()[index].getOreDictCustomItemName(prefix);
+    }
+    
+    //
+    public String getOreDictCustomItemName(String prefix) {
+    	String ore = getRawOreName();
+    	return prefix + Util.UpperCamel(ore.replace("_ore", ""));
+    }
     
     /**
      * If called within context, it just passes the ore name
@@ -340,23 +351,31 @@ public enum BlockRecipeData implements IStringSerializable {
     	return new ItemStack(block, 1, meta);
     }
 	
-	
+	//
 	public ItemStack getOreDictSmeltItemStack(int amount) {
-		return getOreDictOutputItemStack(amount, "smelt");
+		return getOreDictOutputItemStack("smelt", amount);
 	}
 	
-	
+	//
 	public static ItemStack getOreDictSmeltItemStack(int index, int amount) {
-		return values()[index].getOreDictOutputItemStack(amount, "smelt");
+		return values()[index].getOreDictOutputItemStack("smelt", amount);
 	}
 	
-	
+	//
 	public static ItemStack getOreDictCrushItemStack(int index, int amount) {
-		return values()[index].getOreDictOutputItemStack(amount, "crush");
+		return values()[index].getOreDictOutputItemStack("crush", amount);
 	}
 	
+	//
+	public static ItemStack getOreDictCustomItemStack(int index, String prefix, int amount) {
+		String oredictName = getOreDictCustomItemName(index, prefix);
+		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
+		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
+		return new ItemStack(itemIn, amount, meta);
+	}
 	
-	private ItemStack getOreDictOutputItemStack(int amount, String type) {
+	//
+	private ItemStack getOreDictOutputItemStack(String type, int amount) {
 		String oredictName = getOreDictOutputName(type);
 		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
 		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
