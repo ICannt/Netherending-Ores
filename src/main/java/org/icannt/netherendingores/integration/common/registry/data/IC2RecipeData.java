@@ -111,11 +111,7 @@ public enum IC2RecipeData implements IStringSerializable {
 	
 	
 	public static ItemStack getMaceItemStack(int index, int multiplier) {
-		ItemStack outStack = BlockRecipeData.getOreDictBlockItemStack(index, getMaceAmount(index, multiplier));
-		if (multiplier == 1 || multiplier == 2) {
-			outStack = BlockRecipeData.getOreDictCrushItemStack(index, getMaceAmount(index, multiplier));	
-		}
-		return outStack;
+		return BlockRecipeData.getOreDictCrushItemStack(index, getMaceAmount(index, multiplier));
 	}
     
     
@@ -134,11 +130,7 @@ public enum IC2RecipeData implements IStringSerializable {
 	
 	
 	public static ItemStack getElecFurnItemStack(int index, int multiplier) {
-		ItemStack outStack = BlockRecipeData.getOreDictBlockItemStack(index, getElecFurnAmount(index, multiplier));
-		if (multiplier == 1) {
-			outStack = BlockRecipeData.getOreDictSmeltItemStack(index, getElecFurnAmount(index, multiplier));	
-		}
-		return outStack;
+		return BlockRecipeData.getOreDictSmeltItemStack(index, getElecFurnAmount(index, multiplier));
 	}
 	
 	
@@ -149,13 +141,13 @@ public enum IC2RecipeData implements IStringSerializable {
 	
 	public static void getMaceRecipe(int index) {
 		int multiplier = getMultiplier(index);
-		Recipes.macerator.addRecipe(new IC2RecipeInput(BlockRecipeData.getItemStack(index)), null, false, getMaceItemStack(index, multiplier));
+		Recipes.macerator.addRecipe(new IC2RecipeInput(BlockRecipeData.getModBlockItemStack(index)), null, false, getMaceItemStack(index, multiplier));
 	}
 	
 	
 	public static void getElecFurnRecipe(int index) {
 		int multiplier = getMultiplier(index);
-		Recipes.furnace.addRecipe(BlockRecipeData.getItemStack(index), getElecFurnItemStack(index, multiplier), null, false);
+		Recipes.furnace.addRecipe(BlockRecipeData.getModBlockItemStack(index), getElecFurnItemStack(index, multiplier), null, false);
 	}
 	
 	

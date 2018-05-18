@@ -109,18 +109,14 @@ public enum MekRecipeData implements IStringSerializable {
     
 	
 	public static ItemStack getEnrichItemStack(int index, int multiplier) {
-		ItemStack outStack = BlockRecipeData.getOreDictBlockItemStack(index, getEnrichAmount(index, multiplier));
-		if (multiplier == 1 || multiplier == 2) {
-			outStack = BlockRecipeData.getOreDictCrushItemStack(index, getEnrichAmount(index, multiplier));	
-		}
-		return outStack;
+		return BlockRecipeData.getOreDictCrushItemStack(index, getEnrichAmount(index, multiplier));
 	}
 	
 	
 	public static void getEnrichRecipe(int index) {
 		int multiplier = getMultiplier(index);
 		if (getEnrichAmount(index, multiplier) > 0) {
-			MekanismAPI.recipeHelper().addEnrichmentChamberRecipe(BlockRecipeData.getItemStack(index), getEnrichItemStack(index, multiplier));
+			MekanismAPI.recipeHelper().addEnrichmentChamberRecipe(BlockRecipeData.getModBlockItemStack(index), getEnrichItemStack(index, multiplier));
 		}
 	}
 

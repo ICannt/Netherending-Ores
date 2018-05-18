@@ -39,7 +39,7 @@ public class OreDictionaryRegistry {
     	}
     	
     	for (BlockRecipeData blockData : BlockRecipeData.values()) {
-       		OreDictionary.registerOre(blockData.getOreDictName(), new ItemStack(blockData.getBlock(), 1, blockData.getBlockMeta()));    		
+       		OreDictionary.registerOre(blockData.getOreDictRegistrationName(), new ItemStack(blockData.getBlock(), 1, blockData.getBlockMeta()));    		
     	}
 		
     	Util.LOG.info("Registered Ore Dictionary Entries");

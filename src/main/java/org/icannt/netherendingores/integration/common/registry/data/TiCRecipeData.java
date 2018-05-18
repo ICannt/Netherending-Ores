@@ -108,7 +108,7 @@ public enum TiCRecipeData implements IStringSerializable {
 	
 	public static void getSmeltRecipe(int index) {
 		int multiplier = BlockRecipeData.values()[index].getRecipeMultiplier();
-		TinkerRegistry.registerMelting(BlockRecipeData.getItemStack(index), FluidRegistry.getFluid(BlockRecipeData.getRawOreName(index)), getMilliBuckets(index, multiplier));
+		TinkerRegistry.registerMelting(BlockRecipeData.getModBlockItemStack(index), FluidRegistry.getFluid(BlockRecipeData.getRawOreName(index)), getMilliBuckets(index, multiplier));
 	}
 	
 	

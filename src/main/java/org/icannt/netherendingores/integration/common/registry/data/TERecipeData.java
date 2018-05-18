@@ -162,11 +162,7 @@ public enum TERecipeData implements IStringSerializable {
 	
 	
 	public static ItemStack getPulvPrimaryItemStack(int index, int multiplier) {
-		ItemStack outStack = BlockRecipeData.getOreDictBlockItemStack(index, getPulvAmount(index, multiplier));
-		if (multiplier == 1 || multiplier == 2) {
-			outStack = BlockRecipeData.getOreDictCrushItemStack(index, getPulvAmount(index, multiplier));	
-		}
-		return outStack;
+		return BlockRecipeData.getOreDictCrushItemStack(index, getPulvAmount(index, multiplier));
 	}
 	
 	
@@ -199,11 +195,7 @@ public enum TERecipeData implements IStringSerializable {
 	
 	
 	public static ItemStack getRedFurnItemStack(int index, int multiplier) {
-		ItemStack outStack = BlockRecipeData.getOreDictBlockItemStack(index, getRedFurnAmount(index, multiplier));
-		if (multiplier == 1) {
-			outStack = BlockRecipeData.getOreDictSmeltItemStack(index, getRedFurnAmount(index, multiplier));	
-		}
-		return outStack;
+		return BlockRecipeData.getOreDictSmeltItemStack(index, getRedFurnAmount(index, multiplier));
 	}
 	
 	
@@ -215,16 +207,16 @@ public enum TERecipeData implements IStringSerializable {
 	public static void getPulvRecipe(int index) {
 		int multiplier = getMultiplier(index);
 		switch (multiplier) {
-			case 2:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(index, multiplier), BlockRecipeData.getItemStack(index),
+			case 2:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(index, multiplier), BlockRecipeData.getModBlockItemStack(index),
 					getPulvPrimaryItemStack(index, multiplier), getPulvSecondaryItemStack(index, multiplier), getPulvSecondaryOutputChance(index, multiplier)); break;
-			case 3:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(index, multiplier), BlockRecipeData.getItemStack(index), getPulvPrimaryItemStack(index, multiplier));
+			case 3:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(index, multiplier), BlockRecipeData.getModBlockItemStack(index), getPulvPrimaryItemStack(index, multiplier));
 		}
 	}
 	
 	
 	public static void getRedFurnRecipe(int index) {
 		int multiplier = getMultiplier(index);
-		ThermalExpansionHelper.addFurnaceRecipe(getRedFurnEnergy(index, multiplier), BlockRecipeData.getItemStack(index), getRedFurnItemStack(index, multiplier));
+		ThermalExpansionHelper.addFurnaceRecipe(getRedFurnEnergy(index, multiplier), BlockRecipeData.getModBlockItemStack(index), getRedFurnItemStack(index, multiplier));
 	}
 	
 	

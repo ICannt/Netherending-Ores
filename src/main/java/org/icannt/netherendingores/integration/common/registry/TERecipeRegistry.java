@@ -19,8 +19,8 @@ public class TERecipeRegistry {
 		// Remove the existing recipes first that are added automatically.
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			if (blockData.getRecipeMultiplier() > 1) {
-				ThermalExpansionHelper.removeFurnaceRecipe(BlockRecipeData.getItemStack(blockData.ordinal()));
-				ThermalExpansionHelper.removePulverizerRecipe(BlockRecipeData.getItemStack(blockData.ordinal()));
+				ThermalExpansionHelper.removeFurnaceRecipe(BlockRecipeData.getModBlockItemStack(blockData.ordinal()));
+				ThermalExpansionHelper.removePulverizerRecipe(BlockRecipeData.getModBlockItemStack(blockData.ordinal()));
 			}
 		}
 		
