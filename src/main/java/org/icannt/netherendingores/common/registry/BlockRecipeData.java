@@ -215,6 +215,16 @@ public enum BlockRecipeData implements IStringSerializable {
     public String getOreDictOtherModBlockName() {
         return getOreDictPrefixedName(1);
     }
+
+    //
+    public String getOreDictCustomRegistrationName(String material) {
+    	return getOreDictPrefixedName(recipeMultiplier, material);
+    }
+    
+    //
+    private String getOreDictPrefixedName(int multiplier) {
+    	return getOreDictPrefixedName(multiplier, name);
+    }
     
     /**
      * The method that returns the correct OreDict prefix for Netherending Ores.
@@ -222,16 +232,15 @@ public enum BlockRecipeData implements IStringSerializable {
      * @param       multiplier The Recipe Multiplier
      * @return      The prefixed OreDict name for Netherending Ores
      */
-    private String getOreDictPrefixedName(int multiplier) {
+    private String getOreDictPrefixedName(int multiplier, String material) {
     	String prefix = "";
-		String ore = name;
 		switch (multiplier) {
 			case 0: prefix = "neo"; break;
-			case 1:	prefix = "ore"; ore = getRawOreName(ore); break;
+			case 1:	prefix = "ore"; material = getRawOreName(material); break;
 			case 2:	prefix = "ore"; break;
 			case 3: prefix = "oreDense";
 		}
-		return prefix + Util.UpperCamel(ore.replace("_ore", ""));
+		return prefix + Util.UpperCamel(material.replace("_ore", ""));
     }
 	
     /**
