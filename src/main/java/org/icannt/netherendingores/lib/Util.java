@@ -17,7 +17,11 @@ public class Util {
     }
 
     public static void LogRecipeFail(String device, String input, String output) {
-    	Util.LOG.info("Unable to register " + device + " input for \"" + input + "\", output \"" + output + "\" not found.");
+    	LOG.info("Unable to register " + device + " input for \"" + input + "\", output \"" + output + "\" not found.");
+    }
+
+    public static void LogOreDict(String input, String output) {
+    	LOG.trace("Ore Dictionary entry for \"" + input + "\" added for " + output);
     }
     
 	public static String LowerUnder(String input)
