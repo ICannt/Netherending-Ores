@@ -111,13 +111,19 @@ public enum IC2RecipeData implements IStringSerializable {
     }
 	
 	
-	public static ItemStack getMaceItemStack(int index, int multiplier) {
-		if (multiplier > 0 && multiplier < 3 && OreDictionary.doesOreNameExist(BlockRecipeData.getOreDictCustomItemName(index, "crushed"))) {
-			return BlockRecipeData.getOreDictCustomItemStack(index, "crushed", getMaceAmount(index, multiplier));
-		}		
-		return BlockRecipeData.getOreDictCrushItemStack(index, getMaceAmount(index, multiplier));
-	}
+//	public static ItemStack getMaceItemStack(int index, int multiplier) {
+//		if (multiplier > 0 && multiplier < 3 && OreDictionary.doesOreNameExist(BlockRecipeData.getOreDictCustomItemName(index, "crushed"))) {
+//			return BlockRecipeData.getOreDictCustomItemStack(index, "crushed", getMaceAmount(index, multiplier));
+//		}		
+//		return BlockRecipeData.getOreDictCrushItemStack(index, getMaceAmount(index, multiplier));
+//	}
     
+	public static ItemStack getMaceItemStack(int index, int multiplier, String material) {
+		if (multiplier > 0 && multiplier < 3 && OreDictionary.doesOreNameExist(material)) {
+			return BlockRecipeData.getOreDictCustomItemStack(index, "crushed", material, getMaceAmount(index, multiplier));
+		}		
+		return BlockRecipeData.getOreDictCrushItemStack(index, material, getMaceAmount(index, multiplier));
+	}
     
 	public int getElecFurnAmount(int multiplier) {
 		switch (multiplier) {
@@ -142,13 +148,19 @@ public enum IC2RecipeData implements IStringSerializable {
 		return BlockRecipeData.values()[index].getRecipeMultiplier();
 	}
 	
-	
-	public static void getMaceRecipe(int index) {
+//	//
+//	public static void getMaceRecipe(int index) {
+//		int multiplier = getMultiplier(index);
+//		Recipes.macerator.addRecipe(new IC2RecipeInput(BlockRecipeData.getModBlockItemStack(index)), null, false, getMaceItemStack(index, multiplier));
+//	}
+
+	//
+	public static void getMaceRecipe(int index, String material) {
 		int multiplier = getMultiplier(index);
-		Recipes.macerator.addRecipe(new IC2RecipeInput(BlockRecipeData.getModBlockItemStack(index)), null, false, getMaceItemStack(index, multiplier));
+		Recipes.macerator.addRecipe(new IC2RecipeInput(BlockRecipeData.getModBlockItemStack(index)), null, false, getMaceItemStack(index, multiplier, material));
 	}
 	
-	
+	//
 	public static void getElecFurnRecipe(int index) {
 		int multiplier = getMultiplier(index);
 		Recipes.furnace.addRecipe(BlockRecipeData.getModBlockItemStack(index), getElecFurnItemStack(index, multiplier), null, false);

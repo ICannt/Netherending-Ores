@@ -78,19 +78,19 @@ public enum BlockRecipeData implements IStringSerializable {
     private String blockName;
     private int blockMeta;
     private String[] itemAltOreDictSuffix;
-    private String itemOreDict;
+    private String itemOreDictPrefix;
     private String itemAltOreDict;
     private boolean furnaceItemEnabled;
     private int defaultRecipeMultiplier;
     private int recipeMultiplier;
 	
     
-	BlockRecipeData(String name, String blockName, int blockMeta, String[] itemAltOreDictSuffix, String itemOreDict, String itemAltOreDict, boolean furnaceItemEnabled, int defaultRecipeMultiplier, int recipeMultiplier) {
+	BlockRecipeData(String name, String blockName, int blockMeta, String[] itemAltOreDictSuffix, String itemOreDictPrefix, String itemAltOreDict, boolean furnaceItemEnabled, int defaultRecipeMultiplier, int recipeMultiplier) {
 		this.name = name;
 		this.blockName = blockName;
 		this.blockMeta = blockMeta;
 		this.itemAltOreDictSuffix = itemAltOreDictSuffix;
-		this.itemOreDict = itemOreDict;
+		this.itemOreDictPrefix = itemOreDictPrefix;
 		this.itemAltOreDict = itemAltOreDict;
 		this.furnaceItemEnabled = furnaceItemEnabled;
 		this.defaultRecipeMultiplier = defaultRecipeMultiplier;
@@ -121,6 +121,7 @@ public enum BlockRecipeData implements IStringSerializable {
     public String getItemAltOreDict() {
     	// TODO: Implement alternate oredict prefixes for mods that often use them i.e. diamond dust for mekanism machines
     	// Just a stub for now
+    	// Will likely change to each integration enum handling this themselves
 		return itemAltOreDict;
 	}
 
@@ -180,30 +181,36 @@ public enum BlockRecipeData implements IStringSerializable {
     
     // 
 	public String getOreDictSmeltOutputName() {
-		return getOreDictOutputName(recipeMultiplier, "smelt");
+		return getOreDictOutputName("smelt");
 	}
 	
 	// 
 	public String getOreDictCrushOutputName() {
-		return getOreDictOutputName(recipeMultiplier, "crush");
+		return getOreDictOutputName("crush");
 	}
 	
 	// 
 	private String getOreDictOutputName(String type) {
-		return getOreDictOutputName(recipeMultiplier, type);
+		return getOreDictOutputName(recipeMultiplier, type, "name");
 	}
 	
 	// 
-	private String getOreDictOutputName(int multiplier, String type) {		
+	public String getOreDictOutputName(String type, String material) {
+		return getOreDictOutputName(recipeMultiplier, type, material);
+	}
+		
+	// 
+	private String getOreDictOutputName(int multiplier, String type, String material) {
+		material = material == "name" ? name : material;
 		String outputName = getOreDictOtherModBlockName();
 			switch (type) {
 				case "smelt":
 					if (multiplier == 1) {
-						outputName = getOreDictSmeltItemName(itemOreDict, name);
+						outputName = getOreDictSmeltItemName(itemOreDictPrefix, material);
 					}
 				case "crush":
 					if (multiplier == 1 || multiplier == 2) {
-						outputName = getOreDictCrushItemName(itemOreDict, name);
+						outputName = getOreDictCrushItemName(itemOreDictPrefix, material);
 					}
 			}
 		return outputName;
@@ -217,7 +224,7 @@ public enum BlockRecipeData implements IStringSerializable {
      *
      * @return The reassembled mod ore block name
      */
-    public String getOreDictRegistrationName() {
+    public String getOreDictRegName() {
     	return getOreDictPrefixedName(recipeMultiplier);
     }
 	
@@ -231,7 +238,7 @@ public enum BlockRecipeData implements IStringSerializable {
     }
 
     //
-    public String getOreDictCustomRegistrationName(String material) {
+    public String getOreDictCustomRegName(String material) {
     	material = name.replace(getRawOreName(name), material);    	
     	return getOreDictPrefixedName(recipeMultiplier, material);
     }
@@ -301,6 +308,16 @@ public enum BlockRecipeData implements IStringSerializable {
     	return prefix + ore;    	
     }
 
+    //
+    public static String getOreDictCustomItemName(int index, String prefix, String material) {
+    	Util.LOG.info(index + " " + prefix + " " + material);
+    	String ore = values()[index].name.replace(getRawOreName(values()[index].name), material);
+    	Util.LOG.info(ore + " " + prefix + " " + material);
+    	ore = prefix + Util.UpperCamel(ore.replace("_ore", ""));
+    	Util.LOG.info(ore);
+    	return values()[index].getOreDictCustomItemName(ore);
+    }
+    
     //
     public static String getOreDictCustomItemName(int index, String prefix) {
     	return values()[index].getOreDictCustomItemName(prefix);
@@ -386,13 +403,31 @@ public enum BlockRecipeData implements IStringSerializable {
 	}
 	
 	//
+	public static ItemStack getOreDictSmeltItemStack(int index, String material, int amount) {
+		return getOreDictCustomItemStack(index, "smelt", material, amount);
+	}
+	
+	//
 	public static ItemStack getOreDictCrushItemStack(int index, int amount) {
 		return values()[index].getOreDictOutputItemStack("crush", amount);
+	}
+
+	//
+	public static ItemStack getOreDictCrushItemStack(int index, String material, int amount) {
+		return getOreDictCustomItemStack(index, "crush", material, amount);
 	}
 	
 	//
 	public static ItemStack getOreDictCustomItemStack(int index, String prefix, int amount) {
 		String oredictName = getOreDictCustomItemName(index, prefix);
+		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
+		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
+		return new ItemStack(itemIn, amount, meta);
+	}
+	
+	//
+	public static ItemStack getOreDictCustomItemStack(int index, String prefix, String material, int amount) {
+		String oredictName = getOreDictCustomItemName(index, prefix, material);
 		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
 		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
 		return new ItemStack(itemIn, amount, meta);

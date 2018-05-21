@@ -23,12 +23,8 @@ public class IC2RecipeRegistry {
 		
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushOutputName()) && blockData.getRecipeMultiplier() > 1) {
-    			try {
-    				IC2RecipeData.getMaceRecipe(blockData.ordinal());
-    				Util.LogRecipeSuccess("macerator", blockData.getName(), blockData.getOreDictCrushOutputName());
-    			} catch (Exception e1) {
-    				Util.LogRecipeFail("macerator", blockData.getName(), blockData.getOreDictCrushOutputName());
-    			}
+				doMaceRecipe(blockData, new String[] { blockData.getName() });
+				doMaceRecipe(blockData, blockData.getItemAltOreDictSuffix());
 			}
     		if (OreDictionary.doesOreNameExist(blockData.getOreDictSmeltOutputName()) && blockData.getRecipeMultiplier() > 1) {
     			try {
@@ -39,8 +35,29 @@ public class IC2RecipeRegistry {
     			}
 			}
 		}
-
+		
 		Util.LOG.info("Registered Industrial Craft 2 Recipes");
 
-	}	
+	}
+	
+//	private static void doMaceRecipe(BlockRecipeData blockData) {
+//		try {
+//			IC2RecipeData.getMaceRecipe(blockData.ordinal());
+//			Util.LogRecipeSuccess("macerator", blockData.getName(), blockData.getOreDictCrushOutputName());
+//		} catch (Exception e1) {
+//			Util.LogRecipeFail("macerator", blockData.getName(), blockData.getOreDictCrushOutputName());
+//		}
+//	}
+	
+	private static void doMaceRecipe(BlockRecipeData blockData, String[] materials) {
+		for (String material : materials) {
+			try {
+				IC2RecipeData.getMaceRecipe(blockData.ordinal(), material);
+				Util.LogRecipeSuccess("macerator", blockData.getName(), blockData.getOreDictOutputName("crush", material));
+			} catch (Exception e1) {
+				Util.LogRecipeFail("macerator", blockData.getName(), blockData.getOreDictOutputName("crush", material));
+			}
+		}
+	}
+	
 }

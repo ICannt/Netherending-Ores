@@ -39,12 +39,12 @@ public class OreDictionaryRegistry {
     	}
     	
     	for (BlockRecipeData blockData : BlockRecipeData.values()) {
-       		OreDictionary.registerOre(blockData.getOreDictRegistrationName(), blockData.getModBlockItemStack());  		
-       		Util.LogOreDict(blockData.getOreDictRegistrationName(), blockData.getBlockName());       		
+       		OreDictionary.registerOre(blockData.getOreDictRegName(), blockData.getModBlockItemStack());  		
+       		Util.LogOreDict(blockData.getOreDictRegName(), blockData.getBlockName());       		
        		// Support additional alternate spellings of oredict names
-       		for (String itemAltOreDictSuffix : blockData.getItemAltOreDictSuffix()) {
-       			OreDictionary.registerOre(blockData.getOreDictCustomRegistrationName(itemAltOreDictSuffix), blockData.getModBlockItemStack());
-       			Util.LogOreDict(blockData.getOreDictCustomRegistrationName(itemAltOreDictSuffix), blockData.getBlockName());
+       		for (String material : blockData.getItemAltOreDictSuffix()) {
+       			OreDictionary.registerOre(blockData.getOreDictCustomRegName(material), blockData.getModBlockItemStack());
+       			Util.LogOreDict(blockData.getOreDictCustomRegName(material), blockData.getBlockName());
        		}
     	}
 		

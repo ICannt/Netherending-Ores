@@ -20,44 +20,46 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 @GameRegistry.ObjectHolder(Info.MOD_ID)
 public class RegistryEvents {
     		
-	@Mod.EventBusSubscriber
-	public static class Events {
-				
-		@SubscribeEvent
-	    public static void registerIRecipe(final RegistryEvent.Register<IRecipe> event)
-	    {
-			if (Loader.isModLoaded("thermalexpansion")) {
-				TERecipeRegistry.removeRecipes();
-			}
-	    }
-	
-	}
+//	@Mod.EventBusSubscriber
+//	public static class Events {
+//				
+//		@SubscribeEvent
+//	    public static void registerIRecipe(final RegistryEvent.Register<IRecipe> event)
+//	    {
+//			if (Loader.isModLoaded("thermalexpansion")) {
+//				TERecipeRegistry.removeRecipes();
+//			}
+//	    }
+//	
+//	}
 
 	// This bit is actually loaded by init in CommonProxy
 	public static void registerRecipes() {
 		
-		// Register Netherending Ores own recipes
-		RecipeRegistry.registerRecipes();
-		
-		// Register Tinkers' Construct recipes
-		if (Loader.isModLoaded("tconstruct")) {
-			TiCRecipeRegistry.registerRecipes();
-		}
-
-		// Register Thermal Expansion recipes
-		if (Loader.isModLoaded("thermalexpansion")) {
-			TERecipeRegistry.registerRecipes();
-		}
-		
-		// Register Mekanism recipes
-		if (Loader.isModLoaded("mekanism")) {
-			MekRecipeRegistry.registerRecipes();
-		}
+//		// Register Netherending Ores own recipes
+//		RecipeRegistry.registerRecipes();
+//		
+//		// Register Tinkers' Construct recipes
+//		if (Loader.isModLoaded("tconstruct")) {
+//			TiCRecipeRegistry.registerRecipes();
+//		}
+//
+//		// Register Thermal Expansion recipes
+//		if (Loader.isModLoaded("thermalexpansion")) {
+//			TERecipeRegistry.registerRecipes();
+//		}
+//		
+//		// Register Mekanism recipes
+//		if (Loader.isModLoaded("mekanism")) {
+//			MekRecipeRegistry.registerRecipes();
+//		}
 		
 		// Register Industrial Craft 2 recipes
 		if (Loader.isModLoaded("ic2")) {
 			IC2RecipeRegistry.registerRecipes();
 		}
+		
+		System.out.print("Debug Stop");
 
 	}
 	
