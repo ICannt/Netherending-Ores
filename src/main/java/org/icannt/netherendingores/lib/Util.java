@@ -11,6 +11,14 @@ import com.google.common.base.CaseFormat;
 public class Util {
 	
     public static final Logger LOG = LogManager.getLogger(Info.MOD_NAME);
+
+    public static void LogRecipeSuccess(String[] msg) {
+    	LogRecipeSuccess(msg[0], msg[1], msg[2]);
+    }
+
+    public static void LogRecipeFail(String[] msg) {
+    	LogRecipeFail(msg[0], msg[1], msg[2]);
+    }    
     
     public static void LogRecipeSuccess(String device, String input, String output) {
     	LOG.trace("Registered " + device + " input for \"" + input + "\", output \"" + output + "\".");

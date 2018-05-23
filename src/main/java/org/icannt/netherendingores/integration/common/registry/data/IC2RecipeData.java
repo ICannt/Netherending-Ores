@@ -2,6 +2,8 @@ package org.icannt.netherendingores.integration.common.registry.data;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.integration.common.registry.IC2RecipeInput;
+import org.icannt.netherendingores.integration.common.registry.IC2RecipeRegistry;
+import org.icannt.netherendingores.lib.Util;
 
 import ic2.api.recipe.Recipes;
 import net.minecraft.item.ItemStack;
@@ -119,10 +121,13 @@ public enum IC2RecipeData implements IStringSerializable {
 //	}
     
 	public static ItemStack getMaceItemStack(int index, int multiplier, String material) {
-		if (multiplier > 0 && multiplier < 3 && OreDictionary.doesOreNameExist(material)) {
-			return BlockRecipeData.getOreDictCustomItemStack(index, "crushed", material, getMaceAmount(index, multiplier));
-		}		
-		return BlockRecipeData.getOreDictCrushItemStack(index, material, getMaceAmount(index, multiplier));
+		String prefix = "crushed";
+		if (multiplier > 0 && multiplier < 3 && OreDictionary.doesOreNameExist(BlockRecipeData.getOreDictCustomItemName(index, prefix, material))) {
+			IC2RecipeRegistry.logMsg("macerator", BlockRecipeData.values()[index].getName(), BlockRecipeData.getOreDictCustomItemName(index, prefix, material));
+			return BlockRecipeData.getOreDictCustomItemStack(index, prefix, material, getMaceAmount(index, multiplier));
+		}
+		IC2RecipeRegistry.logMsg("macerator", BlockRecipeData.values()[index].getName(), BlockRecipeData.values()[index].getOreDictOutputName("crush", material));
+		return BlockRecipeData.getOreDictCrushItemStack(index, getMaceAmount(index, multiplier));
 	}
     
 	public int getElecFurnAmount(int multiplier) {

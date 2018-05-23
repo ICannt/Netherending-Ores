@@ -178,6 +178,10 @@ public enum BlockRecipeData implements IStringSerializable {
     	return Info.MOD_ID + ":" + blockName + meta;
     }
     
+    //
+    public static String getAltMaterialName(int index, String baseName, String material) {
+    	return values()[index].name.replace(getRawOreName(values()[index].name), material);
+    }
     
     // 
 	public String getOreDictSmeltOutputName() {
@@ -203,16 +207,16 @@ public enum BlockRecipeData implements IStringSerializable {
 	private String getOreDictOutputName(int multiplier, String type, String material) {
 		material = material == "name" ? name : material;
 		String outputName = getOreDictOtherModBlockName();
-			switch (type) {
-				case "smelt":
-					if (multiplier == 1) {
-						outputName = getOreDictSmeltItemName(itemOreDictPrefix, material);
-					}
-				case "crush":
-					if (multiplier == 1 || multiplier == 2) {
-						outputName = getOreDictCrushItemName(itemOreDictPrefix, material);
-					}
-			}
+		switch (type) {
+			case "smelt":
+				if (multiplier == 1) {
+					outputName = getOreDictSmeltItemName(itemOreDictPrefix, material);
+				}
+			case "crush":
+				if (multiplier == 1 || multiplier == 2) {
+					outputName = getOreDictCrushItemName(itemOreDictPrefix, material);
+				}
+		}
 		return outputName;
 	}
     
@@ -310,12 +314,7 @@ public enum BlockRecipeData implements IStringSerializable {
 
     //
     public static String getOreDictCustomItemName(int index, String prefix, String material) {
-    	Util.LOG.info(index + " " + prefix + " " + material);
-    	String ore = values()[index].name.replace(getRawOreName(values()[index].name), material);
-    	Util.LOG.info(ore + " " + prefix + " " + material);
-    	ore = prefix + Util.UpperCamel(ore.replace("_ore", ""));
-    	Util.LOG.info(ore);
-    	return values()[index].getOreDictCustomItemName(ore);
+    	return prefix + Util.UpperCamel(getRawOreName(material));
     }
     
     //
@@ -325,8 +324,7 @@ public enum BlockRecipeData implements IStringSerializable {
     
     //
     public String getOreDictCustomItemName(String prefix) {
-    	String ore = getRawOreName();
-    	return prefix + Util.UpperCamel(ore.replace("_ore", ""));
+    	return prefix + Util.UpperCamel(getRawOreName());
     }
     
     /**
