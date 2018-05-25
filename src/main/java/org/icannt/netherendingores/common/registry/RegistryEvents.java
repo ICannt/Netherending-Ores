@@ -4,6 +4,7 @@ import org.icannt.netherendingores.integration.common.registry.IC2RecipeRegistry
 import org.icannt.netherendingores.integration.common.registry.MekRecipeRegistry;
 import org.icannt.netherendingores.integration.common.registry.TERecipeRegistry;
 import org.icannt.netherendingores.integration.common.registry.TiCRecipeRegistry;
+import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
 
 import net.minecraft.item.crafting.IRecipe;
@@ -20,46 +21,46 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 @GameRegistry.ObjectHolder(Info.MOD_ID)
 public class RegistryEvents {
     		
-//	@Mod.EventBusSubscriber
-//	public static class Events {
-//				
-//		@SubscribeEvent
-//	    public static void registerIRecipe(final RegistryEvent.Register<IRecipe> event)
-//	    {
-//			if (Loader.isModLoaded("thermalexpansion")) {
-//				TERecipeRegistry.removeRecipes();
-//			}
-//	    }
-//	
-//	}
+	@Mod.EventBusSubscriber
+	public static class Events {
+				
+		@SubscribeEvent
+	    public static void registerIRecipe(final RegistryEvent.Register<IRecipe> event)
+	    {
+			if (Loader.isModLoaded("thermalexpansion") && Config.thermalExpansionRecipes) {
+				TERecipeRegistry.removeRecipes();
+			}
+	    }
+	
+	}
 
 	// This bit is actually loaded by init in CommonProxy
 	public static void registerRecipes() {
 		
-//		// Register Netherending Ores own recipes
-//		RecipeRegistry.registerRecipes();
-//		
-//		// Register Tinkers' Construct recipes
-//		if (Loader.isModLoaded("tconstruct")) {
-//			TiCRecipeRegistry.registerRecipes();
-//		}
-//
-//		// Register Thermal Expansion recipes
-//		if (Loader.isModLoaded("thermalexpansion")) {
-//			TERecipeRegistry.registerRecipes();
-//		}
-//		
-//		// Register Mekanism recipes
-//		if (Loader.isModLoaded("mekanism")) {
-//			MekRecipeRegistry.registerRecipes();
-//		}
-		
-		// Register Industrial Craft 2 recipes
-		if (Loader.isModLoaded("ic2")) {
-			IC2RecipeRegistry.registerRecipes();
+		// Register Netherending Ores own recipes, only proceed if at least one of them is enabled
+		if (Config.vanillaCraftingRecipes || Config.vanillaFurnaceRecipes) {
+			RecipeRegistry.registerRecipes();
 		}
 		
-		System.out.print("Debug Stop");
+		// Register Tinkers' Construct recipes
+		if (Loader.isModLoaded("tconstruct") && Config.tinkersConstructRecipes) {
+			TiCRecipeRegistry.registerRecipes();
+		}
+
+		// Register Thermal Expansion recipes
+		if (Loader.isModLoaded("thermalexpansion") && Config.thermalExpansionRecipes) {
+			TERecipeRegistry.registerRecipes();
+		}
+		
+		// Register Mekanism recipes
+		if (Loader.isModLoaded("mekanism") && Config.mekanismRecipes) {
+			MekRecipeRegistry.registerRecipes();
+		}
+		
+		// Register Industrial Craft 2 recipes
+		if (Loader.isModLoaded("ic2") && Config.industrialCraft2Recipes) {
+			IC2RecipeRegistry.registerRecipes();
+		}
 
 	}
 	

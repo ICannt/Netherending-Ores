@@ -1,5 +1,6 @@
 package org.icannt.netherendingores.common.registry;
 
+import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
 import org.icannt.netherendingores.lib.Util;
 
@@ -36,24 +37,22 @@ public class RecipeRegistry {
 					
 					// 1x Multiplier is crafting table conversion recipe and smelt to item.
 					// 2x/3x Multipliers are smelted only.
-		        	if (blockData.getRecipeMultiplier() == 1) {
-		        		
-		        		// Conversion Recipe
-	        			GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(), groupName, stack, blockData.getConversionIngredient());
-	        			
+		        	if (blockData.getRecipeMultiplier() == 1 && Config.vanillaCraftingRecipes) {
+	        			GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(), groupName, stack, blockData.getConversionIngredient());        			
 		        	}
 		        	
-	        		// Furnace Recipe, only add if the recipe is actually enabled, avoids some oredict issues		        	
-		        	int experience = blockData.getRecipeMultiplier() > 1 ? 0 : -1; // Not foolproof, will do for now        	
-        			if (blockData.isFurnaceItemEnabled() || blockData.getRecipeMultiplier() > 1) {
-	        			try {
-	        				// Trying get around issues with the OreDict smelt recipes by skipping over the code that makes it wildcard
-	        				FurnaceRecipes.instance().addSmeltingRecipe(blockData.getModBlockItemStack(), blockData.getOreDictSmeltItemStack(blockData.getFurnaceAmount()), experience);
-	        				Util.LogRecipeSuccess("furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
-	        			} catch (Exception e1) {
-	        				Util.LogRecipeFail("furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
+	        		// Furnace Recipe, only add if the recipe is actually enabled, avoids some oredict issues	
+		        	if (Config.vanillaFurnaceRecipes) {
+			        	int experience = blockData.getRecipeMultiplier() > 1 ? 0 : -1; // Not foolproof, will do for now        	
+	        			if (blockData.isFurnaceItemEnabled() || blockData.getRecipeMultiplier() > 1) {
+		        			try {
+		        				FurnaceRecipes.instance().addSmeltingRecipe(blockData.getModBlockItemStack(), blockData.getOreDictSmeltItemStack(blockData.getFurnaceAmount()), experience);
+		        				Util.LogRecipeSuccess("furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
+		        			} catch (Exception e1) {
+		        				Util.LogRecipeFail("furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
+		        			}
 	        			}
-        			}
+		        	}
 					
 					// We only need a single match, no point in adding multiple recipes for different OreDict item results, they often can't be selected. 
 					break;

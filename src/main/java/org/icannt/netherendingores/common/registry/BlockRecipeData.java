@@ -73,7 +73,6 @@ public enum BlockRecipeData implements IStringSerializable {
     END_COBALT_ORE ("end_cobalt_ore", "ore_other_1", 5, new String[0], "", "", true, 1, 0);
 
 
-
     private String name;
     private String blockName;
     private int blockMeta;
@@ -318,11 +317,6 @@ public enum BlockRecipeData implements IStringSerializable {
     }
     
     //
-    public static String getOreDictCustomItemName(int index, String prefix) {
-    	return values()[index].getOreDictCustomItemName(prefix);
-    }
-    
-    //
     public String getOreDictCustomItemName(String prefix) {
     	return prefix + Util.UpperCamel(getRawOreName());
     }
@@ -399,12 +393,7 @@ public enum BlockRecipeData implements IStringSerializable {
 	public static ItemStack getOreDictSmeltItemStack(int index, int amount) {
 		return values()[index].getOreDictOutputItemStack("smelt", amount);
 	}
-	
-	//
-	public static ItemStack getOreDictSmeltItemStack(int index, String material, int amount) {
-		return getOreDictCustomItemStack(index, "smelt", material, amount);
-	}
-	
+		
 	//
 	public static ItemStack getOreDictCrushItemStack(int index, int amount) {
 		return values()[index].getOreDictOutputItemStack("crush", amount);
@@ -416,24 +405,24 @@ public enum BlockRecipeData implements IStringSerializable {
 	}
 	
 	//
-	public static ItemStack getOreDictCustomItemStack(int index, String prefix, int amount) {
-		String oredictName = getOreDictCustomItemName(index, prefix);
-		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
-		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
-		return new ItemStack(itemIn, amount, meta);
-	}
-	
-	//
 	public static ItemStack getOreDictCustomItemStack(int index, String prefix, String material, int amount) {
 		String oredictName = getOreDictCustomItemName(index, prefix, material);
 		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
 		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
 		return new ItemStack(itemIn, amount, meta);
 	}
-	
+
 	//
 	private ItemStack getOreDictOutputItemStack(String type, int amount) {
 		String oredictName = getOreDictOutputName(type);
+		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
+		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
+		return new ItemStack(itemIn, amount, meta);
+	}
+	
+	//
+	public static ItemStack getOreDictOutputItemStack(int index, String type, String material, int amount) {
+		String oredictName = values()[index].getOreDictOutputName(type, material);
 		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
 		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
 		return new ItemStack(itemIn, amount, meta);
