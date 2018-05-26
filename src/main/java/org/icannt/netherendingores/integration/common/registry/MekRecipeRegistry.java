@@ -19,9 +19,9 @@ public class MekRecipeRegistry {
 			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushOutputName())) {
     			try {
     				MekRecipeData.getEnrichRecipe(blockData.ordinal());
-    				Util.LogRecipeSuccess("enrichment chamber", blockData.getName(), blockData.getOreDictCrushOutputName());
+    				Util.logRecipeSuccess("enrichment chamber", blockData.getName(), blockData.getOreDictCrushOutputName());
     			} catch (Exception e1) {
-    				Util.LogRecipeFail("enrichment chamber", blockData.getName(), blockData.getOreDictCrushOutputName());
+    				Util.logRecipeFail("enrichment chamber", blockData.getName(), blockData.getOreDictCrushOutputName());
     			}
 			}
 		}

@@ -42,16 +42,9 @@ public class RecipeRegistry {
 		        	}
 		        	
 	        		// Furnace Recipe, only add if the recipe is actually enabled, avoids some oredict issues	
-		        	if (Config.vanillaFurnaceRecipes) {
-			        	int experience = blockData.getRecipeMultiplier() > 1 ? 0 : -1; // Not foolproof, will do for now        	
-	        			if (blockData.isFurnaceItemEnabled() || blockData.getRecipeMultiplier() > 1) {
-		        			try {
-		        				FurnaceRecipes.instance().addSmeltingRecipe(blockData.getModBlockItemStack(), blockData.getOreDictSmeltItemStack(blockData.getFurnaceAmount()), experience);
-		        				Util.LogRecipeSuccess("furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
-		        			} catch (Exception e1) {
-		        				Util.LogRecipeFail("furnace", blockData.getName(), blockData.getOreDictSmeltOutputName());
-		        			}
-	        			}
+		        	if (Config.vanillaFurnaceRecipes && (blockData.isFurnaceItemEnabled() || blockData.getRecipeMultiplier() > 1)) {      	
+            			RecipeHelper.doRecipe(blockData, "furnace", new String[] { blockData.getName() }, false);
+            			RecipeHelper.doRecipe(blockData, "furnace", blockData.getItemAltOreDictSuffix(), true);
 		        	}
 					
 					// We only need a single match, no point in adding multiple recipes for different OreDict item results, they often can't be selected. 
@@ -64,4 +57,10 @@ public class RecipeRegistry {
 		Util.LOG.info("Registered Recipes");
 		
 	}
+	
+	public static void addFurnaceRecipe(BlockRecipeData blockData, String material) {
+		int experience = blockData.getRecipeMultiplier() > 1 ? 0 : -1;
+		FurnaceRecipes.instance().addSmeltingRecipe(blockData.getModBlockItemStack(), blockData.getOreDictSmeltItemStack(blockData.getFurnaceAmount()), experience);
+	}
+	
 }

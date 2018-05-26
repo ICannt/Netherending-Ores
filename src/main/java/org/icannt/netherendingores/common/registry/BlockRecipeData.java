@@ -162,7 +162,7 @@ public enum BlockRecipeData implements IStringSerializable {
     
     
     public ResourceLocation getConversionResourceLocation() {
-		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + Util.LowerUnder(getOreDictOtherModBlockName()));
+		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + Util.lowerUnder(getOreDictOtherModBlockName()));
     }
     
     
@@ -205,18 +205,17 @@ public enum BlockRecipeData implements IStringSerializable {
 	// 
 	private String getOreDictOutputName(int multiplier, String type, String material) {
 		material = material == "name" ? name : material;
-		String outputName = getOreDictOtherModBlockName();
 		switch (type) {
 			case "smelt":
 				if (multiplier == 1) {
-					outputName = getOreDictSmeltItemName(itemOreDictPrefix, material);
+					return getOreDictSmeltItemName(itemOreDictPrefix, material);
 				}
 			case "crush":
 				if (multiplier == 1 || multiplier == 2) {
-					outputName = getOreDictCrushItemName(itemOreDictPrefix, material);
+					return getOreDictCrushItemName(itemOreDictPrefix, material);
 				}
 		}
-		return outputName;
+		return getOreDictOtherModBlockName();
 	}
     
     /**
@@ -265,7 +264,7 @@ public enum BlockRecipeData implements IStringSerializable {
 			case 2:	prefix = "ore"; break;
 			case 3: prefix = "oreDense";
 		}
-		return prefix + Util.UpperCamel(material.replace("_ore", ""));
+		return prefix + Util.upperCamel(material.replace("_ore", ""));
     }
 	
     /**
@@ -313,12 +312,12 @@ public enum BlockRecipeData implements IStringSerializable {
 
     //
     public static String getOreDictCustomItemName(int index, String prefix, String material) {
-    	return prefix + Util.UpperCamel(getRawOreName(material));
+    	return prefix + Util.upperCamel(getRawOreName(material));
     }
     
     //
     public String getOreDictCustomItemName(String prefix) {
-    	return prefix + Util.UpperCamel(getRawOreName());
+    	return prefix + Util.upperCamel(getRawOreName());
     }
     
     /**

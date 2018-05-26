@@ -88,13 +88,12 @@ public enum MekRecipeData implements IStringSerializable {
 	
 
 	public int getEnrichAmount(int multiplier) {
-		int amount = 0;
 		switch (multiplier) {
-			case 1:	amount = enrich1xAmount; break;
-			case 2:	amount = enrich2xAmount; break;
-			case 3:	amount = enrich3xAmount;
+			case 1:	return enrich1xAmount;
+			case 2:	return enrich2xAmount;
+			case 3:	return enrich3xAmount;
 		}
-		return amount;
+		return 0;
 	}
 	
 	

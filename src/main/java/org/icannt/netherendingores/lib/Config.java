@@ -108,7 +108,7 @@ public class Config {
     	
     	int multiplier = 0;    	
     	for (BlockRecipeData blockData : BlockRecipeData.values()) {
-    		multiplier = cfg.get(CATEGORY_RECIPE_MULTIPLIER, Util.SpaceCapital(blockData.getName()), blockData.getDefaultRecipeMultiplier()).getInt();
+    		multiplier = cfg.get(CATEGORY_RECIPE_MULTIPLIER, Util.spaceCapital(blockData.getName()), blockData.getDefaultRecipeMultiplier()).getInt();
     		multiplier = Math.min(maxMult, Math.max(minMult, multiplier));
     		if (override > -1) {
     			multiplier = Math.min(maxMult, Math.max(minMult, override));
