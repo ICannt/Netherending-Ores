@@ -1,6 +1,9 @@
 package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.integration.common.registry.data.IC2RecipeData;
+import org.icannt.netherendingores.integration.common.registry.data.MekRecipeData;
+import org.icannt.netherendingores.integration.common.registry.data.TERecipeData;
+import org.icannt.netherendingores.integration.common.registry.data.TiCRecipeData;
 import org.icannt.netherendingores.lib.Util;
 
 /**
@@ -37,11 +40,14 @@ public class RecipeHelper {
 	 * @param       material Recipe material that is being dealt with e.g. iron
 	 */
 	private static void addRecipe(BlockRecipeData blockData, String device, String material) {
-		int index = blockData.ordinal();
 		switch (device) {
 			case "furnace": RecipeRegistry.addFurnaceRecipe(blockData, material); break;
-			case "mace": IC2RecipeData.addMaceRecipe(index, material); break;
-			case "elecfurn": IC2RecipeData.addElecFurnRecipe(index, material);
+			case "smeltery": TiCRecipeData.addSmeltRecipe(blockData); break; // Not sure if any known liquids register with alternate spelling.
+			case "pulv": TERecipeData.addPulvRecipe(blockData, material); break;
+			case "redfurn": TERecipeData.addRedFurnRecipe(blockData, material); break;
+			case "enrich": MekRecipeData.addEnrichRecipe(blockData, material); break;
+			case "mace": IC2RecipeData.addMaceRecipe(blockData, material); break;
+			case "elecfurn": IC2RecipeData.addElecFurnRecipe(blockData, material);
 		}
 	}
 	

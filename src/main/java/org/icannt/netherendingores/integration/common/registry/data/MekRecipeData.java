@@ -1,6 +1,7 @@
 package org.icannt.netherendingores.integration.common.registry.data;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.lib.Util;
 
 import mekanism.api.MekanismAPI;
 import net.minecraft.item.ItemStack;
@@ -79,14 +80,14 @@ public enum MekRecipeData implements IStringSerializable {
 		this.enrich2xAmount = enrich2xAmount;
 		this.enrich3xAmount = enrich3xAmount;
 	}
-
 	
+	//
 	@Override
 	public String getName() {
 		return name;
 	}
 	
-
+    //
 	public int getEnrichAmount(int multiplier) {
 		switch (multiplier) {
 			case 1:	return enrich1xAmount;
@@ -96,27 +97,22 @@ public enum MekRecipeData implements IStringSerializable {
 		return 0;
 	}
 	
-	
-    public static int getEnrichAmount(int index, int multiplier) {
-        return values()[index].getEnrichAmount(multiplier);
+	//
+    public static int getEnrichAmount(BlockRecipeData blockData) {
+        return values()[blockData.ordinal()].getEnrichAmount(blockData.getRecipeMultiplier());
     }
 	
-    
-	private static int getMultiplier(int index) {
-		return BlockRecipeData.values()[index].getRecipeMultiplier();
-	}    
-    
-	
-	public static ItemStack getEnrichItemStack(int index, int multiplier) {
-		return BlockRecipeData.getOreDictCrushItemStack(index, getEnrichAmount(index, multiplier));
+	//
+	public static void addEnrichRecipe(BlockRecipeData blockData, String material) {
+		if (getEnrichAmount(blockData) > 0) {
+			MekanismAPI.recipeHelper().addEnrichmentChamberRecipe(blockData.getModBlockItemStack(), getEnrichItemStack(blockData, material));
+		}
 	}
 	
-	
-	public static void getEnrichRecipe(int index) {
-		int multiplier = getMultiplier(index);
-		if (getEnrichAmount(index, multiplier) > 0) {
-			MekanismAPI.recipeHelper().addEnrichmentChamberRecipe(BlockRecipeData.getModBlockItemStack(index), getEnrichItemStack(index, multiplier));
-		}
+	//
+	public static ItemStack getEnrichItemStack(BlockRecipeData blockData, String material) {
+		Util.logRecipeMsg("enrichment chamber", blockData.getName(), blockData.getOreDictOutputName("crush", material));
+		return blockData.getOreDictOutputItemStack("crush", material, getEnrichAmount(blockData));
 	}
 
 	

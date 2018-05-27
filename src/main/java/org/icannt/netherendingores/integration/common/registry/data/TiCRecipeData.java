@@ -1,6 +1,7 @@
 package org.icannt.netherendingores.integration.common.registry.data;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.lib.Util;
 
 import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -80,18 +81,13 @@ public enum TiCRecipeData implements IStringSerializable {
 		this.smelt3xMultiplier = smelt3xMultiplier;
 	}
 	
-	
+	//
 	@Override
 	public String getName() {
 		return name;
 	}
-
 	
-	public static String getName(int index) {
-		return TiCRecipeData.values()[index].getName(); 
-	}
-	
-	
+	//
 	public int getMilliBuckets(int multiplier) {
 		switch (multiplier) {
 			case 2:	return smelt2xMultiplier * smeltmilliBuckets;
@@ -100,15 +96,15 @@ public enum TiCRecipeData implements IStringSerializable {
 		return 0;
 	}
 	
-	
-	public static int getMilliBuckets(int index, int multiplier) {
-		return TiCRecipeData.values()[index].getMilliBuckets(multiplier);
+	//
+	public static int getMilliBuckets(BlockRecipeData blockData) {
+		return values()[blockData.ordinal()].getMilliBuckets(blockData.getRecipeMultiplier());
 	}
 	
-	
-	public static void getSmeltRecipe(int index) {
-		int multiplier = BlockRecipeData.values()[index].getRecipeMultiplier();
-		TinkerRegistry.registerMelting(BlockRecipeData.getModBlockItemStack(index), FluidRegistry.getFluid(BlockRecipeData.getRawOreName(index)), getMilliBuckets(index, multiplier));
+	//
+	public static void addSmeltRecipe(BlockRecipeData blockData) {
+		Util.logRecipeMsg("smeltery", blockData.getName(), "");
+		TinkerRegistry.registerMelting(blockData.getModBlockItemStack(), FluidRegistry.getFluid(blockData.getRawOreName()), getMilliBuckets(blockData));
 	}
 	
 	

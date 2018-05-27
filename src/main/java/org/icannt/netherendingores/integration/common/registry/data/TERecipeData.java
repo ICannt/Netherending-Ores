@@ -2,12 +2,11 @@ package org.icannt.netherendingores.integration.common.registry.data;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.lib.Config;
+import org.icannt.netherendingores.lib.Util;
 
 import cofh.api.util.ThermalExpansionHelper;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
-import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * Created by ICannt on 11/04/18.
@@ -104,13 +103,13 @@ public enum TERecipeData implements IStringSerializable {
 		
 	}
 
-	
+	//
 	@Override
 	public String getName() {
 		return name;
 	}
 
-	
+	//
 	public int getPulvEnergy(int multiplier) {
 		switch (multiplier) {
 			case 2:	return pulv2xEnergy;
@@ -120,11 +119,12 @@ public enum TERecipeData implements IStringSerializable {
 	}
 
 	
-    public static int getPulvEnergy(int index, int multiplier) {
-        return values()[index].getPulvEnergy(multiplier);
+	//
+    public static int getPulvEnergy(BlockRecipeData blockData) {
+        return values()[blockData.ordinal()].getPulvEnergy(blockData.getRecipeMultiplier());
     }
     
-    
+    //
 	public int getPulvAmount(int multiplier) {
 		switch (multiplier) {
 			case 2:	return pulv2xAmount;
@@ -132,40 +132,18 @@ public enum TERecipeData implements IStringSerializable {
 		}
 		return 0;
 	}
-	
-	
-    public static int getPulvAmount(int index, int multiplier) {
-        return values()[index].getPulvAmount(multiplier);
+
+	//
+    public static int getPulvAmount(BlockRecipeData blockData) {
+        return values()[blockData.ordinal()].getPulvAmount(blockData.getRecipeMultiplier());
     }
-    
 	
-	public String getPulvSecondaryOutputItem(int multiplier) {
-		return pulv2xSecondaryOutputItem;
-	}
-	
-	
-	public int getPulvSecondaryOutputChance(int multiplier) {
-		return pulv2xSecondaryOutputChance;
-	}
-	
-	
-    public static int getPulvSecondaryOutputChance(int index, int multiplier) {
-        return values()[index].getPulvSecondaryOutputChance(multiplier);
+	//
+    public static int getPulvSecondaryOutputChance(BlockRecipeData blockData) {
+    	return values()[blockData.ordinal()].pulv2xSecondaryOutputChance;
     }
-    	
-	
-	public static ItemStack getPulvSecondaryItemStack(int index, int multiplier) {
-		Item output = OreDictionary.getOres(values()[index].getPulvSecondaryOutputItem(multiplier), false).get(0).getItem();
-		int meta = OreDictionary.getOres(values()[index].getPulvSecondaryOutputItem(multiplier), false).get(0).getMetadata();
-		return new ItemStack(output, 1, meta);
-	}
-	
-	
-	public static ItemStack getPulvPrimaryItemStack(int index, int multiplier) {
-		return BlockRecipeData.getOreDictCrushItemStack(index, getPulvAmount(index, multiplier));
-	}
-	
-	
+
+    //
 	public int getRedFurnEnergy(int multiplier) {
 		switch (multiplier) {
 			case 2:	return (int) (Config.redstoneFurnaceFullOutput ? Config.redstoneFurnaceFullOutputEnergyFactor : Config.redstoneFurnaceReducedOutputEnergyFactor * redFurn2xEnergy);
@@ -173,13 +151,13 @@ public enum TERecipeData implements IStringSerializable {
 		}
 		return 0;
 	}
-
 	
-    public static int getRedFurnEnergy(int index, int multiplier) {
-        return values()[index].getRedFurnEnergy(multiplier);
+	//
+    public static int getRedFurnEnergy(BlockRecipeData blockData) {
+        return values()[blockData.ordinal()].getRedFurnEnergy(blockData.getRecipeMultiplier());
     }
-    
-    
+
+    //
 	public int getRedFurnAmount(int multiplier) {
 		switch (multiplier) {
 			case 2:	return Math.round(Config.redstoneFurnaceFullOutput ? Config.redstoneFurnaceFullOutputAmountFactor : Config.redstoneFurnaceReducedOutputAmountFactor * redFurn2xAmount);
@@ -188,36 +166,39 @@ public enum TERecipeData implements IStringSerializable {
 		return 0;
 	}
 	
-	
-    public static int getRedFurnAmount(int index, int multiplier) {
-        return values()[index].getRedFurnAmount(multiplier);
+	//
+    public static int getRedFurnAmount(BlockRecipeData blockData) {
+        return values()[blockData.ordinal()].getRedFurnAmount(blockData.getRecipeMultiplier());
     }
 	
-	
-	public static ItemStack getRedFurnItemStack(int index, int multiplier) {
-		return BlockRecipeData.getOreDictSmeltItemStack(index, getRedFurnAmount(index, multiplier));
-	}
-	
-	
-	private static int getMultiplier(int index) {
-		return BlockRecipeData.values()[index].getRecipeMultiplier();
-	}
-	
-	
-	public static void getPulvRecipe(int index) {
-		int multiplier = getMultiplier(index);
-		switch (multiplier) {
-			case 2:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(index, multiplier), BlockRecipeData.getModBlockItemStack(index),
-					getPulvPrimaryItemStack(index, multiplier), getPulvSecondaryItemStack(index, multiplier), getPulvSecondaryOutputChance(index, multiplier)); break;
-			case 3:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(index, multiplier), BlockRecipeData.getModBlockItemStack(index), getPulvPrimaryItemStack(index, multiplier));
+	//
+	public static void addPulvRecipe(BlockRecipeData blockData, String material) {
+		switch (blockData.getRecipeMultiplier()) {
+			case 2:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(blockData), blockData.getModBlockItemStack(), getPulvPrimaryItemStack(blockData, material), getPulvSecondaryItemStack(blockData), getPulvSecondaryOutputChance(blockData)); break;
+			case 3:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(blockData), blockData.getModBlockItemStack(), getPulvPrimaryItemStack(blockData, material));
 		}
 	}
 	
-	
-	public static void getRedFurnRecipe(int index) {
-		int multiplier = getMultiplier(index);
-		ThermalExpansionHelper.addFurnaceRecipe(getRedFurnEnergy(index, multiplier), BlockRecipeData.getModBlockItemStack(index), getRedFurnItemStack(index, multiplier));
+	//
+	public static void addRedFurnRecipe(BlockRecipeData blockData, String material) {
+		ThermalExpansionHelper.addFurnaceRecipe(getRedFurnEnergy(blockData), blockData.getModBlockItemStack(), getRedFurnItemStack(blockData, material));
 	}
 	
+	//
+	public static ItemStack getPulvPrimaryItemStack(BlockRecipeData blockData, String material) {
+		Util.logRecipeMsg("pulverizer", blockData.getName(), blockData.getOreDictOutputName("crush", material));
+		return blockData.getOreDictOutputItemStack("crush", material, getPulvAmount(blockData));
+	}
+	
+	//
+	public static ItemStack getPulvSecondaryItemStack(BlockRecipeData blockData) {
+		return blockData.getOreDictCustomItemStack("", values()[blockData.ordinal()].pulv2xSecondaryOutputItem, 1);
+	}
+	
+	//
+	public static ItemStack getRedFurnItemStack(BlockRecipeData blockData, String material) {
+		Util.logRecipeMsg("redstone furnace", blockData.getName(), blockData.getOreDictOutputName("smelt", material));
+		return blockData.getOreDictOutputItemStack("smelt", material, getRedFurnAmount(blockData));
+	}
 	
 }

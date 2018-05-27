@@ -18,7 +18,8 @@ import net.minecraftforge.oredict.OreDictionary;
 
 @GameRegistry.ObjectHolder(Info.MOD_ID)
 public class RecipeRegistry {
-		
+	
+	//
 	public static void registerRecipes() {
 
 		Util.LOG.debug("Registering Recipes");
@@ -58,9 +59,16 @@ public class RecipeRegistry {
 		
 	}
 	
+	//
+	public static void addCraftingRecipe(BlockRecipeData blockData, String material) {
+
+	}
+	
+	//
 	public static void addFurnaceRecipe(BlockRecipeData blockData, String material) {
 		int experience = blockData.getRecipeMultiplier() > 1 ? 0 : -1;
 		FurnaceRecipes.instance().addSmeltingRecipe(blockData.getModBlockItemStack(), blockData.getOreDictSmeltItemStack(blockData.getFurnaceAmount()), experience);
 	}
+
 	
 }

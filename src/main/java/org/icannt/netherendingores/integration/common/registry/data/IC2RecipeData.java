@@ -107,8 +107,8 @@ public enum IC2RecipeData implements IStringSerializable {
 	}
 	
 	//
-    public static int getMaceAmount(int index, int multiplier) {
-        return values()[index].getMaceAmount(multiplier);
+    public static int getMaceAmount(BlockRecipeData blockData) {
+        return values()[blockData.ordinal()].getMaceAmount(blockData.getRecipeMultiplier());
     }
 	
 	//
@@ -119,38 +119,37 @@ public enum IC2RecipeData implements IStringSerializable {
 		}
 		return 0;
 	}
-    
-	//
-    public static int getElecFurnAmount(int index, int multiplier) {
-        return values()[index].getElecFurnAmount(multiplier);
-    }
-	
-    //
-	public static ItemStack getMaceItemStack(int index, int multiplier, String material) {
-		String prefix = "crushed";
-		if (multiplier > 0 && multiplier < 3 && OreDictionary.doesOreNameExist(BlockRecipeData.getOreDictCustomItemName(index, prefix, material))) {
-			Util.logRecipeMsg("macerator", BlockRecipeData.values()[index].getName(), BlockRecipeData.getOreDictCustomItemName(index, prefix, material));
-			return BlockRecipeData.getOreDictCustomItemStack(index, prefix, material, getMaceAmount(index, multiplier));
-		}
-		Util.logRecipeMsg("macerator", BlockRecipeData.values()[index].getName(), BlockRecipeData.values()[index].getOreDictOutputName("crush", material));
-		return BlockRecipeData.getOreDictOutputItemStack(index, "crush", material, getMaceAmount(index, multiplier));
-	}
-	
-	//
-	public static ItemStack getElecFurnItemStack(int index, int multiplier, String material) {
-		Util.logRecipeMsg("electric furnace", BlockRecipeData.values()[index].getName(), BlockRecipeData.values()[index].getOreDictOutputName("smelt", material));
-		return BlockRecipeData.getOreDictOutputItemStack(index, "smelt", material, getElecFurnAmount(index, multiplier));
-	}
 
 	//
-	public static void addMaceRecipe(int index, String material) {
-		Recipes.macerator.addRecipe(new IC2RecipeInput(BlockRecipeData.getModBlockItemStack(index)), null, false, getMaceItemStack(index, BlockRecipeData.values()[index].getRecipeMultiplier(), material));
+    public static int getElecFurnAmount(BlockRecipeData blockData) {
+        return values()[blockData.ordinal()].getElecFurnAmount(blockData.getRecipeMultiplier());
+    }
+
+	//
+	public static void addMaceRecipe(BlockRecipeData blockData, String material) {
+		Recipes.macerator.addRecipe(new IC2RecipeInput(blockData.getModBlockItemStack()), null, false, getMaceItemStack(blockData, blockData.getRecipeMultiplier(), material));
 	}
 	
 	//
-	public static void addElecFurnRecipe(int index, String material) {
-		Recipes.furnace.addRecipe(BlockRecipeData.getModBlockItemStack(index), getElecFurnItemStack(index, BlockRecipeData.values()[index].getRecipeMultiplier(), material), null, false);
+	public static void addElecFurnRecipe(BlockRecipeData blockData, String material) {
+		Recipes.furnace.addRecipe(blockData.getModBlockItemStack(), getElecFurnItemStack(blockData, material), null, false);
 	}
 	
+    //
+	public static ItemStack getMaceItemStack(BlockRecipeData blockData, int multiplier, String material) {
+		String prefix = "crushed";
+		if (multiplier > 0 && multiplier < 3 && OreDictionary.doesOreNameExist(blockData.getOreDictCustomItemName(prefix, material))) {
+			Util.logRecipeMsg("macerator", blockData.getName(), blockData.getOreDictCustomItemName(prefix, material));
+			return blockData.getOreDictCustomItemStack(prefix, material, getMaceAmount(blockData));
+		}
+		Util.logRecipeMsg("macerator", blockData.getName(), blockData.getOreDictOutputName("crush", material));
+		return blockData.getOreDictOutputItemStack("crush", material, getMaceAmount(blockData));
+	}
+	
+	//
+	public static ItemStack getElecFurnItemStack(BlockRecipeData blockData, String material) {
+		Util.logRecipeMsg("electric furnace", blockData.getName(), blockData.getOreDictOutputName("smelt", material));
+		return blockData.getOreDictOutputItemStack("smelt", material, getElecFurnAmount(blockData));
+	}
 	
 }

@@ -3,6 +3,7 @@ package org.icannt.netherendingores.lib;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import com.google.common.base.CaseFormat;
 
 /**
@@ -29,12 +30,20 @@ public class Util {
 
 	//
     public static void logRecipeSuccess() {
-    	logRecipeSuccess(LOG_RECIPE_MSG[0], LOG_RECIPE_MSG[1], LOG_RECIPE_MSG[2]);
+    	if (!LOG_RECIPE_MSG[1].equals("")) {
+    		logRecipeSuccess(LOG_RECIPE_MSG[0], LOG_RECIPE_MSG[1], LOG_RECIPE_MSG[2]);
+    	} else {    	
+    		logRecipeSuccessNoInput(LOG_RECIPE_MSG[0], LOG_RECIPE_MSG[2]);
+    	}
     }
 
     //
     public static void logRecipeFail() {
-    	logRecipeFail(LOG_RECIPE_MSG[0], LOG_RECIPE_MSG[1], LOG_RECIPE_MSG[2]);
+    	if (!LOG_RECIPE_MSG[1].equals("")) {
+    		logRecipeFail(LOG_RECIPE_MSG[0], LOG_RECIPE_MSG[1], LOG_RECIPE_MSG[2]);
+    	} else {    	
+    		logRecipeFailNoInput(LOG_RECIPE_MSG[0], LOG_RECIPE_MSG[2]);
+    	}
     }
     
     //
@@ -45,6 +54,16 @@ public class Util {
     //
     public static void logRecipeFail(String device, String input, String output) {
     	LOG.info("Unable to register " + device + " input for \"" + input + "\", output \"" + output + "\" not found.");
+    }
+
+    //
+    public static void logRecipeSuccessNoInput(String device, String output) {
+    	LOG.trace("Registered " + device + " output for \"" + output + "\".");
+    }
+
+    //
+    public static void logRecipeFailNoInput(String device, String output) {
+    	LOG.info("Unable to register " + device + " output for \"" + output + "\".");
     }
 
     //

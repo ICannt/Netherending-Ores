@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.integration.common.registry;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
-import org.icannt.netherendingores.integration.common.registry.data.MekRecipeData;
+import org.icannt.netherendingores.common.registry.RecipeHelper;
 import org.icannt.netherendingores.lib.Util;
 
 import net.minecraftforge.oredict.OreDictionary;
@@ -17,12 +17,8 @@ public class MekRecipeRegistry {
 
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushOutputName())) {
-    			try {
-    				MekRecipeData.getEnrichRecipe(blockData.ordinal());
-    				Util.logRecipeSuccess("enrichment chamber", blockData.getName(), blockData.getOreDictCrushOutputName());
-    			} catch (Exception e1) {
-    				Util.logRecipeFail("enrichment chamber", blockData.getName(), blockData.getOreDictCrushOutputName());
-    			}
+				RecipeHelper.doRecipe(blockData, "enrich", new String[] { blockData.getName() }, false);
+				RecipeHelper.doRecipe(blockData, "enrich", blockData.getItemAltOreDictSuffix(), true);
 			}
 		}
 
