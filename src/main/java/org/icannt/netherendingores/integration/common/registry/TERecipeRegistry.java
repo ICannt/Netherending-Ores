@@ -11,7 +11,11 @@ import net.minecraftforge.oredict.OreDictionary;
  * Created by ICannt on 05/04/18.
  */
 public class TERecipeRegistry {
-
+	
+	/**
+	 * Remove Thermal Expansion recipes that are automatically added by the mod.
+	 * Redoing them allows things like energy values and amounts to be corrected.
+	 */
 	public static void removeRecipes() {
 		
 		Util.LOG.debug("Removing Automatic Thermal Expansion Recipes");
@@ -28,6 +32,9 @@ public class TERecipeRegistry {
 		
 	}
 	
+	/**
+	 * Register Thermal Expansion Recipes
+	 */
 	public static void registerRecipes() {
 
 		Util.LOG.debug("Registering Thermal Expansion Recipes");

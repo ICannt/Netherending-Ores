@@ -12,6 +12,9 @@ import net.minecraftforge.fluids.FluidRegistry;
  */
 public class TiCRecipeRegistry {
 	
+	/**
+	 * Register TInkers' construct recipes
+	 */
 	public static void registerRecipes() {
 
 		Util.LOG.debug("Registering Tinkers' Construct Recipes");

@@ -11,6 +11,9 @@ import net.minecraftforge.oredict.OreDictionary;
  */
 public class MekRecipeRegistry {
 
+	/**
+	 * Register Mekanism Recipes
+	 */
 	public static void registerRecipes() {
 	
 		Util.LOG.debug("Registering Mekanism Recipes");
@@ -25,5 +28,5 @@ public class MekRecipeRegistry {
 		Util.LOG.info("Registered Mekanism Recipes");
 		
 	}
-
+	
 }

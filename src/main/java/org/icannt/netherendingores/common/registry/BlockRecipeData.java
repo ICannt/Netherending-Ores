@@ -6,6 +6,7 @@ import org.icannt.netherendingores.lib.Util;
 import com.google.common.base.CaseFormat;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -173,8 +174,8 @@ public enum BlockRecipeData implements IStringSerializable {
     }
     
     //
-    public static String getAltMaterialName(int index, String baseName, String material) {
-    	return values()[index].name.replace(getRawOreName(values()[index].name), material);
+    public String getAltMaterialName(String material) {
+    	return name.replace(getRawOreName(name), material);
     }
     
     // 
@@ -227,6 +228,7 @@ public enum BlockRecipeData implements IStringSerializable {
 	
     /**
      * The method that returns the correct OreDict prefix for other mods.
+     * Should not be used directly in ItemStacks as there is no filtering.
      * 
      * @return      The prefixed OreDict Block name for other mods.
      */
@@ -367,9 +369,7 @@ public enum BlockRecipeData implements IStringSerializable {
 	 */
 	public ItemStack getOreDictCustomItemStack(String prefix, String material, int amount) {
 		String oredictName = getOreDictCustomItemName(prefix, material);
-		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
-		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
-		return new ItemStack(itemIn, amount, meta);
+		return assembleItemStack(oredictName, amount);
 	}
 
 	/**
@@ -380,9 +380,7 @@ public enum BlockRecipeData implements IStringSerializable {
 	 */
 	private ItemStack getOreDictOutputItemStack(String type, int amount) {
 		String oredictName = getOreDictOutputName(type);
-		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
-		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
-		return new ItemStack(itemIn, amount, meta);
+		return assembleItemStack(oredictName, amount);
 	}
 	
 	/**
@@ -394,6 +392,33 @@ public enum BlockRecipeData implements IStringSerializable {
 	 */
 	public ItemStack getOreDictOutputItemStack(String type, String material, int amount) {
 		String oredictName = getOreDictOutputName(type, material);
+		return assembleItemStack(oredictName, amount);
+	}
+	
+	/**
+	 * 
+	 * @param oredictName
+	 * @param amount
+	 * @return
+	 */
+	public ItemStack getOtherModBlockItemStack() {
+		for (ItemStack stack : OreDictionary.getOres(getOreDictOtherModBlockName(), false))
+		{
+			if (!stack.getItem().getRegistryName().getResourceDomain().equals("netherendingores")) {
+				Util.LOG.info("Conversion stack: " + stack);
+				return stack;
+			}
+		}
+		return new ItemStack(Blocks.AIR);
+	}
+	
+	/**
+	 * 
+	 * @param oredictName
+	 * @param amount
+	 * @return
+	 */
+	public ItemStack assembleItemStack(String oredictName, int amount) {
 		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
 		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
 		return new ItemStack(itemIn, amount, meta);

@@ -20,9 +20,13 @@ public class RecipeHelper {
 	 * @param       materials Array of materials e.g. iron, gold etc
 	 * @param       doAltReplace Replace base material names for oredict
 	 */
-	public static void doRecipe(BlockRecipeData blockData, String device, String[] materials, Boolean doAltReplace) {
+	public static void doRecipe(BlockRecipeData blockData, String device, String materials[], Boolean doAltReplace) {
+		
+		//String materials[] = { blockData.getName() };		
+		//if (doAltReplace) materials = blockData.getItemAltOreDictSuffix();
+		
 		for (String material : materials) {
-			if (doAltReplace) material = BlockRecipeData.getAltMaterialName(blockData.ordinal(), blockData.getName(), material);
+			if (doAltReplace) material = blockData.getAltMaterialName(material);
 			try {
 				addRecipe(blockData, device, material);
 				Util.logRecipeSuccess();
@@ -30,6 +34,7 @@ public class RecipeHelper {
 				Util.logRecipeFail();
 			}
 		}
+		
 	}
 	
 	/**
@@ -41,8 +46,9 @@ public class RecipeHelper {
 	 */
 	private static void addRecipe(BlockRecipeData blockData, String device, String material) {
 		switch (device) {
+			case "craft": RecipeRegistry.addCraftingRecipe(blockData, material); break;
 			case "furnace": RecipeRegistry.addFurnaceRecipe(blockData, material); break;
-			case "smeltery": TiCRecipeData.addSmeltRecipe(blockData); break; // Not sure if any known liquids register with alternate spelling.
+			case "smeltery": TiCRecipeData.addSmeltRecipe(blockData); break; // Not sure if any known liquids register with alternate oredict spelling.
 			case "pulv": TERecipeData.addPulvRecipe(blockData, material); break;
 			case "redfurn": TERecipeData.addRedFurnRecipe(blockData, material); break;
 			case "enrich": MekRecipeData.addEnrichRecipe(blockData, material); break;

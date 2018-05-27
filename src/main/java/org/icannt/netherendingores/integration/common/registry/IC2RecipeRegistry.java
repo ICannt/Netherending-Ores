@@ -12,6 +12,9 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class IC2RecipeRegistry {
 	
+	/**
+	 * Register Industrial Craft 2 Recipes
+	 */
 	public static void registerRecipes() {
 
 		Util.LOG.debug("Registering Industrial Craft 2 Recipes");
