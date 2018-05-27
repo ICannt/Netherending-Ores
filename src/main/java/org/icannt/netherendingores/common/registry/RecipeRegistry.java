@@ -26,15 +26,16 @@ public class RecipeRegistry {
 
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
         	if (blockData.getRecipeMultiplier() == 1 && Config.vanillaCraftingRecipes) {
-        		RecipeHelper.doRecipe(blockData, "craft", new String[] { blockData.getName() }, false);
-        		RecipeHelper.doRecipe(blockData, "craft", blockData.getItemAltOreDictSuffix(), true);
+        		RecipeHelper.doRecipe(blockData, "craft", false);
+        		RecipeHelper.doRecipe(blockData, "craft", true);
         	}
 		}
 		
         for (BlockRecipeData blockData : BlockRecipeData.values()) {
         	if (Config.vanillaFurnaceRecipes && (blockData.isFurnaceItemEnabled() || blockData.getRecipeMultiplier() > 1)) {      	
-    			RecipeHelper.doRecipe(blockData, "furnace", new String[] { blockData.getName() }, false);
-    			RecipeHelper.doRecipe(blockData, "furnace", blockData.getItemAltOreDictSuffix(), true);
+    			RecipeHelper.doRecipe(blockData, "furnace", false);
+    			// TODO: Need to work around FML errors just disable it for now
+    			//RecipeHelper.doRecipe(blockData, "furnace", true);
         	}
 		}
 		
@@ -49,7 +50,8 @@ public class RecipeRegistry {
 	 */
 	public static void addCraftingRecipe(BlockRecipeData blockData, String material) {
 		ResourceLocation groupName = new ResourceLocation(Info.MOD_ID + ":ore_conversions");
-		GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(), groupName, blockData.getOtherModBlockItemStack(), blockData.getConversionIngredient());   
+		Util.logRecipeMsg("crafting", blockData.getName(), blockData.getOreDictOutputName("", material));
+		GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(), groupName, blockData.getOtherModBlockItemStack(), blockData.getConversionIngredient());
 	}
 	
 	/**
@@ -59,6 +61,7 @@ public class RecipeRegistry {
 	 */
 	public static void addFurnaceRecipe(BlockRecipeData blockData, String material) {
 		int experience = blockData.getRecipeMultiplier() > 1 ? 0 : -1;
+		Util.logRecipeMsg("furnace", blockData.getName(), blockData.getOreDictOutputName("smelt", material));
 		FurnaceRecipes.instance().addSmeltingRecipe(blockData.getModBlockItemStack(), blockData.getOreDictSmeltItemStack(blockData.getFurnaceAmount()), experience);
 	}
 	

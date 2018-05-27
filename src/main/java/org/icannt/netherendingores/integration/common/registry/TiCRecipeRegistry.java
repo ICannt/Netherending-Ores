@@ -22,7 +22,7 @@ public class TiCRecipeRegistry {
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			// Add smelt recipe if: The recipe millibuckets is greater than 0 and if the target fluid exists.
 			if (TiCRecipeData.getMilliBuckets(blockData) > 0 && FluidRegistry.isFluidRegistered(blockData.getRawOreName())) {
-    			RecipeHelper.doRecipe(blockData, "smeltery", new String[] { blockData.getName() }, false);
+    			RecipeHelper.doRecipe(blockData, "smeltery", false);
 			}
 		}
 		

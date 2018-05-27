@@ -3,8 +3,15 @@ package org.icannt.netherendingores.lib;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.integration.common.registry.data.IC2RecipeData;
+import org.icannt.netherendingores.integration.common.registry.data.MekRecipeData;
+import org.icannt.netherendingores.integration.common.registry.data.TERecipeData;
+import org.icannt.netherendingores.integration.common.registry.data.TiCRecipeData;
 
 import com.google.common.base.CaseFormat;
+
+import net.minecraftforge.fml.common.FMLCommonHandler;
 
 /**
  * Created by ICannt on 30/08/18.
@@ -14,6 +21,20 @@ public class Util {
     public static final Logger LOG = LogManager.getLogger(Info.MOD_NAME);
     
 	public static String[] LOG_RECIPE_MSG = { "", "", "" };
+	
+	public static void checkEnumLengths() {
+		int brd = BlockRecipeData.values().length;
+		int ic2 = IC2RecipeData.values().length;
+		int mek = MekRecipeData.values().length;
+		int te = TERecipeData.values().length;
+		int tic = TiCRecipeData.values().length;
+		
+		// TODO: Find out how to throw a full client crash on purpose
+		if (brd != ic2 || brd != mek || brd != te || brd != tic) {
+			LOG.fatal("Recipe Enum lengths do not match, cannot proceed with execution. Consult Netherending Ores author trab.");
+			FMLCommonHandler.instance().exitJava(1, false);
+		}
+	}	
 	
 	/**
 	 * Receives log message data from recipe handlers
@@ -30,7 +51,7 @@ public class Util {
 
 	//
     public static void logRecipeSuccess() {
-    	if (!LOG_RECIPE_MSG[1].equals("")) {
+    	if (LOG_RECIPE_MSG[1] != "") {
     		logRecipeSuccess(LOG_RECIPE_MSG[0], LOG_RECIPE_MSG[1], LOG_RECIPE_MSG[2]);
     	} else {    	
     		logRecipeSuccessNoInput(LOG_RECIPE_MSG[0], LOG_RECIPE_MSG[2]);
@@ -39,7 +60,7 @@ public class Util {
 
     //
     public static void logRecipeFail() {
-    	if (!LOG_RECIPE_MSG[1].equals("")) {
+    	if (LOG_RECIPE_MSG[1] != "") {
     		logRecipeFail(LOG_RECIPE_MSG[0], LOG_RECIPE_MSG[1], LOG_RECIPE_MSG[2]);
     	} else {    	
     		logRecipeFailNoInput(LOG_RECIPE_MSG[0], LOG_RECIPE_MSG[2]);

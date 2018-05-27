@@ -47,7 +47,7 @@ public enum BlockRecipeData implements IStringSerializable {
     NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", "ore_nether_modded_1", 10, new String[0], "crystal", "dustCertusQuartz", false, 2, 0),
     NETHER_OSMIUM_ORE ("nether_osmium_ore", "ore_nether_modded_1", 11, new String[0], "", "", true, 2, 0),
     NETHER_URANIUM_ORE ("nether_uranium_ore", "ore_nether_modded_1", 12, new String[0], "", "", true, 2, 0),
-    NETHER_YELLORITE_ORE ("nether_yellorite_ore", "ore_nether_modded_1", 13, new String[0], "", "", true, 2, 0),
+    NETHER_YELLORITE_ORE ("nether_yellorite_ore", "ore_nether_modded_1", 13, new String[]{"yellorium"}, "", "", true, 2, 0),
     NETHER_DILITHIUM_ORE ("nether_dilithium_ore", "ore_nether_modded_1", 14, new String[0], "", "", true, 2, 0),
     NETHER_TRITANIUM_ORE ("nether_tritanium_ore", "ore_nether_modded_1", 15, new String[0], "", "", true, 2, 0),
     END_ALUMINUM_ORE ("end_aluminum_ore", "ore_end_modded_1", 0, new String[]{"aluminium"}, "", "", true, 2, 0),
@@ -63,7 +63,7 @@ public enum BlockRecipeData implements IStringSerializable {
     END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", "ore_end_modded_1", 10, new String[0], "crystal", "dustCertusQuartz", false, 2, 0),
     END_OSMIUM_ORE ("end_osmium_ore", "ore_end_modded_1", 11, new String[0], "", "", true, 2, 0),
     END_URANIUM_ORE ("end_uranium_ore", "ore_end_modded_1", 12, new String[0], "", "", true, 2, 0),
-    END_YELLORITE_ORE ("end_yellorite_ore", "ore_end_modded_1", 13, new String[0], "", "", true, 2, 0),
+    END_YELLORITE_ORE ("end_yellorite_ore", "ore_end_modded_1", 13, new String[]{"yellorium"}, "", "", true, 2, 0),
     END_DILITHIUM_ORE ("end_dilithium_ore", "ore_end_modded_1", 14, new String[0], "", "", true, 2, 0),
     END_TRITANIUM_ORE ("end_tritanium_ore", "ore_end_modded_1", 15, new String[0], "", "", true, 2, 0),
     OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", "ore_other_1", 0, new String[0], "gem", "dust", true, 1, 0),
@@ -200,12 +200,14 @@ public enum BlockRecipeData implements IStringSerializable {
 		
 	// 
 	private String getOreDictOutputName(int multiplier, String type, String material) {
+		Util.LOG.info("getOreDictOutputName: " + multiplier + ", " + type + ", " + material);
 		material = material == "name" ? name : material;
 		switch (type) {
 			case "smelt":
 				if (multiplier == 1) {
 					return getOreDictSmeltItemName(itemOreDictPrefix, material);
 				}
+				break;
 			case "crush":
 				if (multiplier == 1 || multiplier == 2) {
 					return getOreDictCrushItemName(itemOreDictPrefix, material);
@@ -282,6 +284,8 @@ public enum BlockRecipeData implements IStringSerializable {
 			default:
 				ore = "";
     	}
+    	// This is a pain to filter, just replace the darn thing
+    	//if (prefix + ore == "dustYellorite") return "dustYellorium"; 
     	return prefix + ore;    	
     }
     
@@ -303,12 +307,16 @@ public enum BlockRecipeData implements IStringSerializable {
 			default:
 				prefix = "";
 				ore = getRawOreName(material);
-    	}    	
+    	}
+    	// This is a pain to filter, just replace the darn thing
+    	//if (prefix + ore == "ingotYellorite") return "ingotYellorium";
     	return prefix + ore;    	
     }
 
     //
     public String getOreDictCustomItemName(String prefix, String material) {
+    	// This is a pain to filter, just replace the darn thing
+    	//material = material.replace("yellorite", "yellorium");
     	return prefix + Util.upperCamel(getRawOreName(material));
     }
     
@@ -328,7 +336,7 @@ public enum BlockRecipeData implements IStringSerializable {
      * @param       ore The string name to be stripped
      * @return      The base ore name
      */
-    private static String getRawOreName(String ore) {    	
+    private static String getRawOreName(String ore) {
     	String[] words = {"_ore","overworld_","nether_","end_"};    	
     	for(String word : words) {
     		ore = ore.replace(word, "");
@@ -369,7 +377,7 @@ public enum BlockRecipeData implements IStringSerializable {
 	 */
 	public ItemStack getOreDictCustomItemStack(String prefix, String material, int amount) {
 		String oredictName = getOreDictCustomItemName(prefix, material);
-		return assembleItemStack(oredictName, amount);
+		return getOreDictItemStack(oredictName, amount);
 	}
 
 	/**
@@ -380,7 +388,7 @@ public enum BlockRecipeData implements IStringSerializable {
 	 */
 	private ItemStack getOreDictOutputItemStack(String type, int amount) {
 		String oredictName = getOreDictOutputName(type);
-		return assembleItemStack(oredictName, amount);
+		return getOreDictItemStack(oredictName, amount);
 	}
 	
 	/**
@@ -392,7 +400,7 @@ public enum BlockRecipeData implements IStringSerializable {
 	 */
 	public ItemStack getOreDictOutputItemStack(String type, String material, int amount) {
 		String oredictName = getOreDictOutputName(type, material);
-		return assembleItemStack(oredictName, amount);
+		return getOreDictItemStack(oredictName, amount);
 	}
 	
 	/**
@@ -405,7 +413,6 @@ public enum BlockRecipeData implements IStringSerializable {
 		for (ItemStack stack : OreDictionary.getOres(getOreDictOtherModBlockName(), false))
 		{
 			if (!stack.getItem().getRegistryName().getResourceDomain().equals("netherendingores")) {
-				Util.LOG.info("Conversion stack: " + stack);
 				return stack;
 			}
 		}
@@ -418,7 +425,7 @@ public enum BlockRecipeData implements IStringSerializable {
 	 * @param amount
 	 * @return
 	 */
-	public ItemStack assembleItemStack(String oredictName, int amount) {
+	public ItemStack getOreDictItemStack(String oredictName, int amount) {
 		Item itemIn = OreDictionary.getOres(oredictName, false).get(0).getItem();
 		int meta = OreDictionary.getOres(oredictName, false).get(0).getMetadata();
 		return new ItemStack(itemIn, amount, meta);

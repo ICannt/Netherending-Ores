@@ -20,15 +20,15 @@ public enum TERecipeData implements IStringSerializable {
     NETHER_EMERALD_ORE ("nether_emerald_ore", 3200, 5, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
     NETHER_GOLD_ORE ("nether_gold_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
     NETHER_IRON_ORE ("nether_iron_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_LAPIS_ORE ("nether_lapis_ore", 3200, 22, "netherrack", 25, 8000, 4, 1600, 8, 2400, 3),
-    NETHER_REDSTONE_ORE ("nether_redstone_ore", 3200, 14, "netherrack", 15, 8000, 4, 1600, 8, 2400, 3),
+    NETHER_LAPIS_ORE ("nether_lapis_ore", 3200, 22, "netherrack", 25, 8000, 4, 1600, 2, 2400, 3),
+    NETHER_REDSTONE_ORE ("nether_redstone_ore", 3200, 14, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
     END_COAL_ORE ("end_coal_ore", 3200, 5, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
     END_DIAMOND_ORE ("end_diamond_ore", 3200, 5, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
     END_EMERALD_ORE ("end_emerald_ore", 3200, 5, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
     END_GOLD_ORE ("end_gold_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
     END_IRON_ORE ("end_iron_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_LAPIS_ORE ("end_lapis_ore", 3200, 22, "endstone", 25, 8000, 4, 1600, 8, 2400, 3),
-    END_REDSTONE_ORE ("end_redstone_ore", 3200, 14, "endstone", 15, 8000, 4, 1600, 8, 2400, 3),
+    END_LAPIS_ORE ("end_lapis_ore", 3200, 22, "endstone", 25, 8000, 4, 1600, 2, 2400, 3),
+    END_REDSTONE_ORE ("end_redstone_ore", 3200, 14, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
     NETHER_ALUMINUM_ORE ("nether_aluminum_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
     NETHER_COPPER_ORE ("nether_copper_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
     NETHER_IRIDIUM_ORE ("nether_iridium_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
@@ -172,9 +172,10 @@ public enum TERecipeData implements IStringSerializable {
     }
 	
 	//
-	public static void addPulvRecipe(BlockRecipeData blockData, String material) {
+	public static void addPulvRecipe(BlockRecipeData blockData, String material) {	
 		switch (blockData.getRecipeMultiplier()) {
-			case 2:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(blockData), blockData.getModBlockItemStack(), getPulvPrimaryItemStack(blockData, material), getPulvSecondaryItemStack(blockData), getPulvSecondaryOutputChance(blockData)); break;
+			case 2:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(blockData), blockData.getModBlockItemStack(),
+					getPulvPrimaryItemStack(blockData, material), getPulvSecondaryItemStack(blockData), getPulvSecondaryOutputChance(blockData)); break;
 			case 3:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(blockData), blockData.getModBlockItemStack(), getPulvPrimaryItemStack(blockData, material));
 		}
 	}
@@ -192,7 +193,8 @@ public enum TERecipeData implements IStringSerializable {
 	
 	//
 	public static ItemStack getPulvSecondaryItemStack(BlockRecipeData blockData) {
-		return blockData.getOreDictCustomItemStack("", values()[blockData.ordinal()].pulv2xSecondaryOutputItem, 1);
+		//return blockData.getOreDictCustomItemStack("", values()[blockData.ordinal()].pulv2xSecondaryOutputItem, 1);
+		return blockData.getOreDictItemStack(values()[blockData.ordinal()].pulv2xSecondaryOutputItem, 1);
 	}
 	
 	//

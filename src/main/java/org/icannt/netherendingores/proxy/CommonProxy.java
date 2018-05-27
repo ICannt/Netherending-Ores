@@ -5,6 +5,7 @@ import java.io.File;
 import org.icannt.netherendingores.common.registry.RegistryEvents;
 import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
+import org.icannt.netherendingores.lib.Util;
 
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -20,7 +21,8 @@ public abstract class CommonProxy {
 
 	public static Configuration config;
 	
-    public void preInit(FMLPreInitializationEvent event) {    	
+    public void preInit(FMLPreInitializationEvent event) {
+    	Util.checkEnumLengths();    	
         File directory = event.getModConfigurationDirectory();
         config = new Configuration(new File(directory.getPath(), "Netherending Ores.cfg"), Info.CFG_VERSION);
         Config.readConfig();

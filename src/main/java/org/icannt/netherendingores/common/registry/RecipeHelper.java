@@ -17,16 +17,17 @@ public class RecipeHelper {
 	 * 
 	 * @param       blockData Instance of BlockRecipeData, tracks where the index of a loop is, keeps things in context
 	 * @param       device Which device recipe is to be used e.g. Macerator, Pulverizer
-	 * @param       materials Array of materials e.g. iron, gold etc
 	 * @param       doAltReplace Replace base material names for oredict
 	 */
-	public static void doRecipe(BlockRecipeData blockData, String device, String materials[], Boolean doAltReplace) {
+	public static void doRecipe(BlockRecipeData blockData, String device, Boolean doAltReplace) {
 		
-		//String materials[] = { blockData.getName() };		
-		//if (doAltReplace) materials = blockData.getItemAltOreDictSuffix();
+		String materials[] = { blockData.getName() };		
+		if (doAltReplace) materials = blockData.getItemAltOreDictSuffix();
 		
 		for (String material : materials) {
 			if (doAltReplace) material = blockData.getAltMaterialName(material);
+			Util.LOG.info("");
+			Util.LOG.info("doRecipe: " + material);
 			try {
 				addRecipe(blockData, device, material);
 				Util.logRecipeSuccess();

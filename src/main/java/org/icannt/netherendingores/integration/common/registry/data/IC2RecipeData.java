@@ -21,15 +21,15 @@ public enum IC2RecipeData implements IStringSerializable {
     NETHER_EMERALD_ORE ("nether_emerald_ore", 5, 4, 2, 3),
     NETHER_GOLD_ORE ("nether_gold_ore", 4, 4, 2, 3),
     NETHER_IRON_ORE ("nether_iron_ore", 4, 4, 2, 3),
-    NETHER_LAPIS_ORE ("nether_lapis_ore", 22, 4, 8, 3),
-    NETHER_REDSTONE_ORE ("nether_redstone_ore", 14, 4, 8, 3),
+    NETHER_LAPIS_ORE ("nether_lapis_ore", 22, 4, 2, 3),
+    NETHER_REDSTONE_ORE ("nether_redstone_ore", 14, 4, 2, 3),
     END_COAL_ORE ("end_coal_ore", 5, 4, 2, 3),
     END_DIAMOND_ORE ("end_diamond_ore", 5, 4, 2, 3),
     END_EMERALD_ORE ("end_emerald_ore", 5, 4, 2, 3),
     END_GOLD_ORE ("end_gold_ore", 4, 4, 2, 3),
     END_IRON_ORE ("end_iron_ore", 4, 4, 2, 3),
-    END_LAPIS_ORE ("end_lapis_ore", 22, 4, 8, 3),
-    END_REDSTONE_ORE ("end_redstone_ore", 14, 4, 8, 3),
+    END_LAPIS_ORE ("end_lapis_ore", 22, 4, 2, 3),
+    END_REDSTONE_ORE ("end_redstone_ore", 14, 4, 2, 3),
     NETHER_ALUMINUM_ORE ("nether_aluminum_ore", 4, 4, 2, 3),
     NETHER_COPPER_ORE ("nether_copper_ore", 4, 4, 2, 3),
     NETHER_IRIDIUM_ORE ("nether_iridium_ore", 4, 4, 2, 3),
@@ -138,6 +138,7 @@ public enum IC2RecipeData implements IStringSerializable {
     //
 	public static ItemStack getMaceItemStack(BlockRecipeData blockData, int multiplier, String material) {
 		String prefix = "crushed";
+		//if (multiplier > 0 && multiplier < 3 && OreDictionary.doesOreNameExist(blockData.getOreDictCustomItemName(prefix, material)) && OreDictionary.doesOreNameExist(blockData.getOreDictOutputName("crush", material))) {
 		if (multiplier > 0 && multiplier < 3 && OreDictionary.doesOreNameExist(blockData.getOreDictCustomItemName(prefix, material))) {
 			Util.logRecipeMsg("macerator", blockData.getName(), blockData.getOreDictCustomItemName(prefix, material));
 			return blockData.getOreDictCustomItemStack(prefix, material, getMaceAmount(blockData));

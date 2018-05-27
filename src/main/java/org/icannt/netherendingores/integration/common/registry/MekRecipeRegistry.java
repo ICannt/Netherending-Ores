@@ -20,8 +20,8 @@ public class MekRecipeRegistry {
 
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushOutputName())) {
-				RecipeHelper.doRecipe(blockData, "enrich", new String[] { blockData.getName() }, false);
-				RecipeHelper.doRecipe(blockData, "enrich", blockData.getItemAltOreDictSuffix(), true);
+				RecipeHelper.doRecipe(blockData, "enrich", true);
+				RecipeHelper.doRecipe(blockData, "enrich", false);
 			}
 		}
 

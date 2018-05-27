@@ -81,9 +81,8 @@ public class Config {
     
     private static void initRecipeIntegrationSettingsConfig(Configuration cfg) {
     	
-    	cfg.addCustomCategoryComment(CATEGORY_RECIPE_INTEGRATION_SETTINGS, "" 
-    			+ "Enable or disable recipe integrations\r\n"
-    			+ "PLEASE ASK THE MOD AUTHOR TRAB FOR HELP IF YOU DON'T KNOW WHAT YOU ARE DOING");
+    	cfg.addCustomCategoryComment(CATEGORY_RECIPE_INTEGRATION_SETTINGS, "Enable or disable recipe integrations");
+
     	
     	industrialCraft2Recipes = cfg.getBoolean("Industrial Craft 2 recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, industrialCraft2Recipes, "Enable Industrial Craft 2 recipe integration");
     	mekanismRecipes = cfg.getBoolean("Mekanism recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, mekanismRecipes, "Enable Mekanism recipe integration");

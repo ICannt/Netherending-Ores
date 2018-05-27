@@ -21,17 +21,19 @@ public class IC2RecipeRegistry {
 				
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushOutputName()) && blockData.getRecipeMultiplier() > 1) {
-				RecipeHelper.doRecipe(blockData, "mace", new String[] { blockData.getName() }, false);
-				RecipeHelper.doRecipe(blockData, "mace", blockData.getItemAltOreDictSuffix(), true);
+				RecipeHelper.doRecipe(blockData, "mace", true);
+				RecipeHelper.doRecipe(blockData, "mace", false);
 			}
 		}
 		
-		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-    		if (OreDictionary.doesOreNameExist(blockData.getOreDictSmeltOutputName()) && blockData.getRecipeMultiplier() > 1) {
-    			RecipeHelper.doRecipe(blockData, "elecfurn", new String[] { blockData.getName() }, false);
-    			RecipeHelper.doRecipe(blockData, "elecfurn", blockData.getItemAltOreDictSuffix(), true);
-			}
-		}
+		// TODO: Not needed will see if code can be reused
+		
+//		for (BlockRecipeData blockData : BlockRecipeData.values()) {
+//    		if (OreDictionary.doesOreNameExist(blockData.getOreDictSmeltOutputName()) && blockData.getRecipeMultiplier() > 1) {
+//    			RecipeHelper.doRecipe(blockData, "elecfurn", true);
+//    			RecipeHelper.doRecipe(blockData, "elecfurn", false);
+//			}
+//		}
 		
 		Util.LOG.info("Registered Industrial Craft 2 Recipes");
 

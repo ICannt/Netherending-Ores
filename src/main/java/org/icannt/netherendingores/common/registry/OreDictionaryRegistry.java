@@ -28,10 +28,9 @@ public class OreDictionaryRegistry {
     	
     	// Registration of Mod items that are not registered, follows usual conventions
     	if (Loader.isModLoaded("appliedenergistics2") && OreDictionary.doesOreNameExist("crystalChargedCertusQuartz") == false) {
-    		// TODO: See if we can get the item by unlocalized name, make it safer
-    		ItemStack newStack = new ItemStack(Item.getByNameOrId("appliedenergistics2:material"), 1, 1);
-    		if (!newStack.isEmpty()) {
-    			OreDictionary.registerOre("crystalChargedCertusQuartz", newStack);
+    		ItemStack stack = new ItemStack(Item.getByNameOrId("appliedenergistics2:material"), 1, 1);
+    		if (!stack.isEmpty()) {
+    			OreDictionary.registerOre("crystalChargedCertusQuartz", stack);
     			Util.LOG.trace("Ore Dictionary entry for \"crystalChargedCertusQuartz\" added for appliedenergistics2:material:1");
     		} else {
     			Util.LOG.warn("ItemStack for Charged Certus Quartz is not valid, is Applied Energistics 2 loaded properly?");

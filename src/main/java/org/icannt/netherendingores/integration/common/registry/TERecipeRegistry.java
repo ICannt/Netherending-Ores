@@ -41,14 +41,15 @@ public class TERecipeRegistry {
 		
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushOutputName()) && blockData.getRecipeMultiplier() > 1) {
-				RecipeHelper.doRecipe(blockData, "pulv", new String[] { blockData.getName() }, false);
-				RecipeHelper.doRecipe(blockData, "pulv", blockData.getItemAltOreDictSuffix(), true);
+				RecipeHelper.doRecipe(blockData, "pulv", true);
+				RecipeHelper.doRecipe(blockData, "pulv", false);
 			}
 		}
+		
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			if (OreDictionary.doesOreNameExist(blockData.getOreDictSmeltOutputName()) && blockData.getRecipeMultiplier() > 1) {
-    			RecipeHelper.doRecipe(blockData, "redfurn", new String[] { blockData.getName() }, false);
-    			RecipeHelper.doRecipe(blockData, "redfurn", blockData.getItemAltOreDictSuffix(), true);
+    			RecipeHelper.doRecipe(blockData, "redfurn", true);
+    			RecipeHelper.doRecipe(blockData, "redfurn", false);
 			}
 		}
 
