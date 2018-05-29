@@ -4,7 +4,7 @@ import org.icannt.netherendingores.integration.common.registry.data.IC2RecipeDat
 import org.icannt.netherendingores.integration.common.registry.data.MekRecipeData;
 import org.icannt.netherendingores.integration.common.registry.data.TERecipeData;
 import org.icannt.netherendingores.integration.common.registry.data.TiCRecipeData;
-import org.icannt.netherendingores.lib.Util;
+import org.icannt.netherendingores.lib.Log;
 
 /**
  * Created by ICannt on 26/05/18.
@@ -19,20 +19,18 @@ public class RecipeHelper {
 	 * @param       device Which device recipe is to be used e.g. Macerator, Pulverizer
 	 * @param       doAltReplace Replace base material names for oredict
 	 */
-	public static void doRecipe(BlockRecipeData blockData, String device, Boolean doAltReplace) {
+	public static void tryRecipe(BlockRecipeData blockData, String device, Boolean doAltReplace) {
 		
 		String materials[] = { blockData.getName() };		
 		if (doAltReplace) materials = blockData.getItemAltOreDictSuffix();
 		
 		for (String material : materials) {
 			if (doAltReplace) material = blockData.getAltMaterialName(material);
-			Util.LOG.info("");
-			Util.LOG.info("doRecipe: " + material);
 			try {
 				addRecipe(blockData, device, material);
-				Util.logRecipeSuccess();
+				Log.logRecipeSuccess();
 			} catch (Exception e1) {
-				Util.logRecipeFail();
+				Log.logRecipeFail();
 			}
 		}
 		

@@ -1,6 +1,5 @@
 package org.icannt.netherendingores.lib;
 
-import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
@@ -9,18 +8,45 @@ import org.icannt.netherendingores.integration.common.registry.data.MekRecipeDat
 import org.icannt.netherendingores.integration.common.registry.data.TERecipeData;
 import org.icannt.netherendingores.integration.common.registry.data.TiCRecipeData;
 
-import com.google.common.base.CaseFormat;
-
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
 /**
  * Created by ICannt on 30/08/18.
  */
-public class Util {
+
+public class Log {
 	
     public static final Logger LOG = LogManager.getLogger(Info.MOD_NAME);
     
 	public static String[] LOG_RECIPE_MSG = { "", "", "" };
+	
+	public static void trace(String msg) {
+		if (Config.advancedDebugging) LOG.trace(msg);
+	}
+	
+	public static void debug(String msg) {
+		LOG.debug(msg);
+	}
+
+	public static void info(String msg) {
+		LOG.info(msg);
+	}
+
+	public static void warn(String msg) {
+		LOG.warn(msg);
+	}
+	
+	public static void error(String msg) {
+		LOG.error(msg);
+	}
+
+	public static void fatal(String msg) {
+		LOG.fatal(msg);
+	}
+	
+	public static void exception(String msg, Throwable t) {
+		LOG.error(msg, t);
+	}	
 	
 	public static void checkEnumLengths() {
 		int brd = BlockRecipeData.values().length;
@@ -31,10 +57,10 @@ public class Util {
 		
 		// TODO: Find out how to throw a full client crash on purpose
 		if (brd != ic2 || brd != mek || brd != te || brd != tic) {
-			LOG.fatal("Recipe Enum lengths do not match, cannot proceed with execution. Consult Netherending Ores author trab.");
+			fatal("Recipe Enum lengths do not match, cannot proceed with execution. Consult Netherending Ores author trab.");
 			FMLCommonHandler.instance().exitJava(1, false);
 		}
-	}	
+	}
 	
 	/**
 	 * Receives log message data from recipe handlers
@@ -69,52 +95,27 @@ public class Util {
     
     //
     public static void logRecipeSuccess(String device, String input, String output) {
-    	LOG.trace("Registered " + device + " input for \"" + input + "\", output \"" + output + "\".");
+    	trace("Registered " + device + " input for \"" + input + "\", output \"" + output + "\".");
     }
 
     //
     public static void logRecipeFail(String device, String input, String output) {
-    	LOG.info("Unable to register " + device + " input for \"" + input + "\", output \"" + output + "\" not found.");
+    	debug("Unable to register " + device + " input for \"" + input + "\", output \"" + output + "\" not found.");
     }
 
     //
     public static void logRecipeSuccessNoInput(String device, String output) {
-    	LOG.trace("Registered " + device + " output for \"" + output + "\".");
+    	trace("Registered " + device + " output for \"" + output + "\".");
     }
 
     //
     public static void logRecipeFailNoInput(String device, String output) {
-    	LOG.info("Unable to register " + device + " output for \"" + output + "\".");
+    	debug("Unable to register " + device + " output for \"" + output + "\".");
     }
 
     //
-    public static void logOreDict(String input, String output) {
-    	LOG.trace("Ore Dictionary entry for \"" + input + "\" added for " + output);
+    public static void logOreDictSuccess(String input, String output) {
+    	trace("Ore Dictionary entry for \"" + input + "\" added for " + output);
     }
-    
-    //
-	public static String lowerUnder(String input)
-	{
-		return CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, input);
-	}
-	
-	//
-	public static String colonUnder(String input)
-	{
-		return input.replace(":", "_");
-	}
-	
-	//
-	public static String spaceCapital(String input) {
-		return WordUtils.capitalize(input.replace("_", " "));
-	}
-	
-	//
-	public static String upperCamel(String input)
-	{
-		return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, input);
-	}
-	
- 
-    
+
 }

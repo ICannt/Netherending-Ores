@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.lib.Info;
-import org.icannt.netherendingores.lib.Util;
+import org.icannt.netherendingores.lib.Log;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -19,7 +19,7 @@ public class OreDictionaryRegistry {
  
 	public static void registerDictionaryOres() {
 		
-    	Util.LOG.debug("Registering Ore Dictionary Entries");
+    	Log.debug("Registering Ore Dictionary Entries");
     	
 		// Registration of Vanilla items that are not registered :(, purely a guess at what other mods might use
     	if (OreDictionary.doesOreNameExist("coal") == false) {
@@ -31,23 +31,23 @@ public class OreDictionaryRegistry {
     		ItemStack stack = new ItemStack(Item.getByNameOrId("appliedenergistics2:material"), 1, 1);
     		if (!stack.isEmpty()) {
     			OreDictionary.registerOre("crystalChargedCertusQuartz", stack);
-    			Util.LOG.trace("Ore Dictionary entry for \"crystalChargedCertusQuartz\" added for appliedenergistics2:material:1");
+    			Log.logOreDictSuccess("crystalChargedCertusQuartz", "appliedenergistics2:material:1");
     		} else {
-    			Util.LOG.warn("ItemStack for Charged Certus Quartz is not valid, is Applied Energistics 2 loaded properly?");
+    			Log.warn("ItemStack for Charged Certus Quartz is not valid, is Applied Energistics 2 loaded properly?");
     		}
     	}
     	
     	for (BlockRecipeData blockData : BlockRecipeData.values()) {
        		OreDictionary.registerOre(blockData.getOreDictRegName(), blockData.getModBlockItemStack());  		
-       		Util.logOreDict(blockData.getOreDictRegName(), blockData.getBlockName());       		
+       		Log.logOreDictSuccess(blockData.getOreDictRegName(), blockData.getBlockName());       		
        		// Support additional alternate spellings of oredict names
        		for (String material : blockData.getItemAltOreDictSuffix()) {
        			OreDictionary.registerOre(blockData.getOreDictCustomRegName(material), blockData.getModBlockItemStack());
-       			Util.logOreDict(blockData.getOreDictCustomRegName(material), blockData.getBlockName());
+       			Log.logOreDictSuccess(blockData.getOreDictCustomRegName(material), blockData.getBlockName());
        		}
     	}
 		
-    	Util.LOG.info("Registered Ore Dictionary Entries");
+    	Log.info("Registered Ore Dictionary Entries");
 		
 	}
 

@@ -2,7 +2,7 @@ package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
-import org.icannt.netherendingores.lib.Util;
+import org.icannt.netherendingores.lib.Log;
 
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.ResourceLocation;
@@ -22,24 +22,24 @@ public class RecipeRegistry {
 	 */
 	public static void registerRecipes() {
 
-		Util.LOG.debug("Registering Recipes");
+		Log.debug("Registering Recipes");
 
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
         	if (blockData.getRecipeMultiplier() == 1 && Config.vanillaCraftingRecipes) {
-        		RecipeHelper.doRecipe(blockData, "craft", false);
-        		RecipeHelper.doRecipe(blockData, "craft", true);
+        		RecipeHelper.tryRecipe(blockData, "craft", false);
+        		RecipeHelper.tryRecipe(blockData, "craft", true);
         	}
 		}
 		
         for (BlockRecipeData blockData : BlockRecipeData.values()) {
         	if (Config.vanillaFurnaceRecipes && (blockData.isFurnaceItemEnabled() || blockData.getRecipeMultiplier() > 1)) {      	
-    			RecipeHelper.doRecipe(blockData, "furnace", false);
+    			RecipeHelper.tryRecipe(blockData, "furnace", false);
     			// TODO: Need to work around FML errors just disable it for now
     			//RecipeHelper.doRecipe(blockData, "furnace", true);
         	}
 		}
 		
-		Util.LOG.info("Registered Recipes");
+		Log.info("Registered Recipes");
 		
 	}
 	
@@ -50,7 +50,7 @@ public class RecipeRegistry {
 	 */
 	public static void addCraftingRecipe(BlockRecipeData blockData, String material) {
 		ResourceLocation groupName = new ResourceLocation(Info.MOD_ID + ":ore_conversions");
-		Util.logRecipeMsg("crafting", blockData.getName(), blockData.getOreDictOutputName("", material));
+		Log.logRecipeMsg("crafting", blockData.getName(), blockData.getOreDictOutputName("", material));
 		GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(), groupName, blockData.getOtherModBlockItemStack(), blockData.getConversionIngredient());
 	}
 	
@@ -61,7 +61,7 @@ public class RecipeRegistry {
 	 */
 	public static void addFurnaceRecipe(BlockRecipeData blockData, String material) {
 		int experience = blockData.getRecipeMultiplier() > 1 ? 0 : -1;
-		Util.logRecipeMsg("furnace", blockData.getName(), blockData.getOreDictOutputName("smelt", material));
+		Log.logRecipeMsg("furnace", blockData.getName(), blockData.getOreDictOutputName("smelt", material));
 		FurnaceRecipes.instance().addSmeltingRecipe(blockData.getModBlockItemStack(), blockData.getOreDictSmeltItemStack(blockData.getFurnaceAmount()), experience);
 	}
 	

@@ -2,7 +2,7 @@ package org.icannt.netherendingores.integration.common.registry.data;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.lib.Config;
-import org.icannt.netherendingores.lib.Util;
+import org.icannt.netherendingores.lib.Log;
 
 import cofh.api.util.ThermalExpansionHelper;
 import net.minecraft.item.ItemStack;
@@ -187,7 +187,7 @@ public enum TERecipeData implements IStringSerializable {
 	
 	//
 	public static ItemStack getPulvPrimaryItemStack(BlockRecipeData blockData, String material) {
-		Util.logRecipeMsg("pulverizer", blockData.getName(), blockData.getOreDictOutputName("crush", material));
+		Log.logRecipeMsg("pulverizer", blockData.getName(), blockData.getOreDictOutputName("crush", material));
 		return blockData.getOreDictOutputItemStack("crush", material, getPulvAmount(blockData));
 	}
 	
@@ -199,7 +199,7 @@ public enum TERecipeData implements IStringSerializable {
 	
 	//
 	public static ItemStack getRedFurnItemStack(BlockRecipeData blockData, String material) {
-		Util.logRecipeMsg("redstone furnace", blockData.getName(), blockData.getOreDictOutputName("smelt", material));
+		Log.logRecipeMsg("redstone furnace", blockData.getName(), blockData.getOreDictOutputName("smelt", material));
 		return blockData.getOreDictOutputItemStack("smelt", material, getRedFurnAmount(blockData));
 	}
 	

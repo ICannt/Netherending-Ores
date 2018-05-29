@@ -2,10 +2,9 @@ package org.icannt.netherendingores.integration.common.registry;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.common.registry.RecipeHelper;
-import org.icannt.netherendingores.lib.Util;
+import org.icannt.netherendingores.lib.Log;
 
 import cofh.api.util.ThermalExpansionHelper;
-import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * Created by ICannt on 05/04/18.
@@ -18,7 +17,7 @@ public class TERecipeRegistry {
 	 */
 	public static void removeRecipes() {
 		
-		Util.LOG.debug("Removing Automatic Thermal Expansion Recipes");
+		Log.debug("Removing Automatic Thermal Expansion Recipes");
 		
 		// Remove the existing recipes first that are added automatically.
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
@@ -28,7 +27,7 @@ public class TERecipeRegistry {
 			}
 		}
 		
-		Util.LOG.info("Removed Automatic Thermal Expansion Recipes");
+		Log.info("Removed Automatic Thermal Expansion Recipes");
 		
 	}
 	
@@ -37,23 +36,23 @@ public class TERecipeRegistry {
 	 */
 	public static void registerRecipes() {
 
-		Util.LOG.debug("Registering Thermal Expansion Recipes");
+		Log.debug("Registering Thermal Expansion Recipes");
 		
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushOutputName()) && blockData.getRecipeMultiplier() > 1) {
-				RecipeHelper.doRecipe(blockData, "pulv", true);
-				RecipeHelper.doRecipe(blockData, "pulv", false);
+			if (blockData.getRecipeMultiplier() > 1) {
+				RecipeHelper.tryRecipe(blockData, "pulv", true);
+				RecipeHelper.tryRecipe(blockData, "pulv", false);
 			}
 		}
 		
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-			if (OreDictionary.doesOreNameExist(blockData.getOreDictSmeltOutputName()) && blockData.getRecipeMultiplier() > 1) {
-    			RecipeHelper.doRecipe(blockData, "redfurn", true);
-    			RecipeHelper.doRecipe(blockData, "redfurn", false);
+			if (blockData.getRecipeMultiplier() > 1) {
+    			RecipeHelper.tryRecipe(blockData, "redfurn", true);
+    			RecipeHelper.tryRecipe(blockData, "redfurn", false);
 			}
 		}
 
-		Util.LOG.info("Registered Thermal Expansion Recipes");
+		Log.info("Registered Thermal Expansion Recipes");
 
 	}	
 }

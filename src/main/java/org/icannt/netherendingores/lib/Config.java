@@ -9,6 +9,8 @@ import net.minecraftforge.common.config.Configuration;
  * Created by ICannt on 25/08/18.
  */
 public class Config {
+	
+	public static Boolean advancedDebugging = false;
 
 	public static Boolean redstoneFurnaceFullOutput = false;
 	public static float redstoneFurnaceFullOutputAmountFactor = 1f;
@@ -29,6 +31,7 @@ public class Config {
 	public static Boolean vanillaCraftingRecipes = true;
 	public static Boolean vanillaFurnaceRecipes = true;
 	
+	private static final String CATEGORY_GENERAL_SETTINGS = "general settings";
 	private static final String CATEGORY_MACHINE_RECIPE_SETTINGS = "machine recipe settings";
 	private static final String CATEGORY_RECIPE_INTEGRATION_SETTINGS = "recipe integration settings";
 	private static final String CATEGORY_RECIPE_MULTIPLIER_OVERRIDE = "recipe multipliers override";
@@ -44,20 +47,30 @@ public class Config {
         try {
             cfg.load();
             // Load order is different so the override will load first, the config sorter will change the position anyway.
+            initGeneralSettingsConfig(cfg);
             initRecipeIntegrationSettingsConfig(cfg);
             initMachineRecipeSettingsConfig(cfg);
             initRecipeMultiplierOverrideConfig(cfg);
             initRecipeMultiplierConfig(cfg);
         } catch (Exception e1) {
-            Util.LOG.error("Problem loading config file!", e1);
+            Log.LOG.error("Problem loading config file!", e1);
         } finally {
             if (cfg.hasChanged()) {
                 cfg.save();
             }
         }
     }
-        
+
+    //
+    private static void initGeneralSettingsConfig(Configuration cfg) {
+    	
+    	cfg.addCustomCategoryComment(CATEGORY_GENERAL_SETTINGS, "General Settings");
+    	
+    	advancedDebugging = cfg.getBoolean("Advanced debugging", CATEGORY_GENERAL_SETTINGS, advancedDebugging, "Enable advanced debugging. Show all trace level messages in debug.log. Only enable if you really need it.");
+    	
+    }
     
+    //
     private static void initMachineRecipeSettingsConfig(Configuration cfg) {
     	
     	cfg.addCustomCategoryComment(CATEGORY_MACHINE_RECIPE_SETTINGS, "" 
@@ -78,7 +91,7 @@ public class Config {
     	
     }
 
-    
+    //
     private static void initRecipeIntegrationSettingsConfig(Configuration cfg) {
     	
     	cfg.addCustomCategoryComment(CATEGORY_RECIPE_INTEGRATION_SETTINGS, "Enable or disable recipe integrations");
@@ -93,7 +106,7 @@ public class Config {
     	
     }
 
-    
+    //
     private static void initRecipeMultiplierConfig(Configuration cfg) {
     	
     	cfg.addCustomCategoryComment(CATEGORY_RECIPE_MULTIPLIER, ""
@@ -107,7 +120,7 @@ public class Config {
     	
     	int multiplier = 0;    	
     	for (BlockRecipeData blockData : BlockRecipeData.values()) {
-    		multiplier = cfg.get(CATEGORY_RECIPE_MULTIPLIER, Util.spaceCapital(blockData.getName()), blockData.getDefaultRecipeMultiplier()).getInt();
+    		multiplier = cfg.get(CATEGORY_RECIPE_MULTIPLIER, StringUtil.spaceCapital(blockData.getName()), blockData.getDefaultRecipeMultiplier()).getInt();
     		multiplier = Math.min(maxMult, Math.max(minMult, multiplier));
     		if (override > -1) {
     			multiplier = Math.min(maxMult, Math.max(minMult, override));
@@ -117,7 +130,7 @@ public class Config {
     	
     }
     
-    
+    //
     private static void initRecipeMultiplierOverrideConfig(Configuration cfg) {
     	
     	override = cfg.getInt("Override Multipliers", CATEGORY_RECIPE_MULTIPLIER_OVERRIDE, -1, -1, maxMult, "Change this setting to override all recipe multipliers, -1 means ignore.");

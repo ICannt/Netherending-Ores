@@ -2,9 +2,7 @@ package org.icannt.netherendingores.integration.common.registry;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.common.registry.RecipeHelper;
-import org.icannt.netherendingores.lib.Util;
-
-import net.minecraftforge.oredict.OreDictionary;
+import org.icannt.netherendingores.lib.Log;
 
 /**
  * Created by ICannt on 20/04/18.
@@ -16,16 +14,14 @@ public class MekRecipeRegistry {
 	 */
 	public static void registerRecipes() {
 	
-		Util.LOG.debug("Registering Mekanism Recipes");
+		Log.debug("Registering Mekanism Recipes");
 
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-			if (OreDictionary.doesOreNameExist(blockData.getOreDictCrushOutputName())) {
-				RecipeHelper.doRecipe(blockData, "enrich", true);
-				RecipeHelper.doRecipe(blockData, "enrich", false);
-			}
+			RecipeHelper.tryRecipe(blockData, "enrich", true);
+			RecipeHelper.tryRecipe(blockData, "enrich", false);
 		}
 
-		Util.LOG.info("Registered Mekanism Recipes");
+		Log.info("Registered Mekanism Recipes");
 		
 	}
 	

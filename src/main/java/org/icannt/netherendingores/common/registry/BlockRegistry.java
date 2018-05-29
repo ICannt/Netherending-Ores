@@ -14,7 +14,7 @@ import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreOther1;
 import org.icannt.netherendingores.lib.Info;
-import org.icannt.netherendingores.lib.Util;
+import org.icannt.netherendingores.lib.Log;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -77,19 +77,19 @@ public class BlockRegistry {
         @SubscribeEvent
         public static void registerBlocks(RegistryEvent.Register<Block> event) {
         	
-        	Util.LOG.debug("Registering Blocks");
+        	Log.debug("Registering Blocks");
         	
             final IForgeRegistry<Block> registry = event.getRegistry();
             registry.registerAll(blocks);
             
-            Util.LOG.info("Registered Blocks");
+            Log.info("Registered Blocks");
             
         }
 
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
         	
-        	Util.LOG.debug("Registering ItemBlocks");
+        	Log.debug("Registering ItemBlocks");
         	
             final IForgeRegistry<Item> registry = event.getRegistry();
             for (ItemBlock iB : itemBlocks) {
@@ -97,7 +97,7 @@ public class BlockRegistry {
                 ITEM_BLOCKS.add(iB);
             }
             
-            Util.LOG.info("Registered ItemBlocks");
+            Log.info("Registered ItemBlocks");
             
             // Items and blocks now initialized, load the OreDict
             OreDictionaryRegistry.registerDictionaryOres();

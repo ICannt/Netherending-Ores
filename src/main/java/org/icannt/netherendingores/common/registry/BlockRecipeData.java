@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.lib.Info;
-import org.icannt.netherendingores.lib.Util;
+import org.icannt.netherendingores.lib.StringUtil;
 
 import com.google.common.base.CaseFormat;
 
@@ -158,7 +158,7 @@ public enum BlockRecipeData implements IStringSerializable {
     
     
     public ResourceLocation getConversionResourceLocation() {
-		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + Util.lowerUnder(getOreDictOtherModBlockName()));
+		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + StringUtil.lowerUnder(getOreDictOtherModBlockName()));
     }
     
     
@@ -200,7 +200,6 @@ public enum BlockRecipeData implements IStringSerializable {
 		
 	// 
 	private String getOreDictOutputName(int multiplier, String type, String material) {
-		Util.LOG.info("getOreDictOutputName: " + multiplier + ", " + type + ", " + material);
 		material = material == "name" ? name : material;
 		switch (type) {
 			case "smelt":
@@ -263,7 +262,7 @@ public enum BlockRecipeData implements IStringSerializable {
 			case 2:	prefix = "ore"; break;
 			case 3: prefix = "oreDense";
 		}
-		return prefix + Util.upperCamel(material.replace("_ore", ""));
+		return prefix + StringUtil.upperCamel(material.replace("_ore", ""));
     }
 	
     /**
@@ -317,7 +316,7 @@ public enum BlockRecipeData implements IStringSerializable {
     public String getOreDictCustomItemName(String prefix, String material) {
     	// This is a pain to filter, just replace the darn thing
     	//material = material.replace("yellorite", "yellorium");
-    	return prefix + Util.upperCamel(getRawOreName(material));
+    	return prefix + StringUtil.upperCamel(getRawOreName(material));
     }
     
     /**
