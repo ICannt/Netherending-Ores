@@ -6,7 +6,7 @@ import org.icannt.netherendingores.lib.StringUtil;
 import com.google.common.base.CaseFormat;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -48,7 +48,7 @@ public enum BlockRecipeData implements IStringSerializable {
     NETHER_OSMIUM_ORE ("nether_osmium_ore", "ore_nether_modded_1", 11, new String[0], "", "", true, 2, 0),
     NETHER_URANIUM_ORE ("nether_uranium_ore", "ore_nether_modded_1", 12, new String[0], "", "", true, 2, 0),
     NETHER_YELLORITE_ORE ("nether_yellorite_ore", "ore_nether_modded_1", 13, new String[]{"yellorium"}, "", "", true, 2, 0),
-    NETHER_DILITHIUM_ORE ("nether_dilithium_ore", "ore_nether_modded_1", 14, new String[0], "", "", true, 2, 0),
+    NETHER_DILITHIUM_ORE ("nether_dilithium_ore", "ore_nether_modded_1", 14, new String[0], "gem", "", true, 2, 0),
     NETHER_TRITANIUM_ORE ("nether_tritanium_ore", "ore_nether_modded_1", 15, new String[0], "", "", true, 2, 0),
     END_ALUMINUM_ORE ("end_aluminum_ore", "ore_end_modded_1", 0, new String[]{"aluminium"}, "", "", true, 2, 0),
     END_COPPER_ORE ("end_copper_ore", "ore_end_modded_1", 1, new String[0], "", "", true, 2, 0),
@@ -64,7 +64,7 @@ public enum BlockRecipeData implements IStringSerializable {
     END_OSMIUM_ORE ("end_osmium_ore", "ore_end_modded_1", 11, new String[0], "", "", true, 2, 0),
     END_URANIUM_ORE ("end_uranium_ore", "ore_end_modded_1", 12, new String[0], "", "", true, 2, 0),
     END_YELLORITE_ORE ("end_yellorite_ore", "ore_end_modded_1", 13, new String[]{"yellorium"}, "", "", true, 2, 0),
-    END_DILITHIUM_ORE ("end_dilithium_ore", "ore_end_modded_1", 14, new String[0], "", "", true, 2, 0),
+    END_DILITHIUM_ORE ("end_dilithium_ore", "ore_end_modded_1", 14, new String[0], "gem", "", true, 2, 0),
     END_TRITANIUM_ORE ("end_tritanium_ore", "ore_end_modded_1", 15, new String[0], "", "", true, 2, 0),
     OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", "ore_other_1", 0, new String[0], "gem", "dust", true, 1, 0),
     END_QUARTZ_ORE ("end_quartz_ore", "ore_other_1", 1, new String[0], "gem", "dust", true, 1, 0),
@@ -212,7 +212,7 @@ public enum BlockRecipeData implements IStringSerializable {
 					return getOreDictCrushItemName(itemOreDictPrefix, material);
 				}
 		}
-		return getOreDictOtherModBlockName();
+		return getOreDictOtherModBlockName(material);
 	}
     
     /**
@@ -237,6 +237,10 @@ public enum BlockRecipeData implements IStringSerializable {
         return getOreDictPrefixedName(1);
     }
 
+    public String getOreDictOtherModBlockName(String material) {
+        return getOreDictPrefixedName(1, material);
+    }
+    
     //
     public String getOreDictCustomRegName(String material) {
     	material = name.replace(getRawOreName(name), material);    	
@@ -415,7 +419,7 @@ public enum BlockRecipeData implements IStringSerializable {
 				return stack;
 			}
 		}
-		return new ItemStack(Blocks.AIR);
+		return new ItemStack(Items.AIR);
 	}
 	
 	/**

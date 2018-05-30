@@ -12,6 +12,7 @@ import org.icannt.netherendingores.lib.Log;
 
 public class RecipeHelper {
 	
+	
 	/**
 	 * Attempts to add recipes based on input data provided
 	 * 
@@ -28,7 +29,12 @@ public class RecipeHelper {
 			if (doAltReplace) material = blockData.getAltMaterialName(material);
 			try {
 				addRecipe(blockData, device, material);
-				Log.logRecipeSuccess();
+				if (Log.isRecipeAddedAlready) {
+					Log.isRecipeAddedAlready = false;
+					Log.logRecipeAlreadyAdded();
+				} else {
+					Log.logRecipeSuccess();
+				}
 			} catch (Exception e1) {
 				Log.logRecipeFail();
 			}

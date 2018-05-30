@@ -11,7 +11,7 @@ import org.icannt.netherendingores.integration.common.registry.data.TiCRecipeDat
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
 /**
- * Created by ICannt on 30/08/18.
+ * Created by ICannt on 30/05/18.
  */
 
 public class Log {
@@ -19,6 +19,8 @@ public class Log {
     public static final Logger LOG = LogManager.getLogger(Info.MOD_NAME);
     
 	public static String[] LOG_RECIPE_MSG = { "", "", "" };
+	
+	public static Boolean isRecipeAddedAlready = false;
 	
 	public static void trace(String msg) {
 		if (Config.advancedDebugging) LOG.trace(msg);
@@ -94,6 +96,11 @@ public class Log {
     }
     
     //
+    public static void logRecipeAlreadyAdded() {
+    	logRecipeAlreadyAdded(LOG_RECIPE_MSG[0], LOG_RECIPE_MSG[1], LOG_RECIPE_MSG[2]);
+    }
+    
+    //
     public static void logRecipeSuccess(String device, String input, String output) {
     	trace("Registered " + device + " input for \"" + input + "\", output \"" + output + "\".");
     }
@@ -103,6 +110,11 @@ public class Log {
     	debug("Unable to register " + device + " input for \"" + input + "\", output \"" + output + "\" not found.");
     }
 
+    //
+    public static void logRecipeAlreadyAdded(String device, String input, String output) {
+    	debug("Unable to register " + device + " input for \"" + input + "\", output \"" + output + "\" is already added.");
+    }
+    
     //
     public static void logRecipeSuccessNoInput(String device, String output) {
     	trace("Registered " + device + " output for \"" + output + "\".");

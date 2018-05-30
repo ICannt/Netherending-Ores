@@ -4,6 +4,7 @@ import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
 import org.icannt.netherendingores.lib.Log;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -22,24 +23,23 @@ public class RecipeRegistry {
 	 */
 	public static void registerRecipes() {
 
-		Log.debug("Registering Recipes");
+		Log.debug("Registering Vanilla Recipes");
 
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-        	if (blockData.getRecipeMultiplier() == 1 && Config.vanillaCraftingRecipes) {
-        		RecipeHelper.tryRecipe(blockData, "craft", false);
+        	if (Config.vanillaCraftingRecipes && blockData.getRecipeMultiplier() == 1) {
         		RecipeHelper.tryRecipe(blockData, "craft", true);
+        		RecipeHelper.tryRecipe(blockData, "craft", false);
         	}
 		}
 		
         for (BlockRecipeData blockData : BlockRecipeData.values()) {
-        	if (Config.vanillaFurnaceRecipes && (blockData.isFurnaceItemEnabled() || blockData.getRecipeMultiplier() > 1)) {      	
+        	if (Config.vanillaFurnaceRecipes && blockData.getRecipeMultiplier() > 1) {
+    			RecipeHelper.tryRecipe(blockData, "furnace", true);
     			RecipeHelper.tryRecipe(blockData, "furnace", false);
-    			// TODO: Need to work around FML errors just disable it for now
-    			//RecipeHelper.doRecipe(blockData, "furnace", true);
         	}
 		}
 		
-		Log.info("Registered Recipes");
+		Log.info("Registered Vanilla Recipes");
 		
 	}
 	
@@ -62,7 +62,11 @@ public class RecipeRegistry {
 	public static void addFurnaceRecipe(BlockRecipeData blockData, String material) {
 		int experience = blockData.getRecipeMultiplier() > 1 ? 0 : -1;
 		Log.logRecipeMsg("furnace", blockData.getName(), blockData.getOreDictOutputName("smelt", material));
-		FurnaceRecipes.instance().addSmeltingRecipe(blockData.getModBlockItemStack(), blockData.getOreDictSmeltItemStack(blockData.getFurnaceAmount()), experience);
+		if (FurnaceRecipes.instance().getSmeltingResult(blockData.getModBlockItemStack()) == ItemStack.EMPTY) {
+			FurnaceRecipes.instance().addSmeltingRecipe(blockData.getModBlockItemStack(), blockData.getOreDictSmeltItemStack(blockData.getFurnaceAmount()), experience);
+		} else {
+			Log.isRecipeAddedAlready = true;
+		}
 	}
 	
 }

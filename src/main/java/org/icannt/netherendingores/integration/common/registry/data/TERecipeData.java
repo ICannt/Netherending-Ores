@@ -193,7 +193,6 @@ public enum TERecipeData implements IStringSerializable {
 	
 	//
 	public static ItemStack getPulvSecondaryItemStack(BlockRecipeData blockData) {
-		//return blockData.getOreDictCustomItemStack("", values()[blockData.ordinal()].pulv2xSecondaryOutputItem, 1);
 		return blockData.getOreDictItemStack(values()[blockData.ordinal()].pulv2xSecondaryOutputItem, 1);
 	}
 	
