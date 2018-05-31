@@ -25,6 +25,7 @@ public class RecipeRegistry {
 
 		Log.debug("Registering Vanilla Recipes");
 
+		// TODO: Improve crafting, check for duplicates (not that the game cares, unlike the furnace)
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
         	if (Config.vanillaCraftingRecipes && blockData.getRecipeMultiplier() == 1) {
         		RecipeHelper.tryRecipe(blockData, "craft", true);

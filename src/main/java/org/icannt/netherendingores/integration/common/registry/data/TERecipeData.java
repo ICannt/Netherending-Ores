@@ -8,6 +8,8 @@ import cofh.api.util.ThermalExpansionHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 
+import static java.lang.Math.*;
+
 /**
  * Created by ICannt on 11/04/18.
  */
@@ -128,7 +130,7 @@ public enum TERecipeData implements IStringSerializable {
 	public int getPulvAmount(int multiplier) {
 		switch (multiplier) {
 			case 2:	return pulv2xAmount;
-			case 3:	return Math.round(Config.pulverizerFullOutput ? Config.pulverizerFullOutputAmountFactor : Config.pulverizerReducedOutputAmountFactor * pulv3xAmount);
+			case 3:	return round(Config.pulverizerFullOutput ? Config.pulverizerFullOutputAmountFactor : Config.pulverizerReducedOutputAmountFactor * pulv3xAmount);
 		}
 		return 0;
 	}
@@ -160,8 +162,8 @@ public enum TERecipeData implements IStringSerializable {
     //
 	public int getRedFurnAmount(int multiplier) {
 		switch (multiplier) {
-			case 2:	return Math.round(Config.redstoneFurnaceFullOutput ? Config.redstoneFurnaceFullOutputAmountFactor : Config.redstoneFurnaceReducedOutputAmountFactor * redFurn2xAmount);
-			case 3:	return Math.round(Config.redstoneFurnaceFullOutput ? Config.redstoneFurnaceFullOutputAmountFactor : Config.redstoneFurnaceReducedOutputAmountFactor * redFurn3xAmount);
+			case 2:	return round(Config.redstoneFurnaceFullOutput ? Config.redstoneFurnaceFullOutputAmountFactor : Config.redstoneFurnaceReducedOutputAmountFactor * redFurn2xAmount);
+			case 3:	return round(Config.redstoneFurnaceFullOutput ? Config.redstoneFurnaceFullOutputAmountFactor : Config.redstoneFurnaceReducedOutputAmountFactor * redFurn3xAmount);
 		}
 		return 0;
 	}
