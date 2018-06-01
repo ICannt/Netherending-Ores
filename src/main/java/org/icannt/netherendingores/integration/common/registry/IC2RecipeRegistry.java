@@ -24,15 +24,6 @@ public class IC2RecipeRegistry {
 			}
 		}
 		
-		// TODO: Not needed will see if code can be reused
-		
-//		for (BlockRecipeData blockData : BlockRecipeData.values()) {
-//    		if (OreDictionary.doesOreNameExist(blockData.getOreDictSmeltOutputName()) && blockData.getRecipeMultiplier() > 1) {
-//    			RecipeHelper.doRecipe(blockData, "elecfurn", true);
-//    			RecipeHelper.doRecipe(blockData, "elecfurn", false);
-//			}
-//		}
-		
 		Log.info("Registered Industrial Craft 2 Recipes");
 
 	}

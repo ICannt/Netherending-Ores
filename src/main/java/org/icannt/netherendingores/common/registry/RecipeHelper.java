@@ -57,8 +57,7 @@ public class RecipeHelper {
 			case "pulv": TERecipeData.addPulvRecipe(blockData, material); break;
 			case "redfurn": TERecipeData.addRedFurnRecipe(blockData, material); break;
 			case "enrich": MekRecipeData.addEnrichRecipe(blockData, material); break;
-			case "mace": IC2RecipeData.addMaceRecipe(blockData, material); break;
-			case "elecfurn": IC2RecipeData.addElecFurnRecipe(blockData, material);
+			case "mace": IC2RecipeData.addMaceRecipe(blockData, material);
 		}
 	}
 	

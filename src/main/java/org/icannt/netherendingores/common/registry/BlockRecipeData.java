@@ -20,58 +20,58 @@ import net.minecraftforge.oredict.OreDictionary;
 public enum BlockRecipeData implements IStringSerializable {
 
 	
-    NETHER_COAL_ORE ("nether_coal_ore", "ore_nether_vanilla", 0, new String[0], "coal", "dust", true, 2, 0),
-    NETHER_DIAMOND_ORE ("nether_diamond_ore", "ore_nether_vanilla", 1, new String[0], "gem", "dust", true, 2, 0),
-    NETHER_EMERALD_ORE ("nether_emerald_ore", "ore_nether_vanilla", 2, new String[0], "gem", "", true, 2, 0),
-    NETHER_GOLD_ORE ("nether_gold_ore", "ore_nether_vanilla", 3, new String[0], "", "", true, 2, 0),
-    NETHER_IRON_ORE ("nether_iron_ore", "ore_nether_vanilla", 4, new String[0], "", "", true, 2, 0),
-    NETHER_LAPIS_ORE ("nether_lapis_ore", "ore_nether_vanilla", 5, new String[0], "gem", "dust", true, 2, 0),
-    NETHER_REDSTONE_ORE ("nether_redstone_ore", "ore_nether_vanilla", 6, new String[0], "dust", "", true, 2, 0),
-    END_COAL_ORE ("end_coal_ore", "ore_end_vanilla", 0, new String[0], "coal", "dust", true, 2, 0),
-    END_DIAMOND_ORE ("end_diamond_ore", "ore_end_vanilla", 1, new String[0], "gem", "dust", true, 2, 0),
-    END_EMERALD_ORE ("end_emerald_ore", "ore_end_vanilla", 2, new String[0], "gem", "", true, 2, 0),
-    END_GOLD_ORE ("end_gold_ore", "ore_end_vanilla", 3, new String[0], "", "", true, 2, 0),
-    END_IRON_ORE ("end_iron_ore", "ore_end_vanilla", 4, new String[0], "", "", true, 2, 0),
-    END_LAPIS_ORE ("end_lapis_ore", "ore_end_vanilla", 5, new String[0], "gem", "dust", true, 2, 0),
-    END_REDSTONE_ORE ("end_redstone_ore", "ore_end_vanilla", 6, new String[0], "dust", "", true, 2, 0),
-    NETHER_ALUMINUM_ORE ("nether_aluminum_ore", "ore_nether_modded_1", 0, new String[]{"aluminium"}, "", "", true, 2, 0),
-    NETHER_COPPER_ORE ("nether_copper_ore", "ore_nether_modded_1", 1, new String[0], "", "", true, 2, 0),
-    NETHER_IRIDIUM_ORE ("nether_iridium_ore", "ore_nether_modded_1", 2, new String[0], "", "", true, 2, 0),
-    NETHER_LEAD_ORE ("nether_lead_ore", "ore_nether_modded_1", 3, new String[0], "", "", true, 2, 0),
-    NETHER_MITHRIL_ORE ("nether_mithril_ore", "ore_nether_modded_1", 4, new String[0], "", "", true, 2, 0),
-    NETHER_NICKEL_ORE ("nether_nickel_ore", "ore_nether_modded_1", 5, new String[0], "", "", true, 2, 0),
-    NETHER_PLATINUM_ORE ("nether_platinum_ore", "ore_nether_modded_1", 6, new String[0], "", "", true, 2, 0),
-    NETHER_SILVER_ORE ("nether_silver_ore", "ore_nether_modded_1", 7, new String[0], "", "", true, 2, 0),
-    NETHER_TIN_ORE ("nether_tin_ore", "ore_nether_modded_1", 8, new String[0], "", "", true, 2, 0),
-    NETHER_CERTUS_QUARTZ_ORE ("nether_certus_quartz_ore", "ore_nether_modded_1", 9, new String[0], "crystal", "dust", false, 2, 0),
-    NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", "ore_nether_modded_1", 10, new String[0], "crystal", "dustCertusQuartz", false, 2, 0),
-    NETHER_OSMIUM_ORE ("nether_osmium_ore", "ore_nether_modded_1", 11, new String[0], "", "", true, 2, 0),
-    NETHER_URANIUM_ORE ("nether_uranium_ore", "ore_nether_modded_1", 12, new String[0], "", "", true, 2, 0),
-    NETHER_YELLORITE_ORE ("nether_yellorite_ore", "ore_nether_modded_1", 13, new String[]{"yellorium"}, "", "", true, 2, 0),
-    NETHER_DILITHIUM_ORE ("nether_dilithium_ore", "ore_nether_modded_1", 14, new String[0], "gem", "", true, 2, 0),
-    NETHER_TRITANIUM_ORE ("nether_tritanium_ore", "ore_nether_modded_1", 15, new String[0], "", "", true, 2, 0),
-    END_ALUMINUM_ORE ("end_aluminum_ore", "ore_end_modded_1", 0, new String[]{"aluminium"}, "", "", true, 2, 0),
-    END_COPPER_ORE ("end_copper_ore", "ore_end_modded_1", 1, new String[0], "", "", true, 2, 0),
-    END_IRIDIUM_ORE ("end_iridium_ore", "ore_end_modded_1", 2, new String[0], "", "", true, 2, 0),
-    END_LEAD_ORE ("end_lead_ore", "ore_end_modded_1", 3, new String[0], "", "", true, 2, 0),
-    END_MITHRIL_ORE ("end_mithril_ore", "ore_end_modded_1", 4, new String[0], "", "", true, 2, 0),
-    END_NICKEL_ORE ("end_nickel_ore", "ore_end_modded_1", 5, new String[0], "", "", true, 2, 0),
-    END_PLATINUM_ORE ("end_platinum_ore", "ore_end_modded_1", 6, new String[0], "", "", true, 2, 0),
-    END_SILVER_ORE ("end_silver_ore", "ore_end_modded_1", 7, new String[0], "", "", true, 2, 0),
-    END_TIN_ORE ("end_tin_ore", "ore_end_modded_1", 8, new String[0], "", "", true, 2, 0),
-    END_CERTUS_QUARTZ_ORE ("end_certus_quartz_ore", "ore_end_modded_1", 9, new String[0], "crystal", "dust", false, 2, 0),
-    END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", "ore_end_modded_1", 10, new String[0], "crystal", "dustCertusQuartz", false, 2, 0),
-    END_OSMIUM_ORE ("end_osmium_ore", "ore_end_modded_1", 11, new String[0], "", "", true, 2, 0),
-    END_URANIUM_ORE ("end_uranium_ore", "ore_end_modded_1", 12, new String[0], "", "", true, 2, 0),
-    END_YELLORITE_ORE ("end_yellorite_ore", "ore_end_modded_1", 13, new String[]{"yellorium"}, "", "", true, 2, 0),
-    END_DILITHIUM_ORE ("end_dilithium_ore", "ore_end_modded_1", 14, new String[0], "gem", "", true, 2, 0),
-    END_TRITANIUM_ORE ("end_tritanium_ore", "ore_end_modded_1", 15, new String[0], "", "", true, 2, 0),
-    OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", "ore_other_1", 0, new String[0], "gem", "dust", true, 1, 0),
-    END_QUARTZ_ORE ("end_quartz_ore", "ore_other_1", 1, new String[0], "gem", "dust", true, 1, 0),
-    OVERWORLD_ARDITE_ORE ("overworld_ardite_ore", "ore_other_1", 2, new String[0], "", "", true, 1, 0),
-    END_ARDITE_ORE ("end_ardite_ore", "ore_other_1", 3, new String[0], "", "", true, 1, 0),
-    OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", "ore_other_1", 4, new String[0], "", "", true, 1, 0),
-    END_COBALT_ORE ("end_cobalt_ore", "ore_other_1", 5, new String[0], "", "", true, 1, 0);
+    NETHER_COAL_ORE ("nether_coal_ore", "ore_nether_vanilla", 0, new String[0], "coal", true, 2, 0),
+    NETHER_DIAMOND_ORE ("nether_diamond_ore", "ore_nether_vanilla", 1, new String[0], "gem", true, 2, 0),
+    NETHER_EMERALD_ORE ("nether_emerald_ore", "ore_nether_vanilla", 2, new String[0], "gem", true, 2, 0),
+    NETHER_GOLD_ORE ("nether_gold_ore", "ore_nether_vanilla", 3, new String[0], "", true, 2, 0),
+    NETHER_IRON_ORE ("nether_iron_ore", "ore_nether_vanilla", 4, new String[0], "", true, 2, 0),
+    NETHER_LAPIS_ORE ("nether_lapis_ore", "ore_nether_vanilla", 5, new String[0], "gem", true, 2, 0),
+    NETHER_REDSTONE_ORE ("nether_redstone_ore", "ore_nether_vanilla", 6, new String[0], "dust", true, 2, 0),
+    END_COAL_ORE ("end_coal_ore", "ore_end_vanilla", 0, new String[0], "coal", true, 2, 0),
+    END_DIAMOND_ORE ("end_diamond_ore", "ore_end_vanilla", 1, new String[0], "gem", true, 2, 0),
+    END_EMERALD_ORE ("end_emerald_ore", "ore_end_vanilla", 2, new String[0], "gem", true, 2, 0),
+    END_GOLD_ORE ("end_gold_ore", "ore_end_vanilla", 3, new String[0], "", true, 2, 0),
+    END_IRON_ORE ("end_iron_ore", "ore_end_vanilla", 4, new String[0], "", true, 2, 0),
+    END_LAPIS_ORE ("end_lapis_ore", "ore_end_vanilla", 5, new String[0], "gem", true, 2, 0),
+    END_REDSTONE_ORE ("end_redstone_ore", "ore_end_vanilla", 6, new String[0], "dust", true, 2, 0),
+    NETHER_ALUMINUM_ORE ("nether_aluminum_ore", "ore_nether_modded_1", 0, new String[]{"aluminium"}, "", true, 2, 0),
+    NETHER_COPPER_ORE ("nether_copper_ore", "ore_nether_modded_1", 1, new String[0], "", true, 2, 0),
+    NETHER_IRIDIUM_ORE ("nether_iridium_ore", "ore_nether_modded_1", 2, new String[0], "", true, 2, 0),
+    NETHER_LEAD_ORE ("nether_lead_ore", "ore_nether_modded_1", 3, new String[0], "", true, 2, 0),
+    NETHER_MITHRIL_ORE ("nether_mithril_ore", "ore_nether_modded_1", 4, new String[0], "", true, 2, 0),
+    NETHER_NICKEL_ORE ("nether_nickel_ore", "ore_nether_modded_1", 5, new String[0], "", true, 2, 0),
+    NETHER_PLATINUM_ORE ("nether_platinum_ore", "ore_nether_modded_1", 6, new String[0], "", true, 2, 0),
+    NETHER_SILVER_ORE ("nether_silver_ore", "ore_nether_modded_1", 7, new String[0], "", true, 2, 0),
+    NETHER_TIN_ORE ("nether_tin_ore", "ore_nether_modded_1", 8, new String[0], "", true, 2, 0),
+    NETHER_CERTUS_QUARTZ_ORE ("nether_certus_quartz_ore", "ore_nether_modded_1", 9, new String[0], "crystal", false, 2, 0),
+    NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", "ore_nether_modded_1", 10, new String[0], "crystal", false, 2, 0),
+    NETHER_OSMIUM_ORE ("nether_osmium_ore", "ore_nether_modded_1", 11, new String[0], "", true, 2, 0),
+    NETHER_URANIUM_ORE ("nether_uranium_ore", "ore_nether_modded_1", 12, new String[0], "", true, 2, 0),
+    NETHER_YELLORITE_ORE ("nether_yellorite_ore", "ore_nether_modded_1", 13, new String[]{"yellorium"}, "", true, 2, 0),
+    NETHER_DILITHIUM_ORE ("nether_dilithium_ore", "ore_nether_modded_1", 14, new String[0], "gem", true, 2, 0),
+    NETHER_TRITANIUM_ORE ("nether_tritanium_ore", "ore_nether_modded_1", 15, new String[0], "", true, 2, 0),
+    END_ALUMINUM_ORE ("end_aluminum_ore", "ore_end_modded_1", 0, new String[]{"aluminium"}, "", true, 2, 0),
+    END_COPPER_ORE ("end_copper_ore", "ore_end_modded_1", 1, new String[0], "", true, 2, 0),
+    END_IRIDIUM_ORE ("end_iridium_ore", "ore_end_modded_1", 2, new String[0], "", true, 2, 0),
+    END_LEAD_ORE ("end_lead_ore", "ore_end_modded_1", 3, new String[0], "", true, 2, 0),
+    END_MITHRIL_ORE ("end_mithril_ore", "ore_end_modded_1", 4, new String[0], "", true, 2, 0),
+    END_NICKEL_ORE ("end_nickel_ore", "ore_end_modded_1", 5, new String[0], "", true, 2, 0),
+    END_PLATINUM_ORE ("end_platinum_ore", "ore_end_modded_1", 6, new String[0], "", true, 2, 0),
+    END_SILVER_ORE ("end_silver_ore", "ore_end_modded_1", 7, new String[0], "", true, 2, 0),
+    END_TIN_ORE ("end_tin_ore", "ore_end_modded_1", 8, new String[0], "", true, 2, 0),
+    END_CERTUS_QUARTZ_ORE ("end_certus_quartz_ore", "ore_end_modded_1", 9, new String[0], "crystal", false, 2, 0),
+    END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", "ore_end_modded_1", 10, new String[0], "crystal", false, 2, 0),
+    END_OSMIUM_ORE ("end_osmium_ore", "ore_end_modded_1", 11, new String[0], "", true, 2, 0),
+    END_URANIUM_ORE ("end_uranium_ore", "ore_end_modded_1", 12, new String[0], "", true, 2, 0),
+    END_YELLORITE_ORE ("end_yellorite_ore", "ore_end_modded_1", 13, new String[]{"yellorium"}, "", true, 2, 0),
+    END_DILITHIUM_ORE ("end_dilithium_ore", "ore_end_modded_1", 14, new String[0], "gem", true, 2, 0),
+    END_TRITANIUM_ORE ("end_tritanium_ore", "ore_end_modded_1", 15, new String[0], "", true, 2, 0),
+    OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", "ore_other_1", 0, new String[0], "gem", true, 1, 0),
+    END_QUARTZ_ORE ("end_quartz_ore", "ore_other_1", 1, new String[0], "gem", true, 1, 0),
+    OVERWORLD_ARDITE_ORE ("overworld_ardite_ore", "ore_other_1", 2, new String[0], "", true, 1, 0),
+    END_ARDITE_ORE ("end_ardite_ore", "ore_other_1", 3, new String[0], "", true, 1, 0),
+    OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", "ore_other_1", 4, new String[0], "", true, 1, 0),
+    END_COBALT_ORE ("end_cobalt_ore", "ore_other_1", 5, new String[0], "", true, 1, 0);
 
 
     private String name;
@@ -79,19 +79,17 @@ public enum BlockRecipeData implements IStringSerializable {
     private int blockMeta;
     private String[] itemAltOreDictSuffix;
     private String itemOreDictPrefix;
-    private String itemAltOreDict;
     private boolean furnaceItemEnabled;
     private int defaultRecipeMultiplier;
     private int recipeMultiplier;
 	
     
-	BlockRecipeData(String name, String blockName, int blockMeta, String[] itemAltOreDictSuffix, String itemOreDictPrefix, String itemAltOreDict, boolean furnaceItemEnabled, int defaultRecipeMultiplier, int recipeMultiplier) {
+	BlockRecipeData(String name, String blockName, int blockMeta, String[] itemAltOreDictSuffix, String itemOreDictPrefix, boolean furnaceItemEnabled, int defaultRecipeMultiplier, int recipeMultiplier) {
 		this.name = name;
 		this.blockName = blockName;
 		this.blockMeta = blockMeta;
 		this.itemAltOreDictSuffix = itemAltOreDictSuffix;
 		this.itemOreDictPrefix = itemOreDictPrefix;
-		this.itemAltOreDict = itemAltOreDict;
 		this.furnaceItemEnabled = furnaceItemEnabled;
 		this.defaultRecipeMultiplier = defaultRecipeMultiplier;
 		this.recipeMultiplier = recipeMultiplier;
@@ -104,33 +102,21 @@ public enum BlockRecipeData implements IStringSerializable {
     }
 
     //
-    public Block getBlock() {
-    	return Block.getBlockFromName(Info.MOD_ID + ":" + blockName);
-    }
-
-    //
 	public String[] getItemAltOreDictSuffix() {
 		return itemAltOreDictSuffix;
 	}
-    
-    public String getItemAltOreDict() {
-    	// TODO: Implement alternate oredict prefixes for mods that often use them i.e. diamond dust for mekanism machines
-    	// Just a stub for now
-    	// Will likely change to each integration enum handling this themselves
-		return itemAltOreDict;
-	}
-
 	
+	//
     public int getDefaultRecipeMultiplier() {
         return defaultRecipeMultiplier;
     }
     
-    
+    //
     public int getRecipeMultiplier() {
     	return recipeMultiplier;
     }
 
-    
+    //
     public void setRecipeMultiplier(int multiplier) {
     	this.recipeMultiplier = multiplier;
     }
@@ -147,18 +133,19 @@ public enum BlockRecipeData implements IStringSerializable {
     	return recipeMultiplier;
     }
     
+    // TODO: Check to see if this is actually used
 	public boolean isFurnaceItemEnabled() {
     	return furnaceItemEnabled;
     }
 	
-    
+    //
     public Ingredient[] getConversionIngredient() {
 		return new Ingredient[]{Ingredient.fromStacks(getModBlockItemStack())};
     }
     
-    
-    public ResourceLocation getConversionResourceLocation() {
-		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + StringUtil.lowerUnder(getOreDictOtherModBlockName()));
+    //
+    public ResourceLocation getConversionResourceLocation(String material) {
+		return new ResourceLocation(Info.MOD_ID + ":" + name + "_to_" + StringUtil.lowerUnder(getOreDictOtherModBlockName(material)));
     }
     
     
@@ -177,16 +164,6 @@ public enum BlockRecipeData implements IStringSerializable {
     public String getAltMaterialName(String material) {
     	return name.replace(getRawOreName(name), material);
     }
-    
-    // 
-	public String getOreDictSmeltOutputName() {
-		return getOreDictOutputName("smelt");
-	}
-	
-	//
-	public String getOreDictCrushOutputName() {
-		return getOreDictOutputName("crush");
-	}
 	
 	// 
 	private String getOreDictOutputName(String type) {
@@ -226,17 +203,8 @@ public enum BlockRecipeData implements IStringSerializable {
     public String getOreDictRegName() {
     	return getOreDictPrefixedName(recipeMultiplier);
     }
-	
-    /**
-     * The method that returns the correct OreDict prefix for other mods.
-     * Should not be used directly in ItemStacks as there is no filtering.
-     * 
-     * @return      The prefixed OreDict Block name for other mods.
-     */
-    public String getOreDictOtherModBlockName() {
-        return getOreDictPrefixedName(1);
-    }
-
+    
+    //
     public String getOreDictOtherModBlockName(String material) {
         return getOreDictPrefixedName(1, material);
     }
@@ -287,8 +255,6 @@ public enum BlockRecipeData implements IStringSerializable {
 			default:
 				ore = "";
     	}
-    	// This is a pain to filter, just replace the darn thing
-    	//if (prefix + ore == "dustYellorite") return "dustYellorium"; 
     	return prefix + ore;    	
     }
     
@@ -311,15 +277,11 @@ public enum BlockRecipeData implements IStringSerializable {
 				prefix = "";
 				ore = getRawOreName(material);
     	}
-    	// This is a pain to filter, just replace the darn thing
-    	//if (prefix + ore == "ingotYellorite") return "ingotYellorium";
     	return prefix + ore;    	
     }
 
     //
     public String getOreDictCustomItemName(String prefix, String material) {
-    	// This is a pain to filter, just replace the darn thing
-    	//material = material.replace("yellorite", "yellorium");
     	return prefix + StringUtil.upperCamel(getRawOreName(material));
     }
     
@@ -359,7 +321,7 @@ public enum BlockRecipeData implements IStringSerializable {
      * @return      Mod Block ItemStack
      */
     public ItemStack getModBlockItemStack() {
-    	return new ItemStack(getBlock(), 1, blockMeta);
+    	return new ItemStack(Block.getBlockFromName(Info.MOD_ID + ":" + blockName), 1, blockMeta);
     }  
 	
 	/**
@@ -412,8 +374,8 @@ public enum BlockRecipeData implements IStringSerializable {
 	 * @param amount
 	 * @return
 	 */
-	public ItemStack getOtherModBlockItemStack() {
-		for (ItemStack stack : OreDictionary.getOres(getOreDictOtherModBlockName(), false))
+	public ItemStack getOtherModBlockItemStack(String material) {
+		for (ItemStack stack : OreDictionary.getOres(getOreDictOtherModBlockName(material), false))
 		{
 			if (!stack.getItem().getRegistryName().getResourceDomain().equals("netherendingores")) {
 				return stack;

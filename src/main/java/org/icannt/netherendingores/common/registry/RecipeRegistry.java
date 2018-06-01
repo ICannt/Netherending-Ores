@@ -52,7 +52,8 @@ public class RecipeRegistry {
 	public static void addCraftingRecipe(BlockRecipeData blockData, String material) {
 		ResourceLocation groupName = new ResourceLocation(Info.MOD_ID + ":ore_conversions");
 		Log.logRecipeMsg("crafting", blockData.getName(), blockData.getOreDictOutputName("", material));
-		GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(), groupName, blockData.getOtherModBlockItemStack(), blockData.getConversionIngredient());
+		//GameRegistry.
+		GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(material), groupName, blockData.getOtherModBlockItemStack(material), blockData.getConversionIngredient());
 	}
 	
 	/**
