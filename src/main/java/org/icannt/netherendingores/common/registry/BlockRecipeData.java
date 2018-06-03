@@ -46,9 +46,9 @@ public enum BlockRecipeData implements IStringSerializable {
     NETHER_CERTUS_QUARTZ_ORE ("nether_certus_quartz_ore", "ore_nether_modded_1", 9, new String[0], "crystal", false, 2, 0),
     NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", "ore_nether_modded_1", 10, new String[0], "crystal", false, 2, 0),
     NETHER_OSMIUM_ORE ("nether_osmium_ore", "ore_nether_modded_1", 11, new String[0], "", true, 2, 0),
-    NETHER_URANIUM_ORE ("nether_uranium_ore", "ore_nether_modded_1", 12, new String[0], "", true, 2, 0),
+    NETHER_URANIUM_ORE ("nether_uranium_ore", "ore_nether_modded_1", 12, new String[0], "", false, 2, 0),
     NETHER_YELLORITE_ORE ("nether_yellorite_ore", "ore_nether_modded_1", 13, new String[]{"yellorium"}, "", true, 2, 0),
-    NETHER_DILITHIUM_ORE ("nether_dilithium_ore", "ore_nether_modded_1", 14, new String[0], "gem", true, 2, 0),
+    NETHER_DILITHIUM_ORE ("nether_dilithium_ore", "ore_nether_modded_1", 14, new String[0], "gem", false, 2, 0),
     NETHER_TRITANIUM_ORE ("nether_tritanium_ore", "ore_nether_modded_1", 15, new String[0], "", true, 2, 0),
     END_ALUMINUM_ORE ("end_aluminum_ore", "ore_end_modded_1", 0, new String[]{"aluminium"}, "", true, 2, 0),
     END_COPPER_ORE ("end_copper_ore", "ore_end_modded_1", 1, new String[0], "", true, 2, 0),
@@ -62,9 +62,9 @@ public enum BlockRecipeData implements IStringSerializable {
     END_CERTUS_QUARTZ_ORE ("end_certus_quartz_ore", "ore_end_modded_1", 9, new String[0], "crystal", false, 2, 0),
     END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", "ore_end_modded_1", 10, new String[0], "crystal", false, 2, 0),
     END_OSMIUM_ORE ("end_osmium_ore", "ore_end_modded_1", 11, new String[0], "", true, 2, 0),
-    END_URANIUM_ORE ("end_uranium_ore", "ore_end_modded_1", 12, new String[0], "", true, 2, 0),
+    END_URANIUM_ORE ("end_uranium_ore", "ore_end_modded_1", 12, new String[0], "", false, 2, 0),
     END_YELLORITE_ORE ("end_yellorite_ore", "ore_end_modded_1", 13, new String[]{"yellorium"}, "", true, 2, 0),
-    END_DILITHIUM_ORE ("end_dilithium_ore", "ore_end_modded_1", 14, new String[0], "gem", true, 2, 0),
+    END_DILITHIUM_ORE ("end_dilithium_ore", "ore_end_modded_1", 14, new String[0], "gem", false, 2, 0),
     END_TRITANIUM_ORE ("end_tritanium_ore", "ore_end_modded_1", 15, new String[0], "", true, 2, 0),
     OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", "ore_other_1", 0, new String[0], "gem", true, 1, 0),
     END_QUARTZ_ORE ("end_quartz_ore", "ore_other_1", 1, new String[0], "gem", true, 1, 0),
@@ -125,15 +125,13 @@ public enum BlockRecipeData implements IStringSerializable {
     /****************************\
     *  Vanilla Crafting Helpers  *
     \****************************/
-    
-    
-	// TODO: Just an alias for now, ideally the vanilla crafting and furnacing methods should be broken off from this enum into a new one?
-	// This would leave this class to concentrate on oredict, multipliers and helpers.
+
+    //
     public int getFurnaceAmount() {
     	return recipeMultiplier;
     }
     
-    // TODO: Check to see if this is actually used
+    //
 	public boolean isFurnaceItemEnabled() {
     	return furnaceItemEnabled;
     }

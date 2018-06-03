@@ -34,7 +34,7 @@ public class RecipeRegistry {
 		}
 		
         for (BlockRecipeData blockData : BlockRecipeData.values()) {
-        	if (Config.vanillaFurnaceRecipes && blockData.getRecipeMultiplier() > 1) {
+        	if (Config.vanillaFurnaceRecipes && (blockData.getRecipeMultiplier() > 1 || (blockData.getRecipeMultiplier() == 1 && blockData.isFurnaceItemEnabled()))) {
     			RecipeHelper.tryRecipe(blockData, "furnace", true);
     			RecipeHelper.tryRecipe(blockData, "furnace", false);
         	}
@@ -52,7 +52,6 @@ public class RecipeRegistry {
 	public static void addCraftingRecipe(BlockRecipeData blockData, String material) {
 		ResourceLocation groupName = new ResourceLocation(Info.MOD_ID + ":ore_conversions");
 		Log.logRecipeMsg("crafting", blockData.getName(), blockData.getOreDictOutputName("", material));
-		//GameRegistry.
 		GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(material), groupName, blockData.getOtherModBlockItemStack(material), blockData.getConversionIngredient());
 	}
 	

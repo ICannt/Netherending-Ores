@@ -11,7 +11,7 @@ import static java.lang.Math.*;
  * Created by ICannt on 25/03/18.
  */
 
-// TODO: Go through and filter everything to be within min/max ranges
+// TODO: Go through and filter everything to be within min/max ranges. Can't get this to work :/
 public class Config {
 	
 	public static Boolean advancedDebugging = false;
