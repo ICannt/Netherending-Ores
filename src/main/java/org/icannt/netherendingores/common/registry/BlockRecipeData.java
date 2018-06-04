@@ -43,8 +43,8 @@ public enum BlockRecipeData implements IStringSerializable {
     NETHER_PLATINUM_ORE ("nether_platinum_ore", "ore_nether_modded_1", 6, new String[0], "", true, 2, 0),
     NETHER_SILVER_ORE ("nether_silver_ore", "ore_nether_modded_1", 7, new String[0], "", true, 2, 0),
     NETHER_TIN_ORE ("nether_tin_ore", "ore_nether_modded_1", 8, new String[0], "", true, 2, 0),
-    NETHER_CERTUS_QUARTZ_ORE ("nether_certus_quartz_ore", "ore_nether_modded_1", 9, new String[0], "crystal", false, 2, 0),
-    NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", "ore_nether_modded_1", 10, new String[0], "crystal", false, 2, 0),
+    NETHER_CERTUS_QUARTZ_ORE ("nether_certus_quartz_ore", "ore_nether_modded_1", 9, new String[0], "dustCertusQuartz", false, 2, 0),
+    NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", "ore_nether_modded_1", 10, new String[0], "dustCertusQuartz", false, 2, 0),
     NETHER_OSMIUM_ORE ("nether_osmium_ore", "ore_nether_modded_1", 11, new String[0], "", true, 2, 0),
     NETHER_URANIUM_ORE ("nether_uranium_ore", "ore_nether_modded_1", 12, new String[0], "", false, 2, 0),
     NETHER_YELLORITE_ORE ("nether_yellorite_ore", "ore_nether_modded_1", 13, new String[]{"yellorium"}, "", true, 2, 0),
@@ -59,8 +59,8 @@ public enum BlockRecipeData implements IStringSerializable {
     END_PLATINUM_ORE ("end_platinum_ore", "ore_end_modded_1", 6, new String[0], "", true, 2, 0),
     END_SILVER_ORE ("end_silver_ore", "ore_end_modded_1", 7, new String[0], "", true, 2, 0),
     END_TIN_ORE ("end_tin_ore", "ore_end_modded_1", 8, new String[0], "", true, 2, 0),
-    END_CERTUS_QUARTZ_ORE ("end_certus_quartz_ore", "ore_end_modded_1", 9, new String[0], "crystal", false, 2, 0),
-    END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", "ore_end_modded_1", 10, new String[0], "crystal", false, 2, 0),
+    END_CERTUS_QUARTZ_ORE ("end_certus_quartz_ore", "ore_end_modded_1", 9, new String[0], "dustCertusQuartz", false, 2, 0),
+    END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", "ore_end_modded_1", 10, new String[0], "dustCertusQuartz", false, 2, 0),
     END_OSMIUM_ORE ("end_osmium_ore", "ore_end_modded_1", 11, new String[0], "", true, 2, 0),
     END_URANIUM_ORE ("end_uranium_ore", "ore_end_modded_1", 12, new String[0], "", false, 2, 0),
     END_YELLORITE_ORE ("end_yellorite_ore", "ore_end_modded_1", 13, new String[]{"yellorium"}, "", true, 2, 0),
@@ -250,8 +250,7 @@ public enum BlockRecipeData implements IStringSerializable {
     	switch (prefix) {
 			case "": prefix = "ingot"; break;
 			case "dust": case "gem": case "crystal": break;
-			default:
-				ore = "";
+			default: ore = "";
     	}
     	return prefix + ore;    	
     }
@@ -267,13 +266,11 @@ public enum BlockRecipeData implements IStringSerializable {
      * @return      The reassembled other mod item name (often a dust)
      */
     private static String getOreDictCrushItemName(String prefix, String material) {    	   	
-    	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));    	
+    	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));
     	switch (prefix) {
 			case "": case "dust": prefix = "dust"; break;
 			case "gem": case "crystal": break;
-			default:
-				prefix = "";
-				ore = getRawOreName(material);
+			default: ore = "";
     	}
     	return prefix + ore;    	
     }

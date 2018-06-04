@@ -2,13 +2,6 @@ package org.icannt.netherendingores.lib;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.icannt.netherendingores.common.registry.BlockRecipeData;
-import org.icannt.netherendingores.integration.common.registry.data.IC2RecipeData;
-import org.icannt.netherendingores.integration.common.registry.data.MekRecipeData;
-import org.icannt.netherendingores.integration.common.registry.data.TERecipeData;
-import org.icannt.netherendingores.integration.common.registry.data.TiCRecipeData;
-
-import net.minecraftforge.fml.common.FMLCommonHandler;
 
 /**
  * Created by ICannt on 30/05/18.
@@ -49,20 +42,6 @@ public class Log {
 	public static void exception(String msg, Throwable t) {
 		LOG.error(msg, t);
 	}	
-	
-	public static void checkEnumLengths() {
-		int brd = BlockRecipeData.values().length;
-		int ic2 = IC2RecipeData.values().length;
-		int mek = MekRecipeData.values().length;
-		int te = TERecipeData.values().length;
-		int tic = TiCRecipeData.values().length;
-		
-		// TODO: Find out how to throw a full client crash on purpose
-		if (brd != ic2 || brd != mek || brd != te || brd != tic) {
-			fatal("Recipe Enum lengths do not match, cannot proceed with execution. Consult Netherending Ores author trab.");
-			FMLCommonHandler.instance().exitJava(1, false);
-		}
-	}
 	
 	/**
 	 * Receives log message data from recipe handlers
