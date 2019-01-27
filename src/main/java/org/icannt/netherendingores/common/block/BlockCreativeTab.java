@@ -18,7 +18,7 @@ public class BlockCreativeTab extends Block {
     public BlockCreativeTab() {
         super(Material.ROCK);
         setRegistryName(Info.MOD_ID, "creative_tab");
-        setUnlocalizedName(getRegistryName().toString());
+        setTranslationKey(getRegistryName().toString());
     }
     
     @SideOnly(Side.CLIENT)

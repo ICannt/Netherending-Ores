@@ -66,10 +66,10 @@ dependencies {
     deobfProvided "net.industrial-craft:industrialcraft-2:${ic2version}:api"
     runtime "net.industrial-craft:industrialcraft-2:${ic2version}"
     
-    deobfCompile "matteroverdrive:MatterOverdrive:${moversion}:universal"
+    deobfCompile "matteroverdrive:MatterOverdrive:1.12.2-${moversion}:universal"
     
-    compile files ("gradlelibs/JAOPCA-1.12.2-2.2.6.83.jar")
-    compile files ("gradlelibs/WrapUp-1.12-1.1.3.jar")
+    compile files ("gradlelibs/JAOPCA-1.12.2-${jaopcaversion}.jar")
+    compile files ("gradlelibs/WrapUp-1.12-${wuversion}.jar")
     
 }
 

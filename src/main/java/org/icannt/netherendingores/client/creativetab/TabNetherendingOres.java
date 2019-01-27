@@ -19,7 +19,7 @@ public class TabNetherendingOres extends CreativeTabs {
     }
 
     @Override
-    public ItemStack getTabIconItem() {
+    public ItemStack createIcon() {
         return new ItemStack(BlockRegistry.CREATIVE_TAB);
     }
 }

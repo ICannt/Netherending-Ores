@@ -18,8 +18,8 @@ public class ItemBlockOreModded1 extends ItemBlockVariantBase {
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack stack) {
-        return super.getUnlocalizedName() + "." + EnumOreNetherModded1Type.values()[stack.getMetadata()].getName();
+    public String getTranslationKey(ItemStack stack) {
+        return super.getTranslationKey() + "." + EnumOreNetherModded1Type.values()[stack.getMetadata()].getName();
     }
     
     @Override

@@ -372,7 +372,7 @@ public enum BlockRecipeData implements IStringSerializable {
 	public ItemStack getOtherModBlockItemStack(String material) {
 		for (ItemStack stack : OreDictionary.getOres(getOreDictOtherModBlockName(material), false))
 		{
-			if (!stack.getItem().getRegistryName().getResourceDomain().equals("netherendingores")) {
+			if (!stack.getItem().getRegistryName().getNamespace().equals("netherendingores")) {
 				return stack;
 			}
 		}

@@ -9,14 +9,14 @@ public class Info {
     public static final String MOD_ID = "netherendingores";
     public static final String MOD_NAME = "Netherending Ores";
     
-    public static final String VERSION = "1.12.2-1.2";
+    public static final String VERSION = "1.12.2-1.3";
     public static final String MC_VERSIONS = "[1.12.2,1.13)";
     public static final String CFG_VERSION = "1.0";
     
-    private static final String FORGE_VERSION = "14.23.2.2611";
+    private static final String FORGE_VERSION = "14.23.5.2768";
     private static final String MANTLE_VERSION = "1.12-1.3.1";
     private static final String TIC_VERSION = "1.12.2-2.9.1";
-    private static final String MEK_VERSION = "1.12.2-9.4.10.345";
+    private static final String MEK_VERSION = "1.12.2-9.4.13.349";
     
     public static final String DEPENDENCIES = ""
 			+"required-after:forge@["+FORGE_VERSION+",);"
