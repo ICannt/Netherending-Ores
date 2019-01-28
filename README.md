@@ -19,6 +19,6 @@ Uranium texture is from scratch based off vanilla iron as Industrial Craft 2 is 
 Other art is per "LICENCE - ART.txt"
 
 ### Translation Credits
-Brazilian Portuguese - SAMUELPV
+Brazilian Portuguese - SAMUELPV\
 Russian - Mr_Krab\
 Simplified Chinese - G2159687 (K W)
