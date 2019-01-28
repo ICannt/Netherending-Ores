@@ -31,6 +31,9 @@ public class BlockOreOther1 extends BlockVariantBase {
 
     public BlockOreOther1() {
         super(Material.ROCK, MapColor.GRAY, "ore_other_1");
+        for (EnumOreOther1Type variant : EnumOreOther1Type.values()) {
+        	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), getStateFromMeta(variant.ordinal()));
+        }
     }
 
     @Override
@@ -67,11 +70,6 @@ public class BlockOreOther1 extends BlockVariantBase {
         return state.getValue(VARIANT).getLight();
     }
 
-    @Override
-    public int getHarvestLevel(IBlockState state) {
-        return state.getValue(VARIANT).getHarvestLevel();
-    }
-    
     @Override
     public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
         return state.getValue(VARIANT).getHardness();
