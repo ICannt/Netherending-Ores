@@ -1,0 +1,17 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "cube_all"
+    },
+    "variants": {
+        "inventory": [{}],
+        "normal": [{}],
+        "blocks": {
+            "zinc_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/end_zinc_ore"
+                }
+            }
+        }
+    }
+}

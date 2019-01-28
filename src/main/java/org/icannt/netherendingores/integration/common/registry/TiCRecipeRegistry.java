@@ -2,7 +2,7 @@ package org.icannt.netherendingores.integration.common.registry;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.common.registry.RecipeHelper;
-import org.icannt.netherendingores.integration.common.registry.data.TiCRecipeData;
+import org.icannt.netherendingores.integration.common.data.TiCRecipeData;
 import org.icannt.netherendingores.lib.Log;
 
 import net.minecraftforge.fluids.FluidRegistry;

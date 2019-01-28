@@ -4,13 +4,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.icannt.netherendingores.client.block.ItemBlockBasic;
-import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreModded1;
+import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreEndModded1;
+import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreEndModded2;
+import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreEndVanilla;
+import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreNetherModded1;
+import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreNetherModded2;
 import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreOther1;
-import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreVanilla;
+import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreNetherVanilla;
 import org.icannt.netherendingores.common.block.BlockCreativeTab;
 import org.icannt.netherendingores.common.block.blocks.BlockOreEndModded1;
+import org.icannt.netherendingores.common.block.blocks.BlockOreEndModded2;
 import org.icannt.netherendingores.common.block.blocks.BlockOreEndVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded1;
+import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded2;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreOther1;
 import org.icannt.netherendingores.lib.Info;
@@ -36,37 +42,47 @@ public class BlockRegistry {
 
 	@GameRegistry.ObjectHolder("creative_tab")
     public static final BlockCreativeTab CREATIVE_TAB = new BlockCreativeTab();	
-	
-    @GameRegistry.ObjectHolder("ore_nether_vanilla")
-    public static final BlockOreNetherVanilla ORE_NETHER_VANILLA = new BlockOreNetherVanilla();
+       
+    @GameRegistry.ObjectHolder("ore_end_modded_1")
+    public static final BlockOreEndModded1 ORE_END_MODDED_1 = new BlockOreEndModded1();
     
-    @GameRegistry.ObjectHolder("ore_nether_modded_1")
-    public static final BlockOreNetherModded1 ORE_NETHER_MODDED_1 = new BlockOreNetherModded1();
+    @GameRegistry.ObjectHolder("ore_end_modded_2")
+    public static final BlockOreEndModded2 ORE_END_MODDED_2 = new BlockOreEndModded2();
     
     @GameRegistry.ObjectHolder("ore_end_vanilla")
     public static final BlockOreEndVanilla ORE_END_VANILLA = new BlockOreEndVanilla();
     
-    @GameRegistry.ObjectHolder("ore_end_modded_1")
-    public static final BlockOreEndModded1 ORE_END_MODDED_1 = new BlockOreEndModded1();
+    @GameRegistry.ObjectHolder("ore_nether_modded_1")
+    public static final BlockOreNetherModded1 ORE_NETHER_MODDED_1 = new BlockOreNetherModded1();
+    
+    @GameRegistry.ObjectHolder("ore_nether_modded_2")
+    public static final BlockOreNetherModded2 ORE_NETHER_MODDED_2 = new BlockOreNetherModded2();
+    
+    @GameRegistry.ObjectHolder("ore_nether_vanilla")
+    public static final BlockOreNetherVanilla ORE_NETHER_VANILLA = new BlockOreNetherVanilla();
     
     @GameRegistry.ObjectHolder("ore_other_1")
     public static final BlockOreOther1 ORE_OTHER_1 = new BlockOreOther1();
 
     private static final Block[] blocks = {
 		CREATIVE_TAB,
-        ORE_NETHER_VANILLA,
-        ORE_NETHER_MODDED_1,
-        ORE_END_VANILLA,
         ORE_END_MODDED_1,
+        ORE_END_MODDED_2,
+        ORE_END_VANILLA,
+        ORE_NETHER_MODDED_1,
+        ORE_NETHER_MODDED_2,
+        ORE_NETHER_VANILLA,
         ORE_OTHER_1
     };    
     
     private static final ItemBlock[] itemBlocks = {
     	new ItemBlockBasic(CREATIVE_TAB),
-        new ItemBlockOreVanilla(ORE_NETHER_VANILLA),
-        new ItemBlockOreModded1(ORE_NETHER_MODDED_1),
-        new ItemBlockOreVanilla(ORE_END_VANILLA),
-        new ItemBlockOreModded1(ORE_END_MODDED_1),
+        new ItemBlockOreEndModded1(ORE_END_MODDED_1),
+        new ItemBlockOreEndModded2(ORE_END_MODDED_2),
+        new ItemBlockOreEndVanilla(ORE_END_VANILLA),
+        new ItemBlockOreNetherModded1(ORE_NETHER_MODDED_1),
+        new ItemBlockOreNetherModded2(ORE_NETHER_MODDED_2),
+        new ItemBlockOreNetherVanilla(ORE_NETHER_VANILLA),
         new ItemBlockOreOther1(ORE_OTHER_1)
     };
     
@@ -108,10 +124,12 @@ public class BlockRegistry {
     @SideOnly(Side.CLIENT)
     public static void initModels() {
     	CREATIVE_TAB.initItemBlockModels();
-    	ORE_NETHER_VANILLA.initItemBlockModels();
-    	ORE_NETHER_MODDED_1.initItemBlockModels();
-    	ORE_END_VANILLA.initItemBlockModels();
     	ORE_END_MODDED_1.initItemBlockModels();
+    	ORE_END_MODDED_2.initItemBlockModels();
+    	ORE_END_VANILLA.initItemBlockModels();
+    	ORE_NETHER_MODDED_1.initItemBlockModels();
+    	ORE_NETHER_MODDED_2.initItemBlockModels();
+    	ORE_NETHER_VANILLA.initItemBlockModels();
     	ORE_OTHER_1.initItemBlockModels();
     }
 

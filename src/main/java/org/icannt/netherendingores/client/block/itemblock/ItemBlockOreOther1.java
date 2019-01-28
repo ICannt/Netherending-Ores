@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.client.block.itemblock;
 
 import org.icannt.netherendingores.client.block.ItemBlockVariantBase;
-import org.icannt.netherendingores.common.block.metadata.EnumOreOther1Type;
+import org.icannt.netherendingores.common.block.data.BlockDataOreOther1;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumRarity;
@@ -19,11 +19,11 @@ public class ItemBlockOreOther1 extends ItemBlockVariantBase {
 
     @Override
     public String getTranslationKey(ItemStack stack) {
-        return super.getTranslationKey() + "." + EnumOreOther1Type.values()[stack.getMetadata()].getName();
+        return super.getTranslationKey() + "." + BlockDataOreOther1.values()[stack.getMetadata()].getName();
     }
     
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return EnumOreOther1Type.values()[stack.getMetadata()].getRarity();
+        return BlockDataOreOther1.values()[stack.getMetadata()].getRarity();
     }
 }

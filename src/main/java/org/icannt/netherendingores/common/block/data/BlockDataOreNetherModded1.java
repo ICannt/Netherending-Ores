@@ -1,4 +1,4 @@
-package org.icannt.netherendingores.common.block.metadata;
+package org.icannt.netherendingores.common.block.data;
 
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.IStringSerializable;
@@ -6,8 +6,8 @@ import net.minecraft.util.IStringSerializable;
 /**
  * Created by ICannt on 17/08/17.
  */
-public enum EnumOreEndModded1Type implements IStringSerializable {
-
+public enum BlockDataOreNetherModded1 implements IStringSerializable {
+	
 	
     ALUMINUM_ORE ("aluminum_ore", 0, 1, 3, 15, EnumRarity.COMMON),
     COPPER_ORE ("copper_ore", 0, 1, 3, 15, EnumRarity.COMMON),
@@ -26,7 +26,7 @@ public enum EnumOreEndModded1Type implements IStringSerializable {
     DILITHIUM_ORE ("dilithium_ore", 0, 2, 4, 15, EnumRarity.COMMON),
     TRITANIUM_ORE ("tritanium_ore", 0, 2, 8, 15, EnumRarity.COMMON);
 
-	
+
     private String name;
     private int light;
     private int harvestLevel;
@@ -34,7 +34,7 @@ public enum EnumOreEndModded1Type implements IStringSerializable {
     private float resistance;
     private EnumRarity rarity;
 
-    EnumOreEndModded1Type(String name, int light, int harvestLevel, float hardness, float resistance, EnumRarity rarity) {
+    BlockDataOreNetherModded1(String name, int light, int harvestLevel, float hardness, float resistance, EnumRarity rarity) {
 
         this.name = name;
         this.light = light;

@@ -1,5 +1,5 @@
-# Modded Nether Ores 1
-tile.netherendingores:ore_nether_modded_1.aluminum_ore.name=Nether Aluminium Ore
-
 # Modded End Ores 1
 tile.netherendingores:ore_end_modded_1.aluminum_ore.name=End Aluminium Ore
+
+# Modded Nether Ores 1
+tile.netherendingores:ore_nether_modded_1.aluminum_ore.name=Nether Aluminium Ore

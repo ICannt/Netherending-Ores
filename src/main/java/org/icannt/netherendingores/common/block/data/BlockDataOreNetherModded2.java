@@ -1,19 +1,16 @@
-package org.icannt.netherendingores.common.block.metadata;
+package org.icannt.netherendingores.common.block.data;
 
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.IStringSerializable;
 
 /**
- * Created by ICannt on 17/08/17.
+ * Created by ICannt on 28/01/19.
  */
-public enum EnumOreOther1Type implements IStringSerializable {
+public enum BlockDataOreNetherModded2 implements IStringSerializable {
 	
-    OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON),
-    END_QUARTZ_ORE ("end_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON),
-    OVERWORLD_ARDITE_ORE ("overworld_ardite_ore", 0, 4, 10, 50, EnumRarity.COMMON),
-    END_ARDITE_ORE ("end_ardite_ore", 0, 0, 10, 50, EnumRarity.COMMON),
-    OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", 0, 4, 10, 50, EnumRarity.COMMON),
-    END_COBALT_ORE ("end_cobalt_ore", 0, 4, 10, 50, EnumRarity.COMMON);
+	
+    ZINC_ORE ("aluminum_ore", 0, 1, 3, 15, EnumRarity.COMMON);
+
 
     private String name;
     private int light;
@@ -21,8 +18,8 @@ public enum EnumOreOther1Type implements IStringSerializable {
     private float hardness;
     private float resistance;
     private EnumRarity rarity;
-    
-    EnumOreOther1Type(String name, int light, int harvestLevel, float hardness, float resistance, EnumRarity rarity) {
+
+    BlockDataOreNetherModded2(String name, int light, int harvestLevel, float hardness, float resistance, EnumRarity rarity) {
 
         this.name = name;
         this.light = light;

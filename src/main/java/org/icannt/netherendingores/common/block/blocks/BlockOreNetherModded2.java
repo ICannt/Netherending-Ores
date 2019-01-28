@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.common.block.blocks;
 
 import org.icannt.netherendingores.common.block.BlockVariantBase;
-import org.icannt.netherendingores.common.block.data.BlockDataOreEndVanilla;
+import org.icannt.netherendingores.common.block.data.BlockDataOreNetherModded2;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -23,15 +23,15 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * Created by ICannt on 17/08/17.
+ * Created by ICannt on 28/01/19.
  */
-public class BlockOreEndVanilla extends BlockVariantBase {
+public class BlockOreNetherModded2 extends BlockVariantBase {
 
-    private static final PropertyEnum<BlockDataOreEndVanilla> VARIANT = PropertyEnum.create("blocks", BlockDataOreEndVanilla.class);
+    private static final PropertyEnum<BlockDataOreNetherModded2> VARIANT = PropertyEnum.create("blocks", BlockDataOreNetherModded2.class);
 
-    public BlockOreEndVanilla() {
-        super(Material.ROCK, MapColor.GRAY, "ore_end_vanilla");
-        for (BlockDataOreEndVanilla variant : BlockDataOreEndVanilla.values()) {
+    public BlockOreNetherModded2() {
+        super(Material.ROCK, MapColor.GRAY, "ore_nether_modded_2");
+        for (BlockDataOreNetherModded2 variant : BlockDataOreNetherModded2.values()) {
         	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), getStateFromMeta(variant.ordinal()));
         }
     }
@@ -40,19 +40,19 @@ public class BlockOreEndVanilla extends BlockVariantBase {
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, VARIANT);
     }   
-
+    
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
 	{
-		for (BlockDataOreEndVanilla type : BlockDataOreEndVanilla.values()) {
+		for (BlockDataOreNetherModded2 type : BlockDataOreNetherModded2.values()) {
 			list.add(new ItemStack(this, 1, type.ordinal()));
 		}
     }
-
+    
 	@SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState().withProperty(VARIANT, BlockDataOreEndVanilla.values()[meta]);
+        return getDefaultState().withProperty(VARIANT, BlockDataOreNetherModded2.values()[meta]);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class BlockOreEndVanilla extends BlockVariantBase {
     @Override
     public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
         return state.getValue(VARIANT).getLight();
-    }
+    }  
 
     @Override
     public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
@@ -83,7 +83,7 @@ public class BlockOreEndVanilla extends BlockVariantBase {
 
     @SideOnly(Side.CLIENT)
     public void initItemBlockModels() {
-    	for (BlockDataOreEndVanilla variant : BlockDataOreEndVanilla.values()) {
+    	for (BlockDataOreNetherModded2 variant : BlockDataOreNetherModded2.values()) {
     		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), variant.ordinal(), new ModelResourceLocation(Item.getItemFromBlock(this).getRegistryName(), "blocks=" + variant.getName()));
     	}
     }

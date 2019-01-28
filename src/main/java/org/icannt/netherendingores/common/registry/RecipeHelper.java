@@ -1,9 +1,9 @@
 package org.icannt.netherendingores.common.registry;
 
-import org.icannt.netherendingores.integration.common.registry.data.IC2RecipeData;
-import org.icannt.netherendingores.integration.common.registry.data.MekRecipeData;
-import org.icannt.netherendingores.integration.common.registry.data.TERecipeData;
-import org.icannt.netherendingores.integration.common.registry.data.TiCRecipeData;
+import org.icannt.netherendingores.integration.common.data.IC2RecipeData;
+import org.icannt.netherendingores.integration.common.data.MekRecipeData;
+import org.icannt.netherendingores.integration.common.data.TERecipeData;
+import org.icannt.netherendingores.integration.common.data.TiCRecipeData;
 import org.icannt.netherendingores.lib.Log;
 
 /**
