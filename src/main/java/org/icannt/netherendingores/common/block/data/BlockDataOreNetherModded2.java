@@ -9,7 +9,7 @@ import net.minecraft.util.IStringSerializable;
 public enum BlockDataOreNetherModded2 implements IStringSerializable {
 	
 	
-    ZINC_ORE ("aluminum_ore", 0, 1, 3, 15, EnumRarity.COMMON);
+    ZINC_ORE ("zinc_ore", 0, 1, 3, 15, EnumRarity.COMMON);
 
 
     private String name;
