@@ -103,7 +103,7 @@ public class BlockRegistry {
         }
 
         @SubscribeEvent
-        public static void registerItems(RegistryEvent.Register<Item> event) {
+        public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
         	
         	Log.debug("Registering ItemBlocks");
         	

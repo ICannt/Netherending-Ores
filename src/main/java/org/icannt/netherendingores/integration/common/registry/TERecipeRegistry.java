@@ -40,6 +40,20 @@ public class TERecipeRegistry {
 		
 		for (BlockRecipeData blockData : BlockRecipeData.values()) {
 			if (blockData.getRecipeMultiplier() > 1) {
+    			RecipeHelper.tryRecipe(blockData, "indsmeltsand", true);
+    			RecipeHelper.tryRecipe(blockData, "indsmeltsand", false);
+			}
+		}
+
+		for (BlockRecipeData blockData : BlockRecipeData.values()) {
+			if (blockData.getRecipeMultiplier() > 1) {
+    			RecipeHelper.tryRecipe(blockData, "indsmeltrichslag", true);
+    			RecipeHelper.tryRecipe(blockData, "indsmeltrichslag", false);
+			}
+		}
+		
+		for (BlockRecipeData blockData : BlockRecipeData.values()) {
+			if (blockData.getRecipeMultiplier() > 1) {
 				RecipeHelper.tryRecipe(blockData, "pulv", true);
 				RecipeHelper.tryRecipe(blockData, "pulv", false);
 			}

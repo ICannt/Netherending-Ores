@@ -2,6 +2,7 @@ package org.icannt.netherendingores.common.registry;
 
 import org.icannt.netherendingores.integration.common.data.IC2RecipeData;
 import org.icannt.netherendingores.integration.common.data.MekRecipeData;
+import org.icannt.netherendingores.integration.common.data.TEIndSmeltRecipeData;
 import org.icannt.netherendingores.integration.common.data.TERecipeData;
 import org.icannt.netherendingores.integration.common.data.TiCRecipeData;
 import org.icannt.netherendingores.lib.Log;
@@ -53,6 +54,8 @@ public class RecipeHelper {
 		switch (device) {
 			case "craft": RecipeRegistry.addCraftingRecipe(blockData, material); break;
 			case "furnace": RecipeRegistry.addFurnaceRecipe(blockData, material); break;
+			case "indsmeltsand": TEIndSmeltRecipeData.addIndSmeltSandRecipe(blockData, material); break;
+			case "indsmeltrichslag": TEIndSmeltRecipeData.addIndSmeltRichSlagRecipe(blockData, material); break;
 			case "smeltery": TiCRecipeData.addSmeltRecipe(blockData); break; // Not sure if any known liquids register with alternate oredict spelling.
 			case "pulv": TERecipeData.addPulvRecipe(blockData, material); break;
 			case "redfurn": TERecipeData.addRedFurnRecipe(blockData, material); break;

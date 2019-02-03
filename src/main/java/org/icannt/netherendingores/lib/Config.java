@@ -16,17 +16,23 @@ public class Config {
 	
 	public static Boolean advancedDebugging = false;
 
-	public static Boolean redstoneFurnaceFullOutput = false;
-	public static float redstoneFurnaceFullOutputAmountFactor = 1f;
-	public static float redstoneFurnaceFullOutputEnergyFactor = 2f;
-	public static float redstoneFurnaceReducedOutputAmountFactor = 2/3f;
-	public static float redstoneFurnaceReducedOutputEnergyFactor = 0.6f;
+	public static Boolean inductionSmelterFullOutput = false;
+	public static float inductionSmelterFullOutputAmountFactor = 1f;
+	public static float inductionSmelterFullOutputEnergyFactor = 2f;
+	public static float inductionSmelterReducedOutputAmountFactor = 2/3f;
+	public static float inductionSmelterReducedOutputEnergyFactor = 0.6f;
 	
 	public static Boolean pulverizerFullOutput = false;
 	public static float pulverizerFullOutputAmountFactor = 1f;
 	public static float pulverizerFullOutputEnergyFactor = 2f;
 	public static float pulverizerReducedOutputAmountFactor = 2/3f;
 	public static float pulverizerReducedOutputEnergyFactor = 0.6f;
+	
+	public static Boolean redstoneFurnaceFullOutput = false;
+	public static float redstoneFurnaceFullOutputAmountFactor = 1f;
+	public static float redstoneFurnaceFullOutputEnergyFactor = 2f;
+	public static float redstoneFurnaceReducedOutputAmountFactor = 2/3f;
+	public static float redstoneFurnaceReducedOutputEnergyFactor = 0.6f;
 	
 	public static Boolean industrialCraft2Recipes = true;
 	public static Boolean mekanismRecipes = true;
@@ -50,7 +56,7 @@ public class Config {
         Configuration cfg = CommonProxy.config;
         try {
             cfg.load();
-            // Load order is different so the override will load first, the config sorter will change the position anyway.
+            // Load order is different so the override will load first, the forge config sorter will change the position anyway.
             initGeneralSettingsConfig(cfg);
             initRecipeIntegrationSettingsConfig(cfg);
             initMachineRecipeSettingsConfig(cfg);
@@ -84,6 +90,12 @@ public class Config {
     	final float minFactor = 0.5f;
     	final float maxFullFactor = 3;
     	final float maxReducedFactor = 1;
+    	
+    	inductionSmelterFullOutput = cfg.getBoolean("Induction Smelter full output", CATEGORY_MACHINE_RECIPE_SETTINGS, inductionSmelterFullOutput, "Enable full Induction Smelter output. Do not reduce output for augment compensation, uses much more energy.");
+    	inductionSmelterFullOutputAmountFactor = cfg.getFloat("Induction Smelter full output amount factor", CATEGORY_MACHINE_RECIPE_SETTINGS, inductionSmelterFullOutputAmountFactor, minFactor, maxFullFactor, "Induction Smelter full output amount factor.");
+    	inductionSmelterFullOutputEnergyFactor = cfg.getFloat("Induction Smelter full output energy factor", CATEGORY_MACHINE_RECIPE_SETTINGS, inductionSmelterFullOutputEnergyFactor, minFactor, maxFullFactor, "Induction Smelter full output energy factor.");    	
+    	inductionSmelterReducedOutputAmountFactor = cfg.getFloat("Induction Smelter reduced output amount factor", CATEGORY_MACHINE_RECIPE_SETTINGS, inductionSmelterReducedOutputAmountFactor, minFactor, maxReducedFactor, "Induction Smelter reduced output amount factor.");
+    	inductionSmelterReducedOutputEnergyFactor = cfg.getFloat("Induction Smelter reduced output energy factor", CATEGORY_MACHINE_RECIPE_SETTINGS, inductionSmelterReducedOutputEnergyFactor, minFactor, maxReducedFactor, "Induction Smelter reduced output energy factor.");
     	
     	pulverizerFullOutput = cfg.getBoolean("Pulverizer full output", CATEGORY_MACHINE_RECIPE_SETTINGS, pulverizerFullOutput, "Enable full Pulverizer output. Do not reduce output for augment compensation, uses much more energy.");
     	pulverizerFullOutputAmountFactor = cfg.getFloat("Pulverizer full output amount factor", CATEGORY_MACHINE_RECIPE_SETTINGS, pulverizerFullOutputAmountFactor, minFactor, maxFullFactor, "Pulverizer full output amount factor.");

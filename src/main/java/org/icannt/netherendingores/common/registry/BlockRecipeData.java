@@ -196,7 +196,7 @@ public enum BlockRecipeData implements IStringSerializable {
      * Returns an Ore Dictionary name based on the defined recipe 
      * multiplier from the config file. Some mods such as
      * Tinkers' Construct use the "oreNether" and other prefixes
-     * prefixes to add additional recipes for 2x/3x output.
+     * to add additional recipes for 2x/3x output.
      *
      * @return The reassembled mod ore block name
      */
