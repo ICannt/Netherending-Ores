@@ -105,8 +105,13 @@ public class Log {
     }
 
     //
-    public static void logOreDictSuccess(String input, String output) {
-    	trace("Ore Dictionary entry for \"" + input + "\" added for " + output);
+    public static void logOreDictSuccess(String modName, String modItemName) {
+    	trace("Ore Dictionary entry for \"" + modName + "\" added for " + modItemName);
+    }
+    
+    //
+    public static void logOreDictFail(String modName, String modItemName) {
+    	warn("ItemStack for \"" + modItemName + "\" is not valid, is \"" + modName + "\" loaded properly?");
     }
 
 }

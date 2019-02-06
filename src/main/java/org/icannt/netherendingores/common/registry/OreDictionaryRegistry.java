@@ -26,16 +26,20 @@ public class OreDictionaryRegistry {
     		OreDictionary.registerOre("coal", new ItemStack(Items.COAL));
     	}
     	
-    	// Registration of Mod items that are not registered, follows usual conventions
-    	if (Loader.isModLoaded("appliedenergistics2") && OreDictionary.doesOreNameExist("crystalChargedCertusQuartz") == false) {
-    		ItemStack stack = new ItemStack(Item.getByNameOrId("appliedenergistics2:material"), 1, 1);
-    		if (!stack.isEmpty()) {
-    			OreDictionary.registerOre("crystalChargedCertusQuartz", stack);
-    			Log.logOreDictSuccess("crystalChargedCertusQuartz", "appliedenergistics2:material:1");
-    		} else {
-    			Log.warn("ItemStack for Charged Certus Quartz is not valid, is Applied Energistics 2 loaded properly?");
+    	// Registration of other mod items that are not registered by those mods, follows usual conventions
+    	for (OreDictionaryOtherData oD : OreDictionaryOtherData.values()) {
+    		if (oD.getEnabled()) {
+		    	if (Loader.isModLoaded(oD.getModCodeName()) && OreDictionary.doesOreNameExist(oD.getName()) == false) {
+		    		ItemStack stack = new ItemStack(Item.getByNameOrId(oD.getModCodeName() + ":" + oD.getModItemCodeName()), 1, oD.getMeta());
+		    		if (!stack.isEmpty()) {
+		    			OreDictionary.registerOre(oD.getName(), stack);
+		    			Log.logOreDictSuccess(oD.getModDescName(), oD.getModItemDescName());
+		    		} else {
+		    			Log.logOreDictFail(oD.getModDescName(), oD.getModItemDescName());
+		    		}
+		    	}
     		}
-    	}
+		}
     	
     	for (BlockRecipeData blockData : BlockRecipeData.values()) {
        		OreDictionary.registerOre(blockData.getOreDictRegName(), blockData.getModBlockItemStack());  		

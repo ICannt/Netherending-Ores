@@ -5,7 +5,6 @@ import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Log;
 
 import cofh.api.util.ThermalExpansionHelper;
-import cofh.thermalfoundation.ThermalFoundation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;

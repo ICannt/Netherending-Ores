@@ -1,6 +1,7 @@
 package org.icannt.netherendingores.lib;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.common.registry.OreDictionaryOtherData;
 import org.icannt.netherendingores.proxy.CommonProxy;
 
 import net.minecraftforge.common.config.Configuration;
@@ -15,6 +16,10 @@ import static java.lang.Math.*;
 public class Config {
 	
 	public static Boolean advancedDebugging = false;
+	
+	public static Boolean addCrystalChargedCertusQuartz = true;
+	public static Boolean addOreDilithium = false;
+	public static Boolean addOreTritanium = false;
 
 	public static Boolean inductionSmelterFullOutput = false;
 	public static float inductionSmelterFullOutputAmountFactor = 1f;
@@ -42,6 +47,7 @@ public class Config {
 	public static Boolean vanillaFurnaceRecipes = true;
 	
 	private static final String CATEGORY_GENERAL_SETTINGS = "general settings";
+	private static final String CATEGORY_ORE_DICT_SETTINGS = "ore dictionary settings";
 	private static final String CATEGORY_MACHINE_RECIPE_SETTINGS = "machine recipe settings";
 	private static final String CATEGORY_RECIPE_INTEGRATION_SETTINGS = "recipe integration settings";
 	private static final String CATEGORY_RECIPE_MULTIPLIER_OVERRIDE = "recipe multipliers override";
@@ -58,6 +64,7 @@ public class Config {
             cfg.load();
             // Load order is different so the override will load first, the forge config sorter will change the position anyway.
             initGeneralSettingsConfig(cfg);
+            initOreDictSettingsConfig(cfg);
             initRecipeIntegrationSettingsConfig(cfg);
             initMachineRecipeSettingsConfig(cfg);
             initRecipeMultiplierOverrideConfig(cfg);
@@ -75,8 +82,21 @@ public class Config {
     private static void initGeneralSettingsConfig(Configuration cfg) {
     	
     	cfg.addCustomCategoryComment(CATEGORY_GENERAL_SETTINGS, "General Settings");
-    	
+
     	advancedDebugging = cfg.getBoolean("Advanced debugging", CATEGORY_GENERAL_SETTINGS, advancedDebugging, "Enable advanced debugging. Show all trace level messages in debug.log. Only enable if you really need it.");
+    	
+    }
+
+    //
+    private static void initOreDictSettingsConfig(Configuration cfg) {
+    	
+    	cfg.addCustomCategoryComment(CATEGORY_ORE_DICT_SETTINGS, "Ore Dictionary Settings");
+    	    	
+    	boolean enabled = false;    	
+    	for (OreDictionaryOtherData oD : OreDictionaryOtherData.values()) {    		
+    		enabled = cfg.getBoolean(oD.getName(), CATEGORY_ORE_DICT_SETTINGS, oD.getDefaultSetting(), "Add " + oD.getModItemDescName() + " from " + oD.getModDescName() + " to the Ore Dictionary."); 
+    		oD.setEnabled(enabled);
+		}
     	
     }
     
