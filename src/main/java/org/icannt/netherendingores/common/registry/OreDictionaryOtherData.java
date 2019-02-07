@@ -13,7 +13,7 @@ public enum OreDictionaryOtherData implements IStringSerializable {
     ORE_TRITANIUM ("oreTritanium", "matteroverdrive", "tritanium_ore", 0, "Matter Overdrive: Legacy Edition", "Tritanium Ore", false, false);
 
 	
-    private String oreDictName;
+    private String name;
     private String modCodeName;
     private String modItemCodeName;
     private int meta;
@@ -22,9 +22,9 @@ public enum OreDictionaryOtherData implements IStringSerializable {
     private boolean enabled;
     private boolean defaultSetting;
     
-    OreDictionaryOtherData(String oreDictname, String modCodeName, String modItemCodeName, int meta, String modDescName, String modItemDescName, boolean enabled, boolean defaultSetting) {
+    OreDictionaryOtherData(String name, String modCodeName, String modItemCodeName, int meta, String modDescName, String modItemDescName, boolean enabled, boolean defaultSetting) {
 
-    	this.oreDictName = oreDictName;
+    	this.name = name;
     	this.modCodeName = modCodeName;
     	this.modItemCodeName = modItemCodeName;
     	this.meta = meta;
@@ -37,7 +37,7 @@ public enum OreDictionaryOtherData implements IStringSerializable {
     
     @Override
     public String getName() {
-        return oreDictName;
+        return name;
     }
 
     public String getModCodeName() {

@@ -93,8 +93,8 @@ public class Config {
     	cfg.addCustomCategoryComment(CATEGORY_ORE_DICT_SETTINGS, "Ore Dictionary Settings");
     	    	
     	boolean enabled = false;    	
-    	for (OreDictionaryOtherData oD : OreDictionaryOtherData.values()) {    		
-    		enabled = cfg.getBoolean(oD.getName(), CATEGORY_ORE_DICT_SETTINGS, oD.getDefaultSetting(), "Add " + oD.getModItemDescName() + " from " + oD.getModDescName() + " to the Ore Dictionary."); 
+    	for (OreDictionaryOtherData oD : OreDictionaryOtherData.values()) {
+    		enabled = cfg.getBoolean(oD.getName(), CATEGORY_ORE_DICT_SETTINGS, oD.getDefaultSetting(), "Add " + oD.getModItemDescName() + " from " + oD.getModDescName() + " to the Ore Dictionary.");
     		oD.setEnabled(enabled);
 		}
     	
