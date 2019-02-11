@@ -147,8 +147,8 @@ public enum TEIndSmeltRecipeData implements IStringSerializable {
 			case "sand":
 				switch (multiplier) {
 					case 2:
-						energy = indSmeltSand2xEnergy;
-						amount = indSmeltSand2xAmount;
+						energy = (int) ((Config.inductionSmelterFullOutput ? Config.inductionSmelterFullOutputEnergyFactor : Config.inductionSmelterReducedOutputEnergyFactor) * indSmeltSand2xEnergy);
+						amount = round((Config.inductionSmelterFullOutput ? Config.inductionSmelterFullOutputAmountFactor : Config.inductionSmelterReducedOutputAmountFactor) * indSmeltSand2xAmount);
 						chance = indSmeltSand2xSecondaryOutputChance; break;
 					case 3:
 						energy = (int) ((Config.inductionSmelterFullOutput ? Config.inductionSmelterFullOutputEnergyFactor : Config.inductionSmelterReducedOutputEnergyFactor) * indSmeltSand3xEnergy);
@@ -158,8 +158,8 @@ public enum TEIndSmeltRecipeData implements IStringSerializable {
 			case "rich slag":
 				switch (multiplier) {
 					case 2:
-						energy = indSmeltRichSlag2xEnergy;
-						amount = indSmeltRichSlag2xAmount;
+						energy = (int) ((Config.inductionSmelterFullOutput ? Config.inductionSmelterFullOutputEnergyFactor : Config.inductionSmelterReducedOutputEnergyFactor) * indSmeltRichSlag2xEnergy);
+						amount = round((Config.inductionSmelterFullOutput ? Config.inductionSmelterFullOutputAmountFactor : Config.inductionSmelterReducedOutputAmountFactor) * indSmeltRichSlag2xAmount);
 						chance = indSmeltRichSlag2xSecondaryOutputChance; break;
 					case 3:
 						energy = (int) ((Config.inductionSmelterFullOutput ? Config.inductionSmelterFullOutputEnergyFactor : Config.inductionSmelterReducedOutputEnergyFactor) * indSmeltRichSlag3xEnergy);

@@ -8,10 +8,9 @@ import net.minecraft.util.IStringSerializable;
 public enum OreDictionaryOtherData implements IStringSerializable {
 	
 	
-    CRYSTAL_CHARGED_CERTUS_QUARTZ ("crystalChargedCertusQuartz", "appliedenergistics2", "material", 1, "Applied Energistics 2", "Charged Certus Quartz", false, true),
-    ORE_DILITHIUM ("oreDilithium", "matteroverdrive", "dilithium_ore", 0, "Matter Overdrive: Legacy Edition", "Dilithium Ore", false, false),
-    ORE_TRITANIUM ("oreTritanium", "matteroverdrive", "tritanium_ore", 0, "Matter Overdrive: Legacy Edition", "Tritanium Ore", false, false);
-
+    CRYSTAL_CHARGED_CERTUS_QUARTZ ("crystalChargedCertusQuartz", "appliedenergistics2", "material", 1, "Applied Energistics 2", "Charged Certus Quartz", " Not currently used in recipes.", false, false),
+    ORE_DILITHIUM ("oreDilithium", "matteroverdrive", "dilithium_ore", 0, "Matter Overdrive: Legacy Edition", "Dilithium Ore", "", false, false),
+    ORE_TRITANIUM ("oreTritanium", "matteroverdrive", "tritanium_ore", 0, "Matter Overdrive: Legacy Edition", "Tritanium Ore", "", false, false);
 	
     private String name;
     private String modCodeName;
@@ -19,10 +18,11 @@ public enum OreDictionaryOtherData implements IStringSerializable {
     private int meta;
     private String modDescName;
     private String modItemDescName;
+    private String configExtraDesc;
     private boolean enabled;
     private boolean defaultSetting;
-    
-    OreDictionaryOtherData(String name, String modCodeName, String modItemCodeName, int meta, String modDescName, String modItemDescName, boolean enabled, boolean defaultSetting) {
+
+    OreDictionaryOtherData(String name, String modCodeName, String modItemCodeName, int meta, String modDescName, String modItemDescName, String configExtraDesc, boolean enabled, boolean defaultSetting) {
 
     	this.name = name;
     	this.modCodeName = modCodeName;
@@ -30,6 +30,7 @@ public enum OreDictionaryOtherData implements IStringSerializable {
     	this.meta = meta;
     	this.modDescName = modDescName;
     	this.modItemDescName = modItemDescName;
+    	this.configExtraDesc = configExtraDesc;
     	this.enabled = enabled;
     	this.defaultSetting = defaultSetting;
         
@@ -58,6 +59,10 @@ public enum OreDictionaryOtherData implements IStringSerializable {
 
     public String getModItemDescName() {
         return modItemDescName;
+    }
+    
+    public String getConfigExtraDesc() {
+        return configExtraDesc;
     }
 
     public boolean getEnabled() {

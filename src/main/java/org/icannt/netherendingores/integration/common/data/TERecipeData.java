@@ -116,7 +116,7 @@ public enum TERecipeData implements IStringSerializable {
 	//
 	public int getPulvEnergy(int multiplier) {
 		switch (multiplier) {
-			case 2:	return pulv2xEnergy;
+			case 2:	return (int) ((Config.pulverizerFullOutput ? Config.pulverizerFullOutputEnergyFactor : Config.pulverizerReducedOutputEnergyFactor) * pulv2xEnergy);
 			case 3: return (int) ((Config.pulverizerFullOutput ? Config.pulverizerFullOutputEnergyFactor : Config.pulverizerReducedOutputEnergyFactor) * pulv3xEnergy);
 		}
 		return 0;
@@ -131,7 +131,7 @@ public enum TERecipeData implements IStringSerializable {
     //
 	public int getPulvAmount(int multiplier) {
 		switch (multiplier) {
-			case 2:	return pulv2xAmount;
+			case 2:	return round((Config.pulverizerFullOutput ? Config.pulverizerFullOutputAmountFactor : Config.pulverizerReducedOutputAmountFactor) * pulv2xAmount);
 			case 3:	return round((Config.pulverizerFullOutput ? Config.pulverizerFullOutputAmountFactor : Config.pulverizerReducedOutputAmountFactor) * pulv3xAmount);
 		}
 		return 0;

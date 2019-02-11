@@ -94,7 +94,7 @@ public class Config {
     	    	
     	boolean enabled = false;    	
     	for (OreDictionaryOtherData oD : OreDictionaryOtherData.values()) {
-    		enabled = cfg.getBoolean(oD.getName(), CATEGORY_ORE_DICT_SETTINGS, oD.getDefaultSetting(), "Add " + oD.getModItemDescName() + " from " + oD.getModDescName() + " to the Ore Dictionary.");
+    		enabled = cfg.getBoolean(oD.getName(), CATEGORY_ORE_DICT_SETTINGS, oD.getDefaultSetting(), "Add " + oD.getModItemDescName() + " from " + oD.getModDescName() + " to the Ore Dictionary." + oD.getConfigExtraDesc());
     		oD.setEnabled(enabled);
 		}
     	
@@ -105,7 +105,7 @@ public class Config {
     	
     	cfg.addCustomCategoryComment(CATEGORY_MACHINE_RECIPE_SETTINGS, "" 
     			+ "Settings for Thermal Expansion machine processing\r\n"
-    			+ "PLEASE ASK THE MOD AUTHOR TRAB FOR HELP IF YOU DON'T KNOW WHAT YOU ARE DOING");
+    			+ "Please ask the mod author trab if you need assistance understanding how this works");
     	
     	final float minFactor = 0.5f;
     	final float maxFullFactor = 3;
