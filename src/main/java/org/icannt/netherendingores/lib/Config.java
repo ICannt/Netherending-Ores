@@ -1,12 +1,13 @@
 package org.icannt.netherendingores.lib;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.common.registry.OreDictionaryOtherData;
 import org.icannt.netherendingores.proxy.CommonProxy;
 
 import net.minecraftforge.common.config.Configuration;
-
-import static java.lang.Math.*;
 
 /**
  * Created by ICannt on 25/03/18.

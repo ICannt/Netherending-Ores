@@ -9,8 +9,8 @@ import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreEndModded2
 import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreEndVanilla;
 import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreNetherModded1;
 import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreNetherModded2;
-import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreOther1;
 import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreNetherVanilla;
+import org.icannt.netherendingores.client.block.itemblock.ItemBlockOreOther1;
 import org.icannt.netherendingores.common.block.BlockCreativeTab;
 import org.icannt.netherendingores.common.block.blocks.BlockOreEndModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreEndModded2;

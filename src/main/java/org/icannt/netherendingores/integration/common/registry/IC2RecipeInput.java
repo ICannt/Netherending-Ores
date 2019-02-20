@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import ic2.api.recipe.IRecipeInput;
-
 import net.minecraft.item.ItemStack;
 
 /**

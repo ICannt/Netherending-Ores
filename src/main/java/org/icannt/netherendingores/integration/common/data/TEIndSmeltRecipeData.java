@@ -1,5 +1,7 @@
 package org.icannt.netherendingores.integration.common.data;
 
+import static java.lang.Math.round;
+
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Log;
@@ -8,8 +10,6 @@ import cofh.api.util.ThermalExpansionHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
-
-import static java.lang.Math.*;
 
 /**
  * Created by ICannt on 03/02/19.

@@ -3,6 +3,7 @@ package org.icannt.netherendingores.proxy;
 import java.io.File;
 
 import org.icannt.netherendingores.common.registry.RegistryEvents;
+import org.icannt.netherendingores.integration.common.registry.RegistryIntegrationEvents;
 import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
 
@@ -29,6 +30,7 @@ public abstract class CommonProxy {
 
     public void init(FMLInitializationEvent event) {
     	RegistryEvents.registerRecipes();
+    	RegistryIntegrationEvents.registerIntegrationRecipes();
     }
 
     public void postInit(FMLPostInitializationEvent event) {

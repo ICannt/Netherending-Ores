@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.client.creativetab;
 
-import org.icannt.netherendingores.lib.Info;
 import org.icannt.netherendingores.common.registry.BlockRegistry;
+import org.icannt.netherendingores.lib.Info;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;

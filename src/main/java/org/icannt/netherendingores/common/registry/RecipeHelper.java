@@ -1,10 +1,6 @@
 package org.icannt.netherendingores.common.registry;
 
-import org.icannt.netherendingores.integration.common.data.IC2RecipeData;
-import org.icannt.netherendingores.integration.common.data.MekRecipeData;
-import org.icannt.netherendingores.integration.common.data.TEIndSmeltRecipeData;
-import org.icannt.netherendingores.integration.common.data.TERecipeData;
-import org.icannt.netherendingores.integration.common.data.TiCRecipeData;
+import org.icannt.netherendingores.integration.common.registry.RecipeIntegrationHelper;
 import org.icannt.netherendingores.lib.Log;
 
 /**
@@ -46,7 +42,7 @@ public class RecipeHelper {
 	/**
 	 * Target recipe has been identified, attempt to add the recipe using mod specific recipe handlers.
 	 * 
-	 * @param       index Points to where we are at in the BlockRecipeData Enum
+	 * @param       blockData Instance of BlockRecipeData, tracks where the index of a loop is, keeps things in context
 	 * @param       device Which machine recipe is to be used e.g. Macerator, Pulverizer
 	 * @param       material Recipe material that is being dealt with e.g. iron
 	 */
@@ -54,13 +50,7 @@ public class RecipeHelper {
 		switch (device) {
 			case "craft": RecipeRegistry.addCraftingRecipe(blockData, material); break;
 			case "furnace": RecipeRegistry.addFurnaceRecipe(blockData, material); break;
-			case "indsmeltsand": TEIndSmeltRecipeData.addIndSmeltSandRecipe(blockData, material); break;
-			case "indsmeltrichslag": TEIndSmeltRecipeData.addIndSmeltRichSlagRecipe(blockData, material); break;
-			case "smeltery": TiCRecipeData.addSmeltRecipe(blockData); break; // Not sure if any known liquids register with alternate oredict spelling.
-			case "pulv": TERecipeData.addPulvRecipe(blockData, material); break;
-			case "redfurn": TERecipeData.addRedFurnRecipe(blockData, material); break;
-			case "enrich": MekRecipeData.addEnrichRecipe(blockData, material); break;
-			case "mace": IC2RecipeData.addMaceRecipe(blockData, material);
+			default: RecipeIntegrationHelper.addIntegrationRecipe(blockData, device, material);
 		}
 	}
 	
