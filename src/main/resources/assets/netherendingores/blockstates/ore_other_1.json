@@ -36,6 +36,31 @@
                 "textures": {
                     "all": "netherendingores:blocks/end_cobalt_ore"
                 }
+            },
+            "overworld_ambrosium_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/overworld_ambrosium_ore"
+                }
+            },
+            "overworld_gravitite_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/overworld_gravitite_ore"
+                }
+            },
+            "overworld_zanite_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/overworld_zanite_ore"
+                }
+            },
+            "overworld_arkenium_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/overworld_arkenium_ore"
+                }
+            },
+            "overworld_icestone_ore": {
+                "textures": {
+                    "all": "netherendingores:blocks/overworld_icestone_ore"
+                }
             }
         }
     }

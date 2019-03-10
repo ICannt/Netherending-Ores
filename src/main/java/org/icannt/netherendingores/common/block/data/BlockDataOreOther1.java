@@ -8,12 +8,19 @@ import net.minecraft.util.IStringSerializable;
  */
 public enum BlockDataOreOther1 implements IStringSerializable {
 	
+	
     OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON),
     END_QUARTZ_ORE ("end_quartz_ore", 0, 0, 3, 15, EnumRarity.COMMON),
     OVERWORLD_ARDITE_ORE ("overworld_ardite_ore", 0, 4, 10, 50, EnumRarity.COMMON),
     END_ARDITE_ORE ("end_ardite_ore", 0, 0, 10, 50, EnumRarity.COMMON),
     OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", 0, 4, 10, 50, EnumRarity.COMMON),
-    END_COBALT_ORE ("end_cobalt_ore", 0, 4, 10, 50, EnumRarity.COMMON);
+    END_COBALT_ORE ("end_cobalt_ore", 0, 4, 10, 50, EnumRarity.COMMON),
+    OVERWORLD_AMBROSIUM_ORE ("overworld_ambrosium_ore", 0, 4, 10, 50, EnumRarity.COMMON),
+    OVERWORLD_GRAVITITE_ORE ("overworld_gravitite_ore", 0, 4, 10, 50, EnumRarity.COMMON),
+    OVERWORLD_ZANITE_ORE ("overworld_zanite_ore", 0, 4, 10, 50, EnumRarity.COMMON),
+    OVERWORLD_ARKENIUM_ORE ("overworld_arkenium_ore", 0, 4, 10, 50, EnumRarity.COMMON),
+    OVERWORLD_ICESTONE_ORE ("overworld_icestone_ore", 0, 4, 10, 50, EnumRarity.COMMON);
+
 
     private String name;
     private int light;

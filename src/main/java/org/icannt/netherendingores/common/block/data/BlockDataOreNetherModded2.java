@@ -9,7 +9,16 @@ import net.minecraft.util.IStringSerializable;
 public enum BlockDataOreNetherModded2 implements IStringSerializable {
 	
 	
-    ZINC_ORE ("zinc_ore", 0, 1, 3, 15, EnumRarity.COMMON);
+    ZINC_ORE ("zinc_ore", 0, 1, 3, 15, EnumRarity.COMMON),
+    RUBY_ORE ("ruby_ore", 0, 1, 3, 15, EnumRarity.COMMON),
+    SAPPHIRE_ORE ("sapphire_ore", 0, 1, 3, 15, EnumRarity.COMMON),
+    PERIDOT_ORE ("peridot_ore", 0, 1, 3, 15, EnumRarity.COMMON),
+    ELECTROTINE_ORE ("electrotine_ore", 0, 1, 3, 15, EnumRarity.COMMON),
+    AMBROSIUM_ORE ("ambrosium_ore", 0, 1, 3, 15, EnumRarity.COMMON),
+    GRAVITITE_ORE ("gravitite_ore", 0, 1, 3, 15, EnumRarity.COMMON),
+    ZANITE_ORE ("zanite_ore", 0, 1, 3, 15, EnumRarity.COMMON),
+    ARKENIUM_ORE ("arkenium_ore", 0, 1, 3, 15, EnumRarity.COMMON),
+    ICESTONE_ORE ("icestone_ore", 0, 1, 3, 15, EnumRarity.COMMON);
 
 
     private String name;
