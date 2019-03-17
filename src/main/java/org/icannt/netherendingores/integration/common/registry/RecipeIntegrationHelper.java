@@ -2,6 +2,7 @@ package org.icannt.netherendingores.integration.common.registry;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.integration.common.data.IC2RecipeData;
+import org.icannt.netherendingores.integration.common.data.IERecipeData;
 import org.icannt.netherendingores.integration.common.data.MekRecipeData;
 import org.icannt.netherendingores.integration.common.data.TEIndSmeltRecipeData;
 import org.icannt.netherendingores.integration.common.data.TERecipeData;
@@ -23,6 +24,8 @@ public class RecipeIntegrationHelper {
 	public static void addIntegrationRecipe(BlockRecipeData blockData, String device, String material) {
 		switch (device) {
 			case "smeltery": TiCRecipeData.addSmeltRecipe(blockData); break;
+			case "crusher": IERecipeData.addCrusherRecipe(blockData, material); break;
+			case "arcfurn": IERecipeData.addArcFurnRecipe(blockData, material); break;
 			case "pulv": TERecipeData.addPulvRecipe(blockData, material); break;
 			case "redfurn": TERecipeData.addRedFurnRecipe(blockData, material); break;
 			case "indsmeltsand": TEIndSmeltRecipeData.addIndSmeltSandRecipe(blockData, material); break;

@@ -40,6 +40,7 @@ public class Config {
 	public static float redstoneFurnaceReducedOutputAmountFactor = 2/3f;
 	public static float redstoneFurnaceReducedOutputEnergyFactor = 0.6f;
 	
+	public static Boolean immersiveEngineeringRecipes = true;
 	public static Boolean industrialCraft2Recipes = true;
 	public static Boolean mekanismRecipes = true;
 	public static Boolean thermalExpansionRecipes = true;
@@ -137,6 +138,7 @@ public class Config {
     	
     	cfg.addCustomCategoryComment(CATEGORY_RECIPE_INTEGRATION_SETTINGS, "Enable or disable recipe integrations");
     	
+    	immersiveEngineeringRecipes = cfg.getBoolean("Immersive Engineering recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, immersiveEngineeringRecipes, "Enable Immersive Engineering recipe integration");
     	industrialCraft2Recipes = cfg.getBoolean("Industrial Craft 2 recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, industrialCraft2Recipes, "Enable Industrial Craft 2 recipe integration");
     	mekanismRecipes = cfg.getBoolean("Mekanism recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, mekanismRecipes, "Enable Mekanism recipe integration");
     	thermalExpansionRecipes = cfg.getBoolean("Thermal Expansion recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, thermalExpansionRecipes, "Enable Thermal Expansion recipe integration");

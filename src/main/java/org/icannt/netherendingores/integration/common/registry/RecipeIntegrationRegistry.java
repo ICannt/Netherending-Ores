@@ -76,6 +76,20 @@ public class RecipeIntegrationRegistry {
 	}
 	
 	/**
+	 * Register Immersive Engineering Recipes
+	 */
+	public static void registerIERecipes() {
+		
+		Log.debug("Registering Immersive Engineering Recipes");
+		
+		registerCommonRecipe("crusher");
+		registerCommonRecipe("arcfurn");
+	
+		Log.info("Registered Immersive Engineering Recipes");
+		
+	}
+	
+	/**
 	 * Register Thermal Expansion Recipes
 	 */
 	public static void registerTERecipes() {

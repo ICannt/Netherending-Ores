@@ -11,7 +11,7 @@ public class Info {
     
     public static final String VERSION = "1.12.2-1.4";
     public static final String MC_VERSIONS = "[1.12.2,1.13)";
-    public static final String CFG_VERSION = "1.1";
+    public static final String CFG_VERSION = "1.2";
     
     private static final String FORGE_VERSION = "14.23.5.2768";
     private static final String MANTLE_VERSION = "1.12-1.3.1";
@@ -27,6 +27,7 @@ public class Info {
 			+"after:mekanism@["+MEK_VERSION+",);"
 			+"after:matteroverdrive;"
 			+"after:bigreactors;"
+			+"after:immersiveengineering;"
 			;
     
     public static final String CLIENT_PROXY_CLASS = "org.icannt.netherendingores.proxy.ClientProxy";

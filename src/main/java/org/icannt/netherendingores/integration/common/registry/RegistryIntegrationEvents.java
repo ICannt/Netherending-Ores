@@ -38,6 +38,11 @@ public class RegistryIntegrationEvents {
 			RecipeIntegrationRegistry.registerTiCRecipes();
 		}
 
+		// Register Immersive Engineering recipes
+		if (Loader.isModLoaded("immersiveengineering") && Config.immersiveEngineeringRecipes) {
+			RecipeIntegrationRegistry.registerIERecipes();
+		}
+		
 		// Register Thermal Expansion recipes
 		if (Loader.isModLoaded("thermalexpansion") && Config.thermalExpansionRecipes) {
 			RecipeIntegrationRegistry.registerTERecipes();
