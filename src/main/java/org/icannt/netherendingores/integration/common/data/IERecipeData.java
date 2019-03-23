@@ -1,13 +1,11 @@
 package org.icannt.netherendingores.integration.common.data;
 
-import static java.lang.Math.round;
-
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
-import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Log;
 
 import blusunrize.immersiveengineering.api.crafting.ArcFurnaceRecipe;
-import blusunrize.immersiveengineering.common.IEContent;
+import blusunrize.immersiveengineering.api.crafting.CrusherRecipe;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 
@@ -167,8 +165,8 @@ public enum IERecipeData implements IStringSerializable {
     }
 	
 	//
-    public static int getCrusherSecondaryOutputChance(BlockRecipeData blockData) {
-    	return values()[blockData.ordinal()].crusher2xSecondaryOutputChance;
+    public static float getCrusherSecondaryOutputChance(BlockRecipeData blockData) {
+    	return (float) (values()[blockData.ordinal()].crusher2xSecondaryOutputChance) / 100;
     }
 
     //
@@ -201,18 +199,15 @@ public enum IERecipeData implements IStringSerializable {
 	
 	//
 	public static void addCrusherRecipe(BlockRecipeData blockData, String material) {
-		/*
 		switch (blockData.getRecipeMultiplier()) {
-			case 2:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(blockData), blockData.getModBlockItemStack(),
-					getCrusherPrimaryItemStack(blockData, material), getArcSecondaryItemStack(blockData), getCrusherSecondaryOutputChance(blockData)); break;
-			case 3:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(blockData), blockData.getModBlockItemStack(), getCrusherPrimaryItemStack(blockData, material));
+			case 2: CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), 6000).addToSecondaryOutput(new Object[] {getCrusherSecondaryItemStack(blockData), getCrusherSecondaryOutputChance(blockData)}); break;
+			case 3:	CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), 6000);
 		}
-		*/
 	}
 	
 	//
 	public static void addArcFurnRecipe(BlockRecipeData blockData, String material) {
-		ArcFurnaceRecipe.addRecipe(getArcFurnItemStack(blockData, material), blockData.getModBlockItemStack(), new ItemStack(IEContent.itemMaterial, 1, 7), 200, 512).setSpecialRecipeType("Ores");		
+		ArcFurnaceRecipe.addRecipe(getArcFurnItemStack(blockData, material), blockData.getModBlockItemStack(), new ItemStack(Item.getByNameOrId("IEContent.itemMaterial"), 1, 7), 200, 512).setSpecialRecipeType("Ores");		
 	}
 	
 	//
@@ -222,7 +217,7 @@ public enum IERecipeData implements IStringSerializable {
 	}
 	
 	//
-	public static ItemStack getArcSecondaryItemStack(BlockRecipeData blockData) {
+	public static ItemStack getCrusherSecondaryItemStack(BlockRecipeData blockData) {
 		return blockData.getOreDictItemStack(values()[blockData.ordinal()].crusher2xSecondaryOutputItem, 1);
 	}
 	
