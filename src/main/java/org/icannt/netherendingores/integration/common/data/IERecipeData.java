@@ -3,8 +3,12 @@ package org.icannt.netherendingores.integration.common.data;
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.lib.Log;
 
+import com.google.common.collect.Lists;
+
+import blusunrize.immersiveengineering.api.ApiUtils;
 import blusunrize.immersiveengineering.api.crafting.ArcFurnaceRecipe;
 import blusunrize.immersiveengineering.api.crafting.CrusherRecipe;
+import blusunrize.immersiveengineering.common.util.ListUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
@@ -16,83 +20,83 @@ import net.minecraft.util.IStringSerializable;
 public enum IERecipeData implements IStringSerializable {
 
 	
-    END_ALUMINUM_ORE ("end_aluminum_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_COPPER_ORE ("end_copper_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_IRIDIUM_ORE ("end_iridium_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_LEAD_ORE ("end_lead_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_MITHRIL_ORE ("end_mithril_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_NICKEL_ORE ("end_nickel_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_PLATINUM_ORE ("end_platinum_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_SILVER_ORE ("end_silver_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_TIN_ORE ("end_tin_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_CERTUS_QUARTZ_ORE ("end_certus_quartz_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_OSMIUM_ORE ("end_osmium_ore", 6400, 4, "endstone", 15, 16000, 4, 3200, 2, 4800, 3),
-    END_URANIUM_ORE ("end_uranium_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_YELLORITE_ORE ("end_yellorite_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_DILITHIUM_ORE ("end_dilithium_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_TRITANIUM_ORE ("end_tritanium_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_ZINC_ORE ("end_zinc_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_RUBY_ORE ("end_ruby_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_SAPPHIRE_ORE ("end_sapphire_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_PERIDOT_ORE ("end_peridot_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_ELECTROTINE_ORE ("end_electrotine_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_AMBROSIUM_ORE ("end_ambrosium_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_GRAVITITE_ORE ("end_gravitite_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_ZANITE_ORE ("end_zanite_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_ARKENIUM_ORE ("end_arkenium_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_ICESTONE_ORE ("end_icestone_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_COAL_ORE ("end_coal_ore", 3200, 5, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_DIAMOND_ORE ("end_diamond_ore", 3200, 5, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_EMERALD_ORE ("end_emerald_ore", 3200, 5, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_GOLD_ORE ("end_gold_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_IRON_ORE ("end_iron_ore", 3200, 4, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    END_LAPIS_ORE ("end_lapis_ore", 3200, 22, "endstone", 25, 8000, 4, 1600, 2, 2400, 3),
-    END_REDSTONE_ORE ("end_redstone_ore", 3200, 14, "endstone", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_ALUMINUM_ORE ("nether_aluminum_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_COPPER_ORE ("nether_copper_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_IRIDIUM_ORE ("nether_iridium_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_LEAD_ORE ("nether_lead_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_MITHRIL_ORE ("nether_mithril_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_NICKEL_ORE ("nether_nickel_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_PLATINUM_ORE ("nether_platinum_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_SILVER_ORE ("nether_silver_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_TIN_ORE ("nether_tin_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_CERTUS_QUARTZ_ORE ("nether_certus_quartz_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_OSMIUM_ORE ("nether_osmium_ore", 6400, 4, "netherrack", 15, 16000, 4, 3200, 2, 4800, 3),
-    NETHER_URANIUM_ORE ("nether_uranium_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_YELLORITE_ORE ("nether_yellorite_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_DILITHIUM_ORE ("nether_dilithium_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_TRITANIUM_ORE ("nether_tritanium_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_ZINC_ORE ("nether_zinc_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_RUBY_ORE ("nether_ruby_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_SAPPHIRE_ORE ("nether_sapphire_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_PERIDOT_ORE ("nether_peridot_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_ELECTROTINE_ORE ("nether_electrotine_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_AMBROSIUM_ORE ("nether_ambrosium_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_GRAVITITE_ORE ("nether_gravitite_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_ZANITE_ORE ("nether_zanite_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_ARKENIUM_ORE ("nether_arkenium_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_ICESTONE_ORE ("nether_icestone_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_COAL_ORE ("nether_coal_ore", 3200, 5, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_DIAMOND_ORE ("nether_diamond_ore", 3200, 5, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_EMERALD_ORE ("nether_emerald_ore", 3200, 5, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_GOLD_ORE ("nether_gold_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_IRON_ORE ("nether_iron_ore", 3200, 4, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_LAPIS_ORE ("nether_lapis_ore", 3200, 22, "netherrack", 25, 8000, 4, 1600, 2, 2400, 3),
-    NETHER_REDSTONE_ORE ("nether_redstone_ore", 3200, 14, "netherrack", 15, 8000, 4, 1600, 2, 2400, 3),
-    OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", 1920, 7, "stone", 15, 4800, 4, 960, 2, 1440, 3),
-    END_QUARTZ_ORE ("end_quartz_ore", 1920, 7, "endstone", 15, 4800, 4, 960, 2, 1440, 3),
-    OVERWORLD_ARDITE_ORE ("overworld_ardite_ore", 9600, 4, "stone", 15, 24000, 4, 4800, 2, 7200, 3),
-    END_ARDITE_ORE ("end_ardite_ore", 9600, 4, "endstone", 15, 24000, 4, 4800, 2, 7200, 3),
-    OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", 9600, 4, "stone", 15, 24000, 4, 4800, 2, 7200, 3),
-    END_COBALT_ORE ("end_cobalt_ore", 9600, 4, "endstone", 15, 24000, 4, 4800, 2, 7200, 3),
-    OVERWORLD_AMBROSIUM_ORE ("overworld_ambrosium_ore", 9600, 4, "endstone", 15, 24000, 4, 4800, 2, 7200, 3),
-    OVERWORLD_GRAVITITE_ORE ("overworld_gravitite_ore", 9600, 4, "endstone", 15, 24000, 4, 4800, 2, 7200, 3),
-    OVERWORLD_ZANITE_ORE ("overworld_zanite_ore", 9600, 4, "endstone", 15, 24000, 4, 4800, 2, 7200, 3),
-    OVERWORLD_ARKENIUM_ORE ("overworld_arkenium_ore", 9600, 4, "endstone", 15, 24000, 4, 4800, 2, 7200, 3),
-    OVERWORLD_ICESTONE_ORE ("overworld_icestone_ore", 9600, 4, "endstone", 15, 24000, 4, 4800, 2, 7200, 3);
+    END_ALUMINUM_ORE ("end_aluminum_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_COPPER_ORE ("end_copper_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_IRIDIUM_ORE ("end_iridium_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_LEAD_ORE ("end_lead_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_MITHRIL_ORE ("end_mithril_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_NICKEL_ORE ("end_nickel_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_PLATINUM_ORE ("end_platinum_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_SILVER_ORE ("end_silver_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_TIN_ORE ("end_tin_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_CERTUS_QUARTZ_ORE ("end_certus_quartz_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_OSMIUM_ORE ("end_osmium_ore", 9600, 4, "endstone", 15, 24000, 4, 3200, 2, 4800, 3),
+    END_URANIUM_ORE ("end_uranium_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_YELLORITE_ORE ("end_yellorite_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_DILITHIUM_ORE ("end_dilithium_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_TRITANIUM_ORE ("end_tritanium_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_ZINC_ORE ("end_zinc_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_RUBY_ORE ("end_ruby_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_SAPPHIRE_ORE ("end_sapphire_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_PERIDOT_ORE ("end_peridot_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_ELECTROTINE_ORE ("end_electrotine_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_AMBROSIUM_ORE ("end_ambrosium_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_GRAVITITE_ORE ("end_gravitite_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_ZANITE_ORE ("end_zanite_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_ARKENIUM_ORE ("end_arkenium_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_ICESTONE_ORE ("end_icestone_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_COAL_ORE ("end_coal_ore", 4800, 5, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_DIAMOND_ORE ("end_diamond_ore", 4800, 5, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_EMERALD_ORE ("end_emerald_ore", 4800, 5, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_GOLD_ORE ("end_gold_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_IRON_ORE ("end_iron_ore", 4800, 4, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    END_LAPIS_ORE ("end_lapis_ore", 4800, 22, "endstone", 25, 12000, 4, 1600, 2, 2400, 3),
+    END_REDSTONE_ORE ("end_redstone_ore", 4800, 14, "endstone", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_ALUMINUM_ORE ("nether_aluminum_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_COPPER_ORE ("nether_copper_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_IRIDIUM_ORE ("nether_iridium_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_LEAD_ORE ("nether_lead_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_MITHRIL_ORE ("nether_mithril_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_NICKEL_ORE ("nether_nickel_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_PLATINUM_ORE ("nether_platinum_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_SILVER_ORE ("nether_silver_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_TIN_ORE ("nether_tin_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_CERTUS_QUARTZ_ORE ("nether_certus_quartz_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_OSMIUM_ORE ("nether_osmium_ore", 9600, 4, "netherrack", 15, 24000, 4, 3200, 2, 4800, 3),
+    NETHER_URANIUM_ORE ("nether_uranium_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_YELLORITE_ORE ("nether_yellorite_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_DILITHIUM_ORE ("nether_dilithium_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_TRITANIUM_ORE ("nether_tritanium_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_ZINC_ORE ("nether_zinc_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_RUBY_ORE ("nether_ruby_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_SAPPHIRE_ORE ("nether_sapphire_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_PERIDOT_ORE ("nether_peridot_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_ELECTROTINE_ORE ("nether_electrotine_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_AMBROSIUM_ORE ("nether_ambrosium_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_GRAVITITE_ORE ("nether_gravitite_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_ZANITE_ORE ("nether_zanite_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_ARKENIUM_ORE ("nether_arkenium_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_ICESTONE_ORE ("nether_icestone_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_COAL_ORE ("nether_coal_ore", 4800, 5, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_DIAMOND_ORE ("nether_diamond_ore", 4800, 5, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_EMERALD_ORE ("nether_emerald_ore", 4800, 5, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_GOLD_ORE ("nether_gold_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_IRON_ORE ("nether_iron_ore", 4800, 4, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_LAPIS_ORE ("nether_lapis_ore", 4800, 22, "netherrack", 25, 12000, 4, 1600, 2, 2400, 3),
+    NETHER_REDSTONE_ORE ("nether_redstone_ore", 4800, 14, "netherrack", 15, 12000, 4, 1600, 2, 2400, 3),
+    OVERWORLD_QUARTZ_ORE ("overworld_quartz_ore", 2880, 7, "stone", 15, 7200, 4, 960, 2, 1440, 3),
+    END_QUARTZ_ORE ("end_quartz_ore", 2880, 7, "endstone", 15, 7200, 4, 960, 2, 1440, 3),
+    OVERWORLD_ARDITE_ORE ("overworld_ardite_ore", 14400, 4, "stone", 15, 36000, 4, 4800, 2, 7200, 3),
+    END_ARDITE_ORE ("end_ardite_ore", 14400, 4, "endstone", 15, 36000, 4, 4800, 2, 7200, 3),
+    OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", 14400, 4, "stone", 15, 36000, 4, 4800, 2, 7200, 3),
+    END_COBALT_ORE ("end_cobalt_ore", 14400, 4, "endstone", 15, 36000, 4, 4800, 2, 7200, 3),
+    OVERWORLD_AMBROSIUM_ORE ("overworld_ambrosium_ore", 14400, 4, "endstone", 15, 36000, 4, 4800, 2, 7200, 3),
+    OVERWORLD_GRAVITITE_ORE ("overworld_gravitite_ore", 14400, 4, "endstone", 15, 36000, 4, 4800, 2, 7200, 3),
+    OVERWORLD_ZANITE_ORE ("overworld_zanite_ore", 14400, 4, "endstone", 15, 36000, 4, 4800, 2, 7200, 3),
+    OVERWORLD_ARKENIUM_ORE ("overworld_arkenium_ore", 14400, 4, "endstone", 15, 36000, 4, 4800, 2, 7200, 3),
+    OVERWORLD_ICESTONE_ORE ("overworld_icestone_ore", 14400, 4, "endstone", 15, 36000, 4, 4800, 2, 7200, 3);
 
 	
 	private String name;
@@ -200,9 +204,12 @@ public enum IERecipeData implements IStringSerializable {
 	//
 	public static void addCrusherRecipe(BlockRecipeData blockData, String material) {
 		switch (blockData.getRecipeMultiplier()) {
-			case 2: CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), 6000).addToSecondaryOutput(new Object[] {getCrusherSecondaryItemStack(blockData), getCrusherSecondaryOutputChance(blockData)}); break;
-			case 3:	CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), 6000);
+			case 2: //CrusherRecipe.timeModifier = 5f;
+					CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherAmount(blockData)).addToSecondaryOutput(new Object[] {getCrusherSecondaryItemStack(blockData), getCrusherSecondaryOutputChance(blockData)}); break;
+			case 3:	//CrusherRecipe.timeModifier = 10f;
+					CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherAmount(blockData));
 		}
+		//CrusherRecipe.timeModifier = 1f;
 	}
 	
 	//
