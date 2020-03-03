@@ -13,7 +13,7 @@ public class Info {
     public static final String MC_VERSIONS = "[1.12.2,1.13)";
     public static final String CFG_VERSION = "1.2";
     
-    private static final String FORGE_VERSION = "14.23.5.2768";
+    private static final String FORGE_VERSION = "14.23.5.2847";
     private static final String MANTLE_VERSION = "1.12-1.3.1";
     private static final String TIC_VERSION = "1.12.2-2.9.1";
     private static final String MEK_VERSION = "1.12.2-9.4.13.349";
