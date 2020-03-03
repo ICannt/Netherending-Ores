@@ -1,5 +1,6 @@
 package org.icannt.netherendingores.proxy;
 
+import org.icannt.netherendingores.client.entity.render.RenderHandler;
 import org.icannt.netherendingores.common.registry.BlockRegistry;
 
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -19,6 +20,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
+    	RenderHandler.registerEntityRenders();
     }
 
     @Override

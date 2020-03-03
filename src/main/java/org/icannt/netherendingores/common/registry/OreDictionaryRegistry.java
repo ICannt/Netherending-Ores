@@ -1,5 +1,6 @@
 package org.icannt.netherendingores.common.registry;
 
+import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
 import org.icannt.netherendingores.lib.Log;
 
@@ -43,16 +44,30 @@ public class OreDictionaryRegistry {
     	
     	for (BlockRecipeData blockData : BlockRecipeData.values()) {
        		OreDictionary.registerOre(blockData.getOreDictRegName(), blockData.getModBlockItemStack());  		
-       		Log.logOreDictSuccess(blockData.getOreDictRegName(), blockData.getBlockName());       		
+       		Log.logOreDictSuccess(blockData.getOreDictRegName(), blockData.getBlockLogInfo());       		
        		// Support additional alternate spellings of oredict names
        		for (String material : blockData.getItemAltOreDictSuffix()) {
        			OreDictionary.registerOre(blockData.getOreDictCustomRegName(material), blockData.getModBlockItemStack());
-       			Log.logOreDictSuccess(blockData.getOreDictCustomRegName(material), blockData.getBlockName());
+       			Log.logOreDictSuccess(blockData.getOreDictCustomRegName(material), blockData.getBlockLogInfo());
        		}
     	}
 		
     	Log.info("Registered Ore Dictionary Entries");
 		
+	}
+	
+	public static void cacheOreDictionaryItems() {
+		for (BlockRecipeData blockData : BlockRecipeData.values()) {
+			if (blockData.getRecipeMultiplier() > 0 && blockData.getDropItems() && Config.dropItems) {
+				blockData.setDropItemObject();
+				if (blockData.getItemDropped() == Items.AIR) {
+					blockData.setDropItems(false);
+					Log.logCacheItemsFail(blockData.getOreDictItemName());
+				} else {
+					Log.logCacheItemsSuccess(blockData.getOreDictItemName(), blockData.getItemDropped(), blockData.getDamageDropped());
+				}
+			}
+		}
 	}
 
 }

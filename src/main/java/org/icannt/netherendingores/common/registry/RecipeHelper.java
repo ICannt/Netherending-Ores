@@ -17,7 +17,7 @@ public class RecipeHelper {
 	 * @param       device Which device recipe is to be used e.g. Macerator, Pulverizer
 	 * @param       doAltReplace Replace base material names for oredict
 	 */
-	public static void tryRecipe(BlockRecipeData blockData, String device, Boolean doAltReplace) {
+	public static void tryRecipe(BlockRecipeData blockData, String device, boolean doAltReplace) {
 		
 		String materials[] = { blockData.getName() };		
 		if (doAltReplace) materials = blockData.getItemAltOreDictSuffix();

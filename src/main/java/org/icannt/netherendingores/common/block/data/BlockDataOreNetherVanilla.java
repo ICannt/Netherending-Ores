@@ -8,22 +8,24 @@ import net.minecraft.util.IStringSerializable;
  */
 public enum BlockDataOreNetherVanilla implements IStringSerializable {
 	
-    COAL_ORE ("coal_ore", 0, 0, 3, 15, EnumRarity.COMMON),
-    DIAMOND_ORE ("diamond_ore", 0, 2, 3, 15, EnumRarity.COMMON),
-    EMERALD_ORE ("emerald_ore", 0, 2, 3, 15, EnumRarity.COMMON),
-    GOLD_ORE ("gold_ore", 0, 2, 3, 15, EnumRarity.COMMON),
-    IRON_ORE ("iron_ore", 0, 1, 3, 15, EnumRarity.COMMON),
-    LAPIS_ORE ("lapis_ore", 0, 1, 3, 15, EnumRarity.COMMON),
-    REDSTONE_ORE ("redstone_ore", 0, 1, 3, 15, EnumRarity.COMMON);
+    COAL_ORE ("coal_ore", 0, 0, 3, 15, EnumRarity.COMMON, -1),
+    DIAMOND_ORE ("diamond_ore", 0, 2, 3, 15, EnumRarity.COMMON, -1),
+    EMERALD_ORE ("emerald_ore", 0, 2, 3, 15, EnumRarity.COMMON, -1),
+    GOLD_ORE ("gold_ore", 0, 2, 3, 15, EnumRarity.COMMON, -1),
+    IRON_ORE ("iron_ore", 0, 1, 3, 15, EnumRarity.COMMON, -1),
+    LAPIS_ORE ("lapis_ore", 0, 1, 3, 15, EnumRarity.COMMON, -1),
+    REDSTONE_ORE ("redstone_ore", 0, 1, 3, 15, EnumRarity.COMMON, -1);
 
+	
     private String name;
     private int light;
     private int harvestLevel;
     private float hardness;
     private float resistance;
     private EnumRarity rarity;
+    private int blockRecipeDataOrdinal;
 
-    BlockDataOreNetherVanilla(String name, int light, int harvestLevel, float hardness, float resistance, EnumRarity rarity) {
+    BlockDataOreNetherVanilla(String name, int light, int harvestLevel, float hardness, float resistance, EnumRarity rarity, int blockRecipeDataOrdinal) {
 
         this.name = name;
         this.light = light;
@@ -31,6 +33,7 @@ public enum BlockDataOreNetherVanilla implements IStringSerializable {
         this.hardness = hardness;
         this.resistance = resistance;
         this.rarity = rarity;
+        this.blockRecipeDataOrdinal = blockRecipeDataOrdinal;
         
     }
     
@@ -58,5 +61,15 @@ public enum BlockDataOreNetherVanilla implements IStringSerializable {
     public EnumRarity getRarity() {
         return rarity;
     }
+    
+    //
+	public int getBlockRecipeDataOrdinal() {
+		return blockRecipeDataOrdinal;
+	}
+    
+    //
+	public void setBlockRecipeDataOrdinal(int ordinal) {
+		this.blockRecipeDataOrdinal = ordinal;
+	}
 
 }

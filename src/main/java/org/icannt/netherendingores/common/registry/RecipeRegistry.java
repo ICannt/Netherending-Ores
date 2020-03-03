@@ -34,7 +34,7 @@ public class RecipeRegistry {
 		}
 		
         for (BlockRecipeData blockData : BlockRecipeData.values()) {
-        	if (Config.vanillaFurnaceRecipes && (blockData.getRecipeMultiplier() > 1 || (blockData.getRecipeMultiplier() == 1 && blockData.isFurnaceItemEnabled()))) {
+        	if (Config.vanillaFurnaceRecipes && (blockData.getRecipeMultiplier() > 1 || (blockData.getRecipeMultiplier() == 1 && blockData.getFurnaceRecipeEnabled()))) {
     			RecipeHelper.tryRecipe(blockData, "furnace", true);
     			RecipeHelper.tryRecipe(blockData, "furnace", false);
         	}

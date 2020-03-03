@@ -1,181 +1,379 @@
 package org.icannt.netherendingores.lib;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
+import static net.minecraft.util.math.MathHelper.clamp;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.common.registry.OreDictionaryOtherData;
 import org.icannt.netherendingores.proxy.CommonProxy;
 
-import net.minecraftforge.common.config.Configuration;
-
 /**
  * Created by ICannt on 25/03/18.
  */
 
-// TODO: Go through and filter everything to be within min/max ranges. Can't get this to work :/
+
 public class Config {
 	
-	public static Boolean advancedDebugging = false;
+	// General
 	
-	public static Boolean addCrystalChargedCertusQuartz = true;
-	public static Boolean addOreDilithium = false;
-	public static Boolean addOreTritanium = false;
+	public static boolean advancedDebugging = false;
+	
+	// Mobs
+	
+	public static final int PRIMED_ORE_ENTITY_ID = 668;
+	
+    public static final int NETHERFISH_ENTITY_ID = 667;
+    public static final int NETHERFISH_TRACKING_RANGE = 50;
+    public static final int NETHERFISH_SPAWN_EGG_PRIMARY_COLOR = 12325908;
+    public static final int NETHERFISH_SPAWN_EGG_SECONDARY_COLOR = 16761600;
 
-	public static Boolean inductionSmelterFullOutput = false;
+    public static boolean netherfish = true;
+    public static double netherfishAttackDamage = 0.5D;
+    private static double netherfishAttackDamageMin = 0D;
+    private static double netherfishAttackDamageMax = 1000D;
+    public static double netherfishKnockbackResistance = 0D;
+    private static double netherfishKnockbackResistanceMin = 0.0D;
+    private static double netherfishKnockbackResistanceMax = 100D;
+    public static double netherfishMaxHealth = 10D;
+    private static double netherfishMaxHealthMin = 1D;
+    private static double netherfishMaxHealthMax = 1000D;
+    public static double netherfishMovementSpeed = 0.2D;
+    private static double netherfishMovementSpeedMin = 0D;
+    private static double netherfishMovementSpeedMax = 1D;
+    public static boolean netherfishSetFire = true;
+    public static boolean netherfishWAILA = true;
+    
+    public static boolean zombiePigmanAnger = true;
+    public static int zombiePigmanAngerRangeHeight = 16;
+    public static int zombiePigmanAngerRangeHeightMin = 1;
+    public static int zombiePigmanAngerRangeHeightMax = 32;
+    public static int zombiePigmanAngerRangeRadius = 32;
+    public static int zombiePigmanAngerRangeRadiusMin = 1;
+    public static int zombiePigmanAngerRangeRadiusMax = 64;
+    public static boolean zombiePigmanAngerSilkTouch = true;
+
+    // Ores
+    
+    public static boolean dropItems = false;
+    public static boolean dropItemsOverride = false;
+
+    public static final int ORE_EXPLOSION_FUSE_LENGTH_TICKS = 80;
+    
+    public static boolean oreExplosion = false;
+    public static double oreExplosionChance = 0.125D;
+    private static double oreExplosionChanceMin = 0D;
+    private static double oreExplosionChanceMax = 1D;
+    public static boolean oreExplosionFortune = true;
+    public static boolean oreExplosionOverride = false;
+    public static boolean oreExplosionSilkTouch = true;
+    public static double oreExplosionStrength = 4D;
+    private static double oreExplosionStrengthMin = 0D;
+    private static double oreExplosionStrengthMax = 20D;
+    
+    // Recipes
+    
+	public static boolean furnaceToItem = false;
+    public static boolean furnaceToItemOverride = false;
+	
+	public static boolean immersiveEngineeringRecipes = true;
+	public static boolean industrialCraft2Recipes = true;
+	public static boolean mekanismRecipes = true;
+	public static boolean thermalExpansionRecipes = true;
+	public static boolean tinkersConstructRecipes = true;
+	
+	public static boolean vanillaCraftingRecipes = true;
+	public static boolean vanillaFurnaceRecipes = true;
+	
+	private static float outputFactorMin = 0.5f;
+	private static float fullOutputFactorMax = 3f;
+	private static float reducedOutputFactorMax = 1f;
+	
+	public static boolean inductionSmelterFullOutput = false;
 	public static float inductionSmelterFullOutputAmountFactor = 1f;
 	public static float inductionSmelterFullOutputEnergyFactor = 2f;
 	public static float inductionSmelterReducedOutputAmountFactor = 2/3f;
 	public static float inductionSmelterReducedOutputEnergyFactor = 0.6f;
 	
-	public static Boolean pulverizerFullOutput = false;
+	public static boolean pulverizerFullOutput = false;
 	public static float pulverizerFullOutputAmountFactor = 1f;
 	public static float pulverizerFullOutputEnergyFactor = 2f;
 	public static float pulverizerReducedOutputAmountFactor = 2/3f;
 	public static float pulverizerReducedOutputEnergyFactor = 0.6f;
 	
-	public static Boolean redstoneFurnaceFullOutput = false;
+	public static boolean redstoneFurnaceFullOutput = false;
 	public static float redstoneFurnaceFullOutputAmountFactor = 1f;
 	public static float redstoneFurnaceFullOutputEnergyFactor = 2f;
 	public static float redstoneFurnaceReducedOutputAmountFactor = 2/3f;
 	public static float redstoneFurnaceReducedOutputEnergyFactor = 0.6f;
 	
-	public static Boolean immersiveEngineeringRecipes = true;
-	public static Boolean industrialCraft2Recipes = true;
-	public static Boolean mekanismRecipes = true;
-	public static Boolean thermalExpansionRecipes = true;
-	public static Boolean tinkersConstructRecipes = true;
-	public static Boolean vanillaCraftingRecipes = true;
-	public static Boolean vanillaFurnaceRecipes = true;
+	private static int recipeMultiplierOverride = -1;
+	private static int recipeMultiplierOverrideMin = recipeMultiplierOverride;
+	private static int recipeMultiplierMin = 0;
+	private static int recipeMultiplierMax = 3;
 	
-	private static final String CATEGORY_GENERAL_SETTINGS = "general settings";
-	private static final String CATEGORY_ORE_DICT_SETTINGS = "ore dictionary settings";
-	private static final String CATEGORY_MACHINE_RECIPE_SETTINGS = "machine recipe settings";
-	private static final String CATEGORY_RECIPE_INTEGRATION_SETTINGS = "recipe integration settings";
-	private static final String CATEGORY_RECIPE_MULTIPLIER_OVERRIDE = "recipe multipliers override";
-	private static final String CATEGORY_RECIPE_MULTIPLIER = "recipe multipliers";
+	// Category Hierarchy
 	
-	private static int override = -1;
-	private static int minMult = 0;
-	private static int maxMult = 3;
+	private static final String CATEGORY_GENERAL = "general";
 	
-	    
-    public static void readConfig() {
-        Configuration cfg = CommonProxy.config;
-        try {
+	private static final String CATEGORY_MOBS = "mobs";
+	private static final String CATEGORY_MOBS__NETHERRFISH = "mobs.netherfish";
+	private static final String CATEGORY_MOBS__ZOMBIE_PIGMAN = "mobs.zombie pigman";
+	
+	private static final String CATEGORY_ORES = "ores";
+	private static final String CATEGORY_ORES__DROP_ITEMS = "ores.drop items";
+	private static final String CATEGORY_ORES__DROP_ITEMS__DROP_ITEM_ORES = "ores.drop items.drop item ores";
+	private static final String CATEGORY_ORES__ORE_DICTIONARY = "ores.ore dictionary";
+	private static final String CATEGORY_ORES__ORE_EXPLOSIONS = "ores.ore explosions";
+	private static final String CATEGORY_ORES__ORE_EXPLOSIONS__ORE_EXPLOSION_ORES = "ores.ore explosions.ore explosion ores";
+
+	private static final String CATEGORY_RECIPES = "recipes";
+	private static final String CATEGORY_RECIPES__FURNACE_TO_ITEMS = "recipes.furnace to items";
+	private static final String CATEGORY_RECIPES__FURNACE_TO_ITEMS__FURNACE_TO_ITEM_ORES = "recipes.furnace to items.furnace to item ores";
+	private static final String CATEGORY_RECIPES__INTEGRATION = "recipes.integration";
+	private static final String CATEGORY_RECIPES__INTEGRATION__THERMAL_EXPANSION = "recipes.integration.thermal expansion";
+	private static final String CATEGORY_RECIPES__RECIPE_MULTIPLIERS = "recipes.recipe multipliers";
+	private static final String CATEGORY_RECIPES__RECIPE_MULTIPLIERS__RECIPE_MULTIPLIER_ORES = "recipes.recipe multipliers.recipe multiplier ores";
+	
+    //
+	public static void readConfig() {
+		
+        ConfigEx cfg = CommonProxy.config;
+        
+        try {        	
             cfg.load();
-            // Load order is different so the override will load first, the forge config sorter will change the position anyway.
-            initGeneralSettingsConfig(cfg);
-            initOreDictSettingsConfig(cfg);
-            initRecipeIntegrationSettingsConfig(cfg);
-            initMachineRecipeSettingsConfig(cfg);
-            initRecipeMultiplierOverrideConfig(cfg);
-            initRecipeMultiplierConfig(cfg);
+            loadCategoryCommentStrings(cfg);
+            loadCategories(cfg);
         } catch (Exception e1) {
-            Log.LOG.error("Problem loading config file!", e1);
+            Log.error("Problem loading config file!", e1);
         } finally {
             if (cfg.hasChanged()) {
                 cfg.save();
             }
         }
+        
+    }
+	
+	//
+	private static void loadCategories(ConfigEx cfg) {
+        
+        initGeneralSettingsConfig(cfg, CATEGORY_GENERAL);
+
+        initMobsNetherfishConfig(cfg, CATEGORY_MOBS__NETHERRFISH);
+        initMobsZombiePigmanConfig(cfg, CATEGORY_MOBS__ZOMBIE_PIGMAN);
+        
+        initOresOreDictionaryConfig(cfg, CATEGORY_ORES__ORE_DICTIONARY);
+        initOresDropItems(cfg, CATEGORY_ORES__DROP_ITEMS);
+        initOresDropItemsDropItemOres(cfg, CATEGORY_ORES__DROP_ITEMS__DROP_ITEM_ORES);        
+        initOresOreExplosionsConfig(cfg, CATEGORY_ORES__ORE_EXPLOSIONS);
+        initOresOreExplosionOresConfig(cfg, CATEGORY_ORES__ORE_EXPLOSIONS__ORE_EXPLOSION_ORES);
+
+        initRecipesFurnaceToItemsConfig(cfg, CATEGORY_RECIPES__FURNACE_TO_ITEMS);
+        initRecipesFurnaceToItemsFurnaceToItemOresConfig(cfg, CATEGORY_RECIPES__FURNACE_TO_ITEMS__FURNACE_TO_ITEM_ORES);
+        initRecipesIntegrationConfig(cfg, CATEGORY_RECIPES__INTEGRATION);
+        initRecipesIntegrationThermalExpansionConfig(cfg, CATEGORY_RECIPES__INTEGRATION__THERMAL_EXPANSION);
+        initRecipesRecipeMultipliersConfig(cfg, CATEGORY_RECIPES__RECIPE_MULTIPLIERS);
+        initRecipesRecipeMultipliersRecipeMultiplierOresConfig(cfg, CATEGORY_RECIPES__RECIPE_MULTIPLIERS__RECIPE_MULTIPLIER_ORES);
+        
+	}
+	
+	//
+    private static void loadCategoryCommentStrings(ConfigEx cfg) {
+
+    	cfg.setCategoryComment(CATEGORY_GENERAL, "General Settings.");
+    	
+    	cfg.setCategoryComment(CATEGORY_MOBS, "Mob Settings.");
+
+    	cfg.setCategoryComment(CATEGORY_ORES, "Ore Settings.");
+    	cfg.setCategoryComment(CATEGORY_ORES__DROP_ITEMS, ""
+    			+ "If any of the following ores is set to true, that ore will drop items instead of ore blocks.\r\n"
+    			+ "Requires drop items to be enabled.\r\n"
+    			+ "There is an override so all ores will drop items."
+    			);
+    	
+    	cfg.setCategoryComment(CATEGORY_RECIPES, "Recipe Settings.");
+    	cfg.setCategoryComment(CATEGORY_RECIPES__FURNACE_TO_ITEMS, ""
+    			+ "If any of the following ores is set to true, that item will furnace direct to item.\r\n"
+    			+ "Requires furnace to items to be enabled.\r\n"
+    			+ "There is an override so all ores will smelt to item."
+    			);
+    	cfg.setCategoryComment(CATEGORY_RECIPES__INTEGRATION__THERMAL_EXPANSION, "" 
+    			+ "Settings for Thermal Expansion machine processing.\r\n"
+    			+ "Please ask the mod author trab if you need assistance understanding how this works.");
+    	cfg.setCategoryComment(CATEGORY_RECIPES__RECIPE_MULTIPLIERS, ""
+    			+ "-1 = Only used by the override.\r\n"
+    			+ " 0 = No recipes/standard oredict, ideal for crafttweaker.\r\n"
+    			+ "     Oredict entries prefixed with \"neo\" for easy crafttweaker use.\r\n"
+    			+ " 1 = Oredict mode uses the same oredict name as the target ore, also adds recipe to craft target ore if needed.\r\n"
+    			+ " 2 = Crush to dust at 2x rate with mod specific bonuses | Smelt to 2x oredict ore.\r\n"
+    			+ "     Oredict entries prefixed with \"oreEnd\", \"oreNether\" or \"oreOverworld\" respectively.\r\n"
+    			+ " 3 = Crush to 4x oredict ore | Smelt to 3x oredict ore.\r\n"
+    			+ "     Oredict entries prefixed with \"oreDenseEnd\", \"oreDenseNether\" or \"oreDenseOverworld\" respectively.");
+
+    }
+
+	//
+    private static void initGeneralSettingsConfig(ConfigEx cfg, String category) {
+
+    	advancedDebugging = cfg.getBoolean("Advanced debugging", category, advancedDebugging, "Enable advanced debugging. Show all trace level messages in debug.log. Only enable if you really need it.");
+    	
+    }
+
+    //
+    private static void initMobsNetherfishConfig(ConfigEx cfg, String category) {
+    	
+    	netherfish = cfg.getBoolean("Netherfish", category, netherfish, "Enable Netherfish so the mob is active.");
+        netherfishAttackDamage = cfg.getDouble("Netherfish attack damage", category, netherfishAttackDamage, netherfishAttackDamageMin, netherfishAttackDamageMax, "Netherfish attack damage multiplier.");
+        netherfishKnockbackResistance = cfg.getDouble("Netherfish knockback resistance", category, netherfishKnockbackResistance, netherfishKnockbackResistanceMin, netherfishKnockbackResistanceMax, "Netherfish knockback resistance multiplier.");
+        netherfishMaxHealth = cfg.getDouble("Netherfish maximum health", category, netherfishMaxHealth, netherfishMaxHealthMin, netherfishMaxHealthMax, "Netherfish maximum health in half hearts.");
+        netherfishMovementSpeed = cfg.getDouble("Netherfish movement speed", category, netherfishMovementSpeed, netherfishMovementSpeedMin, netherfishMovementSpeedMax, "Netherfish movement speed multiplier.");
+        netherfishSetFire = cfg.getBoolean("Netherfish set fire", category, netherfishSetFire, "Enables the Netherfish to set the player on fire during attack.");
+        netherfishWAILA = cfg.getBoolean("Netherfish waila/hwyla", category, netherfishWAILA, "Enables the Netherfish spawn blocks to be hidden from WAILA/HWYLA i.e. show as Netherrack.");
+    	    	
     }
     
     //
-    private static void initGeneralSettingsConfig(Configuration cfg) {
-    	
-    	cfg.addCustomCategoryComment(CATEGORY_GENERAL_SETTINGS, "General Settings");
-
-    	advancedDebugging = cfg.getBoolean("Advanced debugging", CATEGORY_GENERAL_SETTINGS, advancedDebugging, "Enable advanced debugging. Show all trace level messages in debug.log. Only enable if you really need it.");
+    private static void initMobsZombiePigmanConfig(ConfigEx cfg, String category) {
+    	    	
+    	zombiePigmanAnger = cfg.getBoolean("Zombie Pigman anger", category, zombiePigmanAnger, "Enables the Zombie Pigman anger reaction to mining ores.");  	
+    	zombiePigmanAngerRangeHeight = cfg.getInt("Zombie Pigman anger range height", category, zombiePigmanAngerRangeHeight, zombiePigmanAngerRangeHeightMin, zombiePigmanAngerRangeHeightMax, "Zombie Pigman anger reaction range height in blocks up and down of the player.");
+    	zombiePigmanAngerRangeRadius = cfg.getInt("Zombie Pigman anger range radius", category, zombiePigmanAngerRangeRadius, zombiePigmanAngerRangeRadiusMin, zombiePigmanAngerRangeRadiusMax, "Zombie Pigman anger reaction range square radius in blocks around the player.");
+    	zombiePigmanAngerSilkTouch = cfg.getBoolean("Zombie Pigman anger silk touch", category, zombiePigmanAngerSilkTouch, "If ores are mined with a silk touch enchantment Zombie pigmen won't react.");
     	
     }
 
     //
-    private static void initOreDictSettingsConfig(Configuration cfg) {
-    	
-    	cfg.addCustomCategoryComment(CATEGORY_ORE_DICT_SETTINGS, "Ore Dictionary Settings");
-    	    	
-    	boolean enabled = false;    	
+    private static void initOresOreDictionaryConfig(ConfigEx cfg, String category) {
+	
+    	boolean setting = false;    	
     	for (OreDictionaryOtherData oD : OreDictionaryOtherData.values()) {
-    		enabled = cfg.getBoolean(oD.getName(), CATEGORY_ORE_DICT_SETTINGS, oD.getDefaultSetting(), "Add " + oD.getModItemDescName() + " from " + oD.getModDescName() + " to the Ore Dictionary." + oD.getConfigExtraDesc());
-    		oD.setEnabled(enabled);
+    		setting = cfg.getBoolean(oD.getName(), category, oD.getDefaultSetting(), "Add " + oD.getModItemDescName() + " from " + oD.getModDescName() + " to the Ore Dictionary." + oD.getConfigExtraDesc());
+    		oD.setEnabled(setting);
 		}
     	
     }
     
     //
-    private static void initMachineRecipeSettingsConfig(Configuration cfg) {
-    	
-    	cfg.addCustomCategoryComment(CATEGORY_MACHINE_RECIPE_SETTINGS, "" 
-    			+ "Settings for Thermal Expansion machine processing\r\n"
-    			+ "Please ask the mod author trab if you need assistance understanding how this works");
-    	
-    	final float minFactor = 0.5f;
-    	final float maxFullFactor = 3;
-    	final float maxReducedFactor = 1;
-    	
-    	inductionSmelterFullOutput = cfg.getBoolean("Induction Smelter full output", CATEGORY_MACHINE_RECIPE_SETTINGS, inductionSmelterFullOutput, "Enable full Induction Smelter output. Do not reduce output for augment compensation, uses much more energy.");
-    	inductionSmelterFullOutputAmountFactor = cfg.getFloat("Induction Smelter full output amount factor", CATEGORY_MACHINE_RECIPE_SETTINGS, inductionSmelterFullOutputAmountFactor, minFactor, maxFullFactor, "Induction Smelter full output amount factor.");
-    	inductionSmelterFullOutputEnergyFactor = cfg.getFloat("Induction Smelter full output energy factor", CATEGORY_MACHINE_RECIPE_SETTINGS, inductionSmelterFullOutputEnergyFactor, minFactor, maxFullFactor, "Induction Smelter full output energy factor.");    	
-    	inductionSmelterReducedOutputAmountFactor = cfg.getFloat("Induction Smelter reduced output amount factor", CATEGORY_MACHINE_RECIPE_SETTINGS, inductionSmelterReducedOutputAmountFactor, minFactor, maxReducedFactor, "Induction Smelter reduced output amount factor.");
-    	inductionSmelterReducedOutputEnergyFactor = cfg.getFloat("Induction Smelter reduced output energy factor", CATEGORY_MACHINE_RECIPE_SETTINGS, inductionSmelterReducedOutputEnergyFactor, minFactor, maxReducedFactor, "Induction Smelter reduced output energy factor.");
-    	
-    	pulverizerFullOutput = cfg.getBoolean("Pulverizer full output", CATEGORY_MACHINE_RECIPE_SETTINGS, pulverizerFullOutput, "Enable full Pulverizer output. Do not reduce output for augment compensation, uses much more energy.");
-    	pulverizerFullOutputAmountFactor = cfg.getFloat("Pulverizer full output amount factor", CATEGORY_MACHINE_RECIPE_SETTINGS, pulverizerFullOutputAmountFactor, minFactor, maxFullFactor, "Pulverizer full output amount factor.");
-    	pulverizerFullOutputEnergyFactor = cfg.getFloat("Pulverizer full output energy factor", CATEGORY_MACHINE_RECIPE_SETTINGS, pulverizerFullOutputEnergyFactor, minFactor, maxFullFactor, "Pulverizer full output energy factor.");    	
-    	pulverizerReducedOutputAmountFactor = cfg.getFloat("Pulverizer reduced output amount factor", CATEGORY_MACHINE_RECIPE_SETTINGS, pulverizerReducedOutputAmountFactor, minFactor, maxReducedFactor, "Pulverizer reduced output amount factor.");
-    	pulverizerReducedOutputEnergyFactor = cfg.getFloat("Pulverizer reduced output energy factor", CATEGORY_MACHINE_RECIPE_SETTINGS, pulverizerReducedOutputEnergyFactor, minFactor, maxReducedFactor, "Pulverizer reduced output energy factor.");
-    	
-    	redstoneFurnaceFullOutput = cfg.getBoolean("Redstone Furnace full output", CATEGORY_MACHINE_RECIPE_SETTINGS, redstoneFurnaceFullOutput, "Enable full Redstone Furnace output. Do not reduce output for augment compensation, uses much more energy.");
-    	redstoneFurnaceFullOutputAmountFactor = cfg.getFloat("Redstone Furnace full output amount factor", CATEGORY_MACHINE_RECIPE_SETTINGS, redstoneFurnaceFullOutputAmountFactor, minFactor, maxFullFactor, "Redstone Furnace full output amount factor.");
-    	redstoneFurnaceFullOutputEnergyFactor = cfg.getFloat("Redstone Furnace full output energy factor", CATEGORY_MACHINE_RECIPE_SETTINGS, redstoneFurnaceFullOutputEnergyFactor, minFactor, maxFullFactor, "Redstone Furnace full output energy factor.");    	
-    	redstoneFurnaceReducedOutputAmountFactor = cfg.getFloat("Redstone Furnace reduced output amount factor", CATEGORY_MACHINE_RECIPE_SETTINGS, redstoneFurnaceReducedOutputAmountFactor, minFactor, maxReducedFactor, "Redstone Furnace reduced output amount factor.");
-    	redstoneFurnaceReducedOutputEnergyFactor = cfg.getFloat("Redstone Furnace reduced output energy factor", CATEGORY_MACHINE_RECIPE_SETTINGS, redstoneFurnaceReducedOutputEnergyFactor, minFactor, maxReducedFactor, "Redstone Furnace reduced output energy factor.");
-    	
+    private static void initOresDropItems(ConfigEx cfg, String category) {
+
+    	dropItems = cfg.getBoolean("Drop items", category, dropItems, "Drop items instead of blocks from mined ores. Metallic ores will try to drop dusts over ingots.");
+    	dropItemsOverride = cfg.getBoolean("Drop items override", category, dropItemsOverride, "All ores will drop items ignoring per ore settings, drop items must be enabled or this will be ignored.");
+   	
     }
 
     //
-    private static void initRecipeIntegrationSettingsConfig(Configuration cfg) {
+    private static void initOresDropItemsDropItemOres(ConfigEx cfg, String category) {
     	
-    	cfg.addCustomCategoryComment(CATEGORY_RECIPE_INTEGRATION_SETTINGS, "Enable or disable recipe integrations");
-    	
-    	immersiveEngineeringRecipes = cfg.getBoolean("Immersive Engineering recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, immersiveEngineeringRecipes, "Enable Immersive Engineering recipe integration");
-    	industrialCraft2Recipes = cfg.getBoolean("Industrial Craft 2 recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, industrialCraft2Recipes, "Enable Industrial Craft 2 recipe integration");
-    	mekanismRecipes = cfg.getBoolean("Mekanism recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, mekanismRecipes, "Enable Mekanism recipe integration");
-    	thermalExpansionRecipes = cfg.getBoolean("Thermal Expansion recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, thermalExpansionRecipes, "Enable Thermal Expansion recipe integration");
-    	tinkersConstructRecipes = cfg.getBoolean("Tinkers' Construct recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, tinkersConstructRecipes, "Enable Tinkers' Construct recipe integration");
-    	vanillaCraftingRecipes = cfg.getBoolean("Vanilla crafting recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, vanillaCraftingRecipes, "Enable crafting recipes to convert to oredict ores, only works with 1x recipe multiplier");
-    	vanillaFurnaceRecipes = cfg.getBoolean("Vanilla furnace recipes", CATEGORY_RECIPE_INTEGRATION_SETTINGS, vanillaFurnaceRecipes, "Enable furnace recipes to smelt to oredict ores.");
-    	
-    }
-
-    //
-    private static void initRecipeMultiplierConfig(Configuration cfg) {
-    	
-    	cfg.addCustomCategoryComment(CATEGORY_RECIPE_MULTIPLIER, ""
-    			+ "0 = No recipes/standard oredict, ideal for craftweaker.\r\n"
-    			+ "    Oredict entries prefixed with \"neo\" for easy craftteaker use.\r\n"
-    			+ "1 = Oredict mode uses the same oredict name as the target ore, also adds recipe to craft target ore if needed.\r\n"
-    			+ "2 = Crush to dust at 2x rate with mod specific bonuses | Smelt to 2x oredict ore.\r\n"
-    			+ "    Oredict entries prefixed with \"oreEnd\", \"oreNether\" or \"oreOverworld\" respectively.\r\n"
-    			+ "3 = Crush to 4x oredict ore | Smelt to 3x oredict ore.\r\n"
-    			+ "    Oredict entries prefixed with \"oreDenseEnd\", \"oreDenseNether\" or \"oreDenseOverworld\" respectively.\r\n");
-    	
-    	int multiplier = 0;    	
+    	boolean setting;
     	for (BlockRecipeData blockData : BlockRecipeData.values()) {
-    		multiplier = cfg.get(CATEGORY_RECIPE_MULTIPLIER, StringUtil.spaceCapital(blockData.getName()), blockData.getDefaultRecipeMultiplier()).getInt();
-    		multiplier = min(maxMult, max(minMult, multiplier));
-    		if (override > -1) multiplier = min(maxMult, max(minMult, override));
-    		blockData.setRecipeMultiplier(multiplier);
-		} 
+    		setting = cfg.getBlockProperty(blockData.getName(), category, blockData.getDropItems());
+    		if (dropItems && dropItemsOverride) setting = true;
+    		if (!(dropItems)) setting = false;
+    		blockData.setDropItems(setting);
+    	}
+    	
+	}
+    
+    //
+    private static void initOresOreExplosionsConfig(ConfigEx cfg, String category) {
+
+    	oreExplosion = cfg.getBoolean("Ore explosion", category, oreExplosion, "Enables the ability for ores to explode.");
+    	oreExplosionChance = cfg.getDouble("Ore explosion chance", category, oreExplosionChance, oreExplosionChanceMin, oreExplosionChanceMax, "Ore explosion chance, 1 = all the time.");
+    	oreExplosionFortune = cfg.getBoolean("Ore explosion fortune", category, oreExplosionFortune, "If ores are mined with a fortune enchantment their explosion chance is multiplied by the recipe multiplier. Only affects ores that are set to drop items.");
+    	oreExplosionOverride = cfg.getBoolean("Ore explosion override", category, oreExplosionOverride, "All ores will explode ignoring per ore settings, ore explosions must be enabled or this will be ignored.");
+    	oreExplosionSilkTouch = cfg.getBoolean("Ore explosion silk touch", category, oreExplosionSilkTouch, "If ores are mined with a silk touch enchantment they won't explode at all.");
+    	oreExplosionStrength = cfg.getDouble("Ore explosion strength", category, oreExplosionStrength, oreExplosionStrengthMin, oreExplosionStrengthMax, "Ore explosion strength, 4 = TNT strength.");
+   	
+    }
+
+    //
+    private static void initOresOreExplosionOresConfig(ConfigEx cfg, String category) {
+
+    	boolean setting;
+    	for (BlockRecipeData blockData : BlockRecipeData.values()) {
+    		setting = cfg.getBlockProperty(blockData.getName(), category, blockData.getOreExplosion());
+    		if (oreExplosion && oreExplosionOverride) setting = true;
+    		if (!(oreExplosion)) setting = false;
+    		blockData.setOreExplosion(setting);
+    	}
+    	
+	}
+    
+    //
+    private static void initRecipesFurnaceToItemsConfig(ConfigEx cfg, String category) {
+        
+    	furnaceToItem = cfg.getBoolean("Furnace to item", category, furnaceToItem, "Enables the ability to furnace direct to items, recipe multiplier will control output count.");
+    	furnaceToItemOverride = cfg.getBoolean("Furnace to item override", category, furnaceToItemOverride, "All ores will furnace direct to items ignoring per ore settings, furnace to item must be enabled or this will be ignored.");
+		
+    }
+    
+    //
+    private static void initRecipesFurnaceToItemsFurnaceToItemOresConfig(ConfigEx cfg, String category) {
+    	
+    	boolean setting;
+    	for (BlockRecipeData blockData : BlockRecipeData.values()) {
+    		setting = cfg.getBlockProperty(blockData.getName(), category, blockData.getFurnaceRecipeToItem());
+    		if (furnaceToItem && furnaceToItemOverride) setting = true;
+    		if (!(furnaceToItem)) setting = false;
+    		blockData.setFurnaceRecipeToItem(setting);
+    	}
+    	
+	}
+    
+    //
+    private static void initRecipesIntegrationConfig(ConfigEx cfg, String category) {
+
+    	immersiveEngineeringRecipes = cfg.getBoolean("Immersive Engineering recipes", category, immersiveEngineeringRecipes, "Enable Immersive Engineering recipe integration.");
+    	industrialCraft2Recipes = cfg.getBoolean("Industrial Craft 2 recipes", category, industrialCraft2Recipes, "Enable Industrial Craft 2 recipe integration.");
+    	mekanismRecipes = cfg.getBoolean("Mekanism recipes", category, mekanismRecipes, "Enable Mekanism recipe integration.");
+    	thermalExpansionRecipes = cfg.getBoolean("Thermal Expansion recipes", category, thermalExpansionRecipes, "Enable Thermal Expansion recipe integration.");
+    	tinkersConstructRecipes = cfg.getBoolean("Tinkers' Construct recipes", category, tinkersConstructRecipes, "Enable Tinkers' Construct recipe integration.");
+    	
+    	vanillaCraftingRecipes = cfg.getBoolean("Vanilla crafting recipes", category, vanillaCraftingRecipes, "Enable crafting recipes to convert to oredict ores, only works with 1x recipe multiplier.");
+		vanillaFurnaceRecipes = cfg.getBoolean("Vanilla furnace recipes", category, vanillaFurnaceRecipes, "Enable furnace recipes to smelt to oredict ores.");
     	
     }
     
     //
-    private static void initRecipeMultiplierOverrideConfig(Configuration cfg) {
+    private static void initRecipesIntegrationThermalExpansionConfig(ConfigEx cfg, String category) {
     	
-    	override = cfg.getInt("Override Multipliers", CATEGORY_RECIPE_MULTIPLIER_OVERRIDE, -1, -1, maxMult, "Change this setting to override all recipe multipliers, -1 means ignore.");
-    	override = min(maxMult, max(-1, override));
+    	inductionSmelterFullOutput = cfg.getBoolean("Induction Smelter full output", category, inductionSmelterFullOutput, "Enable full Induction Smelter output. Do not reduce output for augment compensation, uses much more energy.");
+    	inductionSmelterFullOutputAmountFactor = cfg.getFloat("Induction Smelter full output amount factor", category, inductionSmelterFullOutputAmountFactor, outputFactorMin, fullOutputFactorMax, "Induction Smelter full output amount factor.");
+    	inductionSmelterFullOutputEnergyFactor = cfg.getFloat("Induction Smelter full output energy factor", category, inductionSmelterFullOutputEnergyFactor, outputFactorMin, fullOutputFactorMax, "Induction Smelter full output energy factor.");    	
+    	inductionSmelterReducedOutputAmountFactor = cfg.getFloat("Induction Smelter reduced output amount factor", category, inductionSmelterReducedOutputAmountFactor, outputFactorMin, reducedOutputFactorMax, "Induction Smelter reduced output amount factor.");
+    	inductionSmelterReducedOutputEnergyFactor = cfg.getFloat("Induction Smelter reduced output energy factor", category, inductionSmelterReducedOutputEnergyFactor, outputFactorMin, reducedOutputFactorMax, "Induction Smelter reduced output energy factor.");
+    	
+    	pulverizerFullOutput = cfg.getBoolean("Pulverizer full output", category, pulverizerFullOutput, "Enable full Pulverizer output. Do not reduce output for augment compensation, uses much more energy.");
+    	pulverizerFullOutputAmountFactor = cfg.getFloat("Pulverizer full output amount factor", category, pulverizerFullOutputAmountFactor, outputFactorMin, fullOutputFactorMax, "Pulverizer full output amount factor.");
+    	pulverizerFullOutputEnergyFactor = cfg.getFloat("Pulverizer full output energy factor", category, pulverizerFullOutputEnergyFactor, outputFactorMin, fullOutputFactorMax, "Pulverizer full output energy factor.");    	
+    	pulverizerReducedOutputAmountFactor = cfg.getFloat("Pulverizer reduced output amount factor", category, pulverizerReducedOutputAmountFactor, outputFactorMin, reducedOutputFactorMax, "Pulverizer reduced output amount factor.");
+    	pulverizerReducedOutputEnergyFactor = cfg.getFloat("Pulverizer reduced output energy factor", category, pulverizerReducedOutputEnergyFactor, outputFactorMin, reducedOutputFactorMax, "Pulverizer reduced output energy factor.");
+    	
+    	redstoneFurnaceFullOutput = cfg.getBoolean("Redstone Furnace full output", category, redstoneFurnaceFullOutput, "Enable full Redstone Furnace output. Do not reduce output for augment compensation, uses much more energy.");
+    	redstoneFurnaceFullOutputAmountFactor = cfg.getFloat("Redstone Furnace full output amount factor", category, redstoneFurnaceFullOutputAmountFactor, outputFactorMin, fullOutputFactorMax, "Redstone Furnace full output amount factor.");
+    	redstoneFurnaceFullOutputEnergyFactor = cfg.getFloat("Redstone Furnace full output energy factor", category, redstoneFurnaceFullOutputEnergyFactor, outputFactorMin, fullOutputFactorMax, "Redstone Furnace full output energy factor.");    	
+    	redstoneFurnaceReducedOutputAmountFactor = cfg.getFloat("Redstone Furnace reduced output amount factor", category, redstoneFurnaceReducedOutputAmountFactor, outputFactorMin, reducedOutputFactorMax, "Redstone Furnace reduced output amount factor.");
+    	redstoneFurnaceReducedOutputEnergyFactor = cfg.getFloat("Redstone Furnace reduced output energy factor", category, redstoneFurnaceReducedOutputEnergyFactor, outputFactorMin, reducedOutputFactorMax, "Redstone Furnace reduced output energy factor.");
     	
     }
-
+    
+    //
+    private static void initRecipesRecipeMultipliersConfig(ConfigEx cfg, String category) {
+    	
+    	recipeMultiplierOverride = cfg.getInt("Override Multipliers", category, recipeMultiplierOverride, recipeMultiplierOverrideMin, recipeMultiplierMax, "Change this setting to override all recipe multipliers, -1 means ignore.");
+    	recipeMultiplierOverride = clamp(recipeMultiplierOverride, recipeMultiplierOverrideMin, recipeMultiplierMax);
+    	
+    }
+    
+    //
+    private static void initRecipesRecipeMultipliersRecipeMultiplierOresConfig(ConfigEx cfg, String category) {
+	
+    	int setting;    	
+    	for (BlockRecipeData blockData : BlockRecipeData.values()) {
+    		setting = cfg.getBlockProperty(blockData.getName(), category, blockData.getRecipeMultiplier());
+    		setting = clamp(setting, recipeMultiplierMin, recipeMultiplierMax);
+    		if (recipeMultiplierOverride > recipeMultiplierOverrideMin) setting = clamp(recipeMultiplierOverride, recipeMultiplierMin, recipeMultiplierMax);
+    		blockData.setRecipeMultiplier(setting);
+		} 
+    	
+    }
+    
 }

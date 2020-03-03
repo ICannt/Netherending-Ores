@@ -61,11 +61,6 @@ public class BlockOreEndModded2 extends BlockVariantBase {
     }
 
     @Override
-    public int damageDropped(IBlockState state) {
-        return getMetaFromState(state);
-    }
-
-    @Override
     public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
         return state.getValue(VARIANT).getLight();
     }  
@@ -79,6 +74,11 @@ public class BlockOreEndModded2 extends BlockVariantBase {
     @Override
     public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
         return world.getBlockState(pos).getValue(VARIANT).getResistance() / 5F;
+    }
+    
+    @Override
+    public int getOrdinal(IBlockState state) {
+    	return BlockDataOreEndModded2.values()[getMetaFromState(state)].getBlockRecipeDataOrdinal();
     }
     
     @SideOnly(Side.CLIENT)
