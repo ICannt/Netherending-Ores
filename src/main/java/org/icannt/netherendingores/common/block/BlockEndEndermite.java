@@ -2,6 +2,7 @@ package org.icannt.netherendingores.common.block;
 
 import java.util.Random;
 
+import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
 
 import net.minecraft.block.Block;
@@ -64,6 +65,7 @@ public class BlockEndEndermite extends Block {
 
             EntityEndermite endermite = new EntityEndermite(worldIn);
             endermite.setLocationAndAngles(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, 0.0F, 0.0F);
+            endermite.setSpawnedByPlayer(Config.endermiteEndermanHostility); // Force hostility, try to trap the player in a bad situation.
             worldIn.spawnEntity(endermite);
             endermite.spawnExplosionParticle();
 
