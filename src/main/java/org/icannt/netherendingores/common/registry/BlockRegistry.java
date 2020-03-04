@@ -191,9 +191,9 @@ public class BlockRegistry {
 		
 		            if (!(silktouch && Config.oreExplosionSilkTouch)) {
 		                if (world.rand.nextDouble() <= Config.oreExplosionChance * multi) {
-		                    //world.createExplosion(player, blockPos.getX(), blockPos.getY(), blockPos.getZ(), (float) Config.oreExplosionStrength, true);
-		                	world.spawnEntity(new EntityPrimedOre(world, blockPos.getX(), blockPos.getY(), blockPos.getZ(), blockState.getBlock()));
-		                	world.playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1F, 1F);
+		                    world.createExplosion(player, blockPos.getX(), blockPos.getY(), blockPos.getZ(), (float) Config.oreExplosionStrength, true);
+		                	//world.spawnEntity(new EntityPrimedOre(world, blockPos.getX(), blockPos.getY(), blockPos.getZ(), blockState.getBlock()));
+		                	//world.playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1F, 1F);
 		                }
 		            }
 		

@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockNetherNetherfish extends BlockNetherrack {
 
     public BlockNetherNetherfish() {
-        setRegistryName(Info.MOD_ID, "block_netherfish");
+        setRegistryName(Info.MOD_ID, "block_nether_netherfish");
         setTranslationKey(getRegistryName().toString());
     }
     

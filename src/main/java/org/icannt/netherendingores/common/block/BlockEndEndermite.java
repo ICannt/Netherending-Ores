@@ -29,7 +29,7 @@ public class BlockEndEndermite extends Block {
 
     public BlockEndEndermite() {
         super(Material.ROCK, MapColor.SAND);
-        setRegistryName(Info.MOD_ID, "block_endermite");
+        setRegistryName(Info.MOD_ID, "block_end_endermite");
         setTranslationKey(getRegistryName().toString());
     }
     
