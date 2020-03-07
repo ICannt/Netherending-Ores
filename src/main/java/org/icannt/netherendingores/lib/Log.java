@@ -129,4 +129,14 @@ public class Log {
     public static void logCacheItemsFail(String entry) {
     	error("Cannot find a valid Ore Dictionary entry for \"" + entry + "\" item drops. Is a mod that can use it loaded? Defaulting to block drop mode.");
     }
+    
+    //
+    public static void logBigInfo(String entry) {
+    	info("******* NOTICE  ME *******");
+    	info("**************************");
+    	info(entry);
+    	info("**************************");
+    	info("******* NOTICE  ME *******");
+    }
+    
 }

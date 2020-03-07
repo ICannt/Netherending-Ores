@@ -1,4 +1,4 @@
-package org.icannt.netherendingores.integration.common.registry;
+package org.icannt.netherendingores.integration.common.compat;
 
 import java.util.Arrays;
 import java.util.List;

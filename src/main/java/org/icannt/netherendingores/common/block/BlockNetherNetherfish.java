@@ -3,10 +3,11 @@ package org.icannt.netherendingores.common.block;
 import java.util.Random;
 
 import org.icannt.netherendingores.common.entity.EntityNetherfish;
-import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
 
-import net.minecraft.block.BlockNetherrack;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
@@ -22,9 +23,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Created by ICannt on 28/07/19.
  */
-public class BlockNetherNetherfish extends BlockNetherrack {
+public class BlockNetherNetherfish extends Block {
 
     public BlockNetherNetherfish() {
+        super(Material.ROCK, MapColor.NETHERRACK);
         setRegistryName(Info.MOD_ID, "block_nether_netherfish");
         setTranslationKey(getRegistryName().toString());
     }
@@ -52,7 +54,7 @@ public class BlockNetherNetherfish extends BlockNetherrack {
     @Override
     public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune) {
 
-        if (!worldIn.isRemote && worldIn.getGameRules().getBoolean("doTileDrops") && Config.netherfish) {
+        if (!worldIn.isRemote && worldIn.getGameRules().getBoolean("doTileDrops")) {
 
             EntityNetherfish netherfish = new EntityNetherfish(worldIn);
             netherfish.setLocationAndAngles(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, 0.0F, 0.0F);

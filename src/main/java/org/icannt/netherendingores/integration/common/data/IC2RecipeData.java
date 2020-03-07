@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.integration.common.data;
 
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
-import org.icannt.netherendingores.integration.common.registry.IC2RecipeInput;
+import org.icannt.netherendingores.integration.common.compat.IC2RecipeInput;
 import org.icannt.netherendingores.lib.Log;
 
 import ic2.api.recipe.Recipes;

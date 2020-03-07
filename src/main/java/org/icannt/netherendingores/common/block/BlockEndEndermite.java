@@ -36,10 +36,7 @@ public class BlockEndEndermite extends Block {
     
     @Override
     public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity) {
-        if (entity instanceof EntityDragon)
-        {
-        	return false;
-        }
+        if (entity instanceof EntityDragon) return false;
         return true;
     }
     

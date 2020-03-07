@@ -1,12 +1,15 @@
 package org.icannt.netherendingores.integration.common.registry;
 
+import org.icannt.netherendingores.integration.common.compat.WailaCompatibility;
 import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
+import org.icannt.netherendingores.lib.Log;
 
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -57,6 +60,17 @@ public class RegistryIntegrationEvents {
 		if (Loader.isModLoaded("ic2") && Config.industrialCraft2Recipes) {
 			RecipeIntegrationRegistry.registerIC2Recipes();
 		}
+		
+		// Load WAILA/HWYLA Integration		
+        if (Loader.isModLoaded("waila")) {
+        	
+        	Log.debug("Attempting to load WAILA/HWYLA integration");
+        	
+            FMLInterModComms.sendMessage("waila", "register", WailaCompatibility.class.getCanonicalName() + ".register");
+            
+            Log.info("Loaded WAILA/HWYLA Integration");
+            
+        }
 
 	}
 

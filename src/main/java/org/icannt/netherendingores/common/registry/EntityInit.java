@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 public class EntityInit {
 
 	public static void registerEntities() {
-		if (Config.netherfish) registerEntity("netherfish", EntityNetherfish.class, Config.NETHERFISH_ENTITY_ID, Config.NETHERFISH_TRACKING_RANGE, Config.NETHERFISH_SPAWN_EGG_PRIMARY_COLOR, Config.NETHERFISH_SPAWN_EGG_SECONDARY_COLOR);
+		registerEntity("netherfish", EntityNetherfish.class, Config.NETHERFISH_ENTITY_ID, Config.NETHERFISH_TRACKING_RANGE, Config.NETHERFISH_SPAWN_EGG_PRIMARY_COLOR, Config.NETHERFISH_SPAWN_EGG_SECONDARY_COLOR);
 		registerEntity("primedOre", EntityPrimedOre.class, Config.PRIMED_ORE_ENTITY_ID, 0);
 	}
 	
