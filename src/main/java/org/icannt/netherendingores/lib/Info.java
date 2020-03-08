@@ -29,6 +29,7 @@ public class Info {
 			+"after:bigreactors;"
 			+"after:immersiveengineering;"
 			+"after:waila;"
+			+"after:wawla;"
 			;
     
     public static final String CLIENT_PROXY_CLASS = "org.icannt.netherendingores.proxy.ClientProxy";

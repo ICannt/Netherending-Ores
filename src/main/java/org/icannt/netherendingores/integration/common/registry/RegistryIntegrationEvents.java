@@ -71,6 +71,17 @@ public class RegistryIntegrationEvents {
             Log.info("Loaded WAILA/HWYLA Integration");
             
         }
+        
+        // Load WAWLA Integration
+//        if (Loader.isModLoaded("wawla")) {
+//        	
+//        	Log.debug("Attempting to load WAWLA integration");
+//        	
+//            WawlaCompatibility.loadCompatility();
+//            
+//            Log.info("Loaded WAWLA Integration");
+//            
+//        }
 
 	}
 

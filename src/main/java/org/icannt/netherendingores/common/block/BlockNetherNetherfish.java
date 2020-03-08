@@ -10,6 +10,7 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,6 +30,21 @@ public class BlockNetherNetherfish extends Block {
         super(Material.ROCK, MapColor.NETHERRACK);
         setRegistryName(Info.MOD_ID, "block_nether_netherfish");
         setTranslationKey(getRegistryName().toString());
+    }
+    
+	//					Stone	Monster		Netherrack	Monster		End Stone	Monster
+	//Hardness			1.5		0.75		0.4			0.2			3			1.5
+    //Blast				30		3.75		2			0.25		45			5.625
+
+    @Override
+    public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
+        return 0.2F;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public float getExplosionResistance(Entity exploder) {
+        return 0.25F / 5F;
     }
     
     @Override
