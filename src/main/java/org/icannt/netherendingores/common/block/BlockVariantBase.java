@@ -3,6 +3,7 @@ package org.icannt.netherendingores.common.block;
 import java.util.Random;
 
 import org.icannt.netherendingores.client.creativetab.TabNetherendingOres;
+import org.icannt.netherendingores.common.block.data.BlockDataOreEndModded1;
 import org.icannt.netherendingores.common.registry.BlockRecipeData;
 import org.icannt.netherendingores.lib.Info;
 
@@ -10,8 +11,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -27,14 +30,44 @@ public class BlockVariantBase extends Block {
         setTranslationKey(getRegistryName().toString());
         setCreativeTab(TabNetherendingOres.NETHERENDING_ORES_TAB);
     }
+
+    
+    @Override
+    public int getMetaFromState(IBlockState state) {
+    	
+        return BlockRecipeData.values()[getOrd(state)].getBlockMeta();
+        
+    }
+    
+    @Override
+    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+    	
+        return BlockRecipeData.values()[getOrd(state)].getLightValue();
+        
+    } 
+    
+    
+    @Override
+    public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
+   	
+    	return BlockRecipeData.values()[getOrd(state)].getBlockHardness();
+    	
+    }
+
+    
+    @SuppressWarnings("deprecation")
+    @Override
+    public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
+    	
+    	return BlockRecipeData.values()[getOrd(world.getBlockState(pos))].getExplosionResistance();
+    	
+    }
     
     @Override
     public Item getItemDropped(IBlockState state, Random random, int fortune) {
     	
-    	int ordinal = getOrdinal(state);
-
-    	if (BlockRecipeData.values()[ordinal].getDropItems()) {
-    		return BlockRecipeData.values()[ordinal].getItemDropped();
+    	if (BlockRecipeData.values()[getOrd(state)].getDropItems()) {
+    		return BlockRecipeData.values()[getOrd(state)].getItemDropped();
     	}
     	
     	return Item.getItemFromBlock(this);
@@ -44,10 +77,8 @@ public class BlockVariantBase extends Block {
     @Override
     public int damageDropped(IBlockState state) {
     	
-    	int ordinal = getOrdinal(state);
-    	
-    	if (BlockRecipeData.values()[ordinal].getDropItems()) {
-    		return BlockRecipeData.values()[ordinal].getDamageDropped();
+    	if (BlockRecipeData.values()[getOrd(state)].getDropItems()) {
+    		return BlockRecipeData.values()[getOrd(state)].getDamageDropped();
     	}
     	
         return getMetaFromState(state);
@@ -56,10 +87,8 @@ public class BlockVariantBase extends Block {
     @Override
     public int quantityDropped(IBlockState state, int fortune, Random random) {
     	
-    	int ordinal = getOrdinal(state);
-    	
-    	if (BlockRecipeData.values()[ordinal].getDropItems()) {
-    		return BlockRecipeData.values()[ordinal].getQuantityDropped(fortune, random);
+    	if (BlockRecipeData.values()[getOrd(state)].getDropItems()) {
+    		return BlockRecipeData.values()[getOrd(state)].getQuantityDropped(fortune, random);
     	}
     	
     	return 1;
@@ -71,17 +100,15 @@ public class BlockVariantBase extends Block {
     	
     	Random rand = world instanceof World ? ((World)world).rand : RANDOM;
     	
-    	int ordinal = getOrdinal(state);
-    	
-    	if (BlockRecipeData.values()[ordinal].getDropItems()) {
-    		return BlockRecipeData.values()[ordinal].getExpDrop(fortune, rand);
+    	if (BlockRecipeData.values()[getOrd(state)].getDropItems()) {
+    		return BlockRecipeData.values()[getOrd(state)].getExpDrop(fortune, rand);
     	}
     	
     	return 0;
     	
     }
     
-    public int getOrdinal(IBlockState state) {
+    public int getOrd(IBlockState state) {
     	return 0;
     }
     

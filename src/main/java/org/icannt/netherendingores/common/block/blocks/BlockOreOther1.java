@@ -77,7 +77,7 @@ public class BlockOreOther1 extends BlockVariantBase {
     }
     
     @Override
-    public int getOrdinal(IBlockState state) {
+    public int getOrd(IBlockState state) {
     	return BlockDataOreOther1.values()[getMetaFromState(state)].getBlockRecipeDataOrdinal();
     }
     

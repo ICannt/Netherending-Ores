@@ -77,7 +77,7 @@ public class BlockOreNetherModded2 extends BlockVariantBase {
     }
     
     @Override
-    public int getOrdinal(IBlockState state) {
+    public int getOrd(IBlockState state) {
     	return BlockDataOreNetherModded2.values()[getMetaFromState(state)].getBlockRecipeDataOrdinal();
     }
 

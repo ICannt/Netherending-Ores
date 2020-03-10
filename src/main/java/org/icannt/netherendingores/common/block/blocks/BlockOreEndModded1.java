@@ -55,29 +55,13 @@ public class BlockOreEndModded1 extends BlockVariantBase {
         return getDefaultState().withProperty(VARIANT, BlockDataOreEndModded1.values()[meta]);
     }
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return state.getValue(VARIANT).ordinal();
-    }
+//    @Override
+//    public int getMetaFromState(IBlockState state) {
+//        return state.getValue(VARIANT).ordinal();
+//    }
 
     @Override
-    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-        return state.getValue(VARIANT).getLight();
-    }  
-
-    @Override
-    public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
-        return state.getValue(VARIANT).getHardness();
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
-        return world.getBlockState(pos).getValue(VARIANT).getResistance() / 5F;
-    }
-
-    @Override
-    public int getOrdinal(IBlockState state) {
+    public int getOrd(IBlockState state) {
     	return BlockDataOreEndModded1.values()[getMetaFromState(state)].getBlockRecipeDataOrdinal();
     }
     
