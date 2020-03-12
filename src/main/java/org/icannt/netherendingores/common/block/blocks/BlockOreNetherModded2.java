@@ -30,62 +30,41 @@ public class BlockOreNetherModded2 extends BlockVariantBase {
     private static final PropertyEnum<BlockDataOreNetherModded2> VARIANT = PropertyEnum.create("blocks", BlockDataOreNetherModded2.class);
 
     public BlockOreNetherModded2() {
-        super(Material.ROCK, MapColor.GRAY, "ore_nether_modded_2");
-        for (BlockDataOreNetherModded2 variant : BlockDataOreNetherModded2.values()) {
-        	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), getStateFromMeta(variant.ordinal()));
-        }
+    	
+        super(MapColor.NETHERRACK, "ore_nether_modded_2");
+        
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
+    	
         return new BlockStateContainer(this, VARIANT);
+        
     }   
-    
+
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
 	{
+		
 		for (BlockDataOreNetherModded2 type : BlockDataOreNetherModded2.values()) {
 			list.add(new ItemStack(this, 1, type.ordinal()));
 		}
+		
     }
-    
+
 	@SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
+		
         return getDefaultState().withProperty(VARIANT, BlockDataOreNetherModded2.values()[meta]);
+        
     }
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return state.getValue(VARIANT).ordinal();
-    }
-
-    @Override
-    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-        return state.getValue(VARIANT).getLight();
-    }  
-
-    @Override
-    public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
-        return state.getValue(VARIANT).getHardness();
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
-        return world.getBlockState(pos).getValue(VARIANT).getResistance() / 5F;
-    }
-    
     @Override
     public int getOrd(IBlockState state) {
+    	
     	return BlockDataOreNetherModded2.values()[getMetaFromState(state)].getBlockRecipeDataOrdinal();
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void initItemBlockModels() {
-    	for (BlockDataOreNetherModded2 variant : BlockDataOreNetherModded2.values()) {
-    		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), variant.ordinal(), new ModelResourceLocation(Item.getItemFromBlock(this).getRegistryName(), "blocks=" + variant.getName()));
-    	}
+    	
     }
     
 }

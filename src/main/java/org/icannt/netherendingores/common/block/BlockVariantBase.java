@@ -24,11 +24,18 @@ import net.minecraft.world.World;
  */
 public class BlockVariantBase extends Block {
 	
-    public BlockVariantBase(Material material, MapColor mapColor, String registry) {
-        super(material, mapColor);
+    public BlockVariantBase(MapColor mapColor, String registry) {
+    	
+        super(Material.ROCK, mapColor);
+        
         setRegistryName(Info.MOD_ID, registry);
         setTranslationKey(getRegistryName().toString());
         setCreativeTab(TabNetherendingOres.NETHERENDING_ORES_TAB);
+        
+        for (BlockRecipeData variant : BlockRecipeData.values()) {
+        	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), variant.getModBlockState());
+        }
+        
     }
 
     
@@ -44,8 +51,7 @@ public class BlockVariantBase extends Block {
     	
         return BlockRecipeData.values()[getOrd(state)].getLightValue();
         
-    } 
-    
+    }
     
     @Override
     public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {

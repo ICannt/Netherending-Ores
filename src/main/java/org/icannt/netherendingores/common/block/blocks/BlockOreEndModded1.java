@@ -30,46 +30,41 @@ public class BlockOreEndModded1 extends BlockVariantBase {
     private static final PropertyEnum<BlockDataOreEndModded1> VARIANT = PropertyEnum.create("blocks", BlockDataOreEndModded1.class);
 
     public BlockOreEndModded1() {
-        super(Material.ROCK, MapColor.GRAY, "ore_end_modded_1");
-        for (BlockDataOreEndModded1 variant : BlockDataOreEndModded1.values()) {
-        	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), getStateFromMeta(variant.ordinal()));
-        }
+    	
+        super(MapColor.SAND, "ore_end_modded_1");
+        
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
+    	
         return new BlockStateContainer(this, VARIANT);
+        
     }   
 
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
 	{
+		
 		for (BlockDataOreEndModded1 type : BlockDataOreEndModded1.values()) {
 			list.add(new ItemStack(this, 1, type.ordinal()));
 		}
+		
     }
 
 	@SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
+		
         return getDefaultState().withProperty(VARIANT, BlockDataOreEndModded1.values()[meta]);
+        
     }
-
-//    @Override
-//    public int getMetaFromState(IBlockState state) {
-//        return state.getValue(VARIANT).ordinal();
-//    }
 
     @Override
     public int getOrd(IBlockState state) {
+    	
     	return BlockDataOreEndModded1.values()[getMetaFromState(state)].getBlockRecipeDataOrdinal();
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public void initItemBlockModels() {
-    	for (BlockDataOreEndModded1 variant : BlockDataOreEndModded1.values()) {
-    		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), variant.ordinal(), new ModelResourceLocation(Item.getItemFromBlock(this).getRegistryName(), "blocks=" + variant.getName()));
-    	}
+    	
     }
 
 }

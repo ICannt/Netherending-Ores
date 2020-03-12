@@ -2,6 +2,7 @@ package org.icannt.netherendingores.common.block.blocks;
 
 import org.icannt.netherendingores.common.block.BlockVariantBase;
 import org.icannt.netherendingores.common.block.data.BlockDataOreOther1;
+import org.icannt.netherendingores.common.registry.BlockRecipeData;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -30,62 +31,47 @@ public class BlockOreOther1 extends BlockVariantBase {
     private static final PropertyEnum<BlockDataOreOther1> VARIANT = PropertyEnum.create("blocks", BlockDataOreOther1.class);
 
     public BlockOreOther1() {
-        super(Material.ROCK, MapColor.GRAY, "ore_other_1");
-        for (BlockDataOreOther1 variant : BlockDataOreOther1.values()) {
-        	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), getStateFromMeta(variant.ordinal()));
-        }
+    	
+        super(MapColor.STONE, "ore_other_1"); // TODO: Variant fix for correct map colour?
+        
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
+    	
         return new BlockStateContainer(this, VARIANT);
+        
     }   
-    
+
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list)
 	{
+		
 		for (BlockDataOreOther1 type : BlockDataOreOther1.values()) {
 			list.add(new ItemStack(this, 1, type.ordinal()));
 		}
+		
     }
-    
+
 	@SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
+		
         return getDefaultState().withProperty(VARIANT, BlockDataOreOther1.values()[meta]);
+        
     }
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return state.getValue(VARIANT).ordinal();
-    }
-    
-    @Override
-    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-        return state.getValue(VARIANT).getLight();
-    }
-
-    @Override
-    public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
-        return state.getValue(VARIANT).getHardness();
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
-        return world.getBlockState(pos).getValue(VARIANT).getResistance() / 5F;
-    }
-    
     @Override
     public int getOrd(IBlockState state) {
+    	
     	return BlockDataOreOther1.values()[getMetaFromState(state)].getBlockRecipeDataOrdinal();
+    	
     }
     
-    @SideOnly(Side.CLIENT)
-    public void initItemBlockModels() {
-    	for (BlockDataOreOther1 variant : BlockDataOreOther1.values()) {
-    		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), variant.ordinal(), new ModelResourceLocation(Item.getItemFromBlock(this).getRegistryName(), "blocks=" + variant.getName()));
-    	}
+    @Override
+    public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos)
+    {
+        return BlockRecipeData.values()[getOrd(state)].getModMapColor();
     }
     
 }

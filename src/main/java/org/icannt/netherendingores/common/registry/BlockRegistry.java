@@ -22,6 +22,7 @@ import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded2;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreOther1;
+import org.icannt.netherendingores.common.block.data.BlockDataOreEndModded1;
 import org.icannt.netherendingores.common.entity.EntityPrimedOre;
 import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
@@ -29,6 +30,7 @@ import org.icannt.netherendingores.lib.Log;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,6 +43,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -267,16 +270,15 @@ public class BlockRegistry {
     
     @SideOnly(Side.CLIENT)
     public static void initModels() {
+    	
     	CREATIVE_TAB.initItemBlockModels();
     	BLOCK_END_ENDERMITE.initItemBlockModels();
     	BLOCK_NETHER_NETHERFISH.initItemBlockModels();
-    	ORE_END_MODDED_1.initItemBlockModels();
-    	ORE_END_MODDED_2.initItemBlockModels();
-    	ORE_END_VANILLA.initItemBlockModels();
-    	ORE_NETHER_MODDED_1.initItemBlockModels();
-    	ORE_NETHER_MODDED_2.initItemBlockModels();
-    	ORE_NETHER_VANILLA.initItemBlockModels();
-    	ORE_OTHER_1.initItemBlockModels();
+    	
+    	for (BlockRecipeData blockData : BlockRecipeData.values()) {
+    		ModelLoader.setCustomModelResourceLocation(blockData.getModBlockItem(), blockData.getBlockMeta(), new ModelResourceLocation(blockData.getModBlockItem().getRegistryName(), "blocks=" + blockData.name()));
+    	}
+    	
     }
 
 }
