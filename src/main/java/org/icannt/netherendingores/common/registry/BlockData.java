@@ -13,7 +13,6 @@ import com.google.common.base.CaseFormat;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -21,15 +20,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * Created by ICannt on 08/04/18.
  */
-public enum BlockRecipeData implements IStringSerializable {
+public enum BlockData implements IStringSerializable {
 
 	
     END_ALUMINUM_ORE ("end_aluminum_ore", "ore_end_modded_1", 0, new String[] {"aluminium"}, "", 0, 3, 1F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
@@ -135,7 +131,7 @@ public enum BlockRecipeData implements IStringSerializable {
     private int recipeMultiplier;
     private boolean oreExplosionEnabled;
 
-    BlockRecipeData(String name, String blockName, int blockMeta, String[] itemAltOreDictSuffix, String itemOreDictPrefix,
+    BlockData(String name, String blockName, int blockMeta, String[] itemAltOreDictSuffix, String itemOreDictPrefix,
     		int lightValue, int harvestLevel, float blockHardness, float explosionResistance, EnumRarity enumRarity,
     		Object[] dropItemObject, boolean dropItems, int dropItemsQuantityMin, int dropItemsQuantityMax, int dropItemsExperienceMin, int dropItemsExperienceMax,
     		boolean furnaceRecipeEnabled, boolean furnaceRecipeToItem, int recipeMultiplier, boolean oreExplosionEnabled) {

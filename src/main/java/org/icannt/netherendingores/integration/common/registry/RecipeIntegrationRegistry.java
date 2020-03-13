@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.integration.common.registry;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.common.registry.BlockData;
 import org.icannt.netherendingores.common.registry.RecipeHelper;
 import org.icannt.netherendingores.integration.common.data.TiCRecipeData;
 import org.icannt.netherendingores.lib.Log;
@@ -23,7 +23,7 @@ public class RecipeIntegrationRegistry {
 		Log.debug("Removing Automatic Thermal Expansion Recipes");
 		
 		// Remove the existing recipes first that are added automatically.
-		for (BlockRecipeData blockData : BlockRecipeData.values()) {
+		for (BlockData blockData : BlockData.values()) {
 			if (blockData.getRecipeMultiplier() > 1) {
 				ThermalExpansionHelper.removeFurnaceRecipe(blockData.getModBlockItemStack());
 				ThermalExpansionHelper.removePulverizerRecipe(blockData.getModBlockItemStack());
@@ -41,7 +41,7 @@ public class RecipeIntegrationRegistry {
 	
 		Log.debug("Registering Tinkers' Construct Recipes");
 	
-		for (BlockRecipeData blockData : BlockRecipeData.values()) {
+		for (BlockData blockData : BlockData.values()) {
 			// Add smelt recipe if: The recipe millibuckets is greater than 0 and if the target fluid exists.
 			if (TiCRecipeData.getMilliBuckets(blockData) > 0 && FluidRegistry.isFluidRegistered(blockData.getRawOreName())) {
 				RecipeHelper.tryRecipe(blockData, "smeltery", false);
@@ -67,7 +67,7 @@ public class RecipeIntegrationRegistry {
      * @param       multiplier The Recipe Multiplier
 	 */
 	private static void registerCommonRecipe(String device, int multiplier) {
-		for (BlockRecipeData blockData : BlockRecipeData.values()) {
+		for (BlockData blockData : BlockData.values()) {
 			if (blockData.getRecipeMultiplier() > multiplier) {
 				RecipeHelper.tryRecipe(blockData, device, true);
 				RecipeHelper.tryRecipe(blockData, device, false);

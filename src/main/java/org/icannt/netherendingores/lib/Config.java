@@ -2,7 +2,7 @@ package org.icannt.netherendingores.lib;
 
 import static net.minecraft.util.math.MathHelper.clamp;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.common.registry.BlockData;
 import org.icannt.netherendingores.common.registry.OreDictionaryOtherData;
 import org.icannt.netherendingores.proxy.CommonProxy;
 
@@ -274,7 +274,7 @@ public class Config {
     private static void initOresDropItemsDropItemOres(ConfigEx cfg, String category) {
     	
     	boolean setting;
-    	for (BlockRecipeData blockData : BlockRecipeData.values()) {
+    	for (BlockData blockData : BlockData.values()) {
     		setting = cfg.getBlockProperty(blockData.getName(), category, blockData.getDropItems());
     		if (dropItems && dropItemsOverride) setting = true;
     		if (!(dropItems)) setting = false;
@@ -299,7 +299,7 @@ public class Config {
     private static void initOresOreExplosionOresConfig(ConfigEx cfg, String category) {
 
     	boolean setting;
-    	for (BlockRecipeData blockData : BlockRecipeData.values()) {
+    	for (BlockData blockData : BlockData.values()) {
     		setting = cfg.getBlockProperty(blockData.getName(), category, blockData.getOreExplosion());
     		if (oreExplosion && oreExplosionOverride) setting = true;
     		if (!(oreExplosion)) setting = false;
@@ -320,7 +320,7 @@ public class Config {
     private static void initRecipesFurnaceToItemsFurnaceToItemOresConfig(ConfigEx cfg, String category) {
     	
     	boolean setting;
-    	for (BlockRecipeData blockData : BlockRecipeData.values()) {
+    	for (BlockData blockData : BlockData.values()) {
     		setting = cfg.getBlockProperty(blockData.getName(), category, blockData.getFurnaceRecipeToItem());
     		if (furnaceToItem && furnaceToItemOverride) setting = true;
     		if (!(furnaceToItem)) setting = false;
@@ -378,7 +378,7 @@ public class Config {
     private static void initRecipesRecipeMultipliersRecipeMultiplierOresConfig(ConfigEx cfg, String category) {
 	
     	int setting;    	
-    	for (BlockRecipeData blockData : BlockRecipeData.values()) {
+    	for (BlockData blockData : BlockData.values()) {
     		setting = cfg.getBlockProperty(blockData.getName(), category, blockData.getRecipeMultiplier());
     		setting = clamp(setting, recipeMultiplierMin, recipeMultiplierMax);
     		if (recipeMultiplierOverride > recipeMultiplierOverrideMin) setting = clamp(recipeMultiplierOverride, recipeMultiplierMin, recipeMultiplierMax);

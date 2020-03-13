@@ -1,4 +1,4 @@
-package org.icannt.netherendingores.client.block;
+package org.icannt.netherendingores.client.block.itemblock;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
@@ -6,9 +6,9 @@ import net.minecraft.item.ItemBlock;
 /**
  * Created by ICannt on 17/08/17.
  */
-public class ItemBlockVariantBase extends ItemBlock {
+public class ItemBlockOreVariantBase extends ItemBlock {
 
-    public ItemBlockVariantBase(Block block) {
+    public ItemBlockOreVariantBase(Block block) {
         super(block);
         setHasSubtypes(true);
     }

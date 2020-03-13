@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.integration.common.data;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.common.registry.BlockData;
 import org.icannt.netherendingores.lib.Log;
 
 import net.minecraft.util.IStringSerializable;
@@ -122,12 +122,12 @@ public enum TiCRecipeData implements IStringSerializable {
 	}
 	
 	//
-	public static int getMilliBuckets(BlockRecipeData blockData) {
+	public static int getMilliBuckets(BlockData blockData) {
 		return values()[blockData.ordinal()].getMilliBuckets(blockData.getRecipeMultiplier());
 	}
 	
 	//
-	public static void addSmeltRecipe(BlockRecipeData blockData) {
+	public static void addSmeltRecipe(BlockData blockData) {
 		Log.logRecipeMsg("smeltery", "", blockData.getName());
 		TinkerRegistry.registerMelting(blockData.getModBlockItemStack(), FluidRegistry.getFluid(blockData.getRawOreName()), getMilliBuckets(blockData));
 	}

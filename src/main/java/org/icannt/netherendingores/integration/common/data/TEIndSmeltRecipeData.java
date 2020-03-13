@@ -2,7 +2,7 @@ package org.icannt.netherendingores.integration.common.data;
 
 import static java.lang.Math.round;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.common.registry.BlockData;
 import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Log;
 
@@ -149,17 +149,17 @@ public enum TEIndSmeltRecipeData implements IStringSerializable {
 	*/
 	
 	//
-	public static void addIndSmeltSandRecipe(BlockRecipeData blockData, String material) {
+	public static void addIndSmeltSandRecipe(BlockData blockData, String material) {
 		values()[blockData.ordinal()].addIndSmeltRecipe(blockData, material, "sand", blockData.getOreDictItemStack("sand", 1), new ItemStack(Item.getByNameOrId("thermalfoundation:material"), 1, 865));
 	}
 	
 	//
-	public static void addIndSmeltRichSlagRecipe(BlockRecipeData blockData, String material) {
+	public static void addIndSmeltRichSlagRecipe(BlockData blockData, String material) {
 		values()[blockData.ordinal()].addIndSmeltRecipe(blockData, material, "rich slag", new ItemStack(Item.getByNameOrId("thermalfoundation:material"), 1, 865), new ItemStack(Item.getByNameOrId("thermalfoundation:material"), 1, 864));
 	}
 	
 	//
-	public void addIndSmeltRecipe(BlockRecipeData blockData, String material, String processingItem, ItemStack primaryInput, ItemStack secondaryOutput) {
+	public void addIndSmeltRecipe(BlockData blockData, String material, String processingItem, ItemStack primaryInput, ItemStack secondaryOutput) {
 		
 		int energy = 0;
 		int amount = 0;

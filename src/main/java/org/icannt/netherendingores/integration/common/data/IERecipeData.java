@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.integration.common.data;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.common.registry.BlockData;
 import org.icannt.netherendingores.lib.Log;
 
 import blusunrize.immersiveengineering.api.crafting.ArcFurnaceRecipe;
@@ -146,7 +146,7 @@ public enum IERecipeData implements IStringSerializable {
 
 	
 	//
-    public static int getCrusherEnergy(BlockRecipeData blockData) {
+    public static int getCrusherEnergy(BlockData blockData) {
         return values()[blockData.ordinal()].getCrusherEnergy(blockData.getRecipeMultiplier());
     }
     
@@ -160,12 +160,12 @@ public enum IERecipeData implements IStringSerializable {
 	}
 
 	//
-    public static int getCrusherAmount(BlockRecipeData blockData) {
+    public static int getCrusherAmount(BlockData blockData) {
         return values()[blockData.ordinal()].getCrusherAmount(blockData.getRecipeMultiplier());
     }
 	
 	//
-    public static float getCrusherSecondaryOutputChance(BlockRecipeData blockData) {
+    public static float getCrusherSecondaryOutputChance(BlockData blockData) {
     	return (float) (values()[blockData.ordinal()].crusher2xSecondaryOutputChance) / 100;
     }
 
@@ -179,7 +179,7 @@ public enum IERecipeData implements IStringSerializable {
 	}
 	
 	//
-    public static int getArcFurnEnergy(BlockRecipeData blockData) {
+    public static int getArcFurnEnergy(BlockData blockData) {
         return values()[blockData.ordinal()].getArcFurnEnergy(blockData.getRecipeMultiplier());
     }
 
@@ -193,12 +193,12 @@ public enum IERecipeData implements IStringSerializable {
 	}
 	
 	//
-    public static int getArcFurnAmount(BlockRecipeData blockData) {
+    public static int getArcFurnAmount(BlockData blockData) {
         return values()[blockData.ordinal()].getArcFurnAmount(blockData.getRecipeMultiplier());
     }
 	
 	//
-	public static void addCrusherRecipe(BlockRecipeData blockData, String material) {
+	public static void addCrusherRecipe(BlockData blockData, String material) {
 		switch (blockData.getRecipeMultiplier()) {
 			case 2: //CrusherRecipe.timeModifier = 5f;
 					CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherAmount(blockData)).addToSecondaryOutput(new Object[] {getCrusherSecondaryItemStack(blockData), getCrusherSecondaryOutputChance(blockData)}); break;
@@ -209,23 +209,23 @@ public enum IERecipeData implements IStringSerializable {
 	}
 	
 	//
-	public static void addArcFurnRecipe(BlockRecipeData blockData, String material) {
+	public static void addArcFurnRecipe(BlockData blockData, String material) {
 		ArcFurnaceRecipe.addRecipe(getArcFurnItemStack(blockData, material), blockData.getModBlockItemStack(), new ItemStack(Item.getByNameOrId("IEContent.itemMaterial"), 1, 7), 200, 512).setSpecialRecipeType("Ores");		
 	}
 	
 	//
-	public static ItemStack getCrusherPrimaryItemStack(BlockRecipeData blockData, String material) {
+	public static ItemStack getCrusherPrimaryItemStack(BlockData blockData, String material) {
 		Log.logRecipeMsg("crusher", blockData.getName(), blockData.getOreDictOutputName("crush", material));
 		return blockData.getOreDictOutputItemStack("crush", material, getCrusherAmount(blockData));
 	}
 	
 	//
-	public static ItemStack getCrusherSecondaryItemStack(BlockRecipeData blockData) {
+	public static ItemStack getCrusherSecondaryItemStack(BlockData blockData) {
 		return blockData.getOreDictItemStack(values()[blockData.ordinal()].crusher2xSecondaryOutputItem, 1);
 	}
 	
 	//
-	public static ItemStack getArcFurnItemStack(BlockRecipeData blockData, String material) {
+	public static ItemStack getArcFurnItemStack(BlockData blockData, String material) {
 		Log.logRecipeMsg("arc furnace", blockData.getName(), blockData.getOreDictOutputName("smelt", material));
 		return blockData.getOreDictOutputItemStack("smelt", material, getArcFurnAmount(blockData));
 	}

@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.integration.common.registry;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.common.registry.BlockData;
 import org.icannt.netherendingores.integration.common.data.IC2RecipeData;
 import org.icannt.netherendingores.integration.common.data.IERecipeData;
 import org.icannt.netherendingores.integration.common.data.MekRecipeData;
@@ -17,11 +17,11 @@ public class RecipeIntegrationHelper {
 	/**
 	 * Target recipe has been identified, attempt to add the recipe using mod specific recipe handlers.
 	 * 
-	 * @param       blockData Instance of BlockRecipeData, tracks where the index of a loop is, keeps things in context
+	 * @param       blockData Instance of BlockData, tracks where the index of a loop is, keeps things in context
 	 * @param       device Which machine recipe is to be used e.g. Macerator, Pulverizer
 	 * @param       material Recipe material that is being dealt with e.g. iron
 	 */
-	public static void addIntegrationRecipe(BlockRecipeData blockData, String device, String material) {
+	public static void addIntegrationRecipe(BlockData blockData, String device, String material) {
 		switch (device) {
 			case "smeltery": TiCRecipeData.addSmeltRecipe(blockData); break;
 			case "crusher": IERecipeData.addCrusherRecipe(blockData, material); break;

@@ -2,7 +2,7 @@ package org.icannt.netherendingores.integration.common.data;
 
 import static java.lang.Math.round;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.common.registry.BlockData;
 import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Log;
 
@@ -147,7 +147,7 @@ public enum TERecipeData implements IStringSerializable {
 
 	
 	//
-    public static int getPulvEnergy(BlockRecipeData blockData) {
+    public static int getPulvEnergy(BlockData blockData) {
         return values()[blockData.ordinal()].getPulvEnergy(blockData.getRecipeMultiplier());
     }
     
@@ -161,12 +161,12 @@ public enum TERecipeData implements IStringSerializable {
 	}
 
 	//
-    public static int getPulvAmount(BlockRecipeData blockData) {
+    public static int getPulvAmount(BlockData blockData) {
         return values()[blockData.ordinal()].getPulvAmount(blockData.getRecipeMultiplier());
     }
 	
 	//
-    public static int getPulvSecondaryOutputChance(BlockRecipeData blockData) {
+    public static int getPulvSecondaryOutputChance(BlockData blockData) {
     	return values()[blockData.ordinal()].pulv2xSecondaryOutputChance;
     }
 
@@ -180,7 +180,7 @@ public enum TERecipeData implements IStringSerializable {
 	}
 	
 	//
-    public static int getRedFurnEnergy(BlockRecipeData blockData) {
+    public static int getRedFurnEnergy(BlockData blockData) {
         return values()[blockData.ordinal()].getRedFurnEnergy(blockData.getRecipeMultiplier());
     }
 
@@ -194,12 +194,12 @@ public enum TERecipeData implements IStringSerializable {
 	}
 	
 	//
-    public static int getRedFurnAmount(BlockRecipeData blockData) {
+    public static int getRedFurnAmount(BlockData blockData) {
         return values()[blockData.ordinal()].getRedFurnAmount(blockData.getRecipeMultiplier());
     }
 	
 	//
-	public static void addPulvRecipe(BlockRecipeData blockData, String material) {	
+	public static void addPulvRecipe(BlockData blockData, String material) {	
 		switch (blockData.getRecipeMultiplier()) {
 			case 2:	ThermalExpansionHelper.addPulverizerRecipe(getPulvEnergy(blockData), blockData.getModBlockItemStack(),
 					getPulvPrimaryItemStack(blockData, material), getPulvSecondaryItemStack(blockData), getPulvSecondaryOutputChance(blockData)); break;
@@ -208,23 +208,23 @@ public enum TERecipeData implements IStringSerializable {
 	}
 	
 	//
-	public static void addRedFurnRecipe(BlockRecipeData blockData, String material) {
+	public static void addRedFurnRecipe(BlockData blockData, String material) {
 		ThermalExpansionHelper.addFurnaceRecipe(getRedFurnEnergy(blockData), blockData.getModBlockItemStack(), getRedFurnItemStack(blockData, material));
 	}
 	
 	//
-	public static ItemStack getPulvPrimaryItemStack(BlockRecipeData blockData, String material) {
+	public static ItemStack getPulvPrimaryItemStack(BlockData blockData, String material) {
 		Log.logRecipeMsg("pulverizer", blockData.getName(), blockData.getOreDictOutputName("crush", material));
 		return blockData.getOreDictOutputItemStack("crush", material, getPulvAmount(blockData));
 	}
 	
 	//
-	public static ItemStack getPulvSecondaryItemStack(BlockRecipeData blockData) {
+	public static ItemStack getPulvSecondaryItemStack(BlockData blockData) {
 		return blockData.getOreDictItemStack(values()[blockData.ordinal()].pulv2xSecondaryOutputItem, 1);
 	}
 	
 	//
-	public static ItemStack getRedFurnItemStack(BlockRecipeData blockData, String material) {
+	public static ItemStack getRedFurnItemStack(BlockData blockData, String material) {
 		Log.logRecipeMsg("redstone furnace", blockData.getName(), blockData.getOreDictOutputName("smelt", material));
 		return blockData.getOreDictOutputItemStack("smelt", material, getRedFurnAmount(blockData));
 	}

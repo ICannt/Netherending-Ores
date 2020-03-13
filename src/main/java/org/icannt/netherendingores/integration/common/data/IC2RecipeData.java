@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.integration.common.data;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.common.registry.BlockData;
 import org.icannt.netherendingores.integration.common.compat.IC2RecipeInput;
 import org.icannt.netherendingores.lib.Log;
 
@@ -126,17 +126,17 @@ public enum IC2RecipeData implements IStringSerializable {
 	}
 	
 	//
-    public static int getMaceAmount(BlockRecipeData blockData) {
+    public static int getMaceAmount(BlockData blockData) {
         return values()[blockData.ordinal()].getMaceAmount(blockData.getRecipeMultiplier());
     }
 
 	//
-	public static void addMaceRecipe(BlockRecipeData blockData, String material) {
+	public static void addMaceRecipe(BlockData blockData, String material) {
 		Recipes.macerator.addRecipe(new IC2RecipeInput(blockData.getModBlockItemStack()), null, false, getMaceItemStack(blockData, blockData.getRecipeMultiplier(), material));
 	}
 	
     //
-	public static ItemStack getMaceItemStack(BlockRecipeData blockData, int multiplier, String material) {
+	public static ItemStack getMaceItemStack(BlockData blockData, int multiplier, String material) {
 		String prefix = "crushed";
 		if (multiplier > 0 && multiplier < 3 && OreDictionary.doesOreNameExist(blockData.getOreDictCustomItemName(prefix, material))) {
 			Log.logRecipeMsg("macerator", blockData.getName(), blockData.getOreDictCustomItemName(prefix, material));

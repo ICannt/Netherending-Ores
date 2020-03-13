@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.integration.common.data;
 
-import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.common.registry.BlockData;
 import org.icannt.netherendingores.lib.Log;
 
 import mekanism.api.MekanismAPI;
@@ -123,19 +123,19 @@ public enum MekRecipeData implements IStringSerializable {
 	}
 	
 	//
-    public static int getEnrichAmount(BlockRecipeData blockData) {
+    public static int getEnrichAmount(BlockData blockData) {
         return values()[blockData.ordinal()].getEnrichAmount(blockData.getRecipeMultiplier());
     }
 	
 	//
-	public static void addEnrichRecipe(BlockRecipeData blockData, String material) {
+	public static void addEnrichRecipe(BlockData blockData, String material) {
 		if (getEnrichAmount(blockData) > 0) {
 			MekanismAPI.recipeHelper().addEnrichmentChamberRecipe(blockData.getModBlockItemStack(), getEnrichItemStack(blockData, material));
 		}
 	}
 	
 	//
-	public static ItemStack getEnrichItemStack(BlockRecipeData blockData, String material) {
+	public static ItemStack getEnrichItemStack(BlockData blockData, String material) {
 		Log.logRecipeMsg("enrichment chamber", blockData.getName(), blockData.getOreDictOutputName("crush", material));
 		return blockData.getOreDictOutputItemStack("crush", material, getEnrichAmount(blockData));
 	}

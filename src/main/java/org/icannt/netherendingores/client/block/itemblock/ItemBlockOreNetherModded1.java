@@ -1,7 +1,7 @@
 package org.icannt.netherendingores.client.block.itemblock;
 
-import org.icannt.netherendingores.client.block.ItemBlockVariantBase;
 import org.icannt.netherendingores.common.block.data.BlockDataOreNetherModded1;
+import org.icannt.netherendingores.common.registry.BlockData;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumRarity;
@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 /**
  * Created by ICannt on 17/08/17.
  */
-public class ItemBlockOreNetherModded1 extends ItemBlockVariantBase {
+public class ItemBlockOreNetherModded1 extends ItemBlockOreVariantBase {
 
     public ItemBlockOreNetherModded1(Block block) {
         super(block);
@@ -23,7 +23,10 @@ public class ItemBlockOreNetherModded1 extends ItemBlockVariantBase {
     }
     
     @Override
-    public EnumRarity getRarity(ItemStack stack) {
-        return BlockDataOreNetherModded1.values()[stack.getMetadata()].getRarity();
+    public EnumRarity getForgeRarity(ItemStack stack) {
+    	
+    	return BlockData.values()[BlockDataOreNetherModded1.values()[stack.getMetadata()].getBlockRecipeDataOrdinal()].getEnumRarity();
+    	
     }
+    
 }

@@ -1,10 +1,9 @@
-package org.icannt.netherendingores.common.block;
+package org.icannt.netherendingores.common.block.blocks;
 
 import java.util.Random;
 
 import org.icannt.netherendingores.client.creativetab.TabNetherendingOres;
-import org.icannt.netherendingores.common.block.data.BlockDataOreEndModded1;
-import org.icannt.netherendingores.common.registry.BlockRecipeData;
+import org.icannt.netherendingores.common.registry.BlockData;
 import org.icannt.netherendingores.lib.Info;
 
 import net.minecraft.block.Block;
@@ -22,9 +21,9 @@ import net.minecraft.world.World;
 /**
  * Created by ICannt on 17/08/17.
  */
-public class BlockVariantBase extends Block {
+public class BlockOreVariantBase extends Block {
 	
-    public BlockVariantBase(MapColor mapColor, String registry) {
+    public BlockOreVariantBase(MapColor mapColor, String registry) {
     	
         super(Material.ROCK, mapColor);
         
@@ -32,7 +31,7 @@ public class BlockVariantBase extends Block {
         setTranslationKey(getRegistryName().toString());
         setCreativeTab(TabNetherendingOres.NETHERENDING_ORES_TAB);
         
-        for (BlockRecipeData variant : BlockRecipeData.values()) {
+        for (BlockData variant : BlockData.values()) {
         	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), variant.getModBlockState());
         }
         
@@ -42,21 +41,21 @@ public class BlockVariantBase extends Block {
     @Override
     public int getMetaFromState(IBlockState state) {
     	
-        return BlockRecipeData.values()[getOrd(state)].getBlockMeta();
+        return BlockData.values()[getOrd(state)].getBlockMeta();
         
     }
     
     @Override
     public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
     	
-        return BlockRecipeData.values()[getOrd(state)].getLightValue();
+        return BlockData.values()[getOrd(state)].getLightValue();
         
     }
     
     @Override
     public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
    	
-    	return BlockRecipeData.values()[getOrd(state)].getBlockHardness();
+    	return BlockData.values()[getOrd(state)].getBlockHardness();
     	
     }
 
@@ -65,15 +64,15 @@ public class BlockVariantBase extends Block {
     @Override
     public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
     	
-    	return BlockRecipeData.values()[getOrd(world.getBlockState(pos))].getExplosionResistance();
+    	return BlockData.values()[getOrd(world.getBlockState(pos))].getExplosionResistance();
     	
     }
     
     @Override
     public Item getItemDropped(IBlockState state, Random random, int fortune) {
     	
-    	if (BlockRecipeData.values()[getOrd(state)].getDropItems()) {
-    		return BlockRecipeData.values()[getOrd(state)].getItemDropped();
+    	if (BlockData.values()[getOrd(state)].getDropItems()) {
+    		return BlockData.values()[getOrd(state)].getItemDropped();
     	}
     	
     	return Item.getItemFromBlock(this);
@@ -83,8 +82,8 @@ public class BlockVariantBase extends Block {
     @Override
     public int damageDropped(IBlockState state) {
     	
-    	if (BlockRecipeData.values()[getOrd(state)].getDropItems()) {
-    		return BlockRecipeData.values()[getOrd(state)].getDamageDropped();
+    	if (BlockData.values()[getOrd(state)].getDropItems()) {
+    		return BlockData.values()[getOrd(state)].getDamageDropped();
     	}
     	
         return getMetaFromState(state);
@@ -93,8 +92,8 @@ public class BlockVariantBase extends Block {
     @Override
     public int quantityDropped(IBlockState state, int fortune, Random random) {
     	
-    	if (BlockRecipeData.values()[getOrd(state)].getDropItems()) {
-    		return BlockRecipeData.values()[getOrd(state)].getQuantityDropped(fortune, random);
+    	if (BlockData.values()[getOrd(state)].getDropItems()) {
+    		return BlockData.values()[getOrd(state)].getQuantityDropped(fortune, random);
     	}
     	
     	return 1;
@@ -106,8 +105,8 @@ public class BlockVariantBase extends Block {
     	
     	Random rand = world instanceof World ? ((World)world).rand : RANDOM;
     	
-    	if (BlockRecipeData.values()[getOrd(state)].getDropItems()) {
-    		return BlockRecipeData.values()[getOrd(state)].getExpDrop(fortune, rand);
+    	if (BlockData.values()[getOrd(state)].getDropItems()) {
+    		return BlockData.values()[getOrd(state)].getExpDrop(fortune, rand);
     	}
     	
     	return 0;

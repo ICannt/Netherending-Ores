@@ -42,7 +42,7 @@ public class OreDictionaryRegistry {
     		}
 		}
     	
-    	for (BlockRecipeData blockData : BlockRecipeData.values()) {
+    	for (BlockData blockData : BlockData.values()) {
        		OreDictionary.registerOre(blockData.getOreDictRegName(), blockData.getModBlockItemStack());  		
        		Log.logOreDictSuccess(blockData.getOreDictRegName(), blockData.getBlockLogInfo());       		
        		// Support additional alternate spellings of oredict names
@@ -57,7 +57,7 @@ public class OreDictionaryRegistry {
 	}
 	
 	public static void cacheOreDictionaryItems() {
-		for (BlockRecipeData blockData : BlockRecipeData.values()) {
+		for (BlockData blockData : BlockData.values()) {
 			if (blockData.getRecipeMultiplier() > 0 && blockData.getDropItems() && Config.dropItems) {
 				blockData.setDropItemObject();
 				if (blockData.getItemDropped() == Items.AIR) {

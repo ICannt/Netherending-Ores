@@ -1,4 +1,4 @@
-package org.icannt.netherendingores.common.block;
+package org.icannt.netherendingores.common.block.blocks;
 
 import org.icannt.netherendingores.lib.Info;
 
