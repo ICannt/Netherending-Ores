@@ -21,6 +21,10 @@ public class BlockOreEndModded2 extends BlockOreVariantBase {
     	
         super(MapColor.SAND, "ore_end_modded_2");
         
+        for (BlockDataOreEndModded2 variant : BlockDataOreEndModded2.values()) {
+        	this.setHarvestLevel("pickaxe", super.getHarvestLevel(getStateFromMeta(variant.ordinal())), getStateFromMeta(variant.ordinal()));
+        }
+        
     }
 
     @Override
@@ -48,6 +52,13 @@ public class BlockOreEndModded2 extends BlockOreVariantBase {
         
     }
 
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		
+		return state.getValue(VARIANT).ordinal();
+		
+	}
+	
     @Override
     public int getOrd(IBlockState state) {
     	

@@ -2,6 +2,7 @@ package org.icannt.netherendingores.common.registry;
 
 import static net.minecraft.util.math.MathHelper.getInt;
 
+import java.util.Locale;
 import java.util.Random;
 
 import org.icannt.netherendingores.lib.Info;
@@ -362,6 +363,28 @@ public enum BlockData implements IStringSerializable {
 		return getModBlock().getStateFromMeta(blockMeta);
     }
 	
+	public String getModBlockStateName() {
+		return getModBlockState().getProperties().values().toArray()[0].toString();
+	}
+	
+	public String getOrdinalName() {
+		return BlockData.values()[this.ordinal()].toString();
+	}
+	
+    public String getModBlockStateNameValue() {
+    	
+    	String[] words = {"OVERWORLD_","NETHER_","END_"};
+    	
+    	for(String word : words) {
+    		if (getOrdinalName().replace(word, "").equals(getModBlockStateName())) {
+    			return name.replace(word.toLowerCase(Locale.ENGLISH), "");
+    		}
+    	}
+    	
+    	return "Error in blockstate name, please report.";
+    	
+    }
+	
 	public Block getModBlock() {
 		return Block.getBlockFromName(Info.MOD_ID + ":" + blockName);
     }
@@ -474,7 +497,8 @@ public enum BlockData implements IStringSerializable {
      * @return      The reassembled other mod item name (often a dust)
      */
     private static String getOreDictSmeltItemName(String prefix, String material) {
-    	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));
+    	//String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));
+    	String ore = StringUtil.upperCamel(getRawOreName(material));
     	switch (prefix) {
 			case "": prefix = "ingot"; break;
 			case "dust": case "gem": case "crystal": break;
@@ -494,7 +518,8 @@ public enum BlockData implements IStringSerializable {
      * @return      The reassembled other mod item name (often a dust)
      */
     private static String getOreDictCrushItemName(String prefix, String material) {    	   	
-    	String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));
+    	//String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));
+    	String ore = StringUtil.upperCamel(getRawOreName(material));
     	switch (prefix) {
 			case "": case "dust": prefix = "dust"; break;
 			case "gem": case "crystal": break;

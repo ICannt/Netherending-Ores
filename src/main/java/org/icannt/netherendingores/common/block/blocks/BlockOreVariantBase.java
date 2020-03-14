@@ -31,18 +31,6 @@ public class BlockOreVariantBase extends Block {
         setTranslationKey(getRegistryName().toString());
         setCreativeTab(TabNetherendingOres.NETHERENDING_ORES_TAB);
         
-        for (BlockData variant : BlockData.values()) {
-        	this.setHarvestLevel("pickaxe", variant.getHarvestLevel(), variant.getModBlockState());
-        }
-        
-    }
-
-    
-    @Override
-    public int getMetaFromState(IBlockState state) {
-    	
-        return BlockData.values()[getOrd(state)].getBlockMeta();
-        
     }
     
     @Override
@@ -113,8 +101,16 @@ public class BlockOreVariantBase extends Block {
     	
     }
     
+    public int getHarvestLevel(IBlockState state) {
+    	
+    	return BlockData.values()[getOrd(state)].getHarvestLevel();
+    	
+    }
+    
     public int getOrd(IBlockState state) {
+    	
     	return 0;
+    	
     }
     
 }

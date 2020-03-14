@@ -21,6 +21,10 @@ public class BlockOreNetherModded2 extends BlockOreVariantBase {
     	
         super(MapColor.NETHERRACK, "ore_nether_modded_2");
         
+        for (BlockDataOreNetherModded2 variant : BlockDataOreNetherModded2.values()) {
+        	this.setHarvestLevel("pickaxe", super.getHarvestLevel(getStateFromMeta(variant.ordinal())), getStateFromMeta(variant.ordinal()));
+        }
+        
     }
 
     @Override
@@ -47,6 +51,13 @@ public class BlockOreNetherModded2 extends BlockOreVariantBase {
         return getDefaultState().withProperty(VARIANT, BlockDataOreNetherModded2.values()[meta]);
         
     }
+	
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		
+		return state.getValue(VARIANT).ordinal();
+		
+	}
 
     @Override
     public int getOrd(IBlockState state) {

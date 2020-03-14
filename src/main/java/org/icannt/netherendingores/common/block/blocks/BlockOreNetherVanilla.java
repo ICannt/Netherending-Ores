@@ -21,6 +21,10 @@ public class BlockOreNetherVanilla extends BlockOreVariantBase {
     	
         super(MapColor.NETHERRACK, "ore_nether_vanilla");
         
+        for (BlockDataOreNetherVanilla variant : BlockDataOreNetherVanilla.values()) {
+        	this.setHarvestLevel("pickaxe", super.getHarvestLevel(getStateFromMeta(variant.ordinal())), getStateFromMeta(variant.ordinal()));
+        }
+        
     }
 
     @Override
@@ -47,6 +51,13 @@ public class BlockOreNetherVanilla extends BlockOreVariantBase {
         return getDefaultState().withProperty(VARIANT, BlockDataOreNetherVanilla.values()[meta]);
         
     }
+	
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		
+		return state.getValue(VARIANT).ordinal();
+		
+	}
 
     @Override
     public int getOrd(IBlockState state) {

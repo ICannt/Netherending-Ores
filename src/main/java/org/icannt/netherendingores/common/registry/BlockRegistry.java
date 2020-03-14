@@ -22,11 +22,14 @@ import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded2;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreOther1;
+import org.icannt.netherendingores.common.block.data.BlockDataOreEndModded1;
 import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
 import org.icannt.netherendingores.lib.Log;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.enchantment.Enchantment;
@@ -272,7 +275,8 @@ public class BlockRegistry {
     	BLOCK_NETHER_NETHERFISH.initItemBlockModels();
     	
     	for (BlockData blockData : BlockData.values()) {
-    		ModelLoader.setCustomModelResourceLocation(blockData.getModBlockItem(), blockData.getBlockMeta(), new ModelResourceLocation(blockData.getModBlockItem().getRegistryName(), "blocks=" + blockData.name()));
+    					
+    		ModelLoader.setCustomModelResourceLocation(blockData.getModBlockItem(), blockData.getBlockMeta(), new ModelResourceLocation(blockData.getModBlockItem().getRegistryName(), "blocks=" + blockData.getModBlockStateNameValue()));
     	}
     	
     }

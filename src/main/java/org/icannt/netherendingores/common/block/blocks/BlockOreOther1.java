@@ -24,6 +24,10 @@ public class BlockOreOther1 extends BlockOreVariantBase {
     	
         super(MapColor.STONE, "ore_other_1");
         
+        for (BlockDataOreOther1 variant : BlockDataOreOther1.values()) {
+        	this.setHarvestLevel("pickaxe", super.getHarvestLevel(getStateFromMeta(variant.ordinal())), getStateFromMeta(variant.ordinal()));
+        }
+        
     }
 
     @Override
@@ -51,6 +55,13 @@ public class BlockOreOther1 extends BlockOreVariantBase {
         
     }
 
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		
+		return state.getValue(VARIANT).ordinal();
+		
+	}
+	
     @Override
     public int getOrd(IBlockState state) {
     	
@@ -61,7 +72,9 @@ public class BlockOreOther1 extends BlockOreVariantBase {
     @Override
     public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos)
     {
+    	
         return BlockData.values()[getOrd(state)].getModMapColor();
+        
     }
     
 }
