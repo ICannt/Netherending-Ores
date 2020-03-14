@@ -60,12 +60,6 @@ public class OreDictionaryRegistry {
 		for (BlockData blockData : BlockData.values()) {
 			if (blockData.getRecipeMultiplier() > 0 && blockData.getDropItems() && Config.dropItems) {
 				blockData.setDropItemObject();
-				if (blockData.getItemDropped() == Items.AIR) {
-					blockData.setDropItems(false);
-					Log.logCacheItemsFail(blockData.getOreDictItemName());
-				} else {
-					Log.logCacheItemsSuccess(blockData.getOreDictItemName(), blockData.getItemDropped(), blockData.getDamageDropped());
-				}
 			}
 		}
 	}

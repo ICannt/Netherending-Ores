@@ -207,11 +207,25 @@ public enum BlockData implements IStringSerializable {
 	//
 	public void setDropItemObject() {
 		
-		ItemStack stack = getOtherModItemStack(getOreDictItemName());
+		String itemType = getOreDictItemName("crush");
+		
+		if (getOtherModItemStack(itemType).getItem() == Items.AIR) {
+			itemType = getOreDictItemName("smelt");
+		}
+		
+		ItemStack stack = getOtherModItemStack(itemType);
+		
 		if (!(stack.getItem() == Items.AIR)) {
 			this.dropItemObject[0] = stack.getItem();
 			this.dropItemObject[1] = stack.getItemDamage();
 		}
+		
+		if (getItemDropped() == Items.AIR) {
+			setDropItems(false);
+			Log.logCacheItemsFail(itemType);
+		} else {
+			Log.logCacheItemsSuccess(itemType, getItemDropped(), getDamageDropped());
+		}		
 		
 	}
 	
@@ -410,9 +424,9 @@ public enum BlockData implements IStringSerializable {
     }
 	
 	// 
-	public String getOreDictItemName() {
-		return getOreDictOutputName(1, "smelt", "name");
-	}    
+	private String getOreDictItemName(String type) {
+		return getOreDictOutputName(1, type, "name");
+	}
     
 	// 
 	private String getOreDictOutputName(String type) {
