@@ -22,14 +22,11 @@ import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded1;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherModded2;
 import org.icannt.netherendingores.common.block.blocks.BlockOreNetherVanilla;
 import org.icannt.netherendingores.common.block.blocks.BlockOreOther1;
-import org.icannt.netherendingores.common.block.data.BlockDataOreEndModded1;
 import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
 import org.icannt.netherendingores.lib.Log;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.enchantment.Enchantment;
@@ -106,7 +103,7 @@ public class BlockRegistry {
         Blocks.QUARTZ_ORE
     */
     
-    private static Block[] oreBlocks = {
+    private static final Block[] oreBlocks = {
         ORE_END_MODDED_1,
         ORE_END_MODDED_2,
         ORE_END_VANILLA,
