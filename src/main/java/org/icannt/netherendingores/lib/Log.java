@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 /**
  * Created by ICannt on 30/05/18.
@@ -128,6 +129,12 @@ public class Log {
     //
     public static void logCacheItemsFail(String entry) {
     	error("Cannot find a valid Ore Dictionary entry for \"" + entry + "\" item drops. Is a mod that can use it loaded? Defaulting to block drop mode.");
+    }
+    
+    //
+    public static String itemStackToName(ItemStack stack) {
+    	String meta = stack.getItemDamage() > 0 ? ":" + stack.getItemDamage() : ""; 
+    	return stack.getItem().getRegistryName() + meta;
     }
     
     //

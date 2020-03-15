@@ -8,9 +8,21 @@ import net.minecraft.util.IStringSerializable;
 public enum OreDictionaryOtherData implements IStringSerializable {
 	
 	
-    CRYSTAL_CHARGED_CERTUS_QUARTZ ("crystalChargedCertusQuartz", "appliedenergistics2", "material", 1, "Applied Energistics 2", "Charged Certus Quartz", " Not currently used in recipes.", false, true),
+    COAL ("coal", "minecraft", "coal_ore", 0, "Minecraft", "Coal", " Improves mod compatibility.", false, true),
+    GEM_AMBROSIUM_LEGACY ("gemAmbrosium", "aether_legacy", "ambrosium_shard", 0, "The Aether", "Ambrosium Shard (Legacy)", "", false, true),
+    GEM_AMBROSIUM ("gemAmbrosium", "aether", "ambrosium_shard", 0, "Aether II", "Ambrosium Shard", "", false, true),
+    GEM_ZANITE ("gemZanite", "aether", "zanite_gemstone", 0, "Aether II", "Zanite Gemstone", " Already registered for The Aether.", false, true),
+    INGOT_ARKENIUM ("ingotArkenium", "aether", "arkenium", 0, "Aether II", "Arkenium Plate", " Aether II only item.", false, true),
+    CRYSTAL_ICESTONE ("crystalIcestone", "aether", "icestone", 0, "Aether II", "Icestone", " Aether II only item.", false, true),
+    CRYSTAL_CHARGED_CERTUS_QUARTZ ("crystalChargedCertusQuartz", "appliedenergistics2", "material", 1, "Applied Energistics 2", "Charged Certus Quartz", " Only used for drops.", false, true),
+    ORE_AMBROSIUM ("oreAmbrosium", "aether", "ambrosium_ore", 0, "Aether II", "Ambrosium Ore", " Already registered for The Aether.", false, true),
+    ORE_GRAVITITE ("oreGravitite", "aether", "gravitite_ore", 0, "Aether II", "Gravitite Ore", " Already registered for The Aether.", false, true),
+    ORE_ZANITE ("oreZanite", "aether", "zanite_ore", 0, "Aether II", "Zanite Ore", " Already registered for The Aether.", false, true),
+    ORE_ARKENIUM ("oreArkenium", "aether", "arkenium_ore", 0, "Aether II", "Arkenium Ore", " Aether II only ore.", false, true),
+    ORE_ICESTONE ("oreIcestone", "aether", "icestone_ore", 0, "Aether II", "Icestone Ore", " Aether II only ore.", false, true),
     ORE_DILITHIUM ("oreDilithium", "matteroverdrive", "dilithium_ore", 0, "Matter Overdrive: Legacy Edition", "Dilithium Ore", "", false, true),
     ORE_TRITANIUM ("oreTritanium", "matteroverdrive", "tritanium_ore", 0, "Matter Overdrive: Legacy Edition", "Tritanium Ore", "", false, true);
+
 	
     private String name;
     private String modCodeName;

@@ -39,6 +39,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -156,8 +157,13 @@ public class BlockRegistry {
             
             Log.info("Registered ItemBlocks");
             
-            // Items and blocks now initialized, load the OreDict
-            OreDictionaryRegistry.registerDictionaryOres();
+        }
+        
+        @SubscribeEvent
+        public static void registerBiome(final RegistryEvent.Register<Biome> event) {
+        	// Load the OreDict immediately after the Item registration event instead of during it, was causing problems with The Aether.
+        	// Biome is the very next event.
+        	OreDictionaryRegistry.registerDictionaryOres();
         }
 
     }

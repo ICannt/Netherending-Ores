@@ -256,7 +256,7 @@ public class Config {
 	
     	boolean setting = false;    	
     	for (OreDictionaryOtherData oD : OreDictionaryOtherData.values()) {
-    		setting = cfg.getBoolean(oD.getName(), category, oD.getDefaultSetting(), "Add " + oD.getModItemDescName() + " from " + oD.getModDescName() + " to the Ore Dictionary." + oD.getConfigExtraDesc());
+    		setting = cfg.getBoolean(oD.getModItemDescName(), category, oD.getDefaultSetting(), "Add " + oD.getModItemDescName() + " from " + oD.getModDescName() + " to the Ore Dictionary as " + oD.getName() + "." + oD.getConfigExtraDesc());
     		oD.setEnabled(setting);
 		}
     	

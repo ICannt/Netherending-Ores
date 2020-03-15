@@ -23,9 +23,9 @@ public class OreDictionaryRegistry {
     	Log.debug("Registering Ore Dictionary Entries");
     	
 		// Registration of Vanilla items that are not registered :(, purely a guess at what other mods might use
-    	if (OreDictionary.doesOreNameExist("coal") == false) {
-    		OreDictionary.registerOre("coal", new ItemStack(Items.COAL));
-    	}
+//    	if (OreDictionary.doesOreNameExist("coal") == false) {
+//    		OreDictionary.registerOre("coal", new ItemStack(Items.COAL));
+//    	}
     	
     	// Registration of other mod items that are not registered by those mods, follows usual conventions
     	for (OreDictionaryOtherData oD : OreDictionaryOtherData.values()) {
@@ -34,9 +34,9 @@ public class OreDictionaryRegistry {
 		    		ItemStack stack = new ItemStack(Item.getByNameOrId(oD.getModCodeName() + ":" + oD.getModItemCodeName()), 1, oD.getMeta());
 		    		if (!stack.isEmpty()) {
 		    			OreDictionary.registerOre(oD.getName(), stack);
-		    			Log.logOreDictSuccess(oD.getModDescName(), oD.getModItemDescName());
+		    			Log.logOreDictSuccess(oD.getName(), Log.itemStackToName(stack));
 		    		} else {
-		    			Log.logOreDictFail(oD.getModDescName(), oD.getModItemDescName());
+		    			Log.logOreDictFail(oD.getName(), Log.itemStackToName(stack));
 		    		}
 		    	}
     		}
