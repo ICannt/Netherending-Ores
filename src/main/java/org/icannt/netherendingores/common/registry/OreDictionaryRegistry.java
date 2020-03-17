@@ -4,7 +4,6 @@ import org.icannt.netherendingores.lib.Config;
 import org.icannt.netherendingores.lib.Info;
 import org.icannt.netherendingores.lib.Log;
 
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;

@@ -1,6 +1,6 @@
 package org.icannt.netherendingores.common.registry;
 
-import org.icannt.netherendingores.integration.common.registry.RecipeIntegrationHelper;
+import org.icannt.netherendingores.lib.IntegrationReflector;
 import org.icannt.netherendingores.lib.Log;
 
 /**
@@ -50,7 +50,7 @@ public class RecipeHelper {
 		switch (device) {
 			case "craft": RecipeRegistry.addCraftingRecipe(blockData, material); break;
 			case "furnace": RecipeRegistry.addFurnaceRecipe(blockData, material); break;
-			default: RecipeIntegrationHelper.addIntegrationRecipe(blockData, device, material);
+			default: IntegrationReflector.integration.addIntegrationRecipe(blockData, device, material);
 		}
 	}
 	

@@ -1,6 +1,7 @@
 package org.icannt.netherendingores;
 
 import org.icannt.netherendingores.lib.Info;
+import org.icannt.netherendingores.lib.IntegrationReflector;
 import org.icannt.netherendingores.proxy.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
@@ -22,13 +23,15 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class NetherendingOres {
 
+	public static IntegrationReflector integrationReflector = new IntegrationReflector();
+	
     @SidedProxy(clientSide = Info.CLIENT_PROXY_CLASS, serverSide = Info.SERVER_PROXY_CLASS)
     public static CommonProxy proxy;
     
     @Mod.Instance(Info.MOD_ID)
     public static NetherendingOres instance;
 
-    @EventHandler
+	@EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
     }
