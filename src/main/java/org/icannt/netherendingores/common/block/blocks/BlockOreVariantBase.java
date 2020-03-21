@@ -46,9 +46,7 @@ public class BlockOreVariantBase extends Block {
     	return BlockData.values()[getOrd(state)].getBlockHardness();
     	
     }
-
     
-    @SuppressWarnings("deprecation")
     @Override
     public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) {
     	

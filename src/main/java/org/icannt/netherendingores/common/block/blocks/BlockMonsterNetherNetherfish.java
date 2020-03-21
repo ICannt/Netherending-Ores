@@ -41,7 +41,6 @@ public class BlockMonsterNetherNetherfish extends Block {
         return 0.2F;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public float getExplosionResistance(Entity exploder) {
         return 0.25F / 5F;

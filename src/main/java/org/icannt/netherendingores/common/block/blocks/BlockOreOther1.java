@@ -47,8 +47,7 @@ public class BlockOreOther1 extends BlockOreVariantBase {
 		
     }
 
-	@SuppressWarnings("deprecation")
-    @Override
+	@Override
     public IBlockState getStateFromMeta(int meta) {
 		
         return getDefaultState().withProperty(VARIANT, BlockDataOreOther1.values()[meta]);

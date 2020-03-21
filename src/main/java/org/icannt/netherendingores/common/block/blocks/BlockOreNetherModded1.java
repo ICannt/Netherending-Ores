@@ -44,8 +44,7 @@ public class BlockOreNetherModded1 extends BlockOreVariantBase {
 		
     }
 
-	@SuppressWarnings("deprecation")
-    @Override
+	@Override
     public IBlockState getStateFromMeta(int meta) {
 		
         return getDefaultState().withProperty(VARIANT, BlockDataOreNetherModded1.values()[meta]);

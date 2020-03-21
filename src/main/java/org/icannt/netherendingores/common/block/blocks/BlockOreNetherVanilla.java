@@ -44,8 +44,7 @@ public class BlockOreNetherVanilla extends BlockOreVariantBase {
 		
     }
 
-	@SuppressWarnings("deprecation")
-    @Override
+	@Override
     public IBlockState getStateFromMeta(int meta) {
 		
         return getDefaultState().withProperty(VARIANT, BlockDataOreNetherVanilla.values()[meta]);

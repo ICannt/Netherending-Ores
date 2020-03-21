@@ -43,7 +43,6 @@ public class BlockMonsterEndEndermite extends Block {
         return 1.5F;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public float getExplosionResistance(Entity exploder) {
         return 5.625F / 5F;

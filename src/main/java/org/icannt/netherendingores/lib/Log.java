@@ -137,13 +137,4 @@ public class Log {
     	return stack.getItem().getRegistryName() + meta;
     }
     
-    //
-    public static void logBigInfo(String entry) {
-    	info("******* NOTICE  ME *******");
-    	info("**************************");
-    	info(entry);
-    	info("**************************");
-    	info("******* NOTICE  ME *******");
-    }
-    
 }

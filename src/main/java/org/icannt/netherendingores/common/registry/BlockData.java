@@ -44,10 +44,10 @@ public enum BlockData implements IStringSerializable {
     END_DILITHIUM_ORE ("end_dilithium_ore", "ore_end_modded_1", 14, new String[0], "gem", 0, 2, 4F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 1, 2, 5, false, true, 2, true),
     END_TRITANIUM_ORE ("end_tritanium_ore", "ore_end_modded_1", 15, new String[0], "", 0, 2, 8F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
     END_ZINC_ORE ("end_zinc_ore", "ore_end_modded_2", 0, new String[0], "", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
-    END_RUBY_ORE ("end_ruby_ore", "ore_end_modded_2", 1, new String[0], "gem", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 1, 2, 7, true, true, 2, true),
-    END_SAPPHIRE_ORE ("end_sapphire_ore", "ore_end_modded_2", 2, new String[0], "gem", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 1, 2, 6, true, true, 2, true),
-    END_PERIDOT_ORE ("end_peridot_ore", "ore_end_modded_2", 3, new String[0], "gem", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 1, 2, 7, true, true, 2, true),
-    END_ELECTROTINE_ORE ("end_electrotine_ore", "ore_end_modded_2", 4, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 2, 5, true, true, 2, true),
+    END_RUBY_ORE ("end_ruby_ore", "ore_end_modded_2", 1, new String[0], "gem", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 4, 2, 7, true, true, 2, true),
+    END_SAPPHIRE_ORE ("end_sapphire_ore", "ore_end_modded_2", 2, new String[0], "gem", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 4, 2, 7, true, true, 2, true),
+    END_PERIDOT_ORE ("end_peridot_ore", "ore_end_modded_2", 3, new String[0], "gem", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 4, 2, 7, true, true, 2, true),
+    END_ELECTROTINE_ORE ("end_electrotine_ore", "ore_end_modded_2", 4, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 8, 2, 5, true, true, 2, true),
     END_AMBROSIUM_ORE ("end_ambrosium_ore", "ore_end_modded_2", 5, new String[0], "gem", 6, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 1, 0, 1, false, true, 2, true),
     END_GRAVITITE_ORE ("end_gravitite_ore", "ore_end_modded_2", 6, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
     END_ZANITE_ORE ("end_zanite_ore", "ore_end_modded_2", 7, new String[0], "gem", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 1, 2, 4, false, true, 2, true),
@@ -77,15 +77,15 @@ public enum BlockData implements IStringSerializable {
     NETHER_DILITHIUM_ORE ("nether_dilithium_ore", "ore_nether_modded_1", 14, new String[0], "gem", 0, 2, 4F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 2, 5, false, true, 2, true),
     NETHER_TRITANIUM_ORE ("nether_tritanium_ore", "ore_nether_modded_1", 15, new String[0], "", 0, 2, 8F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
     NETHER_ZINC_ORE ("nether_zinc_ore", "ore_nether_modded_2", 0, new String[0], "", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
-    NETHER_RUBY_ORE ("nether_ruby_ore", "ore_nether_modded_2", 1, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 2, 7, true, true, 2, true),
-    NETHER_SAPPHIRE_ORE ("nether_sapphire_ore", "ore_nether_modded_2", 2, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 2, 6, true, true, 2, true),
-    NETHER_PERIDOT_ORE ("nether_peridot_ore", "ore_nether_modded_2", 3, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 2, 7, true, true, 2, true),
-    NETHER_ELECTROTINE_ORE ("nether_electrotine_ore", "ore_nether_modded_2", 4, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 2, 5, true, true, 2, true),
-    NETHER_AMBROSIUM_ORE ("nether_ambrosium_ore", "ore_nether_modded_2", 5, new String[0], "", 6, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 1, false, true, 2, true),
+    NETHER_RUBY_ORE ("nether_ruby_ore", "ore_nether_modded_2", 1, new String[0], "gem", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 4, 2, 7, true, true, 2, true),
+    NETHER_SAPPHIRE_ORE ("nether_sapphire_ore", "ore_nether_modded_2", 2, new String[0], "gem", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 4, 2, 7, true, true, 2, true),
+    NETHER_PERIDOT_ORE ("nether_peridot_ore", "ore_nether_modded_2", 3, new String[0], "gem", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 4, 2, 7, true, true, 2, true),
+    NETHER_ELECTROTINE_ORE ("nether_electrotine_ore", "ore_nether_modded_2", 4, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 8, 2, 5, true, true, 2, true),
+    NETHER_AMBROSIUM_ORE ("nether_ambrosium_ore", "ore_nether_modded_2", 5, new String[0], "gem", 6, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 1, false, true, 2, true),
     NETHER_GRAVITITE_ORE ("nether_gravitite_ore", "ore_nether_modded_2", 6, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
-    NETHER_ZANITE_ORE ("nether_zanite_ore", "ore_nether_modded_2", 7, new String[0], "", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 2, 4, false, true, 2, true),
+    NETHER_ZANITE_ORE ("nether_zanite_ore", "ore_nether_modded_2", 7, new String[0], "gem", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 2, 4, false, true, 2, true),
     NETHER_ARKENIUM_ORE ("nether_arkenium_ore", "ore_nether_modded_2", 8, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
-    NETHER_ICESTONE_ORE ("nether_icestone_ore", "ore_nether_modded_2", 9, new String[0], "", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 1, 1, false, true, 2, true),
+    NETHER_ICESTONE_ORE ("nether_icestone_ore", "ore_nether_modded_2", 9, new String[0], "gem", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 1, 1, false, true, 2, true),
     NETHER_COAL_ORE ("nether_coal_ore", "ore_nether_vanilla", 0, new String[0], "coal", 0, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 1, 2, true, true, 2, true),
     NETHER_DIAMOND_ORE ("nether_diamond_ore", "ore_nether_vanilla", 1, new String[0], "gem", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 4, 7, true, true, 2, true),
     NETHER_EMERALD_ORE ("nether_emerald_ore", "ore_nether_vanilla", 2, new String[0], "gem", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 3, 7, true, true, 2, true),
@@ -99,11 +99,11 @@ public enum BlockData implements IStringSerializable {
     END_ARDITE_ORE ("end_ardite_ore", "ore_other_1", 3, new String[0], "", 0, 4, 10F, 50F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, false, true, 1, true),
     OVERWORLD_COBALT_ORE ("overworld_cobalt_ore", "ore_other_1", 4, new String[0], "", 0, 4, 10F, 50F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 1, false),
     END_COBALT_ORE ("end_cobalt_ore", "ore_other_1", 5, new String[0], "", 0, 4, 10F, 50F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 1, true),
-    OVERWORLD_AMBROSIUM_ORE ("overworld_ambrosium_ore", "ore_other_1", 6, new String[0], "", 6, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 1, false, true, 1, false),
+    OVERWORLD_AMBROSIUM_ORE ("overworld_ambrosium_ore", "ore_other_1", 6, new String[0], "gem", 6, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 1, false, true, 1, false),
     OVERWORLD_GRAVITITE_ORE ("overworld_gravitite_ore", "ore_other_1", 7, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 1, false),
-    OVERWORLD_ZANITE_ORE ("overworld_zanite_ore", "ore_other_1", 8, new String[0], "", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 2, 4, false, true, 1, false),
+    OVERWORLD_ZANITE_ORE ("overworld_zanite_ore", "ore_other_1", 8, new String[0], "gem", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 2, 4, false, true, 1, false),
     OVERWORLD_ARKENIUM_ORE ("overworld_arkenium_ore", "ore_other_1", 9, new String[0], "", 0, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 1, false),
-    OVERWORLD_ICESTONE_ORE ("overworld_icestone_ore", "ore_other_1", 10, new String[0], "", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 1, 1, false, true, 1, false);
+    OVERWORLD_ICESTONE_ORE ("overworld_icestone_ore", "ore_other_1", 10, new String[0], "gem", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 1, 1, false, true, 1, false);
 
 	
     private String name;
@@ -204,24 +204,54 @@ public enum BlockData implements IStringSerializable {
     
 	//
 	public void setDropItemObject() {
+
+		// Set to default drop output first
+		String itemType = getOreDictItemName("drop");
+		String logItemMsg = itemType;
 		
-		String itemType = getOreDictItemName("crush");
-		
+		// Try to get an alternate ore suffix if the initial drop item returns an empty stack
 		if (getOtherModItemStack(itemType).getItem() == Items.AIR) {
-			itemType = getOreDictItemName("smelt");
+			// This will only activate if the array isn't empty, only the first type can be returned. Blocks can only drop the one item.
+			for (String material : getItemAltOreDictSuffix()) {
+				itemType = getAltOreDictItemName("drop", material);
+				logItemMsg += ", " + itemType;
+				break;
+			}			
 		}
 		
+		// Try for a smelt item
+		if (getOtherModItemStack(itemType).getItem() == Items.AIR) {
+			// If we fail to get a crush item, go for a smelt item
+			itemType = getOreDictItemName("smelt");
+			logItemMsg += ", " + itemType + " (smelt result)";
+
+		}
+
+		// Try for an alternate smelt item here
+		if (getOtherModItemStack(itemType).getItem() == Items.AIR) {
+			// This will only activate if the array isn't empty, only the first type can be returned. Blocks can only drop the one item.
+			for (String material : getItemAltOreDictSuffix()) {
+				itemType = getAltOreDictItemName("smelt", material);
+				logItemMsg += ", " + itemType + " (smelt result)";
+				break;
+			}
+		}
+		
+		// Set the stack
 		ItemStack stack = getOtherModItemStack(itemType);
 		
+		// Only set the stack if the result is not air
 		if (!(stack.getItem() == Items.AIR)) {
 			this.dropItemObject[0] = stack.getItem();
 			this.dropItemObject[1] = stack.getItemDamage();
 		}
 		
+		// Failed to find a valid item, log it and default to a block
 		if (getItemDropped() == Items.AIR) {
 			setDropItems(false);
-			Log.logCacheItemsFail(itemType);
+			Log.logCacheItemsFail(logItemMsg);
 		} else {
+			// Some item was found, use it
 			Log.logCacheItemsSuccess(itemType, getItemDropped(), getDamageDropped());
 		}		
 		
@@ -425,6 +455,11 @@ public enum BlockData implements IStringSerializable {
 	private String getOreDictItemName(String type) {
 		return getOreDictOutputName(1, type, "name");
 	}
+	
+	// 
+	private String getAltOreDictItemName(String type, String material) {
+		return getOreDictOutputName(1, type, material);
+	}
     
 	// 
 	private String getOreDictOutputName(String type) {
@@ -449,6 +484,10 @@ public enum BlockData implements IStringSerializable {
 				if (multiplier == 1 || multiplier == 2) {
 					return getOreDictCrushItemName(itemOreDictPrefix, material);
 				}
+			case "drop":
+				if (multiplier > 0) {
+					return getOreDictDropItemName(itemOreDictPrefix, material);
+				}
 		}
 		return getOreDictOtherModBlockName(material);
 	}
@@ -472,7 +511,7 @@ public enum BlockData implements IStringSerializable {
     
     //
     public String getOreDictCustomRegName(String material) {
-    	material = name.replace(getRawOreName(name), material);    	
+    	material = name.replace(getRawOreName(name), material);
     	return getOreDictPrefixedName(recipeMultiplier, material);
     }
     
@@ -509,7 +548,6 @@ public enum BlockData implements IStringSerializable {
      * @return      The reassembled other mod item name (often a dust)
      */
     private static String getOreDictSmeltItemName(String prefix, String material) {
-    	//String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));
     	String ore = StringUtil.upperCamel(getRawOreName(material));
     	switch (prefix) {
 			case "": prefix = "ingot"; break;
@@ -530,11 +568,28 @@ public enum BlockData implements IStringSerializable {
      * @return      The reassembled other mod item name (often a dust)
      */
     private static String getOreDictCrushItemName(String prefix, String material) {    	   	
-    	//String ore = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, getRawOreName(material));
     	String ore = StringUtil.upperCamel(getRawOreName(material));
     	switch (prefix) {
 			case "": case "dust": prefix = "dust"; break;
 			case "gem": case "crystal": break;
+			default: ore = "";
+    	}
+    	return prefix + ore;    	
+    }
+    
+    /**
+     * Determines which item prefix to use for item drops
+     * Similar to the crush item name, except the priorities are swapped
+     *
+     * @param       prefix The prefix or full name from the block data table
+     * @param       material The ore material that is being dealt with
+     * @return      The reassembled other mod item name (often a dust)
+     */
+    private static String getOreDictDropItemName(String prefix, String material) {
+    	String ore = StringUtil.upperCamel(getRawOreName(material));
+    	switch (prefix) {
+			case "gem": case "crystal": break;
+			case "": case "dust": prefix = "dust"; break;
 			default: ore = "";
     	}
     	return prefix + ore;    	

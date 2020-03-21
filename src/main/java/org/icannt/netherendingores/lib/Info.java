@@ -37,6 +37,8 @@ public class Info {
     public static final String CLIENT_PROXY_CLASS = "org.icannt.netherendingores.proxy.ClientProxy";
     public static final String SERVER_PROXY_CLASS = "org.icannt.netherendingores.proxy.ServerProxy";
     
+    public static final String INTEGRATION_LOADER_CLASS = "org.icannt.netherendingores.integration.IntegrationLoader";
+    
     public static final String TINKER_RECIPE_CLASS = "slimeknights.tconstruct.library.TinkerRegistry";
     
 }

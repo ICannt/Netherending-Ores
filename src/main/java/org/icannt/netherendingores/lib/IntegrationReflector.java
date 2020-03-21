@@ -9,7 +9,7 @@ public class IntegrationReflector {
 	public IntegrationReflector() {
 		
 		try {
-			Class<?> clazz = Class.forName("org.icannt.netherendingores.integration.IntegrationLoader");
+			Class<?> clazz = Class.forName(Info.INTEGRATION_LOADER_CLASS);
 			Object integrationClass = clazz.newInstance();
 			integration = (IntegrationProxy) integrationClass;
 		} catch(ClassNotFoundException | InstantiationException | IllegalAccessException e) {
