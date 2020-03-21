@@ -50,9 +50,12 @@ public class RecipeRegistry {
 	 * @param material
 	 */
 	public static void addCraftingRecipe(BlockData blockData, String material) {
+		// TODO: This function needs improved logging
 		ResourceLocation groupName = new ResourceLocation(Info.MOD_ID + ":ore_conversions");
 		Log.logRecipeMsg("crafting", blockData.getName(), blockData.getOreDictOutputName("", material));
-		GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(material), groupName, blockData.getOtherModBlockItemStack(material), blockData.getConversionIngredient());
+		if (blockData.isGoodIngredientResult(material)) {
+			GameRegistry.addShapelessRecipe(blockData.getConversionResourceLocation(material), groupName, blockData.getOtherModBlockItemStack(material), blockData.getConversionIngredient());
+		}
 	}
 	
 	/**
@@ -61,6 +64,7 @@ public class RecipeRegistry {
 	 * @param material
 	 */
 	public static void addFurnaceRecipe(BlockData blockData, String material) {
+		// TODO: This function needs improved logging
 		int experience = blockData.getRecipeMultiplier() > 1 ? 0 : -1;
 		Log.logRecipeMsg("furnace", blockData.getName(), blockData.getOreDictOutputName("smelt", material));
 		if (FurnaceRecipes.instance().getSmeltingResult(blockData.getModBlockItemStack()) == ItemStack.EMPTY) {

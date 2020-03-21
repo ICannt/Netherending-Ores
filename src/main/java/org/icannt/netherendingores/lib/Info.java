@@ -32,6 +32,7 @@ public class Info {
 			+"after:wawla;"
 			+"after:aether;"
 			+"after:aether_legacy;"
+			+"after:projectred-exploration;"
 			;
     
     public static final String CLIENT_PROXY_CLASS = "org.icannt.netherendingores.proxy.ClientProxy";

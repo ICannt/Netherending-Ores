@@ -36,8 +36,8 @@ public enum BlockData implements IStringSerializable {
     END_PLATINUM_ORE ("end_platinum_ore", "ore_end_modded_1", 6, new String[0], "", 4, 3, 3F, 15F, EnumRarity.UNCOMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
     END_SILVER_ORE ("end_silver_ore", "ore_end_modded_1", 7, new String[0], "", 4, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
     END_TIN_ORE ("end_tin_ore", "ore_end_modded_1", 8, new String[0], "", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
-    END_CERTUS_QUARTZ_ORE ("end_certus_quartz_ore", "ore_end_modded_1", 9, new String[0], "crystal", 0, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 2, 2, 4, false, true, 2, true),
-    END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", "ore_end_modded_1", 10, new String[0], "crystal", 0, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 2, 2, 5, false, true, 2, true),
+    END_CERTUS_QUARTZ_ORE ("end_certus_quartz_ore", "ore_end_modded_1", 9, new String[0], "gem", 0, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 2, 2, 4, false, true, 2, true),
+    END_CHARGED_CERTUS_QUARTZ_ORE ("end_charged_certus_quartz_ore", "ore_end_modded_1", 10, new String[0], "gem", 0, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, true, 1, 2, 2, 5, false, true, 2, true),
     END_OSMIUM_ORE ("end_osmium_ore", "ore_end_modded_1", 11, new String[0], "", 0, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
     END_URANIUM_ORE ("end_uranium_ore", "ore_end_modded_1", 12, new String[0], "", 0, 2, 4F, 30F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, false, true, 2, true),
     END_YELLORITE_ORE ("end_yellorite_ore", "ore_end_modded_1", 13, new String[] {"yellorium"}, "", 0, 0, 2F, 10F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
@@ -69,8 +69,8 @@ public enum BlockData implements IStringSerializable {
     NETHER_PLATINUM_ORE ("nether_platinum_ore", "ore_nether_modded_1", 6, new String[0], "", 4, 3, 3F, 15F, EnumRarity.UNCOMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
     NETHER_SILVER_ORE ("nether_silver_ore", "ore_nether_modded_1", 7, new String[0], "", 4, 2, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
     NETHER_TIN_ORE ("nether_tin_ore", "ore_nether_modded_1", 8, new String[0], "", 0, 1, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
-    NETHER_CERTUS_QUARTZ_ORE ("nether_certus_quartz_ore", "ore_nether_modded_1", 9, new String[0], "crystal", 0, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 2, 2, 4, false, true, 2, true),
-    NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", "ore_nether_modded_1", 10, new String[0], "crystal", 0, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 2, 2, 5, false, true, 2, true),
+    NETHER_CERTUS_QUARTZ_ORE ("nether_certus_quartz_ore", "ore_nether_modded_1", 9, new String[0], "gem", 0, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 2, 2, 4, false, true, 2, true),
+    NETHER_CHARGED_CERTUS_QUARTZ_ORE ("nether_charged_certus_quartz_ore", "ore_nether_modded_1", 10, new String[0], "gem", 0, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 2, 2, 5, false, true, 2, true),
     NETHER_OSMIUM_ORE ("nether_osmium_ore", "ore_nether_modded_1", 11, new String[0], "", 0, 0, 3F, 15F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
     NETHER_URANIUM_ORE ("nether_uranium_ore", "ore_nether_modded_1", 12, new String[0], "", 0, 2, 4F, 30F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, false, true, 2, true),
     NETHER_YELLORITE_ORE ("nether_yellorite_ore", "ore_nether_modded_1", 13, new String[] {"yellorium"}, "", 0, 0, 2F, 10F, EnumRarity.COMMON, new Object[] {Items.AIR, 0}, false, 1, 1, 0, 0, true, true, 2, true),
@@ -386,6 +386,17 @@ public enum BlockData implements IStringSerializable {
     //
     public Ingredient[] getConversionIngredient() {
 		return new Ingredient[]{Ingredient.fromStacks(getModBlockItemStack())};
+    }
+    
+    //
+    public boolean isGoodIngredientResult(String material) {
+    	
+    	if (getOtherModBlockItemStack(material).getItem() == Items.AIR) {
+    		return false;
+    	}
+    	
+		return true;
+		
     }
     
     //

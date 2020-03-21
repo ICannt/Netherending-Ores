@@ -14,7 +14,6 @@ public enum OreDictionaryOtherData implements IStringSerializable {
     GEM_ZANITE ("gemZanite", "aether", "zanite_gemstone", 0, "Aether II", "Zanite Gemstone", " Already registered for The Aether.", false, true),
     INGOT_ARKENIUM ("ingotArkenium", "aether", "arkenium", 0, "Aether II", "Arkenium Plate", " Aether II only item.", false, true),
     GEM_ICESTONE ("gemIcestone", "aether", "icestone", 0, "Aether II", "Icestone", " Aether II only item.", false, true),
-    CRYSTAL_CHARGED_CERTUS_QUARTZ ("crystalChargedCertusQuartz", "appliedenergistics2", "material", 1, "Applied Energistics 2", "Charged Certus Quartz", " Only used for drops.", false, true),
     ORE_AMBROSIUM ("oreAmbrosium", "aether", "ambrosium_ore", 0, "Aether II", "Ambrosium Ore", " Already registered for The Aether.", false, true),
     ORE_GRAVITITE ("oreGravitite", "aether", "gravitite_ore", 0, "Aether II", "Gravitite Ore", " Already registered for The Aether.", false, true),
     ORE_ZANITE ("oreZanite", "aether", "zanite_ore", 0, "Aether II", "Zanite Ore", " Already registered for The Aether.", false, true),
