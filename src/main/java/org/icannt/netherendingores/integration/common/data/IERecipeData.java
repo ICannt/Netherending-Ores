@@ -200,12 +200,12 @@ public enum IERecipeData implements IStringSerializable {
 	//
 	public static void addCrusherRecipe(BlockData blockData, String material) {
 		switch (blockData.getRecipeMultiplier()) {
-			case 2: //CrusherRecipe.timeModifier = 5f;
-					CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherAmount(blockData)).addToSecondaryOutput(new Object[] {getCrusherSecondaryItemStack(blockData), getCrusherSecondaryOutputChance(blockData)}); break;
-			case 3:	//CrusherRecipe.timeModifier = 10f;
-					CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherAmount(blockData));
+			case 2: CrusherRecipe.timeModifier = 1.8f;
+					CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherEnergy(blockData)).addToSecondaryOutput(new Object[] {getCrusherSecondaryItemStack(blockData), getCrusherSecondaryOutputChance(blockData)}); break;
+			case 3:	CrusherRecipe.timeModifier = 2.5f;
+					CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherEnergy(blockData));
 		}
-		//CrusherRecipe.timeModifier = 1f;
+		CrusherRecipe.timeModifier = 1f;
 	}
 	
 	//
