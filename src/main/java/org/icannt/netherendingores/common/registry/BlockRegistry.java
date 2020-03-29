@@ -171,40 +171,50 @@ public class BlockRegistry {
     @Mod.EventBusSubscriber
     public static class BlockEventHandler {
     	
-    	// TODO: Find a new event, it needs to be an interaction event blockbreak can then cancel the explosion.
+    	// TODO: Find a new event, it needs to be an interaction event like blockbreak then cancel the explosion.
     	// Same goes for the pigmen it should be interaction with the block not breaking it.
     	
     	@SubscribeEvent
 	    public static void onBlockBreak(BlockEvent.BreakEvent event) {
-	    	
-	        boolean silktouch = hasEnchant(event.getPlayer(), Enchantments.SILK_TOUCH);
-	        boolean fortune = hasEnchant(event.getPlayer(), Enchantments.FORTUNE);
-	
-	        World world = event.getWorld();
-	        BlockPos blockPos = event.getPos();
-	        IBlockState blockState = event.getState();
-	        EntityPlayer player = event.getPlayer();
-	
-	        if (Config.zombiePigmanAnger && isAngeringOre(blockState)) {
-	            if (!(silktouch && Config.zombiePigmanAngerSilkTouch)) angerPigmen(world, blockPos, player);
-	        }
-	
-	        if (!player.isCreative()) {
-		        if (isExplodingOre(blockState)) {
+
+    		EntityPlayer player = event.getPlayer();
+    		
+    		if (!player.isCreative()) {
+	        	
+    			boolean silktouch = hasEnchant(player, Enchantments.SILK_TOUCH);
+    			
+		        World world = event.getWorld();
+		        BlockPos blockPos = event.getPos();
+		        IBlockState blockState = event.getState();
 		
-		            int multi = Config.oreExplosionFortune && fortune ? 2 : 1;
-		
-		            if (!(silktouch && Config.oreExplosionSilkTouch)) {
-		                if (world.rand.nextDouble() <= Config.oreExplosionChance * multi) {
-		                    world.createExplosion(player, blockPos.getX(), blockPos.getY(), blockPos.getZ(), (float) Config.oreExplosionStrength, true);
-		                	//world.spawnEntity(new EntityPrimedOre(world, blockPos.getX(), blockPos.getY(), blockPos.getZ(), blockState.getBlock()));
-		                	//world.playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1F, 1F);
-		                }
-		            }
-		
+		        if (Config.zombiePigmanAnger && isAngeringOre(blockState)) {
+		            if (!(silktouch && Config.zombiePigmanAngerSilkTouch)) angerPigmen(world, blockPos, player);
 		        }
-	        }
-	
+	        	
+		        if (!(silktouch && Config.oreExplosionSilkTouch) && Config.oreExplosion) {
+		        
+		        	int blockDataOrdinal = getBlockDataOrdinal(blockState);
+	        	
+		        	if (blockDataOrdinal > -1) {		        		
+		        		if (BlockData.values()[blockDataOrdinal].getOreExplosion()) {
+		
+			        		double fortuneMulti = 1;
+			            	
+			            	if (Config.oreExplosionFortune && Config.dropItems && BlockData.values()[blockDataOrdinal].getDropItems()) {
+						        boolean fortune = hasEnchant(player, Enchantments.FORTUNE);
+						        short fortuneLevel = getEnchantLevel(player, Enchantments.FORTUNE);
+						        fortuneMulti = Config.oreExplosionFortune && fortune ? 1 + (0.1 * fortuneLevel * fortuneLevel) : 1;
+			            	}
+			            	
+			            	double randExplodeChance = world.rand.nextDouble();
+			            	
+			                if (randExplodeChance <= Config.oreExplosionChance * fortuneMulti) {		                	
+			                    world.createExplosion(player, blockPos.getX(), blockPos.getY(), blockPos.getZ(), (float) Config.oreExplosionStrength, true);
+			                }			                
+		        		}
+		            }
+		        }
+	        }	
 	    }
     }
 
@@ -234,7 +244,26 @@ public class BlockRegistry {
         return false;
 
     }
+    
+    private static short getEnchantLevel(EntityPlayer player, Enchantment enchant) {
 
+        if (player == null || player.getHeldItemMainhand().isEmpty()) return 0;
+
+        NBTTagList list = player.getHeldItemMainhand().getEnchantmentTagList();
+
+        for (int i = 0; i < list.tagCount(); i++) {
+            short enchantId = list.getCompoundTagAt(i).getShort("id");
+            short enchantLvl = list.getCompoundTagAt(i).getShort("lvl");
+            if (Enchantment.getEnchantmentByID(enchantId) == enchant) {
+            	return enchantLvl;
+            }
+        }
+
+        return 0;
+
+    }
+
+    //
     private static boolean isAngeringOre(IBlockState blockState) {
 
         //if (Loader.isModLoaded("tconstruct") && blockState.getBlock() == TinkerCommons.blockOre) return true;
@@ -249,24 +278,19 @@ public class BlockRegistry {
     }
     
     //
-    private static boolean isExplodingOre(IBlockState blockState) {
+    private static int getBlockDataOrdinal(IBlockState blockState) {
     	   	
         for (Block block : oreBlocks) {
         	if (blockState.getBlock() == block) {
     	        for (BlockData blockData : BlockData.values()) {
     	        	if (blockData.getModBlock() == blockState.getBlock() && blockData.getBlockMeta() == blockState.getBlock().getMetaFromState(blockState)) {
-    	        		if (blockData.getOreExplosion()) {
-    	        			return true;
-    	        		} else {
-    	        			break;
-    	        		}
+   	        			return blockData.ordinal();
     	        	}
     	        }
-        		break;
         	}
         }
         
-        return false;
+        return -1;
 
     }
     
@@ -277,8 +301,7 @@ public class BlockRegistry {
     	BLOCK_END_ENDERMITE.initItemBlockModels();
     	BLOCK_NETHER_NETHERFISH.initItemBlockModels();
     	
-    	for (BlockData blockData : BlockData.values()) {
-    					
+    	for (BlockData blockData : BlockData.values()) {    					
     		ModelLoader.setCustomModelResourceLocation(blockData.getModBlockItem(), blockData.getBlockMeta(), new ModelResourceLocation(blockData.getModBlockItem().getRegistryName(), "blocks=" + blockData.getModBlockStateNameValue()));
     	}
     	

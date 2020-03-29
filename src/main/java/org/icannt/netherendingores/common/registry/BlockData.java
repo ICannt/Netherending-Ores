@@ -1,6 +1,7 @@
 package org.icannt.netherendingores.common.registry;
 
 import static net.minecraft.util.math.MathHelper.getInt;
+import static net.minecraft.util.math.MathHelper.clamp;
 
 import java.util.Locale;
 import java.util.Random;
@@ -311,17 +312,16 @@ public enum BlockData implements IStringSerializable {
     public int getQuantityDropped(int fortune, Random random) {
     	
     	if (dropItemsQuantityMin <= dropItemsQuantityMax) {
-	    	int bonus = fortune > 0 ? random.nextInt(fortune + 1) + 1 : 1;
-	    	int extra = dropItemsQuantityMax - dropItemsQuantityMin;
-	    	extra = extra > 0 ? random.nextInt(extra + 1) : 0;
-	    	return dropItemsQuantityMin + extra * bonus * recipeMultiplier;
+    		int fortBonus = random.nextInt(fortune + 2) - 1;
+    		fortBonus = fortBonus < 0 ? 1 : fortBonus + 1;
+	    	int maxExtra = dropItemsQuantityMax - dropItemsQuantityMin;
+	    	int baseQty = (maxExtra > 0 ? random.nextInt(maxExtra + 1) : 0) + dropItemsQuantityMin;    	
+	    	int rawQty = baseQty * fortBonus * recipeMultiplier;
+	    	return clamp(rawQty, dropItemsQuantityMin, 4 * dropItemsQuantityMax);
     	} else {
     		Log.warn("Detected item quantity drop minimum higher than maximum on ore \"" + blockName + "\", this should not happen! Returning drop count to recipe multiplier.");
     	}
-    	
     	return 1 * recipeMultiplier;
-    	
-    	// TODO: May need to improve recipeMultiplier implementation may drop a lot of... drops.
     	
     }
 	
