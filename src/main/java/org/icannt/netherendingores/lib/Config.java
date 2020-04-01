@@ -85,6 +85,12 @@ public class Config {
 	public static boolean vanillaCraftingRecipes = true;
 	public static boolean vanillaFurnaceRecipes = true;
 	
+	private static float ieMachineTimeMultiplierMin = 0.001f;
+	private static float ieMachineTimeMultiplierMax = 1000f;
+	
+	public static float crusher2xOreTimeMultiplier = 1.8f;
+	public static float crusher3xOreTimeMultiplier = 2.5f;
+	
 	private static float outputFactorMin = 0.5f;
 	private static float fullOutputFactorMax = 3f;
 	private static float reducedOutputFactorMax = 1f;
@@ -344,6 +350,14 @@ public class Config {
     }
     
     //
+    private static void initRecipesIntegrationImmersiveEngineeringConfig(ConfigEx cfg, String category) {
+    	
+    	crusher2xOreTimeMultiplier = cfg.getFloat("Crusher 2x recipe multiplier time multiplier", category, crusher2xOreTimeMultiplier, getIEMachineTimeMultiplierMin(), getIEMachineTimeMultiplierMax(), "Multiplies the crusher time taken at the 2x recipe multiplier by this amount.");
+    	crusher3xOreTimeMultiplier = cfg.getFloat("Crusher 2x recipe multiplier time multiplier", category, crusher2xOreTimeMultiplier, getIEMachineTimeMultiplierMin(), getIEMachineTimeMultiplierMax(), "Multiplies the crusher time taken at the 2x recipe multiplier by this amount.");
+    	
+    }
+    
+    //
     private static void initRecipesIntegrationThermalExpansionConfig(ConfigEx cfg, String category) {
     	
     	inductionSmelterFullOutput = cfg.getBoolean("Induction Smelter full output", category, inductionSmelterFullOutput, "Enable full Induction Smelter output. Do not reduce output for augment compensation, uses much more energy.");
@@ -386,5 +400,13 @@ public class Config {
 		} 
     	
     }
+
+	public static float getIEMachineTimeMultiplierMin() {
+		return ieMachineTimeMultiplierMin;
+	}
+
+	public static float getIEMachineTimeMultiplierMax() {
+		return ieMachineTimeMultiplierMax;
+	}
     
 }
