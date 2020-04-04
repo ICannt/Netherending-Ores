@@ -207,9 +207,9 @@ public enum IERecipeData implements IStringSerializable {
 		float originalTimeModifier = CrusherRecipe.timeModifier;
 		
 		switch (blockData.getRecipeMultiplier()) {
-			case 2: CrusherRecipe.timeModifier = clamp(originalTimeModifier * Config.crusher2xOreTimeMultiplier, Config.getIEMachineTimeMultiplierMin(), Config.getIEMachineTimeMultiplierMax());
+			case 2: CrusherRecipe.timeModifier = clamp(originalTimeModifier * Config.crusher2xOreTimeMultiplier, Config.IE_MACHINE_TIME_MULTIPLIER_MIN, Config.IE_MACHINE_TIME_MULTIPLIER_MAX);
 					CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherEnergy(blockData)).addToSecondaryOutput(new Object[] {getCrusherSecondaryItemStack(blockData), getCrusherSecondaryOutputChance(blockData)}); break;
-			case 3:	CrusherRecipe.timeModifier = clamp(originalTimeModifier * Config.crusher3xOreTimeMultiplier, Config.getIEMachineTimeMultiplierMin(), Config.getIEMachineTimeMultiplierMax());
+			case 3:	CrusherRecipe.timeModifier = clamp(originalTimeModifier * Config.crusher3xOreTimeMultiplier, Config.IE_MACHINE_TIME_MULTIPLIER_MIN, Config.IE_MACHINE_TIME_MULTIPLIER_MAX);
 					CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherEnergy(blockData));
 		}
 		

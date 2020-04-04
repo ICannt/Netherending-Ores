@@ -27,17 +27,17 @@ public class Config {
     public static final int NETHERFISH_SPAWN_EGG_SECONDARY_COLOR = 16761600;
 
     public static double netherfishAttackDamage = 0.5D;
-    private static double netherfishAttackDamageMin = 0D;
-    private static double netherfishAttackDamageMax = 1000D;
+    private static final double netherfishAttackDamageMin = 0D;
+    private static final double netherfishAttackDamageMax = 1000D;
     public static double netherfishKnockbackResistance = 0D;
-    private static double netherfishKnockbackResistanceMin = 0.0D;
-    private static double netherfishKnockbackResistanceMax = 100D;
+    private static final double netherfishKnockbackResistanceMin = 0.0D;
+    private static final double netherfishKnockbackResistanceMax = 100D;
     public static double netherfishMaxHealth = 10D;
-    private static double netherfishMaxHealthMin = 1D;
-    private static double netherfishMaxHealthMax = 1000D;
+    private static final double netherfishMaxHealthMin = 1D;
+    private static final double netherfishMaxHealthMax = 1000D;
     public static double netherfishMovementSpeed = 0.2D;
-    private static double netherfishMovementSpeedMin = 0D;
-    private static double netherfishMovementSpeedMax = 1D;
+    private static final double netherfishMovementSpeedMin = 0D;
+    private static final double netherfishMovementSpeedMax = 1D;
     public static boolean netherfishSetFire = true;
     public static boolean netherfishWAILA = true;
     
@@ -46,11 +46,11 @@ public class Config {
     
     public static boolean zombiePigmanAnger = true;
     public static int zombiePigmanAngerRangeHeight = 16;
-    public static int zombiePigmanAngerRangeHeightMin = 1;
-    public static int zombiePigmanAngerRangeHeightMax = 32;
+    private static final int zombiePigmanAngerRangeHeightMin = 1;
+    private static final int zombiePigmanAngerRangeHeightMax = 32;
     public static int zombiePigmanAngerRangeRadius = 32;
-    public static int zombiePigmanAngerRangeRadiusMin = 1;
-    public static int zombiePigmanAngerRangeRadiusMax = 64;
+    private static final int zombiePigmanAngerRangeRadiusMin = 1;
+    private static final int zombiePigmanAngerRangeRadiusMax = 64;
     public static boolean zombiePigmanAngerSilkTouch = true;
 
     // Ores
@@ -62,14 +62,14 @@ public class Config {
     
     public static boolean oreExplosion = true;
     public static double oreExplosionChance = 0.125D;
-    private static double oreExplosionChanceMin = 0D;
-    private static double oreExplosionChanceMax = 1D;
+    private static final double oreExplosionChanceMin = 0D;
+    private static final double oreExplosionChanceMax = 1D;
     public static boolean oreExplosionFortune = true;
     public static boolean oreExplosionOverride = false;
     public static boolean oreExplosionSilkTouch = true;
     public static double oreExplosionStrength = 4D;
-    private static double oreExplosionStrengthMin = 0D;
-    private static double oreExplosionStrengthMax = 20D;
+    private static final double oreExplosionStrengthMin = 0D;
+    private static final double oreExplosionStrengthMax = 20D;
     
     // Recipes
     
@@ -85,15 +85,14 @@ public class Config {
 	public static boolean vanillaCraftingRecipes = true;
 	public static boolean vanillaFurnaceRecipes = true;
 	
-	private static float ieMachineTimeMultiplierMin = 0.001f;
-	private static float ieMachineTimeMultiplierMax = 1000f;
-	
+	public static final float IE_MACHINE_TIME_MULTIPLIER_MIN = 0.001f;
+	public static final float IE_MACHINE_TIME_MULTIPLIER_MAX = 1000f;
 	public static float crusher2xOreTimeMultiplier = 1.8f;
 	public static float crusher3xOreTimeMultiplier = 2.5f;
 	
-	private static float outputFactorMin = 0.5f;
-	private static float fullOutputFactorMax = 3f;
-	private static float reducedOutputFactorMax = 1f;
+	private static final float outputFactorMin = 0.5f;
+	private static final float fullOutputFactorMax = 3f;
+	private static final float reducedOutputFactorMax = 1f;
 	
 	public static boolean inductionSmelterFullOutput = false;
 	public static float inductionSmelterFullOutputAmountFactor = 1f;
@@ -114,9 +113,9 @@ public class Config {
 	public static float redstoneFurnaceReducedOutputEnergyFactor = 0.6f;
 	
 	private static int recipeMultiplierOverride = -1;
-	private static int recipeMultiplierOverrideMin = recipeMultiplierOverride;
-	private static int recipeMultiplierMin = 0;
-	private static int recipeMultiplierMax = 3;
+	private static final int recipeMultiplierOverrideMin = recipeMultiplierOverride;
+	private static final int recipeMultiplierMin = 0;
+	private static final int recipeMultiplierMax = 3;
 	
 	// Category Hierarchy
 	
@@ -138,6 +137,7 @@ public class Config {
 	private static final String CATEGORY_RECIPES__FURNACE_TO_ITEMS = "recipes.furnace to items";
 	private static final String CATEGORY_RECIPES__FURNACE_TO_ITEMS__FURNACE_TO_ITEM_ORES = "recipes.furnace to items.furnace to item ores";
 	private static final String CATEGORY_RECIPES__INTEGRATION = "recipes.integration";
+	private static final String CATEGORY_RECIPES__INTEGRATION__IMMERSIVE_ENGINEERING = "recipes.integration.immersive engineering";
 	private static final String CATEGORY_RECIPES__INTEGRATION__THERMAL_EXPANSION = "recipes.integration.thermal expansion";
 	private static final String CATEGORY_RECIPES__RECIPE_MULTIPLIERS = "recipes.recipe multipliers";
 	private static final String CATEGORY_RECIPES__RECIPE_MULTIPLIERS__RECIPE_MULTIPLIER_ORES = "recipes.recipe multipliers.recipe multiplier ores";
@@ -179,6 +179,7 @@ public class Config {
         initRecipesFurnaceToItemsConfig(cfg, CATEGORY_RECIPES__FURNACE_TO_ITEMS);
         initRecipesFurnaceToItemsFurnaceToItemOresConfig(cfg, CATEGORY_RECIPES__FURNACE_TO_ITEMS__FURNACE_TO_ITEM_ORES);
         initRecipesIntegrationConfig(cfg, CATEGORY_RECIPES__INTEGRATION);
+        initRecipesIntegrationImmersiveEngineeringConfig(cfg, CATEGORY_RECIPES__INTEGRATION__IMMERSIVE_ENGINEERING);
         initRecipesIntegrationThermalExpansionConfig(cfg, CATEGORY_RECIPES__INTEGRATION__THERMAL_EXPANSION);
         initRecipesRecipeMultipliersConfig(cfg, CATEGORY_RECIPES__RECIPE_MULTIPLIERS);
         initRecipesRecipeMultipliersRecipeMultiplierOresConfig(cfg, CATEGORY_RECIPES__RECIPE_MULTIPLIERS__RECIPE_MULTIPLIER_ORES);
@@ -196,15 +197,15 @@ public class Config {
     	cfg.setCategoryComment(CATEGORY_ORES__DROP_ITEMS, ""
     			+ "If any of the following ores is set to true, that ore will drop items instead of ore blocks.\r\n"
     			+ "Requires drop items to be enabled.\r\n"
-    			+ "There is an override so all ores will drop items."
-    			);
+    			+ "There is an override so all ores will drop items.");
     	
     	cfg.setCategoryComment(CATEGORY_RECIPES, "Recipe Settings.");
     	cfg.setCategoryComment(CATEGORY_RECIPES__FURNACE_TO_ITEMS, ""
     			+ "If any of the following ores is set to true, that item will furnace direct to item.\r\n"
     			+ "Requires furnace to items to be enabled.\r\n"
-    			+ "There is an override so all ores will smelt to item."
-    			);
+    			+ "There is an override so all ores will smelt to item.");
+    	cfg.setCategoryComment(CATEGORY_RECIPES__INTEGRATION__IMMERSIVE_ENGINEERING, "" 
+    			+ "Settings for Immersive Engineering machine processing.");
     	cfg.setCategoryComment(CATEGORY_RECIPES__INTEGRATION__THERMAL_EXPANSION, "" 
     			+ "Settings for Thermal Expansion machine processing.\r\n"
     			+ "Please ask the mod author trab if you need assistance understanding how this works.");
@@ -352,8 +353,8 @@ public class Config {
     //
     private static void initRecipesIntegrationImmersiveEngineeringConfig(ConfigEx cfg, String category) {
     	
-    	crusher2xOreTimeMultiplier = cfg.getFloat("Crusher 2x recipe multiplier time multiplier", category, crusher2xOreTimeMultiplier, getIEMachineTimeMultiplierMin(), getIEMachineTimeMultiplierMax(), "Multiplies the crusher time taken at the 2x recipe multiplier by this amount.");
-    	crusher3xOreTimeMultiplier = cfg.getFloat("Crusher 2x recipe multiplier time multiplier", category, crusher2xOreTimeMultiplier, getIEMachineTimeMultiplierMin(), getIEMachineTimeMultiplierMax(), "Multiplies the crusher time taken at the 2x recipe multiplier by this amount.");
+    	crusher2xOreTimeMultiplier = cfg.getFloat("Crusher 2x recipe multiplier time multiplier", category, crusher2xOreTimeMultiplier, IE_MACHINE_TIME_MULTIPLIER_MIN, IE_MACHINE_TIME_MULTIPLIER_MAX, "Multiplies the crusher time taken at the 2x recipe multiplier by this amount.");
+    	crusher3xOreTimeMultiplier = cfg.getFloat("Crusher 3x recipe multiplier time multiplier", category, crusher3xOreTimeMultiplier, IE_MACHINE_TIME_MULTIPLIER_MIN, IE_MACHINE_TIME_MULTIPLIER_MAX, "Multiplies the crusher time taken at the 3x recipe multiplier by this amount.");
     	
     }
     
@@ -400,13 +401,5 @@ public class Config {
 		} 
     	
     }
-
-	public static float getIEMachineTimeMultiplierMin() {
-		return ieMachineTimeMultiplierMin;
-	}
-
-	public static float getIEMachineTimeMultiplierMax() {
-		return ieMachineTimeMultiplierMax;
-	}
     
 }
