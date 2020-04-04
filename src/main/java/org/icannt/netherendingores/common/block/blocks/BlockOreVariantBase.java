@@ -99,7 +99,8 @@ public class BlockOreVariantBase extends Block {
     	
     }
     
-    public int getHarvestLevel(IBlockState state) {
+    @Override
+	public int getHarvestLevel(IBlockState state) {
     	
     	return BlockData.values()[getOrd(state)].getHarvestLevel();
     	

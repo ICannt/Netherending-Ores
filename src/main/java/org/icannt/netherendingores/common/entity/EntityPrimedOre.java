@@ -90,12 +90,14 @@ public class EntityPrimedOre extends Entity {
         this.world.createExplosion(this, this.posX, this.posY, this.posZ, strength, true);
     }
     
-    protected void writeEntityToNBT(NBTTagCompound compound)
+    @Override
+	protected void writeEntityToNBT(NBTTagCompound compound)
     {
         compound.setShort(fuseKey, (short)fuse);
     }
 
-    protected void readEntityFromNBT(NBTTagCompound compound)
+    @Override
+	protected void readEntityFromNBT(NBTTagCompound compound)
     {
         setFuse(compound.getShort(fuseKey));
     }
