@@ -25,6 +25,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by ICannt on 02/03/20.
+ * 
+ * Based off code from Nether Foundation: https://github.com/TehSeph/NetherFoundation/
+ * 
  */
 public class BlockMonsterEndEndermite extends Block {
 
@@ -33,10 +36,6 @@ public class BlockMonsterEndEndermite extends Block {
         setRegistryName(Info.MOD_ID, "block_end_endermite");
         setTranslationKey(getRegistryName().toString());
     }
-    
-	//					Stone	Monster		Netherrack	Monster		End Stone	Monster
-	//Hardness			1.5		0.75		0.4			0.2			3			1.5
-    //Blast				30		3.75		2			0.25		45			5.625
 
     @Override
     public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {

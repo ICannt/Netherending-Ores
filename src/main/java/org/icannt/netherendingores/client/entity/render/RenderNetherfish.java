@@ -12,6 +12,9 @@ import net.minecraft.util.ResourceLocation;
 
 /**
  * Created by ICannt on 09/02/18.
+ * 
+ * Based off code from Nether Foundation: https://github.com/TehSeph/NetherFoundation/
+ * 
  */
 public class RenderNetherfish extends RenderLiving<EntityNetherfish> {
 

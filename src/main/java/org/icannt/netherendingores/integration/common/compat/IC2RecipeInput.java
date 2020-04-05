@@ -12,6 +12,9 @@ import net.minecraft.item.ItemStack;
  * Class taken from IC2Magma: <a href="https://github.com/slump64/IC2Magma/blob/master/src/main/java/com/lavx64/ic2magma/recipes/IC2RecipeInput.java">IC2RecipeInput.java</a>
  * 
  * Project is licensed under LGPL 2.1
+ * 
+ * <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+ * 
  */
 
 public class IC2RecipeInput implements IRecipeInput{

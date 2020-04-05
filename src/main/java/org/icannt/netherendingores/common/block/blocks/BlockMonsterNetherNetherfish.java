@@ -23,6 +23,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by ICannt on 28/07/19.
+ * 
+ * Based off code from Nether Foundation: https://github.com/TehSeph/NetherFoundation/
+ * 
  */
 public class BlockMonsterNetherNetherfish extends Block {
 
@@ -31,10 +34,6 @@ public class BlockMonsterNetherNetherfish extends Block {
         setRegistryName(Info.MOD_ID, "block_nether_netherfish");
         setTranslationKey(getRegistryName().toString());
     }
-    
-	//					Stone	Monster		Netherrack	Monster		End Stone	Monster
-	//Hardness			1.5		0.75		0.4			0.2			3			1.5
-    //Blast				30		3.75		2			0.25		45			5.625
 
     @Override
     public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
