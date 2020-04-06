@@ -14,10 +14,8 @@ Ores which do not originate in the Overworld, act like silk touched versions of 
 
 ### Code License
 Code license was MIT for mod veersions less than 1.4 but has been changed to GNU LGPL v3.0 as classes and parts of classes from Nether Foundation is now included in the source.\
-Used with permission.
-https://github.com/TehSeph/NetherFoundation/\
+Used with permission. https://github.com/TehSeph/NetherFoundation/ \
 One class in the mod is GNU LGPL v2.1 from https://github.com/slump64/IC2Magma/blob/master/src/main/java/com/lavx64/ic2magma/recipes/IC2RecipeInput.java
-
 
 ### Art Licensing
 License for textures based off of third party assets are as per their originating licenses:\
