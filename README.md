@@ -30,5 +30,6 @@ ICannt.org Team Member - LiamEarle (PrinceCat)
 
 ### Translation Credits
 Brazilian Portuguese - SAMUELPV\
+Korean - mindy15963\
 Russian - Mr_Krab\
 Simplified Chinese - G2159687 (K W)
