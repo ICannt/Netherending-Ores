@@ -57,6 +57,8 @@ public class Config {
     
     public static boolean dropItems = false;
     public static boolean dropItemsOverride = false;
+    
+	public static boolean preferredMods = false;
 
     public static final int ORE_EXPLOSION_FUSE_LENGTH_TICKS = 80;
     
@@ -130,6 +132,8 @@ public class Config {
 	private static final String CATEGORY_ORES__DROP_ITEMS = "ores.drop items";
 	private static final String CATEGORY_ORES__DROP_ITEMS__DROP_ITEM_ORES = "ores.drop items.drop item ores";
 	private static final String CATEGORY_ORES__ORE_DICTIONARY = "ores.ore dictionary";
+	private static final String CATEGORY_ORES__ORE_DICTIONARY_PREFERRED_MODS = "ores.ore dictionary preferred mods";
+	private static final String CATEGORY_ORES__ORE_DICTIONARY_PREFERRED_MODS__ORE_DICTIONARY_PREFERRED_MOD_ORES = "ores.ore dictionary preferred mods.ore dictionary preferred mod ores";
 	private static final String CATEGORY_ORES__ORE_EXPLOSIONS = "ores.ore explosions";
 	private static final String CATEGORY_ORES__ORE_EXPLOSIONS__ORE_EXPLOSION_ORES = "ores.ore explosions.ore explosion ores";
 
@@ -139,6 +143,7 @@ public class Config {
 	private static final String CATEGORY_RECIPES__INTEGRATION = "recipes.integration";
 	private static final String CATEGORY_RECIPES__INTEGRATION__IMMERSIVE_ENGINEERING = "recipes.integration.immersive engineering";
 	private static final String CATEGORY_RECIPES__INTEGRATION__THERMAL_EXPANSION = "recipes.integration.thermal expansion";
+
 	private static final String CATEGORY_RECIPES__RECIPE_MULTIPLIERS = "recipes.recipe multipliers";
 	private static final String CATEGORY_RECIPES__RECIPE_MULTIPLIERS__RECIPE_MULTIPLIER_ORES = "recipes.recipe multipliers.recipe multiplier ores";
 	
@@ -171,6 +176,8 @@ public class Config {
         initMobsZombiePigmanConfig(cfg, CATEGORY_MOBS__ZOMBIE_PIGMAN);
         
         initOresOreDictionaryConfig(cfg, CATEGORY_ORES__ORE_DICTIONARY);
+        initOresOreDictionaryPreferredModsConfig(cfg, CATEGORY_ORES__ORE_DICTIONARY_PREFERRED_MODS);
+        initOresOreDictionaryPreferredModsOreDictionaryPreferredModOresConfig(cfg, CATEGORY_ORES__ORE_DICTIONARY_PREFERRED_MODS__ORE_DICTIONARY_PREFERRED_MOD_ORES);
         initOresDropItems(cfg, CATEGORY_ORES__DROP_ITEMS);
         initOresDropItemsDropItemOres(cfg, CATEGORY_ORES__DROP_ITEMS__DROP_ITEM_ORES);        
         initOresOreExplosionsConfig(cfg, CATEGORY_ORES__ORE_EXPLOSIONS);
@@ -181,11 +188,12 @@ public class Config {
         initRecipesIntegrationConfig(cfg, CATEGORY_RECIPES__INTEGRATION);
         initRecipesIntegrationImmersiveEngineeringConfig(cfg, CATEGORY_RECIPES__INTEGRATION__IMMERSIVE_ENGINEERING);
         initRecipesIntegrationThermalExpansionConfig(cfg, CATEGORY_RECIPES__INTEGRATION__THERMAL_EXPANSION);
+                
         initRecipesRecipeMultipliersConfig(cfg, CATEGORY_RECIPES__RECIPE_MULTIPLIERS);
         initRecipesRecipeMultipliersRecipeMultiplierOresConfig(cfg, CATEGORY_RECIPES__RECIPE_MULTIPLIERS__RECIPE_MULTIPLIER_ORES);
         
 	}
-	
+
 	//
     private static void loadCategoryCommentStrings(ConfigEx cfg) {
 
@@ -268,6 +276,24 @@ public class Config {
 		}
     	
     }
+    
+    //
+	private static void initOresOreDictionaryPreferredModsConfig(ConfigEx cfg, String category) {
+		
+		preferredMods = cfg.getBoolean("Preferred Mods Output", category, preferredMods, "Enable preferred mods outout, setting a mod name for an ore name makes the mod search for that name in the Ore Dictionary and use that as a priority.");
+		
+	}
+	
+	//
+	private static void initOresOreDictionaryPreferredModsOreDictionaryPreferredModOresConfig(ConfigEx cfg, String category) {
+		
+    	String setting = "";    	
+    	for (BlockData blockData : BlockData.values()) {
+    		setting = cfg.getBlockProperty(blockData.getName(), category, blockData.getPreferredMod());
+    		blockData.setPreferredMod(setting);
+    	}
+		
+	}
     
     //
     private static void initOresDropItems(ConfigEx cfg, String category) {

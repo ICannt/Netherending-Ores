@@ -36,6 +36,7 @@ public class OreDictionaryRegistry {
     		}
 		}
     	
+    	// Register mod ore dictionary entries
     	for (BlockData blockData : BlockData.values()) {
        		OreDictionary.registerOre(blockData.getOreDictRegName(), blockData.getModBlockItemStack());  		
        		Log.logOreDictSuccess(blockData.getOreDictRegName(), blockData.getBlockLogInfo());       		

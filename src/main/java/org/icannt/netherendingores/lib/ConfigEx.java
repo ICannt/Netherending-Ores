@@ -53,5 +53,18 @@ public class ConfigEx extends Configuration {
 	public boolean getBlockProperty(String name, String category, boolean defaultValue) {
 		return get(category, StringUtil.spaceCapital(name), defaultValue).getBoolean();
 	}
+	
+    /**
+     * Creates a block property. String version.
+     *
+     * @param name Name of the property.
+     * @param category Category of the property.
+     * @param defaultValue Default value of the property.
+     * @return The value of the new block property.
+     */
+	public String getBlockProperty(String name, String category, String defaultValue) {
+		return get(category, StringUtil.spaceCapital(name), defaultValue).getString();
+	}
+
 
 }
