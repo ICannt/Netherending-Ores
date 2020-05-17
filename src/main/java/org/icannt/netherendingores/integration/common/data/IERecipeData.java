@@ -203,18 +203,11 @@ public enum IERecipeData implements IStringSerializable {
 	//
 	public static void addCrusherRecipe(BlockData blockData, String material) {
 		
-		// This is a user configurable value for Immersive Engineeering, so save it first.
-		float originalTimeModifier = CrusherRecipe.timeModifier;
-		
 		switch (blockData.getRecipeMultiplier()) {
-			case 2: CrusherRecipe.timeModifier = clamp(originalTimeModifier * Config.crusher2xOreTimeMultiplier, Config.IE_MACHINE_TIME_MULTIPLIER_MIN, Config.IE_MACHINE_TIME_MULTIPLIER_MAX);
-					CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherEnergy(blockData)).addToSecondaryOutput(new Object[] {getCrusherSecondaryItemStack(blockData), getCrusherSecondaryOutputChance(blockData)}); break;
-			case 3:	CrusherRecipe.timeModifier = clamp(originalTimeModifier * Config.crusher3xOreTimeMultiplier, Config.IE_MACHINE_TIME_MULTIPLIER_MIN, Config.IE_MACHINE_TIME_MULTIPLIER_MAX);
-					CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherEnergy(blockData));
+			case 2: CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherEnergy(blockData)).addToSecondaryOutput(new Object[] {getCrusherSecondaryItemStack(blockData), getCrusherSecondaryOutputChance(blockData)}); break;
+			case 3:	CrusherRecipe.addRecipe(getCrusherPrimaryItemStack(blockData, material), blockData.getModBlockItemStack(), getCrusherEnergy(blockData));
 		}
 		
-		// Return the time modifier back to where it was.
-		CrusherRecipe.timeModifier = originalTimeModifier;
 	}
 	
 	//
