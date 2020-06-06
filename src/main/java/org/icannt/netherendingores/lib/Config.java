@@ -87,6 +87,11 @@ public class Config {
 	public static boolean vanillaCraftingRecipes = true;
 	public static boolean vanillaFurnaceRecipes = true;
 	
+	public static final float IE_MACHINE_TIME_MULTIPLIER_MIN = 0.001f;
+	public static final float IE_MACHINE_TIME_MULTIPLIER_MAX = 1000f;
+	public static float crusher2xOreTimeMultiplier = 1.8f;
+	public static float crusher3xOreTimeMultiplier = 2.5f;
+	
 	private static final float outputFactorMin = 0.5f;
 	private static final float fullOutputFactorMax = 3f;
 	private static final float reducedOutputFactorMax = 1f;
@@ -181,6 +186,7 @@ public class Config {
         initRecipesFurnaceToItemsConfig(cfg, CATEGORY_RECIPES__FURNACE_TO_ITEMS);
         initRecipesFurnaceToItemsFurnaceToItemOresConfig(cfg, CATEGORY_RECIPES__FURNACE_TO_ITEMS__FURNACE_TO_ITEM_ORES);
         initRecipesIntegrationConfig(cfg, CATEGORY_RECIPES__INTEGRATION);
+        initRecipesIntegrationImmersiveEngineeringConfig(cfg, CATEGORY_RECIPES__INTEGRATION__IMMERSIVE_ENGINEERING);
         initRecipesIntegrationThermalExpansionConfig(cfg, CATEGORY_RECIPES__INTEGRATION__THERMAL_EXPANSION);
                 
         initRecipesRecipeMultipliersConfig(cfg, CATEGORY_RECIPES__RECIPE_MULTIPLIERS);
@@ -367,6 +373,14 @@ public class Config {
     	
     	vanillaCraftingRecipes = cfg.getBoolean("Vanilla crafting recipes", category, vanillaCraftingRecipes, "Enable crafting recipes to convert to oredict ores, only works with 1x recipe multiplier.");
 		vanillaFurnaceRecipes = cfg.getBoolean("Vanilla furnace recipes", category, vanillaFurnaceRecipes, "Enable furnace recipes to smelt to oredict ores.");
+    	
+    }
+    
+    //
+    private static void initRecipesIntegrationImmersiveEngineeringConfig(ConfigEx cfg, String category) {
+    	
+    	crusher2xOreTimeMultiplier = cfg.getFloat("Crusher 2x recipe multiplier time multiplier", category, crusher2xOreTimeMultiplier, IE_MACHINE_TIME_MULTIPLIER_MIN, IE_MACHINE_TIME_MULTIPLIER_MAX, "Multiplies the crusher time taken at the 2x recipe multiplier by this amount.");
+    	crusher3xOreTimeMultiplier = cfg.getFloat("Crusher 3x recipe multiplier time multiplier", category, crusher3xOreTimeMultiplier, IE_MACHINE_TIME_MULTIPLIER_MIN, IE_MACHINE_TIME_MULTIPLIER_MAX, "Multiplies the crusher time taken at the 3x recipe multiplier by this amount.");
     	
     }
     
