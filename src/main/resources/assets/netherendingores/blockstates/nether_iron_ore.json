@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "netherendingores:block/nether_iron_ore_model" }
+  }
+}

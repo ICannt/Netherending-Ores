@@ -48,6 +48,7 @@ Temporary Items
 *.launch
 /.classpath
 /.gradle
+/.idea
 /.ignore
 /.project
 /.settings
@@ -59,6 +60,7 @@ Temporary Items
 /gradlelibs
 /libs
 /run
+/logs
 /serverrun
 /sources
 gradlew

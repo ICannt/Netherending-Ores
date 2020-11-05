@@ -1,0 +1,12 @@
+{
+  "type": "netherendingores:multiple_smelting",
+  "input": {
+    "item": "netherendingores:nether_redstone_ore"
+  },
+  "output": {
+    "item": "minecraft:redstone"
+  },
+  "multiplier": 2,
+  "experience": 0.1,
+  "cookTime": 200
+}

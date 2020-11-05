@@ -1,0 +1,12 @@
+{
+  "type": "netherendingores:multiple_smelting",
+  "input": {
+    "item": "netherendingores:nether_iron_ore"
+  },
+  "output": {
+    "tag": "forge:ingots/iron"
+  },
+  "multiplier": 2,
+  "experience": 0.1,
+  "cookTime": 200
+}

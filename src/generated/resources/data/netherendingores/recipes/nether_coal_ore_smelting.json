@@ -1,0 +1,12 @@
+{
+  "type": "netherendingores:multiple_smelting",
+  "input": {
+    "item": "netherendingores:nether_coal_ore"
+  },
+  "output": {
+    "item": "minecraft:coal"
+  },
+  "multiplier": 2,
+  "experience": 0.1,
+  "cookTime": 200
+}

@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "netherendingores:block/nether_gold_ore_model" }
+  }
+}

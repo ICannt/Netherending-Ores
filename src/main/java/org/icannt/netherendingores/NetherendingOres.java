@@ -1,48 +1,39 @@
 package org.icannt.netherendingores;
 
-import org.icannt.netherendingores.lib.Info;
-import org.icannt.netherendingores.lib.IntegrationReflector;
-import org.icannt.netherendingores.proxy.CommonProxy;
-
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.icannt.netherendingores.registry.RegistryClient;
+import org.icannt.netherendingores.registry.RegistryCommon;
+import org.icannt.netherendingores.registry.block.BlockRegistry;
+import org.icannt.netherendingores.registry.item.ItemRegistry;
 
-/**
- * Created by ICannt on 17/08/17.
- */
+@Mod(NetherendingOres.MOD_ID)
+public class NetherendingOres
+{
+    public static final String MOD_ID = "netherendingores";
+    public static final String MOD_NAME = "Netherending Ores";
 
-@Mod(modid = Info.MOD_ID,
-	name = Info.MOD_NAME,
-	version = Info.VERSION,
-	acceptedMinecraftVersions = Info.MC_VERSIONS,
-	dependencies = Info.DEPENDENCIES)
+    public static IEventBus EVENT_BUS;
 
-public class NetherendingOres {
+    public NetherendingOres() {
 
-	public static IntegrationReflector integrationReflector = new IntegrationReflector();
-	
-    @SidedProxy(clientSide = Info.CLIENT_PROXY_CLASS, serverSide = Info.SERVER_PROXY_CLASS)
-    public static CommonProxy proxy;
-    
-    @Mod.Instance(Info.MOD_ID)
-    public static NetherendingOres instance;
+        EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
 
-	@EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-        proxy.preInit(event);
+        BlockRegistry.setup();
+        ItemRegistry.setup();
+
+        registerEvents();
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> NetherendingOres::registerClientEvents);
     }
 
-    @EventHandler
-    public void init(FMLInitializationEvent event) {
-        proxy.init(event);
+    public static void registerEvents() {
+        EVENT_BUS.register(RegistryCommon.class);
     }
 
-    @EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
-        proxy.postInit(event);
+    public static void registerClientEvents() {
+        EVENT_BUS.register(RegistryClient.class);
     }
 }

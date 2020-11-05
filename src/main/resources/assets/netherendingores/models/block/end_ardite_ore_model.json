@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "netherendingores:block/end_ardite_ore"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "netherendingores:multiple_smelting",
+  "input": {
+    "item": "netherendingores:nether_emerald_ore"
+  },
+  "output": {
+    "tag": "forge:gems/emerald"
+  },
+  "multiplier": 2,
+  "experience": 0.1,
+  "cookTime": 200
+}
