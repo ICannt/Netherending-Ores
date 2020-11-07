@@ -1,0 +1,12 @@
+{
+  "type": "netherendingores:ore_blasting",
+  "input": {
+    "item": "netherendingores:end_iron_ore"
+  },
+  "output": {
+    "tag": "forge:ingots/iron"
+  },
+  "multiplier": 2,
+  "experience": 0.0,
+  "cookTime": 100
+}

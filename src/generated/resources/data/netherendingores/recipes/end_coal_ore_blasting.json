@@ -1,0 +1,12 @@
+{
+  "type": "netherendingores:ore_blasting",
+  "input": {
+    "item": "netherendingores:end_coal_ore"
+  },
+  "output": {
+    "item": "minecraft:coal"
+  },
+  "multiplier": 2,
+  "experience": 0.0,
+  "cookTime": 100
+}

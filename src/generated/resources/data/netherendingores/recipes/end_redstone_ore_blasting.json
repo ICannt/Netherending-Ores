@@ -1,0 +1,12 @@
+{
+  "type": "netherendingores:ore_blasting",
+  "input": {
+    "item": "netherendingores:end_redstone_ore"
+  },
+  "output": {
+    "tag": "forge:dusts/redstone"
+  },
+  "multiplier": 6,
+  "experience": 0.0,
+  "cookTime": 100
+}

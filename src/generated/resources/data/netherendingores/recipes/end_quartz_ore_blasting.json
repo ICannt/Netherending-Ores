@@ -1,0 +1,12 @@
+{
+  "type": "netherendingores:ore_blasting",
+  "input": {
+    "item": "netherendingores:end_quartz_ore"
+  },
+  "output": {
+    "tag": "forge:gems/quartz"
+  },
+  "multiplier": 2,
+  "experience": 0.0,
+  "cookTime": 100
+}

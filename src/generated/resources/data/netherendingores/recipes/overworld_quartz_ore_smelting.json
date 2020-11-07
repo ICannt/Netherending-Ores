@@ -1,5 +1,5 @@
 {
-  "type": "netherendingores:multiple_smelting",
+  "type": "netherendingores:ore_smelting",
   "input": {
     "item": "netherendingores:overworld_quartz_ore"
   },
@@ -7,6 +7,6 @@
     "tag": "forge:gems/quartz"
   },
   "multiplier": 2,
-  "experience": 0.1,
+  "experience": 0.0,
   "cookTime": 200
 }

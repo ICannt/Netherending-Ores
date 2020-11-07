@@ -1,0 +1,12 @@
+{
+  "type": "netherendingores:ore_blasting",
+  "input": {
+    "item": "netherendingores:end_gold_ore"
+  },
+  "output": {
+    "tag": "forge:ingots/gold"
+  },
+  "multiplier": 2,
+  "experience": 0.0,
+  "cookTime": 100
+}
