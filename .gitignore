@@ -1,3 +1,7 @@
+# =========================
+#     Operating Systems
+# =========================
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -41,25 +45,41 @@ Temporary Items
 
 
 # =========================
-# Project Specific
+#      Minecraft Forge
 # =========================
 
 
+# eclipse
+bin
 *.launch
-/.classpath
-/.gradle
-/.ignore
-/.project
-/.settings
-/bin
-/build
-/data
-/doc
-/eclipse
-/gradlelibs
-/libs
-/run
-/serverrun
-/sources
-gradlew
-gradlew.bat
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+
+# Files from Forge MDK
+forge*changelog.txt
+
+
+# =========================
+#      Modding Project
+# =========================
+
+data
+gradlelibs
+libs

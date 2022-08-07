@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "netherendingores:block/end_ancient_debris_ore_side",
+    "end": "netherendingores:block/end_ancient_debris_ore_top"
+  }
+}

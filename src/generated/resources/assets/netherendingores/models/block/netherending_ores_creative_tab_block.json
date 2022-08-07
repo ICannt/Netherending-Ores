@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "netherendingores:block/netherending_ores_creative_tab_block_north",
+    "up": "netherendingores:block/netherending_ores_creative_tab_block_east",
+    "north": "netherendingores:block/netherending_ores_creative_tab_block_north",
+    "south": "netherendingores:block/netherending_ores_creative_tab_block_south",
+    "east": "netherendingores:block/netherending_ores_creative_tab_block_east",
+    "west": "netherendingores:block/netherending_ores_creative_tab_block_west"
+  }
+}
