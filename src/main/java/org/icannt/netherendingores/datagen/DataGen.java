@@ -20,7 +20,7 @@ public class DataGen {
             NeoBlockTags blockTags = new NeoBlockTags(generator, helper);
             generator.addProvider(blockTags);
             generator.addProvider(new NeoItemTags(generator, blockTags, helper));
-            //generator.addProvider(new NeoLootTables(generator));
+            generator.addProvider(new NeoLootTables(generator));
             //generator.addProvider(new NeoRecipes(generator));
         }
 

@@ -185,7 +185,7 @@ public enum NeoOreBlocks implements IOreType {
     public int getHarvestLevel() {
     	return this.harvestLevel;
     }
-    
+
     private Rarity getRarity() {
         return this.rarity;
     }
@@ -200,10 +200,10 @@ public enum NeoOreBlocks implements IOreType {
     	}
     	return "raw";
     }
-    
+
     // Helpers
 
-    public TagKey<Block> getToolNeeded() { 
+    public TagKey<Block> getToolNeeded() {
 		switch (getHarvestLevel()) {
 			case 2:
 				return BlockTags.NEEDS_IRON_TOOL;
@@ -211,11 +211,11 @@ public enum NeoOreBlocks implements IOreType {
 				return BlockTags.NEEDS_DIAMOND_TOOL;
 			case 4:
 				return Tags.Blocks.NEEDS_NETHERITE_TOOL;
-		}		
+		}
 	    return BlockTags.NEEDS_STONE_TOOL;
 	}
 
-    
+
     private RegistryObject<Block> getRegistryBlock() {
         return this.block;
     }
@@ -272,7 +272,7 @@ public enum NeoOreBlocks implements IOreType {
     private MaterialColor getMaterialColor() {
     	switch(getOreBaseType()) {
     		case "stone":
-    			return MaterialColor.STONE;    	
+    			return MaterialColor.STONE;
     		case "deepslate":
     			return MaterialColor.DEEPSLATE;
     		case "nether":
@@ -288,10 +288,10 @@ public enum NeoOreBlocks implements IOreType {
     		case "nether":
     			if (getItemTagPrefix() == "gem") {
     				return SoundType.NETHER_ORE;
-    			}    			
+    			}
     			return SoundType.NETHER_GOLD_ORE;
     	}
-    	return SoundType.STONE;    	
+    	return SoundType.STONE;
     }
 
     public Block.Properties getBlockProperties() {
