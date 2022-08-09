@@ -356,7 +356,7 @@ public enum NeoOreBlocks implements IOreType {
     // TODO: This is the big part of it that needs to determine what kind of item tag is to be dropped.
     // Should probably be moved to a setter instead?
 	public TagKey<Item> getForgeOreLootItemTag() {
-		return ItemTags.create(new ResourceLocation("forge", "items/" + getItemTagMaterial() + "/" + getOreType()));
+		return ItemTags.create(new ResourceLocation("forge", getItemTagMaterial() + "/" + getOreType()));
 	}
 
 }
