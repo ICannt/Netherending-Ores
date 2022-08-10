@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "netherendingores:overworld_quartz_ore",
+    "netherendingores:deepslate_quartz_ore",
+    "netherendingores:end_quartz_ore"
+  ]
+}

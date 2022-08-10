@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "netherendingores:nether_ruby_ore",
+    "netherendingores:end_ruby_ore"
+  ]
+}

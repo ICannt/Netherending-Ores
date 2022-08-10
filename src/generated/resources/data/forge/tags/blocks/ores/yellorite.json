@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "netherendingores:deepslate_yellorite_ore",
+    "netherendingores:nether_yellorite_ore",
+    "netherendingores:end_yellorite_ore"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "netherendingores:overworld_cobalt_ore",
+    "netherendingores:deepslate_cobalt_ore",
+    "netherendingores:end_cobalt_ore"
+  ]
+}

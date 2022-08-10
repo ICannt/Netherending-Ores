@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "netherendingores:nether_tungsten_ore",
+    "netherendingores:end_tungsten_ore"
+  ]
+}

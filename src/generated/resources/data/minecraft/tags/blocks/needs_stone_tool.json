@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "netherendingores:nether_copper_ore",
+    "netherendingores:end_copper_ore",
+    "netherendingores:nether_iron_ore",
+    "netherendingores:end_iron_ore",
+    "netherendingores:nether_lapis_ore",
+    "netherendingores:end_lapis_ore",
+    "netherendingores:nether_redstone_ore",
+    "netherendingores:end_redstone_ore",
+    "netherendingores:nether_tin_ore",
+    "netherendingores:end_tin_ore",
+    "netherendingores:nether_zinc_ore",
+    "netherendingores:end_zinc_ore"
+  ]
+}

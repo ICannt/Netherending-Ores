@@ -80,6 +80,6 @@ forge*changelog.txt
 #      Modding Project
 # =========================
 
-data
-gradlelibs
-libs
+/data
+/gradlelibs
+/libs

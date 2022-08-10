@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "netherendingores:nether_diamond_ore",
+    "netherendingores:end_diamond_ore"
+  ]
+}
