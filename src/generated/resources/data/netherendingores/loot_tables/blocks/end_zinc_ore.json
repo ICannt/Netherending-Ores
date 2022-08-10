@@ -29,6 +29,30 @@
               "name": "netherendingores:end_zinc_ore"
             },
             {
+              "type": "minecraft:tag",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 1.0,
+                    "max": 1.0
+                  },
+                  "add": false
+                },
+                {
+                  "function": "minecraft:apply_bonus",
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "parameters": {
+                    "bonusMultiplier": 1
+                  }
+                }
+              ],
+              "name": "forge:raw_materials/zinc",
+              "expand": true
+            },
+            {
               "type": "minecraft:item",
               "functions": [
                 {
