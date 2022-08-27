@@ -10,7 +10,7 @@ import org.icannt.netherendingores.NetherendingOres;
 
 public class NeoLog {
 
-    public static final Logger NLOG = LogManager.getLogger(NetherendingOres.MOD_NAME);
+    private static final Logger NLOG = LogManager.getLogger(NetherendingOres.MOD_NAME);
 
 	public static void always(String msg) {
 		NLOG.always().log(msg);

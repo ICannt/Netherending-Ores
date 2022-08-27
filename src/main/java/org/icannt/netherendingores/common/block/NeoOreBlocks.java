@@ -1,7 +1,6 @@
 package org.icannt.netherendingores.common.block;
 
 import org.icannt.netherendingores.Registration;
-import org.icannt.netherendingores.lib.NeoLog;
 import org.icannt.netherendingores.lib.NeoString;
 
 import net.minecraft.resources.ResourceLocation;
@@ -132,17 +131,14 @@ public enum NeoOreBlocks implements IOreType {
 		}
 
 		private static TagKey<Block> getBlockTagKey(String oreType) {
-			//NeoLog.always("blocktag: " + oreType);
 			return VanillaOres.values()[VanillaOres.valueOf(oreType).ordinal()].blockTagKey;
 		}
 
 		private static TagKey<Item> getItemTagKey(String oreType) {
-			//NeoLog.always("itemtag: " + oreType);
 			return VanillaOres.values()[VanillaOres.valueOf(oreType).ordinal()].itemTagKey;
 		}
-		
+
 		private static Item getLootItem(String oreType) {
-			//NeoLog.always("lootitem: " + oreType);
 			return VanillaOres.values()[VanillaOres.valueOf(oreType).ordinal()].lootItem;
 		}
 
@@ -208,11 +204,11 @@ public enum NeoOreBlocks implements IOreType {
     private String[] getOreAltType() {
     	return this.oreAltType;
     }
-    
+
     private String getItemTagMaterial() {
     	return this.itemTagMaterial;
     }
-    
+
     private String getItemTagAltMaterial() {
     	return this.itemTagAltMaterial;
     }
@@ -343,7 +339,7 @@ public enum NeoOreBlocks implements IOreType {
 		}
 		return ItemTags.create(new ResourceLocation("forge", "ores/" + getOreType()));
 	}
-	
+
 	public Item getVanillaLootItem() {
 		return VanillaOres.getLootItem(getVanillaOreTagName());
 	}
@@ -353,10 +349,19 @@ public enum NeoOreBlocks implements IOreType {
     	return getOreType() + "_" + "ingot";
     }
 
-    // TODO: This is the big part of it that needs to determine what kind of item tag is to be dropped.
-    // Should probably be moved to a setter instead?
 	public TagKey<Item> getForgeOreLootItemTag() {
 		return ItemTags.create(new ResourceLocation("forge", getItemTagMaterial() + "/" + getOreType()));
+	}
+
+	// Not needed at the moment, may have a future use?
+	public static boolean isNeoOre(String path) {
+		try {
+			NeoOreBlocks.valueOf(NeoString.toUpper(path));
+		}
+		catch(Exception error) {
+			return false;
+		}
+		return true;
 	}
 
 }

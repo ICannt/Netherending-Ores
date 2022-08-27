@@ -1,0 +1,10 @@
+{
+  "type": "netherendingores:nether_niter_loot",  
+  "conditions": [
+    {
+      "condition": "block_state_property",
+      "block": "netherendingores:nether_niter_ore"
+    }
+  ],  
+  "item": "netherendingores:nether_niter_ore"
+}

@@ -9,15 +9,10 @@ public class NetherendingOres
 {
     public static final String MOD_ID = "netherendingores";
     public static final String MOD_NAME = "Netherending Ores";
-
-    public static IEventBus EVENT_BUS;
+    public static final IEventBus EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
 
     public NetherendingOres() {
-
-        EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
-
         Registration.init();
-
     }
 
 }

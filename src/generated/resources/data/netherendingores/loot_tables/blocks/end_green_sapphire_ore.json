@@ -47,25 +47,13 @@
                   "parameters": {
                     "bonusMultiplier": 1
                   }
+                },
+                {
+                  "function": "minecraft:explosion_decay"
                 }
               ],
               "name": "forge:gems/green_sapphire",
               "expand": true
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "function": "minecraft:set_count",
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "min": 1.0,
-                    "max": 1.0
-                  },
-                  "add": false
-                }
-              ],
-              "name": "netherendingores:end_green_sapphire_ore"
             }
           ]
         }
